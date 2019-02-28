@@ -1,0 +1,11 @@
+build/
+~*
+*~
+.flatpak-builder/
+app-dir/
+debian/com.github.lainsce.dot-matrix.debhelper.log
+debian/com.github.lainsce.dot-matrix.substvars
+debian/com.github.lainsce.dot-matrix/
+debian/debhelper-build-stamp
+debian/files
+obj-x86_64-linux-gnu/
