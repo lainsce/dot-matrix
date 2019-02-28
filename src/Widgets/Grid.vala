@@ -26,7 +26,7 @@ namespace DotMatrix {
 
             var clutter = new GtkClutter.Embed ();
             var stage = (Clutter.Stage)clutter.get_stage ();
-            stage.background_color = {245, 245, 245, 255};
+            stage.background_color = {250, 250, 250, 255};
 
             var actor = new Clutter.Actor ();
             actor.add_constraint (new Clutter.BindConstraint (stage, Clutter.BindCoordinate.WIDTH, 0));
