@@ -37,14 +37,14 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="968"
+     inkscape:window-height="962"
      id="namedview6"
      showgrid="true"
-     inkscape:zoom="32"
-     inkscape:cx="-3.8535599"
-     inkscape:cy="11.883941"
+     inkscape:zoom="18.879671"
+     inkscape:cx="11.500023"
+     inkscape:cy="12.000012"
      inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-y="30"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg4">
     <inkscape:grid
@@ -52,8 +52,8 @@
        id="grid904" />
   </sodipodi:namedview>
   <path
-     style="fill:#000000;stroke:none;stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="M 5,18.592 19.543269,4 20,4.408 5.3846154,19 Z"
+     style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 4.7499706,18.855631 18.808527,4.7499753 19.250034,5.1443768 5.1217672,19.250033 Z"
      id="path816"
      inkscape:connector-curvature="0"
      sodipodi:nodetypes="ccccc" />

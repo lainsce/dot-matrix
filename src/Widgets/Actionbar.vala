@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2017 Lains
+* Copyright (c) 2019 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -22,6 +22,7 @@ namespace DotMatrix {
 
         public StatusBar () {
             var actionbar = new Gtk.ActionBar ();
+            actionbar.get_style_context ().add_class ("dm-actionbar");
 
             var new_button = new Gtk.Button ();
             new_button.has_tooltip = true;

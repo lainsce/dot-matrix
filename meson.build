@@ -46,13 +46,15 @@ executable(
     'src/MainWindow.vala',
     'src/Constants/AppSettings.vala',
     'src/Widgets/Actionbar.vala',
+    'src/Widgets/Grid.vala',
     asresources,
     c_args: c_args,
     dependencies: [
         dependency('granite'),
         dependency('gobject-2.0'),
         dependency('gee-0.8'),
-        dependency('gtk+-3.0')
+        dependency('gtk+-3.0'),
+        dependency('clutter-gtk-1.0')
     ],
     vala_args: [
         meson.source_root() + '/vapi/config.vapi',

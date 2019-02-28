@@ -23,6 +23,7 @@ Please make sure you have these dependencies first before building.
 granite
 gtk+-3.0
 meson
+libclutter-gtk-1.0-dev
 ```
 
 ## Building

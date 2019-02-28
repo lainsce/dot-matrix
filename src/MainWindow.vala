@@ -70,6 +70,8 @@ namespace DotMatrix {
             this.set_titlebar (titlebar);
 
             var scrolled = new Gtk.ScrolledWindow (null, null);
+            var grid_dots = new Widgets.Grid ();
+            scrolled.add (grid_dots);
             scrolled.expand = true;
             var actionbar = new Widgets.StatusBar ();
             actionbar.reveal_child = true;

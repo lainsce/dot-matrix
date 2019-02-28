@@ -9,11 +9,19 @@
     border-bottom: 1px solid alpha (#000, 0.25);
 }
 
-actionbar,
-.action-bar {
+.dm-actionbar {
     background: @colorPrimary;
     color: @textColorPrimary;
     box-shadow: 0 1px transparent inset;
-    padding: 10px;
-    border-top: 1px solid alpha (#000, 0);
+    padding: 8px;
+    border-top: 1px solid alpha (#000, 0.25);
+}
+
+.dm-actionbar button:hover {
+    background: shade (@colorPrimary, 0.88);
+    border-radius: 8px;
+}
+
+.dm-actionbar button:active {
+    background: mix (@colorAccent, @colorPrimary, 0.5);
 }
