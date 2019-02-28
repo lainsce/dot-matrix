@@ -1,0 +1,19 @@
+@define-color colorAccent #5B67B4;
+@define-color colorPrimary #F5F5F5;
+@define-color textColorPrimary #333;
+
+.dm-toolbar {
+    background: @colorPrimary;
+    color: @textColorPrimary;
+    box-shadow: 0 1px transparent inset;
+    border-bottom: 1px solid alpha (#000, 0.25);
+}
+
+actionbar,
+.action-bar {
+    background: @colorPrimary;
+    color: @textColorPrimary;
+    box-shadow: 0 1px transparent inset;
+    padding: 10px;
+    border-top: 1px solid alpha (#000, 0);
+}

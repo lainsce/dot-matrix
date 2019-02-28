@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+    <id>com.github.lainsce.dot-matrix</id>
+    <metadata_license>CC0</metadata_license>
+    <project_license>GPL-3.0+</project_license>
+    <name>Dot Matrix</name>
+    <summary>The glyph playground of creativity from simple lines</summary>
+    <description>
+        <p>Make out icons, glyphs, or anything you can create with lines in this grid of dots</p>
+        <ul>
+            <li>Select whetether to draw with lines or curves.</li>
+            <li>Quit anytime with the shortcut Ctrl + Q</li>
+        </ul>
+    </description>
+    <provides>
+        <binary>com.github.lainsce.dot-matrix</binary>
+    </provides>
+    <developer_name>Lains</developer_name>
+    <url type="homepage">https://github.com/lainsce/dot-matrix/</url>
+    <url type="bugtracker">https://github.com/lainsce/dot-matrix/issues</url>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/lainsce/dot-matrix/master/data/shot.png</image>
+        </screenshot>
+    </screenshots>
+    <content_rating type="oars-1.1">
+        <content_attribute id="violence-cartoon">none</content_attribute>
+        <content_attribute id="violence-fantasy">none</content_attribute>
+        <content_attribute id="violence-realistic">none</content_attribute>
+        <content_attribute id="violence-bloodshed">none</content_attribute>
+        <content_attribute id="violence-sexual">none</content_attribute>
+        <content_attribute id="violence-desecration">none</content_attribute>
+        <content_attribute id="violence-slavery">none</content_attribute>
+        <content_attribute id="violence-worship">none</content_attribute>
+        <content_attribute id="drugs-alcohol">none</content_attribute>
+        <content_attribute id="drugs-narcotics">none</content_attribute>
+        <content_attribute id="drugs-tobacco">none</content_attribute>
+        <content_attribute id="sex-nudity">none</content_attribute>
+        <content_attribute id="sex-themes">none</content_attribute>
+        <content_attribute id="sex-homosexuality">none</content_attribute>
+        <content_attribute id="sex-prostitution">none</content_attribute>
+        <content_attribute id="sex-adultery">none</content_attribute>
+        <content_attribute id="sex-appearance">none</content_attribute>
+        <content_attribute id="language-profanity">none</content_attribute>
+        <content_attribute id="language-humor">none</content_attribute>
+        <content_attribute id="language-discrimination">none</content_attribute>
+        <content_attribute id="social-chat">none</content_attribute>
+        <content_attribute id="social-info">none</content_attribute>
+        <content_attribute id="social-audio">none</content_attribute>
+        <content_attribute id="social-location">none</content_attribute>
+        <content_attribute id="social-contacts">none</content_attribute>
+        <content_attribute id="money-purchasing">none</content_attribute>
+        <content_attribute id="money-gambling">none</content_attribute>
+    </content_rating>
+    <releases>
+        <release version="0.0.1" date="2019-03-15">
+            <description>
+                <p>Release: With Stereo Sound</p>
+                <ul>
+                    <li>First stable release.</li>
+                </ul>
+            </description>
+        </release>
+    </releases>
+    <custom>
+        <value key="x-appcenter-color-primary">#5B67B4</value>
+        <value key="x-appcenter-color-primary-text">#ffffff</value>
+        <value key="x-appcenter-suggested-price">3</value>
+    </custom>
+</component>

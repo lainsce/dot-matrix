@@ -1,0 +1,55 @@
+# French translations for com.github.lainsce.timetable extra package.
+# Copyright (C) 2019 THE com.github.lainsce.timetable extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.timetable extra package.
+# NathanBnm, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.timetable extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-29 21:15+0900\n"
+"PO-Revision-Date: 2019-01-17 21:02+0100\n"
+"Last-Translator: NathanBnm\n"
+"Language-Team: Français\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:6
+#: data/com.github.lainsce.timetable.desktop.in:3
+msgid "Timetable"
+msgstr "Planning"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:7
+#: data/com.github.lainsce.timetable.desktop.in:4
+msgid "Plot out your own timetable for the week and organize it"
+msgstr "Dessinez votre propre planning pour la semaine et organisez-le"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:9
+msgid ""
+"Start organizing each day with the columns and export your timetable away in "
+"an easy way"
+msgstr ""
+"Commencez à organiser chaque jour avec les colonnes et exportez votre planning facilement"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:11
+msgid "Intelligently start building your timetable with the day columns"
+msgstr "Commencez la construction de votre planning de manière intelligente avec les colonnes du jour"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Quittez à tout moment avec le raccourci Ctrl + Q"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:18
+msgid "Lains"
+msgstr "Lains"
+
+#: data/com.github.lainsce.timetable.desktop.in:6
+msgid "com.github.lainsce.timetable"
+msgstr "com.github.lainsce.timetable"
+
+#: data/com.github.lainsce.timetable.desktop.in:7
+msgid "Plot;Week;Planning;Timetable;"
+msgstr "Planifier;Semaine;Planning;Emploi du temps;"

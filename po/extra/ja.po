@@ -1,0 +1,56 @@
+# Japanese translations for extra package.
+# Copyright (C) 2018 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# Automatically generated, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-29 20:45+0900\n"
+"PO-Revision-Date: 2018-10-29 21:15+0900\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:6
+#: data/com.github.lainsce.timetable.desktop.in:3
+msgid "Timetable"
+msgstr "予定表"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:7
+#: data/com.github.lainsce.timetable.desktop.in:4
+msgid "Plot out your own timetable for the week and organize it"
+msgstr "自分の週間予定表を作成して整理しましょう"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:9
+msgid ""
+"Start organizing each day with the columns and export your timetable away in "
+"an easy way"
+msgstr ""
+"列ごとに一日一日を整理するようにして、簡単に予定表をエクスポートしましょう"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:11
+msgid "Intelligently start building your timetable with the day columns"
+msgstr "日付の列を使って賢く予定表を作り始められます"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "ショートカット Ctrl + Q で、いつでも終了できます"
+
+#: data/com.github.lainsce.timetable.appdata.xml.in:18
+msgid "Lains"
+msgstr "Lains"
+
+#: data/com.github.lainsce.timetable.desktop.in:6
+msgid "com.github.lainsce.timetable"
+msgstr "com.github.lainsce.timetable"
+
+#: data/com.github.lainsce.timetable.desktop.in:7
+msgid "Plot;Week;Planning;Timetable;"
+msgstr "Plot;Week;Planning;Timetable;作成;週;計画;予定表;"
