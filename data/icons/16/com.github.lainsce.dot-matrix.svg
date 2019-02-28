@@ -25,16 +25,16 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="968"
+     inkscape:window-height="962"
      id="namedview4265"
      showgrid="true"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:zoom="45.254834"
      inkscape:cx="8.3271494"
-     inkscape:cy="9.1122637"
+     inkscape:cy="6.4606133"
      inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-y="30"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
      inkscape:snap-global="true">
@@ -475,29 +475,40 @@
      cx="12"
      cy="12"
      r="1" />
-  <rect
-     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="rect1220"
-     width="6"
-     height="2"
-     x="3"
-     y="7" />
-  <rect
-     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="rect1222"
-     width="2"
-     height="4"
-     x="7"
-     y="3" />
-  <path
-     style="fill:#abacae;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="m 5,9 c 0,0 -0.3962733,2 4,2 v 2 C 9,13 3,13 3,9 Z"
-     id="path1224"
-     inkscape:connector-curvature="0" />
   <circle
      style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="path1214-3"
      cx="12"
      cy="7.9995728"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1212-3"
+     cx="7.9991455"
+     cy="4"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1212-6"
+     cx="4.0004272"
+     cy="7.9995728"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1212-7"
+     cx="3.9995728"
+     cy="11.999573"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1212-5"
+     cx="7.9991455"
+     cy="8.0112619"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1212-35"
+     cx="7.999145"
+     cy="11.999573"
      r="1" />
 </svg>

@@ -25,14 +25,14 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="968"
+     inkscape:window-height="962"
      id="namedview33"
      showgrid="true"
      inkscape:zoom="27.812867"
-     inkscape:cx="2.6658092"
-     inkscape:cy="10.572989"
+     inkscape:cx="12.56676"
+     inkscape:cy="11.723536"
      inkscape:window-x="0"
-     inkscape:window-y="24"
+     inkscape:window-y="30"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2"
      inkscape:snap-global="true">
@@ -476,9 +476,34 @@
      cx="18"
      cy="18"
      r="1" />
-  <path
-     style="fill:#abacae;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-     d="m 11,5 h 2 v 8 H 7 c 0,0 0,4 6,4 v 2 c 0,0 -8,0 -8,-5 v -3 h 6 z"
-     id="path1291"
-     inkscape:connector-curvature="0" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1285-7"
+     cx="12"
+     cy="5.9999995"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1287-0"
+     cx="12"
+     cy="11.999999"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1289-9"
+     cx="12"
+     cy="18"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1287-0-3"
+     cx="6"
+     cy="12"
+     r="1" />
+  <circle
+     style="fill:#abacae;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path1289-9-6"
+     cx="6"
+     cy="18"
+     r="1" />
 </svg>
