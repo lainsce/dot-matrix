@@ -38,11 +38,6 @@ namespace DotMatrix {
             Intl.setlocale (LocaleCategory.ALL, "");
             Intl.textdomain (Build.GETTEXT_PACKAGE);
 
-            var err = GtkClutter.init (ref args);
-            if (err != Clutter.InitError.SUCCESS) {
-                error ("Could not initalize clutter! "+err.to_string ());
-            }
-
             var app = new DotMatrix.Application ();
             return app.run (args);
         }

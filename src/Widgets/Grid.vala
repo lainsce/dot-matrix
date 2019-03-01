@@ -17,33 +17,32 @@
 * Boston, MA 02110-1301 USA
 */
 namespace DotMatrix {
-    public class Widgets.Grid : Gtk.EventBox {
+    public class Widgets.Grid : Gtk.Grid {
         public MainWindow window;
+        private Gtk.ToggleButton dot;
 
         public Grid () {
-            events |= Gdk.EventMask.KEY_PRESS_MASK;
-            events |= Gdk.EventMask.KEY_RELEASE_MASK;
+            this.get_style_context ().add_class ("dm-grid");
+            this.halign = Gtk.Align.CENTER;
+            this.valign = Gtk.Align.CENTER;
+            int i, j;
 
-            var clutter = new GtkClutter.Embed ();
-            var stage = (Clutter.Stage)clutter.get_stage ();
-            stage.background_color = {250, 250, 250, 255};
-
-            var actor = new Clutter.Actor ();
-            actor.add_constraint (new Clutter.BindConstraint (stage, Clutter.BindCoordinate.WIDTH, 0));
-            actor.add_constraint (new Clutter.BindConstraint (stage, Clutter.BindCoordinate.HEIGHT, 0));
-
-            stage.add_child (actor);
-
-            this.button_press_event.connect ((event) => {
-                return false;
-            });
-
-            this.button_release_event.connect ((event) => {
-                return false;
-            });
-
-            add (clutter);
+            for (i = 0; i < 16; i++) {
+                make_dot ();
+                this.attach (dot, 0, i, 1, 1);
+                for (j = 0; j < 21; j++) {
+                    make_dot ();
+                    this.attach (dot, j, i, 1, 1);
+                }
+            }
             show_all ();
+        }
+
+        public void make_dot () {
+            dot = new Gtk.ToggleButton ();
+            dot.get_style_context ().add_class ("flat");
+            dot.set_size_request (24,24);
+            dot.set_image (new Gtk.Image.from_icon_name ("media-record-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
         }
     }
 }

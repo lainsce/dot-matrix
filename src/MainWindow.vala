@@ -58,12 +58,14 @@ namespace DotMatrix {
                                                       provider,
                                                       Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             this.get_style_context ().add_class ("rounded");
+            this.get_style_context ().add_class ("dm-window");
 
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
             default_theme.add_resource_path ("/com/github/lainsce/dot-matrix");
 
             var titlebar = new Gtk.HeaderBar ();
             titlebar.show_close_button = true;
+            titlebar.has_subtitle = false;
             var titlebar_style_context = titlebar.get_style_context ();
             titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
             titlebar_style_context.add_class ("dm-toolbar");

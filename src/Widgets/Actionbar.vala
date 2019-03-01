@@ -34,11 +34,6 @@ namespace DotMatrix {
             save_button.has_tooltip = true;
             save_button.tooltip_text = (_("Save file"));
 
-            var open_button = new Gtk.Button ();
-            open_button.set_image (new Gtk.Image.from_icon_name ("document-open-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			open_button.has_tooltip = true;
-            open_button.tooltip_text = (_("Open…"));
-
             var line_curve_button = new Gtk.Button ();
             line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			line_curve_button.has_tooltip = true;
@@ -50,7 +45,6 @@ namespace DotMatrix {
             line_straight_button.tooltip_text = (_("Lines"));
 
             actionbar.pack_start (new_button);
-            actionbar.pack_start (open_button);
             actionbar.pack_start (save_button);
             actionbar.pack_end (line_straight_button);
             actionbar.pack_end (line_curve_button);
