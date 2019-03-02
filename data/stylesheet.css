@@ -34,21 +34,3 @@
 .dm-grid {
     background: @colorPrimary;
 }
-
-.dm-grid button {
-    background: transparent;
-    color: @dotColorPrimary;
-    padding: 2px;
-    margin: 7px;
-}
-
-.dm-grid button:prelight.toggle {
-    background: shade (@colorPrimary, 0.88);
-    border-radius: 50%;
-}
-
-.dm-grid button:checked.toggle {
-    background: mix (#FFF, @colorPrimary, 0.5);
-    border-radius: 50%;
-    -gtk-icon-shadow: none;
-}
