@@ -19,6 +19,7 @@
 namespace DotMatrix {
     public class Widgets.StatusBar : Gtk.Revealer {
         public MainWindow window;
+        public Widgets.Grid grid;
 
         public StatusBar () {
             var actionbar = new Gtk.ActionBar ();
@@ -29,26 +30,35 @@ namespace DotMatrix {
             new_button.set_image (new Gtk.Image.from_icon_name ("document-new-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
             new_button.tooltip_text = (_("New file"));
 
+            new_button.clicked.connect ((e) => {
+                if (grid.da != null) {
+                    grid.da.clear ();
+                }
+            });
+
+            actionbar.pack_start (new_button);
+
             var save_button = new Gtk.Button ();
             save_button.set_image (new Gtk.Image.from_icon_name ("document-save-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
             save_button.has_tooltip = true;
             save_button.tooltip_text = (_("Save file"));
 
-            // TODO: After I finish Line, do Curves.
+            actionbar.pack_start (save_button);
+
+            //  TODO: After I finish Line, do Curves.
             //  var line_curve_button = new Gtk.Button ();
             //  line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			//  line_curve_button.has_tooltip = true;
             //  line_curve_button.tooltip_text = (_("Curved Lines"));
+            //  actionbar.pack_end (line_curve_button);
 
             var line_straight_button = new Gtk.Button ();
             line_straight_button.set_image (new Gtk.Image.from_icon_name ("line-straight-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			line_straight_button.has_tooltip = true;
             line_straight_button.tooltip_text = (_("Lines"));
 
-            actionbar.pack_start (new_button);
-            actionbar.pack_start (save_button);
             actionbar.pack_end (line_straight_button);
-            //actionbar.pack_end (line_curve_button);
+
 
             this.add (actionbar);
         }

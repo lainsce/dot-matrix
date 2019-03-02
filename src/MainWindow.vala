@@ -24,7 +24,6 @@ namespace DotMatrix {
                 icon_name: "com.github.lainsce.dot-matrix",
                 height_request: 880,
                 width_request: 810,
-                resizable: false,
                 title: (_("Dot Matrix"))
             );
 

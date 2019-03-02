@@ -38,6 +38,7 @@ c_args = [
 ]
 
 cc = meson.get_compiler('c')
+m_dep = cc.find_library('m', required: true)
 
 add_project_arguments(['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
                       language: 'vala')
@@ -55,7 +56,8 @@ executable(
     dependencies: [
         dependency('granite'),
         dependency('gobject-2.0'),
-        dependency('gtk+-3.0')
+        dependency('gtk+-3.0'),
+        m_dep,
     ],
     vala_args: [
         meson.source_root() + '/vapi/config.vapi',
