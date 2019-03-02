@@ -10,15 +10,5 @@
 			<summary>Window position</summary>
 			<description>The y axis of window position</description>
 		</key>
-        <key name="window-height" type="i">
-				<default>700</default>
-				<summary>Window position</summary>
-				<description>The height of the window</description>
-		</key>
-		<key name="window-width" type="i">
-				<default>800</default>
-				<summary>Window position</summary>
-				<description>The width of the window</description>
-		</key>
 	</schema>
 </schemalist>

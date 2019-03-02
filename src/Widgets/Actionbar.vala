@@ -34,10 +34,11 @@ namespace DotMatrix {
             save_button.has_tooltip = true;
             save_button.tooltip_text = (_("Save file"));
 
-            var line_curve_button = new Gtk.Button ();
-            line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			line_curve_button.has_tooltip = true;
-            line_curve_button.tooltip_text = (_("Curved Lines"));
+            // TODO: After I finish Line, do Curves.
+            //  var line_curve_button = new Gtk.Button ();
+            //  line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			//  line_curve_button.has_tooltip = true;
+            //  line_curve_button.tooltip_text = (_("Curved Lines"));
 
             var line_straight_button = new Gtk.Button ();
             line_straight_button.set_image (new Gtk.Image.from_icon_name ("line-straight-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
@@ -47,7 +48,7 @@ namespace DotMatrix {
             actionbar.pack_start (new_button);
             actionbar.pack_start (save_button);
             actionbar.pack_end (line_straight_button);
-            actionbar.pack_end (line_curve_button);
+            //actionbar.pack_end (line_curve_button);
 
             this.add (actionbar);
         }

@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2018 Lains
+* Copyright (c) 2019 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -22,8 +22,9 @@ namespace DotMatrix {
             GLib.Object (
                 application: application,
                 icon_name: "com.github.lainsce.dot-matrix",
-                height_request: 825,
-                width_request: 900,
+                height_request: 880,
+                width_request: 810,
+                resizable: false,
                 title: (_("Dot Matrix"))
             );
 
@@ -43,13 +44,8 @@ namespace DotMatrix {
             var settings = AppSettings.get_default ();
             int x = settings.window_x;
             int y = settings.window_y;
-            int h = settings.window_height;
-            int w = settings.window_width;
             if (x != -1 && y != -1) {
                 this.move (x, y);
-            }
-            if (w != 0 && h != 0) {
-                this.resize (w, h);
             }
 
             var provider = new Gtk.CssProvider ();
@@ -107,15 +103,12 @@ namespace DotMatrix {
         }
 
         public override bool delete_event (Gdk.EventAny event) {
-            int x, y, w, h;
+            int x, y;
             get_position (out x, out y);
-            get_size (out w, out h);
 
             var settings = AppSettings.get_default ();
             settings.window_x = x;
             settings.window_y = y;
-            settings.window_width = w;
-            settings.window_height = h;
             return false;
         }
     }

@@ -19,38 +19,32 @@
 namespace DotMatrix {
     public class Widgets.Grid : Gtk.Grid {
         public MainWindow window;
-        private Gtk.ToggleButton dot;
 
         public Grid () {
-            this.get_style_context ().add_class ("dm-grid");
-            this.halign = Gtk.Align.CENTER;
-            this.valign = Gtk.Align.CENTER;
-            this.row_spacing = 6;
-            this.column_spacing = 6;
-            this.row_homogeneous = true;
-            int i, j;
-
-            for (i = 0; i < 17; i++) {
-                for (j = 0; j < 17; j++) {
-                    if (j % 4 == 0 && i % 4 == 0) {
-                        make_dot ();
-                        dot.set_image (new Gtk.Image.from_icon_name ("dot-symbolic", ((Gtk.IconSize)8)));
-                    } else {
-                        make_dot ();
-                        dot.set_image (new Gtk.Image.from_icon_name ("dot-symbolic", ((Gtk.IconSize)4)));
+            var d = new Gtk.DrawingArea ();
+            d.expand = true;
+		    d.draw.connect ((c) => {
+                int i, j;
+                for (i = 0; i < 25; i++) {
+                    for (j = 0; j < 25; j++) {
+                        if (i % 4 == 0 && j % 4 == 0) {
+                            c.set_source_rgba (0.7, 0.7, 0.7, 1);
+                            c.arc ((i+1)*25, (j+1)*25, 3, 0, 2*Math.PI);
+                            c.fill ();
+                        } else {
+                            c.set_source_rgba (0.8, 0.8, 0.8, 1);
+                            c.arc ((i+1)*25, (j+1)*25, 2, 0, 2*Math.PI);
+                            c.fill ();
+                        }
                     }
-                    this.attach (dot, j, i, 1, 1);
                 }
-            }
-            show_all ();
-        }
+                return true;
+            });
+            this.attach (d,1,1,1,1);
 
-        public void make_dot () {
-            dot = new Gtk.ToggleButton ();
-            dot.halign = Gtk.Align.CENTER;
-            dot.valign = Gtk.Align.CENTER;
-            dot.set_size_request (8,8);
-            dot.get_style_context ().add_class ("flat");
+            this.get_style_context ().add_class ("dm-grid");
+
+            show_all ();
         }
     }
 }

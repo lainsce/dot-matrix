@@ -1,4 +1,4 @@
-/*-
+/*
  * Copyright (c) 2019 Lains
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,8 +19,6 @@ namespace DotMatrix {
     public class AppSettings : Granite.Services.Settings {
         public int window_x { get; set; }
         public int window_y { get; set; }
-        public int window_height { get; set; }
-        public int window_width { get; set; }
 
         private static AppSettings? instance;
         public static unowned AppSettings get_default () {
