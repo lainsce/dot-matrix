@@ -49,8 +49,7 @@ executable(
     'src/Application.vala',
     'src/MainWindow.vala',
     'src/Constants/AppSettings.vala',
-    'src/Widgets/Actionbar.vala',
-    'src/Widgets/Grid.vala',
+    'src/Widgets/UI.vala',
     asresources,
     c_args: c_args,
     dependencies: [

@@ -18,6 +18,8 @@
 */
 namespace DotMatrix {
     public class MainWindow : Gtk.Window {
+        public Widgets.UI grid;
+
         public MainWindow (Gtk.Application application) {
             GLib.Object (
                 application: application,
@@ -67,18 +69,14 @@ namespace DotMatrix {
             this.set_titlebar (titlebar);
 
             var scrolled = new Gtk.ScrolledWindow (null, null);
-            var grid_dots = new Widgets.Grid ();
-            scrolled.add (grid_dots);
+            grid = new Widgets.UI ();
+            scrolled.add (grid);
             scrolled.expand = true;
-            var actionbar = new Widgets.StatusBar ();
-            actionbar.reveal_child = true;
-            actionbar.hexpand = true;
 
             var grid = new Gtk.Grid ();
             grid.orientation = Gtk.Orientation.VERTICAL;
             grid.expand = true;
             grid.attach (scrolled, 0, 0, 1, 1);
-            grid.attach (actionbar, 0, 1, 1, 1);
             grid.show_all ();
             this.add (grid);
             this.show_all ();

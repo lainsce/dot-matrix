@@ -88,32 +88,32 @@ namespace DotMatrix {
 
         public override bool draw (Cairo.Context c) {
             int i, j;
-                int h = get_allocated_height ();
-                int w = get_allocated_width ();
-                for (i = 0; i <= w / ratio; i++) {
-                    for (j = 0; j <= h / ratio; j++) {
-                        if ((i - 1) % big_dot == 0 && (j - 1) % big_dot == 0) {
-                            c.set_source_rgba (0.66, 0.66, 0.66, 1);
-                            c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
-                            c.fill ();
-                        } else {
-                            c.set_source_rgba (0.8, 0.8, 0.8, 1);
-                            c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
-                            c.fill ();
-                        }
-                    }
-                }
+			int h = get_allocated_height ();
+			int w = get_allocated_width ();
+			for (i = 0; i <= w / ratio; i++) {
+				for (j = 0; j <= h / ratio; j++) {
+					if ((i - 1) % big_dot == 0 && (j - 1) % big_dot == 0) {
+						c.set_source_rgba (0.66, 0.66, 0.66, 1);
+						c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
+						c.fill ();
+					} else {
+						c.set_source_rgba (0.8, 0.8, 0.8, 1);
+						c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
+						c.fill ();
+					}
+				}
+			}
 
-                c.set_source_rgba (0, 0, 0, 1);
-                foreach (var path in paths) {
-                    Point first = path.points.first ().data;
-                    c.move_to (first.x, first.y);
-                    foreach (var point in path.points.next) {
-                        c.line_to (point.x, point.y);
-                    }
-                    c.stroke ();
-                }
-                return true;
+			c.set_source_rgba (0, 0, 0, 1);
+			foreach (var path in paths) {
+				Point first = path.points.first ().data;
+				c.move_to (first.x, first.y);
+				foreach (var point in path.points.next) {
+					c.line_to (point.x, point.y);
+				}
+				c.stroke ();
+			}
+			return true;
         }
 
 		public void clear () {
@@ -140,7 +140,7 @@ namespace DotMatrix {
 		}
     }
 
-    public class Widgets.Grid : Gtk.Box {
+    public class Widgets.UI : Gtk.VBox {
         public MainWindow window;
         public Area da;
 
@@ -150,7 +150,7 @@ namespace DotMatrix {
         public signal void stroke_added (double[] coordinates);
 		public signal void stroke_removed (uint n_strokes);
 
-        public Grid () {
+        public UI () {
             da = new Area ();
             da.expand = true;
             da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
@@ -160,8 +160,45 @@ namespace DotMatrix {
             });
             da.stroke_removed.connect ((n_strokes) => {
                 stroke_removed (n_strokes);
+			});
+
+			var actionbar = new Gtk.ActionBar ();
+			actionbar.get_style_context ().add_class ("dm-actionbar");
+
+            var new_button = new Gtk.Button ();
+            new_button.has_tooltip = true;
+            new_button.set_image (new Gtk.Image.from_icon_name ("document-new-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+            new_button.tooltip_text = (_("New file"));
+
+            new_button.clicked.connect ((e) => {
+                da.clear ();
             });
 
+            actionbar.pack_start (new_button);
+
+            var save_button = new Gtk.Button ();
+            save_button.set_image (new Gtk.Image.from_icon_name ("document-save-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+            save_button.has_tooltip = true;
+            save_button.tooltip_text = (_("Save file"));
+
+            actionbar.pack_start (save_button);
+
+            //  TODO: After I finish Line, do Curves.
+            //  var line_curve_button = new Gtk.Button ();
+            //  line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			//  line_curve_button.has_tooltip = true;
+            //  line_curve_button.tooltip_text = (_("Curved Lines"));
+            //  actionbar.pack_end (line_curve_button);
+
+            var line_straight_button = new Gtk.Button ();
+            line_straight_button.set_image (new Gtk.Image.from_icon_name ("line-straight-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			line_straight_button.has_tooltip = true;
+            line_straight_button.tooltip_text = (_("Lines"));
+
+            actionbar.pack_end (line_straight_button);
+
+
+            this.pack_end (actionbar, false, false, 0);
             this.pack_start (da, true, true, 0);
             this.get_style_context ().add_class ("dm-grid");
             show_all ();
