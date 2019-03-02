@@ -7,5 +7,5 @@ Keywords=Matrix;Vector;Drawing;Grid;
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;Utilities;
+Categories=GNOME;GTK;Utility;Graphics;Development;
 NoDisplay=false
