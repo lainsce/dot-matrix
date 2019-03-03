@@ -73,13 +73,13 @@ namespace DotMatrix {
 			get_allocation (out allocation);
 
 			double x = event.x.clamp ((double)allocation.x,
-									  (double)(allocation.x + allocation.width));
+									  (double)(ratio + allocation.width));
 			double y = event.y.clamp ((double)allocation.y,
-									  (double)(allocation.y + allocation.height));
+									  (double)(ratio + allocation.height));
 			Point last = current_path.points.last ().data;
 			double dx = x - last.x;
 			double dy = y - last.y;
-			if (Math.sqrt (dx * dx + dy * dy) > 10.0) {
+			if (Math.floor (dx * dx + dy * dy) > 10.0) {
 				current_path.points.append (new Point (x, y));
 				queue_draw ();
 			}
@@ -105,16 +105,23 @@ namespace DotMatrix {
 			}
 
 			c.set_source_rgba (0, 0, 0, 1);
+			c.set_line_cap (Cairo.LineCap.ROUND);
+			c.set_line_join (Cairo.LineJoin.ROUND);
+			c.set_line_width (5);
 			foreach (var path in paths) {
-				Point first = path.points.first ().data;
-				c.move_to (first.x, first.y);
 				foreach (var point in path.points.next) {
-					c.line_to (point.x, point.y);
+					int x = (int) Math.floor(Math.round(point.x / ratio) * ratio);
+					int y = (int) Math.floor(Math.round(point.y / ratio) * ratio);
+					c.line_to (x, y);
 				}
 				c.stroke ();
 			}
 			return true;
-        }
+		}
+
+		public double lerp(double start, double end, int t) {
+			return start + t * (end - start);
+		}
 
 		public void clear () {
 			paths = null;
