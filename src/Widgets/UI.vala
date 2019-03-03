@@ -186,7 +186,11 @@ namespace DotMatrix {
             var save_button = new Gtk.Button ();
             save_button.set_image (new Gtk.Image.from_icon_name ("document-save-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
             save_button.has_tooltip = true;
-            save_button.tooltip_text = (_("Save file"));
+			save_button.tooltip_text = (_("Save file"));
+
+			//save_button.clicked.connect ((e) => {
+                // TODO: Implement saving.
+            //});
 
             actionbar.pack_start (save_button);
 
@@ -194,13 +198,22 @@ namespace DotMatrix {
             //  var line_curve_button = new Gtk.Button ();
             //  line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			//  line_curve_button.has_tooltip = true;
-            //  line_curve_button.tooltip_text = (_("Curved Lines"));
-            //  actionbar.pack_end (line_curve_button);
+			//  line_curve_button.tooltip_text = (_("Curved Lines"));
+			//
+			//  line_straight_button.clicked.connect ((e) => {
+            //      TODO: Implement drawing curves with this button.
+			//  });
+			//
+			//  actionbar.pack_end (line_curve_button);
 
             var line_straight_button = new Gtk.Button ();
             line_straight_button.set_image (new Gtk.Image.from_icon_name ("line-straight-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			line_straight_button.has_tooltip = true;
-            line_straight_button.tooltip_text = (_("Lines"));
+			line_straight_button.tooltip_text = (_("Lines"));
+
+			//line_straight_button.clicked.connect ((e) => {
+                // TODO: Implement drawing lines with this button.
+            //});
 
             actionbar.pack_end (line_straight_button);
 
