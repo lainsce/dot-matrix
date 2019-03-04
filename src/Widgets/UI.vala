@@ -26,14 +26,14 @@ namespace DotMatrix {
 		}
 	}
 	public class Path {
-		public List<Point> points = null;
+		public GLib.List<Point> points = null;
     }
 
     public class Widgets.UI : Gtk.VBox {
         public MainWindow window;
         public Gtk.DrawingArea da;
 
-        List<Path> paths = new List<Path> ();
+        GLib.List<Path> paths = new GLib.List<Path> ();
         Path current_path = null;
 
 		private int ratio = 25;
@@ -44,33 +44,12 @@ namespace DotMatrix {
             da.expand = true;
 			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
 
-			da.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | Gdk.EventMask.BUTTON_MOTION_MASK);
+			da.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
 
 			da.button_press_event.connect ((e) => {
 				current_path = new Path ();
 				current_path.points.append (new Point (e.x, e.y));
 				paths.append (current_path);
-				return false;
-			});
-
-			da.button_release_event.connect ((e) => {
-				return false;
-			});
-
-			da.motion_notify_event.connect ((e) => {
-				Gtk.Allocation allocation;
-				da.get_allocation (out allocation);
-
-				double x = e.x.clamp ((double)allocation.x,
-										(double)(ratio + allocation.width));
-				double y = e.y.clamp ((double)allocation.y,
-										(double)(ratio + allocation.height));
-				Point last = current_path.points.last ().data;
-				double dx = x - last.x;
-				double dy = y - last.y;
-				if (Math.floor (dx * dx + dy * dy) > 10.0) {
-					current_path.points.append (new Point (x, y));
-				}
 				return false;
 			});
 
@@ -93,7 +72,7 @@ namespace DotMatrix {
 				}
 
 				draw_line (c);
-				return true;
+				return false;
 			});
 
 			var actionbar = new Gtk.ActionBar ();
@@ -139,7 +118,7 @@ namespace DotMatrix {
 			line_straight_button.tooltip_text = (_("Draw Line"));
 
 			line_straight_button.clicked.connect ((e) => {
-                da.queue_draw ();
+				da.queue_draw ();
             });
 
             actionbar.pack_end (line_straight_button);
@@ -163,13 +142,13 @@ namespace DotMatrix {
 			c.set_line_join (Cairo.LineJoin.ROUND);
 			c.set_line_width (5);
 			foreach (var path in paths) {
-				foreach (var point in path.points.next) {
-					int x = (int) Math.floor(Math.round(point.x / ratio) * ratio);
-					int y = (int) Math.floor(Math.round(point.y / ratio) * ratio);
-					c.line_to (x, y);
-				}
-				c.stroke ();
+				int x = (int) Math.round(path.points.data.x / ratio) * ratio;
+				int y = (int) Math.round(path.points.data.y / ratio) * ratio;
+				print ("Drew line to: %d x %d\n", x,y);
+
+				c.line_to (x, y);
 			}
+			c.stroke ();
 		}
     }
 }
