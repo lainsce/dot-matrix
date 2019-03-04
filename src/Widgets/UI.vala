@@ -70,7 +70,8 @@ namespace DotMatrix {
 					}
 				}
 
-				draw_line (c);
+				// TODO: Implement switching tools
+				draw (c);
 				return false;
 			});
 
@@ -93,23 +94,24 @@ namespace DotMatrix {
             save_button.has_tooltip = true;
 			save_button.tooltip_text = (_("Save file"));
 
-			//save_button.clicked.connect ((e) => {
+			save_button.clicked.connect ((e) => {
                 // TODO: Implement saving.
-            //});
+            });
 
-            actionbar.pack_start (save_button);
+			actionbar.pack_start (save_button);
 
-            //  TODO: After I finish Line, do Curves.
-            //  var line_curve_button = new Gtk.Button ();
-            //  line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			//  line_curve_button.has_tooltip = true;
-			//  line_curve_button.tooltip_text = (_("Draw Curved Line"));
-			//
-			//  line_straight_button.clicked.connect ((e) => {
-            //      TODO: Implement drawing curves with this button.
-			//  });
-			//
-			//  actionbar.pack_end (line_curve_button);
+            var line_curve_button = new Gtk.Button ();
+            line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			line_curve_button.has_tooltip = true;
+			line_curve_button.tooltip_text = (_("Draw Curved Line"));
+
+			line_curve_button.clicked.connect ((e) => {
+				paths.append (current_path);
+				current_path = new Path ();
+				da.queue_draw ();
+			});
+
+			actionbar.pack_end (line_curve_button);
 
             var line_straight_button = new Gtk.Button ();
             line_straight_button.set_image (new Gtk.Image.from_icon_name ("line-straight-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
@@ -136,7 +138,7 @@ namespace DotMatrix {
 			queue_draw ();
 		}
 
-		public void draw_line (Cairo.Context c) {
+		public void draw (Cairo.Context c) {
 			c.set_line_cap (Cairo.LineCap.ROUND);
 			c.set_line_join (Cairo.LineJoin.ROUND);
 			c.set_line_width (5);
@@ -168,6 +170,23 @@ namespace DotMatrix {
 
 				c.move_to(start_x, start_y);
 				c.line_to (end_x, end_y);
+			}
+		}
+
+		private void draw_curve (Cairo.Context c, Path path) {
+			if (path.points.length () < 2) {
+				return;
+			}
+
+			for (int i = 0; i < path.points.length () - 1; i+=1) {
+				int start_x = (int) Math.round(path.points.nth_data(i).x / ratio) * ratio;
+				int start_y = (int) Math.round(path.points.nth_data(i).y / ratio) * ratio;
+
+				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
+				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
+
+				c.move_to(start_x, start_y);
+				c.curve_to (start_x, start_y, start_x, end_y, end_x, end_y);
 			}
 		}
     }
