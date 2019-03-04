@@ -27,6 +27,7 @@ namespace DotMatrix {
 	}
 	public class Path {
 		public GLib.List<Point> points = null;
+		public bool is_curve {get; set;}
     }
 
     public class Widgets.UI : Gtk.VBox {
@@ -70,8 +71,7 @@ namespace DotMatrix {
 					}
 				}
 
-				// TODO: Implement switching tools
-				draw (c);
+				draws (c);
 				return false;
 			});
 
@@ -107,6 +107,7 @@ namespace DotMatrix {
 
 			line_curve_button.clicked.connect ((e) => {
 				paths.append (current_path);
+				current_path.is_curve = true;
 				current_path = new Path ();
 				da.queue_draw ();
 			});
@@ -120,6 +121,7 @@ namespace DotMatrix {
 
 			line_straight_button.clicked.connect ((e) => {
 				paths.append (current_path);
+				current_path.is_curve = false;
 				current_path = new Path ();
 				da.queue_draw ();
             });
@@ -139,7 +141,7 @@ namespace DotMatrix {
 			queue_draw ();
 		}
 
-		public void draw (Cairo.Context c) {
+		public void draws (Cairo.Context c) {
 			c.set_line_cap (Cairo.LineCap.ROUND);
 			c.set_line_join (Cairo.LineJoin.ROUND);
 			c.set_line_width (5);
@@ -152,7 +154,11 @@ namespace DotMatrix {
 
 			c.set_source_rgba (0, 0, 0, 1);
 			foreach (var path in paths) {
-				draw_path (c, path);
+				if (path.is_curve == true) {
+					draw_curve (c, path);
+				} else if (path.is_curve == false) {
+					draw_path (c, path);
+				}
 			}
 			c.stroke ();
 		}
