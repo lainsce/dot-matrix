@@ -34,7 +34,7 @@ namespace DotMatrix {
         public Gtk.DrawingArea da;
 
         GLib.List<Path> paths = new GLib.List<Path> ();
-        Path current_path = null;
+		Path current_path = new Path ();
 
 		private int ratio = 25;
 		private int big_dot = 4;
@@ -47,9 +47,8 @@ namespace DotMatrix {
 			da.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
 
 			da.button_press_event.connect ((e) => {
-				current_path = new Path ();
 				current_path.points.append (new Point (e.x, e.y));
-				paths.append (current_path);
+				da.queue_draw ();
 				return false;
 			});
 
@@ -118,11 +117,12 @@ namespace DotMatrix {
 			line_straight_button.tooltip_text = (_("Draw Line"));
 
 			line_straight_button.clicked.connect ((e) => {
+				paths.append (current_path);
+				current_path = new Path ();
 				da.queue_draw ();
             });
 
             actionbar.pack_end (line_straight_button);
-
 
             this.pack_end (actionbar, false, false, 0);
             this.pack_start (da, true, true, 0);
@@ -132,23 +132,43 @@ namespace DotMatrix {
 
 		public void clear () {
 			paths = null;
-			current_path = null;
+			current_path = new Path ();
 			queue_draw ();
 		}
 
 		public void draw_line (Cairo.Context c) {
-			c.set_source_rgba (0, 0, 0, 1);
 			c.set_line_cap (Cairo.LineCap.ROUND);
 			c.set_line_join (Cairo.LineJoin.ROUND);
 			c.set_line_width (5);
-			foreach (var path in paths) {
-				int x = (int) Math.round(path.points.data.x / ratio) * ratio;
-				int y = (int) Math.round(path.points.data.y / ratio) * ratio;
-				print ("Drew line to: %d x %d\n", x,y);
 
-				c.line_to (x, y);
+			if (current_path != null) {
+				c.set_source_rgba (0, 0, 0, 0.5);
+				draw_path (c, current_path);
 			}
 			c.stroke ();
+
+			c.set_source_rgba (0, 0, 0, 1);
+			foreach (var path in paths) {
+				draw_path (c, path);
+			}
+			c.stroke ();
+		}
+
+		private void draw_path (Cairo.Context c, Path path) {
+			if (path.points.length () < 2) {
+				return;
+			}
+
+			for (int i = 0; i < path.points.length () - 1; i+=1) {
+				int start_x = (int) Math.round(path.points.nth_data(i).x / ratio) * ratio;
+				int start_y = (int) Math.round(path.points.nth_data(i).y / ratio) * ratio;
+
+				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
+				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
+
+				c.move_to(start_x, start_y);
+				c.line_to (end_x, end_y);
+			}
 		}
     }
 }
