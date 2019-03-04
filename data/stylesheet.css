@@ -1,7 +1,6 @@
-@define-color colorAccent #5B67B4;
+@define-color colorAccent #C1C6CB;
 @define-color colorPrimary #FAFAFA;
 @define-color textColorPrimary #333;
-@define-color dotColorPrimary #AAA;
 
 .dm-window {
     background: @colorPrimary;
@@ -23,12 +22,12 @@
 }
 
 .dm-actionbar button:hover {
-    background: shade (@colorPrimary, 0.88);
+    background: shade (@colorPrimary, 0.9);
     border-radius: 8px;
 }
 
 .dm-actionbar button:active {
-    background: mix (@colorAccent, @colorPrimary, 0.5);
+    background: @colorAccent;
 }
 
 .dm-grid {

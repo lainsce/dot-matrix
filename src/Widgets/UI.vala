@@ -37,7 +37,6 @@ namespace DotMatrix {
 		Path current_path = new Path ();
 
 		private int ratio = 25;
-		private int big_dot = 4;
 
         public UI () {
             da = new Gtk.DrawingArea ();
@@ -56,9 +55,10 @@ namespace DotMatrix {
 				int i, j;
 				int h = da.get_allocated_height ();
 				int w = da.get_allocated_width ();
+				c.set_line_width (2);
 				for (i = 0; i <= w / ratio; i++) {
 					for (j = 0; j <= h / ratio; j++) {
-						if ((i - 1) % big_dot == 0 && (j - 1) % big_dot == 0) {
+						if ((i - 1) % 4 == 0 && (j - 1) % 4 == 0) {
 							c.set_source_rgba (0.66, 0.66, 0.66, 1);
 							c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
 							c.fill ();
@@ -128,7 +128,8 @@ namespace DotMatrix {
 
             this.pack_end (actionbar, false, false, 0);
             this.pack_start (da, true, true, 0);
-            this.get_style_context ().add_class ("dm-grid");
+			this.get_style_context ().add_class ("dm-grid");
+			this.margin = 1;
 			show_all ();
 		}
 
