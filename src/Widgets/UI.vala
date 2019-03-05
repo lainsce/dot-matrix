@@ -79,27 +79,10 @@ namespace DotMatrix {
 			});
 
 			da.draw.connect ((c) => {
-				int i, j;
-				int h = da.get_allocated_height ();
-				int w = da.get_allocated_width ();
-				c.set_line_width (2);
-				for (i = 0; i <= w / ratio; i++) {
-					for (j = 0; j <= h / ratio; j++) {
-						if ((i - 1) % 4 == 0 && (j - 1) % 4 == 0) {
-							c.set_source_rgba (0, 0, 0, 0.3);
-							c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
-							c.fill ();
-						} else {
-							c.set_source_rgba (0, 0, 0, 0.2);
-							c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
-							c.fill ();
-						}
-					}
-				}
+				draw_grid (c);
 				c.set_source_surface (s, da.get_allocated_width(),da.get_allocated_height());
 				c.paint ();
 				draws (c);
-
 
 				return false;
 			});
@@ -224,46 +207,26 @@ namespace DotMatrix {
 			show_all ();
 		}
 
-		private void clear () {
-            var dialog = new Dialog ();
-			dialog.transient_for = window;
-
-            dialog.response.connect ((response_id) => {
-                switch (response_id) {
-                    case Gtk.ResponseType.OK:
-						debug ("User saves the file.");
-						try {
-							save (s);
-						} catch (Error e) {
-							warning ("Unexpected error during save: " + e.message);
-						}
-						paths = null;
-						current_path = new Path ();
-						queue_draw ();
-						dirty = false;
-                        dialog.close ();
-                        break;
-                    case Gtk.ResponseType.NO:
-						paths = null;
-						current_path = new Path ();
-						queue_draw ();
-                        dialog.close ();
-                        break;
-                    case Gtk.ResponseType.CANCEL:
-                    case Gtk.ResponseType.CLOSE:
-                    case Gtk.ResponseType.DELETE_EVENT:
-                        dialog.close ();
-                        return;
-                    default:
-                        assert_not_reached ();
-                }
-            });
-
-
-            if (dirty == true) {
-                dialog.run ();
-            }
-        }
+		// Drawing Section
+		private void draw_grid (Cairo.Context c) {
+			int i, j;
+			int h = da.get_allocated_height ();
+			int w = da.get_allocated_width ();
+			c.set_line_width (2);
+			for (i = 0; i <= w / ratio; i++) {
+				for (j = 0; j <= h / ratio; j++) {
+					if ((i - 1) % 4 == 0 && (j - 1) % 4 == 0) {
+						c.set_source_rgba (0, 0, 0, 0.3);
+						c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
+						c.fill ();
+					} else {
+						c.set_source_rgba (0, 0, 0, 0.2);
+						c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
+						c.fill ();
+					}
+				}
+			}
+		}
 
 		public void draws (Cairo.Context c) {
 			c.set_line_cap (Cairo.LineCap.ROUND);
@@ -343,6 +306,48 @@ namespace DotMatrix {
 				c.curve_to (start_x, start_y, end_x, start_y, end_x, end_y);
 			}
 		}
+
+		// IO Section
+		private void clear () {
+            var dialog = new Dialog ();
+			dialog.transient_for = window;
+
+            dialog.response.connect ((response_id) => {
+                switch (response_id) {
+                    case Gtk.ResponseType.OK:
+						debug ("User saves the file.");
+						try {
+							save (s);
+						} catch (Error e) {
+							warning ("Unexpected error during save: " + e.message);
+						}
+						paths = null;
+						current_path = new Path ();
+						queue_draw ();
+						dirty = false;
+                        dialog.close ();
+                        break;
+                    case Gtk.ResponseType.NO:
+						paths = null;
+						current_path = new Path ();
+						queue_draw ();
+                        dialog.close ();
+                        break;
+                    case Gtk.ResponseType.CANCEL:
+                    case Gtk.ResponseType.CLOSE:
+                    case Gtk.ResponseType.DELETE_EVENT:
+                        dialog.close ();
+                        return;
+                    default:
+                        assert_not_reached ();
+                }
+            });
+
+
+            if (dirty == true) {
+                dialog.run ();
+            }
+        }
 
 		public void save (Cairo.Surface s) throws Error {
 			debug ("Save as button pressed.");
