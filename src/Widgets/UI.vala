@@ -28,6 +28,7 @@ namespace DotMatrix {
 	public class Path {
 		public GLib.List<Point> points = null;
 		public bool is_curve {get; set;}
+		public bool is_reverse_curve {get; set;}
     }
 
     public class Widgets.UI : Gtk.VBox {
@@ -153,11 +154,28 @@ namespace DotMatrix {
 			line_curve_button.clicked.connect ((e) => {
 				paths.append (current_path);
 				current_path.is_curve = true;
+				current_path.is_reverse_curve = false;
 				current_path = new Path ();
 				da.queue_draw ();
 			});
 
 			actionbar.pack_end (line_curve_button);
+
+			var line_curve_reverse_button = new Gtk.Button ();
+            line_curve_reverse_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			line_curve_reverse_button.has_tooltip = true;
+			line_curve_reverse_button.tooltip_text = (_("Draw Reverse Curved Line"));
+			line_curve_reverse_button.get_style_context ().add_class ("dm-reverse");
+
+			line_curve_reverse_button.clicked.connect ((e) => {
+				paths.append (current_path);
+				current_path.is_curve = true;
+				current_path.is_reverse_curve = true;
+				current_path = new Path ();
+				da.queue_draw ();
+			});
+
+			actionbar.pack_end (line_curve_reverse_button);
 
             var line_straight_button = new Gtk.Button ();
             line_straight_button.set_image (new Gtk.Image.from_icon_name ("line-straight-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
@@ -200,12 +218,18 @@ namespace DotMatrix {
 			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, line_color.alpha);
 			foreach (var path in paths) {
 				if (path.is_curve == true) {
-					draw_curve (c, path);
+					if (path.is_reverse_curve == true) {
+						draw_reverse_curve (c, path);
+						c.stroke ();
+					} else if (path.is_reverse_curve == false) {
+						draw_curve (c, path);
+						c.stroke ();
+					}
 				} else if (path.is_curve == false) {
 					draw_path (c, path);
+					c.stroke ();
 				}
 			}
-			c.stroke ();
 		}
 
 		private void draw_path (Cairo.Context c, Path path) {
@@ -239,6 +263,23 @@ namespace DotMatrix {
 
 				c.move_to(start_x, start_y);
 				c.curve_to (start_x, start_y, start_x, end_y, end_x, end_y);
+			}
+		}
+
+		private void draw_reverse_curve (Cairo.Context c, Path path) {
+			if (path.points.length () < 2) {
+				return;
+			}
+
+			for (int i = 0; i < path.points.length () - 1; i+=1) {
+				int start_x = (int) Math.round(path.points.nth_data(i).x / ratio) * ratio;
+				int start_y = (int) Math.round(path.points.nth_data(i).y / ratio) * ratio;
+
+				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
+				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
+
+				c.move_to(start_x, start_y);
+				c.curve_to (start_x, start_y, end_x, start_y, end_x, end_y);
 			}
 		}
     }

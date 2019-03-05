@@ -29,6 +29,10 @@
     background: @colorAccent;
 }
 
+.dm-reverse image {
+    -gtk-icon-transform: rotate(180deg);
+}
+
 .dm-grid {
     background: @colorPrimary;
 }
