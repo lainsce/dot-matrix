@@ -29,6 +29,23 @@ namespace DotMatrix {
 		public GLib.List<Point> points = null;
 		public bool is_curve {get; set;}
 		public bool is_reverse_curve {get; set;}
+	}
+
+	public class Dialog : Granite.MessageDialog {
+        public MainWindow win;
+        public Dialog () {
+            Object (
+                image_icon: new ThemedIcon ("dialog-information"),
+                primary_text: _("Save Image?"),
+                secondary_text: _("There are unsaved changes to the image. If you don't save, changes will be lost forever.")
+            );
+        }
+        construct {
+            var save = add_button (_("Save"), Gtk.ResponseType.OK);
+            var cws = add_button (_("Close Without Saving"), Gtk.ResponseType.NO);
+            var cancel = add_button (_("Cancel"), Gtk.ResponseType.CANCEL) as Gtk.Button;
+            cancel.clicked.connect (() => { destroy (); });
+        }
     }
 
     public class Widgets.UI : Gtk.VBox {
@@ -42,11 +59,12 @@ namespace DotMatrix {
 		private int line_thickness = 5;
 		private Gdk.RGBA line_color;
 		private string color = "#000000";
+		private bool dirty {get; set;}
 
+		private Cairo.Surface s = new Cairo.ImageSurface (Cairo.Format.ARGB32, 700,700);
 
         public UI () {
 			line_color.parse (color);
-
             da = new Gtk.DrawingArea ();
             da.expand = true;
 			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
@@ -55,6 +73,7 @@ namespace DotMatrix {
 
 			da.button_press_event.connect ((e) => {
 				current_path.points.append (new Point (e.x, e.y));
+				dirty = true;
 				da.queue_draw ();
 				return false;
 			});
@@ -77,8 +96,11 @@ namespace DotMatrix {
 						}
 					}
 				}
-
+				c.set_source_surface (s, da.get_allocated_width(),da.get_allocated_height());
+				c.paint ();
 				draws (c);
+
+
 				return false;
 			});
 
@@ -102,7 +124,11 @@ namespace DotMatrix {
 			save_button.tooltip_text = (_("Save file"));
 
 			save_button.clicked.connect ((e) => {
-                // TODO: Implement saving.
+				try {
+					save (s);
+				} catch (Error e) {
+					warning ("Unexpected error during save: " + e.message);
+				}
             });
 
 			actionbar.pack_start (save_button);
@@ -198,11 +224,46 @@ namespace DotMatrix {
 			show_all ();
 		}
 
-		public void clear () {
-			paths = null;
-			current_path = new Path ();
-			queue_draw ();
-		}
+		private void clear () {
+            var dialog = new Dialog ();
+			dialog.transient_for = window;
+
+            dialog.response.connect ((response_id) => {
+                switch (response_id) {
+                    case Gtk.ResponseType.OK:
+						debug ("User saves the file.");
+						try {
+							save (s);
+						} catch (Error e) {
+							warning ("Unexpected error during save: " + e.message);
+						}
+						paths = null;
+						current_path = new Path ();
+						queue_draw ();
+						dirty = false;
+                        dialog.close ();
+                        break;
+                    case Gtk.ResponseType.NO:
+						paths = null;
+						current_path = new Path ();
+						queue_draw ();
+                        dialog.close ();
+                        break;
+                    case Gtk.ResponseType.CANCEL:
+                    case Gtk.ResponseType.CLOSE:
+                    case Gtk.ResponseType.DELETE_EVENT:
+                        dialog.close ();
+                        return;
+                    default:
+                        assert_not_reached ();
+                }
+            });
+
+
+            if (dirty == true) {
+                dialog.run ();
+            }
+        }
 
 		public void draws (Cairo.Context c) {
 			c.set_line_cap (Cairo.LineCap.ROUND);
@@ -281,6 +342,54 @@ namespace DotMatrix {
 				c.move_to(start_x, start_y);
 				c.curve_to (start_x, start_y, end_x, start_y, end_x, end_y);
 			}
+		}
+
+		public void save (Cairo.Surface s) throws Error {
+			debug ("Save as button pressed.");
+			var file = display_save_dialog ();
+
+			string path = file.get_path ();
+
+			if (file == null) {
+				debug ("User cancelled operation. Aborting.");
+			} else {
+				var daw =  da.get_window ();
+				Gdk.Pixbuf p = Gdk.pixbuf_get_from_window(daw, 0, 0, da.get_allocated_width(), da.get_allocated_height());
+				p.save (path + ".png", "png", null);
+				file = null;
+			}
+		}
+
+		public Gtk.FileChooserDialog create_file_chooser (string title,
+		Gtk.FileChooserAction action) {
+			var chooser = new Gtk.FileChooserDialog (title, null, action);
+			chooser.add_button ("_Cancel", Gtk.ResponseType.CANCEL);
+			if (action == Gtk.FileChooserAction.OPEN) {
+				chooser.add_button ("_Open", Gtk.ResponseType.ACCEPT);
+			} else if (action == Gtk.FileChooserAction.SAVE) {
+				chooser.add_button ("_Save", Gtk.ResponseType.ACCEPT);
+				chooser.set_do_overwrite_confirmation (true);
+			}
+			var filter1 = new Gtk.FileFilter ();
+			filter1.set_filter_name (_("PNG files"));
+			filter1.add_pattern ("*.png");
+			chooser.add_filter (filter1);
+
+			var filter = new Gtk.FileFilter ();
+			filter.set_filter_name (_("All files"));
+			filter.add_pattern ("*");
+			chooser.add_filter (filter);
+			return chooser;
+		}
+
+		public File display_save_dialog () {
+			var chooser = create_file_chooser (_("Save file"),
+					Gtk.FileChooserAction.SAVE);
+			File file = null;
+			if (chooser.run () == Gtk.ResponseType.ACCEPT)
+				file = chooser.get_file ();
+			chooser.destroy();
+			return file;
 		}
     }
 }
