@@ -63,7 +63,7 @@
         </release>
     </releases>
     <custom>
-        <value key="x-appcenter-color-primary">#C1C6CB</value>
+        <value key="x-appcenter-color-primary">#72DEC1</value>
         <value key="x-appcenter-color-primary-text">#000</value>
         <value key="x-appcenter-suggested-price">5</value>
     </custom>

@@ -1,4 +1,4 @@
-@define-color colorAccent #C1C6CB;
+@define-color colorAccent #72DEC1;
 @define-color colorPrimary #FAFAFA;
 @define-color textColorPrimary #333;
 
@@ -32,4 +32,9 @@
 
 .dm-grid {
     background: @colorPrimary;
+}
+
+.dm-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.66em;
 }

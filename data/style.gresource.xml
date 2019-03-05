@@ -4,6 +4,6 @@
         <file alias="stylesheet.css" compressed="true">stylesheet.css</file>
         <file alias="line-curve-symbolic.svg">icons/symbolic/line-curve-symbolic.svg</file>
         <file alias="line-straight-symbolic.svg">icons/symbolic/line-straight-symbolic.svg</file>
-        <file alias="dot-symbolic.svg">icons/symbolic/dot-symbolic.svg</file>
+        <file alias="line-thickness-symbolic.svg">icons/symbolic/line-thickness-symbolic.svg</file>
     </gresource>
 </gresources>

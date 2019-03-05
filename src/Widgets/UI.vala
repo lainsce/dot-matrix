@@ -38,6 +38,7 @@ namespace DotMatrix {
 		Path current_path = new Path ();
 
 		private int ratio = 25;
+		private int line_thickness = 5;
 
         public UI () {
             da = new Gtk.DrawingArea ();
@@ -100,6 +101,33 @@ namespace DotMatrix {
 
 			actionbar.pack_start (save_button);
 
+			var line_thickness_button = new Gtk.Button ();
+            line_thickness_button.set_image (new Gtk.Image.from_icon_name ("line-thickness-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+            line_thickness_button.has_tooltip = true;
+			line_thickness_button.tooltip_text = (_("Change Line Thickness"));
+			var line_thickness_label = new Gtk.Label (line_thickness.to_string());
+			line_thickness_label.get_style_context ().add_class ("dm-text");
+			line_thickness_label.valign = Gtk.Align.CENTER;
+			line_thickness_label.margin_top = 3;
+
+			line_thickness_button.clicked.connect ((e) => {
+                if (line_thickness != 25) {
+					line_thickness++;
+					line_thickness_label.label = line_thickness.to_string ();
+					queue_draw ();
+				} else {
+					line_thickness = 5;
+					line_thickness_label.label = line_thickness.to_string ();
+					queue_draw ();
+				}
+			});
+
+			var line_thickness_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
+			line_thickness_box.pack_start (line_thickness_button);
+			line_thickness_box.pack_start (line_thickness_label);
+
+			actionbar.pack_start (line_thickness_box);
+
             var line_curve_button = new Gtk.Button ();
             line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			line_curve_button.has_tooltip = true;
@@ -144,7 +172,7 @@ namespace DotMatrix {
 		public void draws (Cairo.Context c) {
 			c.set_line_cap (Cairo.LineCap.ROUND);
 			c.set_line_join (Cairo.LineJoin.ROUND);
-			c.set_line_width (5);
+			c.set_line_width (line_thickness);
 
 			if (current_path != null) {
 				c.set_source_rgba (0, 0, 0, 0.5);
