@@ -61,8 +61,6 @@ namespace DotMatrix {
 		private string color = "#000000";
 		private bool dirty {get; set;}
 
-		private Cairo.Surface s = new Cairo.ImageSurface (Cairo.Format.ARGB32, 700,700);
-
         public UI () {
 			line_color.parse (color);
             da = new Gtk.DrawingArea ();
@@ -80,8 +78,6 @@ namespace DotMatrix {
 
 			da.draw.connect ((c) => {
 				draw_grid (c);
-				c.set_source_surface (s, da.get_allocated_width(),da.get_allocated_height());
-				c.paint ();
 				draws (c);
 
 				return false;
@@ -108,7 +104,7 @@ namespace DotMatrix {
 
 			save_button.clicked.connect ((e) => {
 				try {
-					save (s);
+					save ();
 				} catch (Error e) {
 					warning ("Unexpected error during save: " + e.message);
 				}
@@ -317,7 +313,7 @@ namespace DotMatrix {
                     case Gtk.ResponseType.OK:
 						debug ("User saves the file.");
 						try {
-							save (s);
+							save ();
 						} catch (Error e) {
 							warning ("Unexpected error during save: " + e.message);
 						}
@@ -349,7 +345,7 @@ namespace DotMatrix {
             }
         }
 
-		public void save (Cairo.Surface s) throws Error {
+		public void save () throws Error {
 			debug ("Save as button pressed.");
 			var file = display_save_dialog ();
 
@@ -358,9 +354,11 @@ namespace DotMatrix {
 			if (file == null) {
 				debug ("User cancelled operation. Aborting.");
 			} else {
-				var daw =  da.get_window ();
-				Gdk.Pixbuf p = Gdk.pixbuf_get_from_window(daw, 0, 0, da.get_allocated_width(), da.get_allocated_height());
-				p.save (path + ".png", "png", null);
+				var svg = new Cairo.SvgSurface (path + ".svg", da.get_allocated_width(),da.get_allocated_height());
+				svg.restrict_to_version (Cairo.SvgVersion.VERSION_1_2);
+				Cairo.Context c = new Cairo.Context (svg);
+				draws (c);
+				svg.finish ();
 				file = null;
 			}
 		}
@@ -376,8 +374,8 @@ namespace DotMatrix {
 				chooser.set_do_overwrite_confirmation (true);
 			}
 			var filter1 = new Gtk.FileFilter ();
-			filter1.set_filter_name (_("PNG files"));
-			filter1.add_pattern ("*.png");
+			filter1.set_filter_name (_("SVG files"));
+			filter1.add_pattern ("*.svg");
 			chooser.add_filter (filter1);
 
 			var filter = new Gtk.FileFilter ();
