@@ -23,7 +23,6 @@
 
 .dm-actionbar button:hover {
     background: shade (@colorPrimary, 0.9);
-    border-radius: 8px;
 }
 
 .dm-actionbar button:active {
@@ -37,4 +36,21 @@
 .dm-text {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.66em;
+}
+
+.dm-clrbtn {
+    background: @colorPrimary;
+    color: @textColorPrimary;
+    box-shadow: 0 1px transparent inset;
+    border: none;
+}
+
+.dm-clrbtn:active {
+    background: @colorAccent;
+}
+
+.dm-clrbtn colorswatch {
+    border-radius: 8px;
+    width: 16px;
+    height: 16px;
 }

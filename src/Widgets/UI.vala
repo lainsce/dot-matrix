@@ -39,8 +39,13 @@ namespace DotMatrix {
 
 		private int ratio = 25;
 		private int line_thickness = 5;
+		private Gdk.RGBA line_color;
+		private string color = "#000000";
+
 
         public UI () {
+			line_color.parse (color);
+
             da = new Gtk.DrawingArea ();
             da.expand = true;
 			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
@@ -61,11 +66,11 @@ namespace DotMatrix {
 				for (i = 0; i <= w / ratio; i++) {
 					for (j = 0; j <= h / ratio; j++) {
 						if ((i - 1) % 4 == 0 && (j - 1) % 4 == 0) {
-							c.set_source_rgba (0.66, 0.66, 0.66, 1);
+							c.set_source_rgba (0, 0, 0, 0.3);
 							c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
 							c.fill ();
 						} else {
-							c.set_source_rgba (0.8, 0.8, 0.8, 1);
+							c.set_source_rgba (0, 0, 0, 0.2);
 							c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
 							c.fill ();
 						}
@@ -128,6 +133,18 @@ namespace DotMatrix {
 
 			actionbar.pack_start (line_thickness_box);
 
+			var line_color_button = new Gtk.ColorButton.with_rgba (line_color);
+			line_color_button.margin_start = 6;
+			line_color_button.show_editor = true;
+			line_color_button.get_style_context ().add_class ("dm-clrbtn");
+			line_color_button.get_style_context ().remove_class ("color");
+			actionbar.pack_start (line_color_button);
+
+			line_color_button.color_set.connect ((e) => {
+				line_color = line_color_button.rgba;
+				da.queue_draw ();
+			});
+
             var line_curve_button = new Gtk.Button ();
             line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			line_curve_button.has_tooltip = true;
@@ -180,7 +197,7 @@ namespace DotMatrix {
 			}
 			c.stroke ();
 
-			c.set_source_rgba (0, 0, 0, 1);
+			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, line_color.alpha);
 			foreach (var path in paths) {
 				if (path.is_curve == true) {
 					draw_curve (c, path);
