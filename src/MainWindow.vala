@@ -36,6 +36,12 @@ namespace DotMatrix {
                     if (match_keycode (Gdk.Key.q, keycode)) {
                         this.destroy ();
                     }
+
+                    if (match_keycode (Gdk.Key.z, keycode)) {
+                        grid.undo ();
+                        grid.current_path = new Path ();
+				        grid.da.queue_draw ();
+                    }
                 }
                 return false;
             });

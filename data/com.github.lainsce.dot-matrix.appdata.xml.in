@@ -10,6 +10,8 @@
         <ul>
             <li>Select whetether to draw with lines or curves.</li>
             <li>Quit anytime with the shortcut Ctrl + Q</li>
+            <li>Undo with the shortcut Ctrl + Z</li>
+            <li>Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and Ctrl + (</li>
         </ul>
     </description>
     <provides>
@@ -53,6 +55,17 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.1.0" date="2019-03-15">
+            <description>
+                <p>Release: Undo The Rocks</p>
+                <ul>
+                    <li>Added: Undo function button.</li>
+                    <li>Added: Show/Hide Grid function button.</li>
+                    <li>Added: Undo and line thickness keybinds.</li>
+                    <li>Misc: Bumped the line thickness limit to 50.</li>
+                </ul>
+            </description>
+        </release>
         <release version="0.0.1" date="2019-03-08">
             <description>
                 <p>Release: With Stereo Sound</p>

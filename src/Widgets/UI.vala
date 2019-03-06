@@ -53,15 +53,51 @@ namespace DotMatrix {
         public Gtk.DrawingArea da;
 
         GLib.List<Path> paths = new GLib.List<Path> ();
-		Path current_path = new Path ();
+		public Path current_path = new Path ();
 
 		private int ratio = 25;
-		private int line_thickness = 5;
+		public int line_thickness = 5;
+		public Gtk.Label line_thickness_label;
 		private Gdk.RGBA line_color;
 		private string color = "#000000";
 		private bool dirty {get; set;}
+		private bool see_grid {get; set; default=true;}
 
         public UI () {
+			key_press_event.connect ((e) => {
+                uint keycode = e.hardware_keycode;
+
+                if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
+					if ((e.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
+                        if (match_keycode (Gdk.Key.parenleft, keycode)) {
+                            if (line_thickness > 5) {
+                                line_thickness -= 5;
+                                line_thickness_label.label = line_thickness.to_string ();
+                                da.queue_draw ();
+                            } else if (line_thickness < 5) {
+                                line_thickness = 5;
+                                line_thickness_label.label = line_thickness.to_string ();
+                                da.queue_draw ();
+                            }
+                        }
+
+                        if (match_keycode (Gdk.Key.parenright, keycode)) {
+                            if (line_thickness != 50) {
+                                line_thickness += 5;
+                                line_thickness_label.label = line_thickness.to_string ();
+                                da.queue_draw ();
+                            } else {
+                                line_thickness = 5;
+                                line_thickness_label.label = line_thickness.to_string ();
+                                da.queue_draw ();
+                            }
+                        }
+                    }
+                }
+                return false;
+            });
+
+
 			line_color.parse (color);
             da = new Gtk.DrawingArea ();
             da.expand = true;
@@ -112,17 +148,30 @@ namespace DotMatrix {
 
 			actionbar.pack_start (save_button);
 
+			var undo_button = new Gtk.Button ();
+            undo_button.set_image (new Gtk.Image.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			undo_button.has_tooltip = true;
+			undo_button.tooltip_text = (_("Draw Curved Line"));
+
+			undo_button.clicked.connect ((e) => {
+				undo ();
+				current_path = new Path ();
+				da.queue_draw ();
+			});
+
+			actionbar.pack_start (undo_button);
+
 			var line_thickness_button = new Gtk.Button ();
             line_thickness_button.set_image (new Gtk.Image.from_icon_name ("line-thickness-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
             line_thickness_button.has_tooltip = true;
 			line_thickness_button.tooltip_text = (_("Change Line Thickness"));
-			var line_thickness_label = new Gtk.Label (line_thickness.to_string());
+			line_thickness_label = new Gtk.Label (line_thickness.to_string());
 			line_thickness_label.get_style_context ().add_class ("dm-text");
 			line_thickness_label.valign = Gtk.Align.CENTER;
 			line_thickness_label.margin_top = 3;
 
 			line_thickness_button.clicked.connect ((e) => {
-                if (line_thickness != 25) {
+                if (line_thickness != 50) {
 					line_thickness++;
 					line_thickness_label.label = line_thickness.to_string ();
 					queue_draw ();
@@ -194,7 +243,23 @@ namespace DotMatrix {
 				da.queue_draw ();
             });
 
-            actionbar.pack_end (line_straight_button);
+			actionbar.pack_end (line_straight_button);
+
+			var see_grid_button = new Gtk.Button ();
+            see_grid_button.set_image (new Gtk.Image.from_icon_name ("grid-dots-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			see_grid_button.has_tooltip = true;
+			see_grid_button.tooltip_text = (_("Show/Hide Grid"));
+
+			see_grid_button.clicked.connect ((e) => {
+				if (see_grid == true) {
+					see_grid = false;
+				} else if (see_grid == false) {
+					see_grid = true;
+				}
+				da.queue_draw ();
+            });
+
+            actionbar.pack_end (see_grid_button);
 
             this.pack_end (actionbar, false, false, 0);
             this.pack_start (da, true, true, 0);
@@ -205,20 +270,22 @@ namespace DotMatrix {
 
 		// Drawing Section
 		private void draw_grid (Cairo.Context c) {
-			int i, j;
-			int h = da.get_allocated_height ();
-			int w = da.get_allocated_width ();
-			c.set_line_width (2);
-			for (i = 0; i <= w / ratio; i++) {
-				for (j = 0; j <= h / ratio; j++) {
-					if ((i - 1) % 4 == 0 && (j - 1) % 4 == 0) {
-						c.set_source_rgba (0, 0, 0, 0.3);
-						c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
-						c.fill ();
-					} else {
-						c.set_source_rgba (0, 0, 0, 0.2);
-						c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
-						c.fill ();
+			if (see_grid == true) {
+				int i, j;
+				int h = da.get_allocated_height ();
+				int w = da.get_allocated_width ();
+				c.set_line_width (2);
+				for (i = 0; i <= w / ratio; i++) {
+					for (j = 0; j <= h / ratio; j++) {
+						if ((i - 1) % 4 == 0 && (j - 1) % 4 == 0) {
+							c.set_source_rgba (0, 0, 0, 0.3);
+							c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
+							c.fill ();
+						} else {
+							c.set_source_rgba (0, 0, 0, 0.2);
+							c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
+							c.fill ();
+						}
 					}
 				}
 			}
@@ -300,6 +367,21 @@ namespace DotMatrix {
 
 				c.move_to(start_x, start_y);
 				c.curve_to (start_x, start_y, end_x, start_y, end_x, end_y);
+			}
+		}
+
+		public void undo () {
+			if (paths != null) {
+				unowned List<Path> last = paths.last ();
+				unowned List<Path> prev = last.prev;
+				paths.delete_link (last);
+				if (current_path != null) {
+					if (prev != null)
+						current_path = prev.data;
+					else
+						current_path = null;
+				}
+				queue_draw ();
 			}
 		}
 
@@ -394,5 +476,22 @@ namespace DotMatrix {
 			chooser.destroy();
 			return file;
 		}
+
+#if VALA_0_42
+        protected bool match_keycode (uint keyval, uint code) {
+#else
+        protected bool match_keycode (int keyval, uint code) {
+#endif
+            Gdk.KeymapKey [] keys;
+            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (Gdk.Display.get_default ());
+            if (keymap.get_entries_for_keyval (keyval, out keys)) {
+                foreach (var key in keys) {
+                    if (code == key.keycode)
+                        return true;
+                    }
+                }
+
+            return false;
+        }
     }
 }
