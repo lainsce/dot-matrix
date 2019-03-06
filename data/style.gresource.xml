@@ -5,6 +5,7 @@
         <file alias="line-curve-symbolic.svg">icons/symbolic/line-curve-symbolic.svg</file>
         <file alias="line-straight-symbolic.svg">icons/symbolic/line-straight-symbolic.svg</file>
         <file alias="line-thickness-symbolic.svg">icons/symbolic/line-thickness-symbolic.svg</file>
+        <file alias="line-cap-symbolic.svg">icons/symbolic/line-cap-symbolic.svg</file>
         <file alias="grid-dots-symbolic.svg">icons/symbolic/grid-dots-symbolic.svg</file>
     </gresource>
 </gresources>

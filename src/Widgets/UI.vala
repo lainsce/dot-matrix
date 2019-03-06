@@ -62,6 +62,7 @@ namespace DotMatrix {
 		private string color = "#000000";
 		private bool dirty {get; set;}
 		private bool see_grid {get; set; default=true;}
+		private bool change_linecap {get; set; default=false;}
 
         public UI () {
 			key_press_event.connect ((e) => {
@@ -245,6 +246,24 @@ namespace DotMatrix {
 
 			actionbar.pack_end (line_straight_button);
 
+			var line_cap_button = new Gtk.Button ();
+            line_cap_button.set_image (new Gtk.Image.from_icon_name ("line-cap-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			line_cap_button.has_tooltip = true;
+			line_cap_button.tooltip_text = (_("Change Line Cap"));
+
+			line_cap_button.clicked.connect ((e) => {
+				paths.append (current_path);
+				if (change_linecap == true) {
+					change_linecap = false;
+				} else if (change_linecap == false) {
+					change_linecap = true;
+				}
+				current_path = new Path ();
+				da.queue_draw ();
+            });
+
+            actionbar.pack_end (line_cap_button);
+
 			var see_grid_button = new Gtk.Button ();
             see_grid_button.set_image (new Gtk.Image.from_icon_name ("grid-dots-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			see_grid_button.has_tooltip = true;
@@ -292,8 +311,7 @@ namespace DotMatrix {
 		}
 
 		public void draws (Cairo.Context c) {
-			c.set_line_cap (Cairo.LineCap.ROUND);
-			c.set_line_join (Cairo.LineJoin.ROUND);
+			set_linecap (c);
 			c.set_line_width (line_thickness);
 
 			if (current_path != null) {
@@ -308,13 +326,16 @@ namespace DotMatrix {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);
 						c.stroke ();
+						c.close_path ();
 					} else if (path.is_reverse_curve == false) {
 						draw_curve (c, path);
 						c.stroke ();
+						c.close_path ();
 					}
 				} else if (path.is_curve == false) {
 					draw_path (c, path);
 					c.stroke ();
+					c.close_path ();
 				}
 			}
 		}
@@ -383,6 +404,17 @@ namespace DotMatrix {
 				}
 				queue_draw ();
 			}
+		}
+
+		public void set_linecap (Cairo.Context c) {
+			if (change_linecap == true) {
+				c.set_line_cap (Cairo.LineCap.SQUARE);
+				c.set_line_join (Cairo.LineJoin.MITER);
+			} else if (change_linecap == false) {
+				c.set_line_cap (Cairo.LineCap.ROUND);
+				c.set_line_join (Cairo.LineJoin.ROUND);
+			}
+			queue_draw ();
 		}
 
 		// IO Section
