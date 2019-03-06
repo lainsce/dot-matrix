@@ -151,7 +151,7 @@ namespace DotMatrix {
 			var undo_button = new Gtk.Button ();
             undo_button.set_image (new Gtk.Image.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
 			undo_button.has_tooltip = true;
-			undo_button.tooltip_text = (_("Draw Curved Line"));
+			undo_button.tooltip_text = (_("Undo Last Line"));
 
 			undo_button.clicked.connect ((e) => {
 				undo ();
