@@ -57,8 +57,9 @@
     <releases>
         <release version="1.1.0" date="2019-03-15">
             <description>
-                <p>Release: Undo The Rocks</p>
+                <p>Release: Unto The Rocks</p>
                 <ul>
+                    <li>Added: Mouse cursor.</li>
                     <li>Added: Undo function button.</li>
                     <li>Added: Show/Hide Grid function button.</li>
                     <li>Added: Undo and line thickness keybinds.</li>

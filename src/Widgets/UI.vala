@@ -63,6 +63,9 @@ namespace DotMatrix {
 		private bool dirty {get; set;}
 		private bool see_grid {get; set; default=true;}
 		private bool change_linecap {get; set; default=false;}
+		private bool inside {get; set; default=false;}
+        private double cur_x;
+		private double cur_y;
 
         public UI () {
 			key_press_event.connect ((e) => {
@@ -105,6 +108,12 @@ namespace DotMatrix {
 			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
 
 			da.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
+			da.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
+			da.add_events (Gdk.EventMask.LEAVE_NOTIFY_MASK);
+			da.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+
+			da.enter_notify_event.connect(mouse_entered);
+            da.leave_notify_event.connect(mouse_left);
 
 			da.button_press_event.connect ((e) => {
 				current_path.points.append (new Point (e.x, e.y));
@@ -113,9 +122,19 @@ namespace DotMatrix {
 				return false;
 			});
 
+			da.motion_notify_event.connect ((e) => {
+				Gtk.Allocation allocation;
+				get_allocation (out allocation);
+
+				cur_x = (int) Math.round(e.x.clamp ((double)allocation.x, (double)(allocation.x + allocation.width)) / ratio) * ratio;
+				cur_y = (int) Math.round(e.y.clamp ((double)allocation.y, (double)(allocation.y + allocation.height)) / ratio) * ratio;
+				return false;
+			});
+
 			da.draw.connect ((c) => {
 				draw_grid (c);
 				draws (c);
+				find_mouse (c);
 
 				return false;
 			});
@@ -288,6 +307,45 @@ namespace DotMatrix {
 		}
 
 		// Drawing Section
+		public void draw_circle(Cairo.Context c, double x, double y) {
+			c.set_source_rgba (0, 0, 0, 1);
+			c.arc(x, y, 12, 0, 2.0*3.14);
+			c.fill();
+			c.set_source_rgba (1, 1, 1, 1);
+			c.arc(x, y, 8, 0, 2.0*3.14);
+			c.fill();
+			c.set_source_rgba (0, 0, 0, 1);
+			c.arc(x, y, 4, 0, 2.0*3.14);
+			c.fill();
+			c.stroke();
+		}
+		public bool mouse_entered(Gdk.EventCrossing e) {
+				cur_x = e.x;
+				cur_y = e.y;
+				inside = true;
+				queue_draw();
+				return true;
+		}
+		public bool mouse_left(Gdk.EventCrossing e) {
+				cur_x = -100;
+				cur_y = -100;
+				inside = false;
+				queue_draw();
+				return true;
+		}
+		private void find_mouse(Cairo.Context c) {
+			int h = da.get_allocated_height ();
+			int w = da.get_allocated_width ();
+			for(int i = 0; i < 12; i++) {
+					if((Math.fabs(cur_x) <= h) && (Math.fabs(cur_y) <= w)) {
+							if(inside) {
+								draw_circle(c,cur_x,cur_y);
+							}
+							return;
+					}
+			}
+		}
+
 		private void draw_grid (Cairo.Context c) {
 			if (see_grid == true) {
 				int i, j;
