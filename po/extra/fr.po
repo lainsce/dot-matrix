@@ -61,7 +61,7 @@ msgstr "Lains"
 
 #: data/com.github.lainsce.dot-matrix.appdata.xml.in:60
 msgid "Release: French Horns"
-msgstr "Version: Cors-Français"
+msgstr "Version: Klaxon Français"
 
 #: data/com.github.lainsce.dot-matrix.appdata.xml.in:62
 msgid "Added: French translations (NathanBnm)"
