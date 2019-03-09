@@ -1,0 +1,100 @@
+# French translations for the extra package.
+# Copyright (C) 2019 THE extra'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# NathanBnm, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-09 09:11-0300\n"
+"PO-Revision-Date: 2019-03-09 13:30+0100\n"
+"Last-Translator: NathanBnm\n"
+"Language-Team: Français\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:6
+#: data/com.github.lainsce.dot-matrix.desktop.in:3
+msgid "Dot Matrix"
+msgstr "Dot Matrix"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:7
+#: data/com.github.lainsce.dot-matrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
+msgstr "Le terrain de jeu de la créativité à partir de lignes simples"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Dessinez des icônes, des glyphes ou tout ce que vous pouvez créer avec des lignes dans cette grille "
+"de points."
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Sélectionnez si vous voulez dessiner avec des lignes ou des courbes."
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Quittez à tout moment avec le raccourci Ctrl + Q"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Annulez le dernier tracé avec Ctrl + Z"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:14
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and "
+"Ctrl + ("
+msgstr ""
+"Modifiez l'épaisseur de ligne par +5 ou -5 avec les raccourcis respectifs Ctrl + ) et "
+"Ctrl + ("
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:20
+msgid "Lains"
+msgstr "Lains"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:60
+msgid "Release: Unto The Rocks"
+msgstr "Version : Unto The Rocks"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:62
+msgid "Added: Mouse cursor."
+msgstr "Ajout : Curseur de la souris."
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:63
+msgid "Added: Undo function button."
+msgstr "Ajout : Bouton Annuler le dernier tracé."
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:64
+msgid "Added: Show/Hide Grid function button."
+msgstr "Ajout : Bouton Afficher/Masquer le grille."
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:65
+msgid "Added: Undo and line thickness keybinds."
+msgstr "Ajout : Raccourcis clavier pour annuler et modifier l'épaisseur de ligne."
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:66
+msgid "Misc: Bumped the line thickness limit to 50."
+msgstr "Divers : Limite d'épaisseur de ligne passée à 50."
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:72
+msgid "Release: With Stereo Sound"
+msgstr "Version : With Stereo Sound"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:74
+msgid "First stable release."
+msgstr "Première version stable."
+
+#: data/com.github.lainsce.dot-matrix.desktop.in:6
+msgid "com.github.lainsce.dot-matrix"
+msgstr "com.github.lainsce.dot-matrix"
+
+#: data/com.github.lainsce.dot-matrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
+msgstr "Matrix;Vecteur;Dessin;Grille;"
