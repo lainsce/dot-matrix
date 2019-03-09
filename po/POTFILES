@@ -1,3 +1,4 @@
 src/Application.vala
 src/MainWindow.vala
+src/Widgets/UI.vala
 src/Constants/AppSettings.vala

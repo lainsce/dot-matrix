@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 15:47+0900\n"
+"POT-Creation-Date: 2019-03-09 09:11-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,80 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/com.github.lainsce.timetable.appdata.xml.in:6
-#: data/com.github.lainsce.timetable.desktop.in:3
-msgid "Timetable"
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:6
+#: data/com.github.lainsce.dot-matrix.desktop.in:3
+msgid "Dot Matrix"
 msgstr ""
 
-#: data/com.github.lainsce.timetable.appdata.xml.in:7
-#: data/com.github.lainsce.timetable.desktop.in:4
-msgid "Plot out your own timetable for the week and organize it"
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:7
+#: data/com.github.lainsce.dot-matrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
 msgstr ""
 
-#: data/com.github.lainsce.timetable.appdata.xml.in:9
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:9
 msgid ""
-"Start organizing each day with the columns and export your timetable away in "
-"an easy way"
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
 msgstr ""
 
-#: data/com.github.lainsce.timetable.appdata.xml.in:11
-msgid "Intelligently start building your timetable with the day columns"
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:11
+msgid "Select whetether to draw with lines or curves."
 msgstr ""
 
-#: data/com.github.lainsce.timetable.appdata.xml.in:12
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:12
 msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr ""
 
-#: data/com.github.lainsce.timetable.appdata.xml.in:18
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:14
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and "
+"Ctrl + ("
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:20
 msgid "Lains"
 msgstr ""
 
-#: data/com.github.lainsce.timetable.desktop.in:6
-msgid "com.github.lainsce.timetable"
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:60
+msgid "Release: Unto The Rocks"
 msgstr ""
 
-#: data/com.github.lainsce.timetable.desktop.in:7
-msgid "Plot;Week;Planning;Timetable;"
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:62
+msgid "Added: Mouse cursor."
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:63
+msgid "Added: Undo function button."
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:64
+msgid "Added: Show/Hide Grid function button."
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:65
+msgid "Added: Undo and line thickness keybinds."
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:66
+msgid "Misc: Bumped the line thickness limit to 50."
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:72
+msgid "Release: With Stereo Sound"
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:74
+msgid "First stable release."
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.desktop.in:6
+msgid "com.github.lainsce.dot-matrix"
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
 msgstr ""
