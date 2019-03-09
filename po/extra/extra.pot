@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-09 09:11-0300\n"
+"POT-Creation-Date: 2019-03-09 10:37-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,34 +56,42 @@ msgid "Lains"
 msgstr ""
 
 #: data/com.github.lainsce.dot-matrix.appdata.xml.in:60
-msgid "Release: Unto The Rocks"
+msgid "Release: French Horns"
 msgstr ""
 
 #: data/com.github.lainsce.dot-matrix.appdata.xml.in:62
+msgid "Added: French translations (NathanBnm)"
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:68
+msgid "Release: Unto The Rocks"
+msgstr ""
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:70
 msgid "Added: Mouse cursor."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:63
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:71
 msgid "Added: Undo function button."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:64
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:72
 msgid "Added: Show/Hide Grid function button."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:65
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:73
 msgid "Added: Undo and line thickness keybinds."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:66
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:74
 msgid "Misc: Bumped the line thickness limit to 50."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:72
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:80
 msgid "Release: With Stereo Sound"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:74
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:82
 msgid "First stable release."
 msgstr ""
 

@@ -55,6 +55,14 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.1.1" date="2019-03-15">
+            <description>
+                <p>Release: French Horns</p>
+                <ul>
+                    <li>Added: French translations (NathanBnm)</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.0" date="2019-03-11">
             <description>
                 <p>Release: Unto The Rocks</p>

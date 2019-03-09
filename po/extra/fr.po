@@ -60,34 +60,42 @@ msgid "Lains"
 msgstr "Lains"
 
 #: data/com.github.lainsce.dot-matrix.appdata.xml.in:60
-msgid "Release: Unto The Rocks"
-msgstr "Version : Unto The Rocks"
+msgid "Release: French Horns"
+msgstr "Version: Cors-Français"
 
 #: data/com.github.lainsce.dot-matrix.appdata.xml.in:62
+msgid "Added: French translations (NathanBnm)"
+msgstr "Ajout : Traductions françaises grâce à NathanBnm"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:68
+msgid "Release: Unto The Rocks"
+msgstr "Version : Dans Les Rochers"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:70
 msgid "Added: Mouse cursor."
 msgstr "Ajout : Curseur de la souris."
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:63
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:71
 msgid "Added: Undo function button."
 msgstr "Ajout : Bouton Annuler le dernier tracé."
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:64
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:72
 msgid "Added: Show/Hide Grid function button."
 msgstr "Ajout : Bouton Afficher/Masquer le grille."
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:65
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:73
 msgid "Added: Undo and line thickness keybinds."
 msgstr "Ajout : Raccourcis clavier pour annuler et modifier l'épaisseur de ligne."
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:66
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:74
 msgid "Misc: Bumped the line thickness limit to 50."
 msgstr "Divers : Limite d'épaisseur de ligne passée à 50."
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:72
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:80
 msgid "Release: With Stereo Sound"
-msgstr "Version : With Stereo Sound"
+msgstr "Version : Avec Son Stéréo"
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:74
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:82
 msgid "First stable release."
 msgstr "Première version stable."
 
