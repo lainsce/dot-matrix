@@ -24,8 +24,8 @@ namespace DotMatrix {
             GLib.Object (
                 application: application,
                 icon_name: "com.github.lainsce.dot-matrix",
-                height_request: 900,
-                width_request: 810,
+                height_request: 750,
+                width_request: 750,
                 title: (_("Dot Matrix"))
             );
 

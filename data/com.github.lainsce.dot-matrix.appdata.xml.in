@@ -59,6 +59,7 @@
             <description>
                 <p>Release: French Horns</p>
                 <ul>
+                    <li>Added: Editable Line Thickness label</li>
                     <li>Added: French translations (NathanBnm)</li>
                 </ul>
             </description>

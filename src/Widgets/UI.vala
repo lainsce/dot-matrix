@@ -57,7 +57,7 @@ namespace DotMatrix {
 
 		private int ratio = 25;
 		public int line_thickness = 5;
-		public Gtk.Label line_thickness_label;
+		public EditableLabel line_thickness_label;
 		private Gdk.RGBA line_color;
 		private string color = "#000000";
 		private bool dirty {get; set;}
@@ -76,11 +76,11 @@ namespace DotMatrix {
                         if (match_keycode (Gdk.Key.parenleft, keycode)) {
                             if (line_thickness > 5) {
                                 line_thickness -= 5;
-                                line_thickness_label.label = line_thickness.to_string ();
+                                line_thickness_label.text = line_thickness.to_string ();
                                 da.queue_draw ();
                             } else if (line_thickness < 5) {
                                 line_thickness = 5;
-                                line_thickness_label.label = line_thickness.to_string ();
+                                line_thickness_label.text = line_thickness.to_string ();
                                 da.queue_draw ();
                             }
                         }
@@ -88,11 +88,11 @@ namespace DotMatrix {
                         if (match_keycode (Gdk.Key.parenright, keycode)) {
                             if (line_thickness != 50) {
                                 line_thickness += 5;
-                                line_thickness_label.label = line_thickness.to_string ();
+                                line_thickness_label.text = line_thickness.to_string ();
                                 da.queue_draw ();
                             } else {
                                 line_thickness = 5;
-                                line_thickness_label.label = line_thickness.to_string ();
+                                line_thickness_label.text = line_thickness.to_string ();
                                 da.queue_draw ();
                             }
                         }
@@ -181,23 +181,49 @@ namespace DotMatrix {
 
 			actionbar.pack_start (undo_button);
 
+			var line_color_button = new Gtk.ColorButton.with_rgba (line_color);
+			line_color_button.margin_start = 6;
+			line_color_button.show_editor = true;
+			line_color_button.get_style_context ().add_class ("dm-clrbtn");
+			line_color_button.get_style_context ().remove_class ("color");
+			line_color_button.tooltip_text = (_("Line Color"));
+			actionbar.pack_start (line_color_button);
+
+			line_color_button.color_set.connect ((e) => {
+				line_color = line_color_button.rgba;
+				da.queue_draw ();
+			});
+
 			var line_thickness_button = new Gtk.Button ();
             line_thickness_button.set_image (new Gtk.Image.from_icon_name ("line-thickness-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
             line_thickness_button.has_tooltip = true;
 			line_thickness_button.tooltip_text = (_("Change Line Thickness"));
-			line_thickness_label = new Gtk.Label (line_thickness.to_string());
+			line_thickness_label = new EditableLabel (line_thickness.to_string());
 			line_thickness_label.get_style_context ().add_class ("dm-text");
 			line_thickness_label.valign = Gtk.Align.CENTER;
+			line_thickness_label.hexpand = false;
 			line_thickness_label.margin_top = 3;
 
 			line_thickness_button.clicked.connect ((e) => {
-                if (line_thickness != 50) {
+                if (line_thickness < 50) {
 					line_thickness++;
-					line_thickness_label.label = line_thickness.to_string ();
+					line_thickness_label.text = line_thickness.to_string ();
 					queue_draw ();
 				} else {
 					line_thickness = 5;
-					line_thickness_label.label = line_thickness.to_string ();
+					line_thickness_label.text = line_thickness.to_string ();
+					queue_draw ();
+				}
+			});
+
+			line_thickness_label.changed.connect (() => {
+				if (int.parse(line_thickness_label.title.get_label ()) > 50 || int.parse(line_thickness_label.title.get_label ()) < 5) {
+					line_thickness = 5;
+					line_thickness_label.text = line_thickness.to_string ();
+					queue_draw ();
+				} else {
+					line_thickness = int.parse(line_thickness_label.title.get_label ());
+					line_thickness_label.text = line_thickness.to_string ();
 					queue_draw ();
 				}
 			});
@@ -207,18 +233,6 @@ namespace DotMatrix {
 			line_thickness_box.pack_start (line_thickness_label);
 
 			actionbar.pack_start (line_thickness_box);
-
-			var line_color_button = new Gtk.ColorButton.with_rgba (line_color);
-			line_color_button.margin_start = 6;
-			line_color_button.show_editor = true;
-			line_color_button.get_style_context ().add_class ("dm-clrbtn");
-			line_color_button.get_style_context ().remove_class ("color");
-			actionbar.pack_start (line_color_button);
-
-			line_color_button.color_set.connect ((e) => {
-				line_color = line_color_button.rgba;
-				da.queue_draw ();
-			});
 
             var line_curve_button = new Gtk.Button ();
             line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
@@ -320,18 +334,18 @@ namespace DotMatrix {
 			c.stroke();
 		}
 		public bool mouse_entered(Gdk.EventCrossing e) {
-				cur_x = e.x;
-				cur_y = e.y;
-				inside = true;
-				queue_draw();
-				return true;
+			cur_x = e.x;
+			cur_y = e.y;
+			inside = true;
+			queue_draw();
+			return true;
 		}
 		public bool mouse_left(Gdk.EventCrossing e) {
-				cur_x = -100;
-				cur_y = -100;
-				inside = false;
-				queue_draw();
-				return true;
+			cur_x = -100;
+			cur_y = -100;
+			inside = false;
+			queue_draw();
+			return true;
 		}
 		private void find_mouse(Cairo.Context c) {
 			int h = da.get_allocated_height ();
