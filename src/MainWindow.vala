@@ -19,13 +19,14 @@
 namespace DotMatrix {
     public class MainWindow : Gtk.Window {
         public Widgets.UI grid;
+        public Gtk.HeaderBar titlebar;
 
         public MainWindow (Gtk.Application application) {
             GLib.Object (
                 application: application,
                 icon_name: "com.github.lainsce.dot-matrix",
-                height_request: 750,
-                width_request: 750,
+                height_request: 780,
+                width_request: 810,
                 title: (_("Dot Matrix"))
             );
 
@@ -66,7 +67,7 @@ namespace DotMatrix {
             weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
             default_theme.add_resource_path ("/com/github/lainsce/dot-matrix");
 
-            var titlebar = new Gtk.HeaderBar ();
+            titlebar = new Gtk.HeaderBar ();
             titlebar.show_close_button = true;
             titlebar.has_subtitle = false;
             var titlebar_style_context = titlebar.get_style_context ();
@@ -82,7 +83,7 @@ namespace DotMatrix {
             var grid = new Gtk.Grid ();
             grid.orientation = Gtk.Orientation.VERTICAL;
             grid.expand = true;
-            grid.attach (scrolled, 0, 0, 1, 1);
+            grid.attach (scrolled, 1, 0, 1, 1);
             grid.show_all ();
             this.add (grid);
             this.show_all ();

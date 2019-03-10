@@ -29,6 +29,7 @@ namespace DotMatrix {
 		public GLib.List<Point> points = null;
 		public bool is_curve {get; set;}
 		public bool is_reverse_curve {get; set;}
+		public bool is_closed {get;set;}
 	}
 
 	public class Dialog : Granite.MessageDialog {
@@ -104,7 +105,7 @@ namespace DotMatrix {
 
 			line_color.parse (color);
             da = new Gtk.DrawingArea ();
-            da.expand = true;
+			da.expand = true;
 			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
 
 			da.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
@@ -311,7 +312,21 @@ namespace DotMatrix {
 				da.queue_draw ();
             });
 
-            actionbar.pack_end (see_grid_button);
+			actionbar.pack_end (see_grid_button);
+
+			var close_path_button = new Gtk.Button ();
+            close_path_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			close_path_button.has_tooltip = true;
+			close_path_button.tooltip_text = (_("Fill Path"));
+
+			close_path_button.clicked.connect ((e) => {
+				paths.append (current_path);
+				current_path.is_closed = true;
+				current_path = new Path ();
+				da.queue_draw ();
+            });
+
+            actionbar.pack_end (close_path_button);
 
             this.pack_end (actionbar, false, false, 0);
             this.pack_start (da, true, true, 0);
@@ -350,13 +365,11 @@ namespace DotMatrix {
 		private void find_mouse(Cairo.Context c) {
 			int h = da.get_allocated_height ();
 			int w = da.get_allocated_width ();
-			for(int i = 0; i < 12; i++) {
-					if((Math.fabs(cur_x) <= h) && (Math.fabs(cur_y) <= w)) {
-							if(inside) {
-								draw_circle(c,cur_x,cur_y);
-							}
-							return;
-					}
+			if((Math.fabs(cur_x) <= (h * ratio)+ratio) && (Math.fabs(cur_y) <= (w * ratio)+ratio)) {
+				if(inside) {
+					draw_circle(c,cur_x,cur_y);
+				}
+				return;
 			}
 		}
 
@@ -365,16 +378,16 @@ namespace DotMatrix {
 				int i, j;
 				int h = da.get_allocated_height ();
 				int w = da.get_allocated_width ();
-				c.set_line_width (2);
+				c.set_line_width (1);
 				for (i = 0; i <= w / ratio; i++) {
 					for (j = 0; j <= h / ratio; j++) {
-						if ((i - 1) % 4 == 0 && (j - 1) % 4 == 0) {
-							c.set_source_rgba (0, 0, 0, 0.3);
-							c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
+						if (i % 4 == 0 && j % 4 == 0) {
+							c.set_source_rgba (0, 0, 0, 0.359);
+							c.arc ((i+1)*ratio, (j+1)*ratio, 2.5, 0, 2*Math.PI);
 							c.fill ();
 						} else {
-							c.set_source_rgba (0, 0, 0, 0.2);
-							c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
+							c.set_source_rgba (0, 0, 0, 0.15);
+							c.arc ((i+1)*ratio, (j+1)*ratio, 1.5, 0, 2*Math.PI);
 							c.fill ();
 						}
 					}
@@ -385,6 +398,24 @@ namespace DotMatrix {
 		public void draws (Cairo.Context c) {
 			set_linecap (c);
 			c.set_line_width (line_thickness);
+			// The content:
+			c.move_to (128.0, 25.6);
+			c.line_to (230.4, 230.4);
+			c.rel_line_to (-102.4, 0.0);
+			c.curve_to (51.2, 230.4, 51.2, 128.0, 128.0, 128.0);
+			c.close_path ();
+
+			c.move_to (64.0, 25.6);
+			c.rel_line_to (51.2, 51.2);
+			c.rel_line_to (-51.2, 51.2);
+			c.rel_line_to (-51.2, -51.2);
+			c.close_path ();
+
+			c.set_line_width (10.0);
+			c.set_source_rgb (0, 0, 1);
+			c.fill_preserve ();
+			c.set_source_rgb (0, 0, 0);
+			c.stroke ();
 
 			if (current_path != null) {
 				c.set_source_rgba (0, 0, 0, 0.5);
@@ -397,17 +428,20 @@ namespace DotMatrix {
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);
-						c.stroke ();
-						c.close_path ();
 					} else if (path.is_reverse_curve == false) {
 						draw_curve (c, path);
-						c.stroke ();
-						c.close_path ();
 					}
 				} else if (path.is_curve == false) {
 					draw_path (c, path);
-					c.stroke ();
+
+				}
+
+				if (path.is_closed == true) {
 					c.close_path ();
+					c.fill_preserve ();
+					c.stroke ();
+				} else if (path.is_closed == false) {
+					c.stroke ();
 				}
 			}
 		}
