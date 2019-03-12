@@ -47,7 +47,7 @@ msgstr ""
 msgid "New file"
 msgstr ""
 
-#: src/Widgets/UI.vala:159 src/Widgets/UI.vala:561
+#: src/Widgets/UI.vala:159 src/Widgets/UI.vala:575
 msgid "Save file"
 msgstr ""
 
@@ -55,34 +55,38 @@ msgstr ""
 msgid "Undo Last Line"
 msgstr ""
 
-#: src/Widgets/UI.vala:187
+#: src/Widgets/UI.vala:189
+msgid "Line Color"
+msgstr ""
+
+#: src/Widgets/UI.vala:200
 msgid "Change Line Thickness"
 msgstr ""
 
-#: src/Widgets/UI.vala:226
+#: src/Widgets/UI.vala:240
 msgid "Draw Curved Line"
 msgstr ""
 
-#: src/Widgets/UI.vala:241
+#: src/Widgets/UI.vala:255
 msgid "Draw Reverse Curved Line"
 msgstr ""
 
-#: src/Widgets/UI.vala:257
+#: src/Widgets/UI.vala:271
 msgid "Draw Line"
 msgstr ""
 
-#: src/Widgets/UI.vala:271
+#: src/Widgets/UI.vala:285
 msgid "Change Line Cap"
 msgstr ""
 
-#: src/Widgets/UI.vala:289
+#: src/Widgets/UI.vala:303
 msgid "Show/Hide Grid"
 msgstr ""
 
-#: src/Widgets/UI.vala:549
+#: src/Widgets/UI.vala:563
 msgid "SVG files"
 msgstr ""
 
-#: src/Widgets/UI.vala:554
+#: src/Widgets/UI.vala:568
 msgid "All files"
 msgstr ""
