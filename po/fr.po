@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: com.github.lainsce.dot-matrix\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-09 09:11-0300\n"
-"PO-Revision-Date: 2019-03-09 13:21+0100\n"
+"PO-Revision-Date: 2019-03-12 19:06+0100\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: Français\n"
 "Language: fr\n"
@@ -49,7 +49,7 @@ msgstr "Annuler"
 msgid "New file"
 msgstr "Nouveau fichier"
 
-#: src/Widgets/UI.vala:159 src/Widgets/UI.vala:561
+#: src/Widgets/UI.vala:159 src/Widgets/UI.vala:575
 msgid "Save file"
 msgstr "Enregistrer le fichier"
 
@@ -57,34 +57,38 @@ msgstr "Enregistrer le fichier"
 msgid "Undo Last Line"
 msgstr "Annuler le dernier tracé"
 
-#: src/Widgets/UI.vala:187
+#: src/Widgets/UI.vala:189
+msgid "Line Color"
+msgstr "Couleur de ligne"
+
+#: src/Widgets/UI.vala:200
 msgid "Change Line Thickness"
 msgstr "Modifier l'épaisseur de ligne"
 
-#: src/Widgets/UI.vala:226
+#: src/Widgets/UI.vala:240
 msgid "Draw Curved Line"
 msgstr "Dessiner une ligne courbe"
 
-#: src/Widgets/UI.vala:241
+#: src/Widgets/UI.vala:255
 msgid "Draw Reverse Curved Line"
 msgstr "Dessiner une ligne courbe inverse"
 
-#: src/Widgets/UI.vala:257
+#: src/Widgets/UI.vala:271
 msgid "Draw Line"
 msgstr "Dessiner une ligne"
 
-#: src/Widgets/UI.vala:271
+#: src/Widgets/UI.vala:285
 msgid "Change Line Cap"
 msgstr "Modifier la pointe de ligne"
 
-#: src/Widgets/UI.vala:289
+#: src/Widgets/UI.vala:303
 msgid "Show/Hide Grid"
 msgstr "Afficher/Masquer la grille"
 
-#: src/Widgets/UI.vala:549
+#: src/Widgets/UI.vala:563
 msgid "SVG files"
 msgstr "Fichiers SVG"
 
-#: src/Widgets/UI.vala:554
+#: src/Widgets/UI.vala:568
 msgid "All files"
 msgstr "Tous les fichiers"
