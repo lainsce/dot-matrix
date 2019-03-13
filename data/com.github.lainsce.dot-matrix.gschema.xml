@@ -10,5 +10,10 @@
 			<summary>Window position</summary>
 			<description>The y axis of window position</description>
 		</key>
+		<key name="prefer-light" type="b">
+			<default>true</default>
+			<summary>Window theming</summary>
+			<description>The theme, light or dark</description>
+		</key>
 	</schema>
 </schemalist>

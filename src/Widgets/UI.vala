@@ -60,7 +60,8 @@ namespace DotMatrix {
 		public int line_thickness = 5;
 		public EditableLabel line_thickness_label;
 		private Gdk.RGBA line_color;
-		private string color = "#000000";
+		private Gdk.RGBA grid_dot_color;
+		private Gdk.RGBA bg_color;
 		private bool dirty {get; set;}
 		private bool see_grid {get; set; default=true;}
 		private bool change_linecap {get; set; default=false;}
@@ -68,7 +69,8 @@ namespace DotMatrix {
         private double cur_x;
 		private double cur_y;
 
-        public UI () {
+        public UI (MainWindow win) {
+			this.window = win;
 			key_press_event.connect ((e) => {
                 uint keycode = e.hardware_keycode;
 
@@ -102,8 +104,29 @@ namespace DotMatrix {
                 return false;
             });
 
+			var settings = AppSettings.get_default ();
+            if (settings.prefer_light == false) {
+                line_color.parse (window.bg);
+				grid_dot_color.parse (window.bg);
+				bg_color.parse (window.f_inv);
+            } else if (settings.prefer_light == true) {
+                line_color.parse (window.f_inv);
+				grid_dot_color.parse (window.f_inv);
+				bg_color.parse (window.bg);
+            }
 
-			line_color.parse (color);
+			settings.changed.connect (() => {
+				if (settings.prefer_light == false) {
+		            line_color.parse (window.bg);
+					grid_dot_color.parse (window.bg);
+					bg_color.parse (window.f_inv);
+		        } else if (settings.prefer_light == true) {
+		            line_color.parse (window.f_inv);
+					grid_dot_color.parse (window.f_inv);
+					bg_color.parse (window.bg);
+		        }
+			});
+
             da = new Gtk.DrawingArea ();
 			da.expand = true;
 			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
@@ -134,8 +157,8 @@ namespace DotMatrix {
 
 			da.draw.connect ((c) => {
 				draw_grid (c);
-				draws (c);
 				find_mouse (c);
+				draws (c);
 
 				return false;
 			});
@@ -182,13 +205,29 @@ namespace DotMatrix {
 
 			actionbar.pack_start (undo_button);
 
-			var line_color_button = new Gtk.ColorButton.with_rgba (line_color);
+			var line_color_button = new Gtk.ColorButton ();
 			line_color_button.margin_start = 6;
+			line_color_button.height_request = 24;
+			line_color_button.width_request = 24;
 			line_color_button.show_editor = true;
 			line_color_button.get_style_context ().add_class ("dm-clrbtn");
 			line_color_button.get_style_context ().remove_class ("color");
 			line_color_button.tooltip_text = (_("Line Color"));
 			actionbar.pack_start (line_color_button);
+
+			if (settings.prefer_light == false) {
+                line_color_button.rgba = grid_dot_color;
+            } else if (settings.prefer_light == true) {
+                line_color_button.rgba = line_color;
+            }
+
+            settings.changed.connect (() => {
+            	if (settings.prefer_light == false) {
+	                line_color_button.rgba = grid_dot_color;
+	            } else if (settings.prefer_light == true) {
+	                line_color_button.rgba = line_color;
+	            }
+            });
 
 			line_color_button.color_set.connect ((e) => {
 				line_color = line_color_button.rgba;
@@ -337,14 +376,14 @@ namespace DotMatrix {
 
 		// Drawing Section
 		public void draw_circle(Cairo.Context c, double x, double y) {
-			c.set_source_rgba (0, 0, 0, 1);
-			c.arc(x, y, 12, 0, 2.0*3.14);
+			c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, grid_dot_color.alpha);
+			c.arc(x, y, 9, 0, 2.0*3.14);
 			c.fill();
-			c.set_source_rgba (1, 1, 1, 1);
-			c.arc(x, y, 8, 0, 2.0*3.14);
+			c.set_source_rgba (bg_color.red, bg_color.green, bg_color.blue, bg_color.alpha);
+			c.arc(x, y, 6, 0, 2.0*3.14);
 			c.fill();
-			c.set_source_rgba (0, 0, 0, 1);
-			c.arc(x, y, 4, 0, 2.0*3.14);
+			c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, grid_dot_color.alpha);
+			c.arc(x, y, 3, 0, 2.0*3.14);
 			c.fill();
 			c.stroke();
 		}
@@ -382,11 +421,11 @@ namespace DotMatrix {
 				for (i = 0; i <= w / ratio; i++) {
 					for (j = 0; j <= h / ratio; j++) {
 						if (i % 4 == 0 && j % 4 == 0) {
-							c.set_source_rgba (0, 0, 0, 0.359);
+							c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 0.359);
 							c.arc ((i+1)*ratio, (j+1)*ratio, 2.5, 0, 2*Math.PI);
 							c.fill ();
 						} else {
-							c.set_source_rgba (0, 0, 0, 0.15);
+							c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 0.15);
 							c.arc ((i+1)*ratio, (j+1)*ratio, 1.5, 0, 2*Math.PI);
 							c.fill ();
 						}
@@ -398,27 +437,9 @@ namespace DotMatrix {
 		public void draws (Cairo.Context c) {
 			set_linecap (c);
 			c.set_line_width (line_thickness);
-			// The content:
-			c.move_to (128.0, 25.6);
-			c.line_to (230.4, 230.4);
-			c.rel_line_to (-102.4, 0.0);
-			c.curve_to (51.2, 230.4, 51.2, 128.0, 128.0, 128.0);
-			c.close_path ();
-
-			c.move_to (64.0, 25.6);
-			c.rel_line_to (51.2, 51.2);
-			c.rel_line_to (-51.2, 51.2);
-			c.rel_line_to (-51.2, -51.2);
-			c.close_path ();
-
-			c.set_line_width (10.0);
-			c.set_source_rgb (0, 0, 1);
-			c.fill_preserve ();
-			c.set_source_rgb (0, 0, 0);
-			c.stroke ();
 
 			if (current_path != null) {
-				c.set_source_rgba (0, 0, 0, 0.5);
+				c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 0.5);
 				draw_path (c, current_path);
 			}
 			c.stroke ();

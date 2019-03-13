@@ -19,6 +19,7 @@ namespace DotMatrix {
     public class AppSettings : Granite.Services.Settings {
         public int window_x { get; set; }
         public int window_y { get; set; }
+        public bool prefer_light { get; set; }
 
         private static AppSettings? instance;
         public static unowned AppSettings get_default () {
