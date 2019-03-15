@@ -22,12 +22,24 @@ namespace DotMatrix {
         public Gtk.HeaderBar titlebar;
         public Gtk.ActionBar actionbar;
         public Granite.ModeSwitch mode_switch;
-        public string f_inv = "#333333";
-        public string f_low = "#444444";
-        public string b_med = "#72DEC1";
+        private int uid;
+        private static int uid_counter = 0;
+
+        // Global Color Palette
         public string background = "#EEEEEE";
+        public string f_high = "#000000";
+        public string f_med = "#999999";
+        public string f_low = "#CCCCCC";
+        public string f_inv = "#000000";
+        public string b_high = "#000000";
+        public string b_med = "#888888";
+        public string b_low = "#AAAAAA";
         public string b_inv = "#FFB545";
-        public string b_low = "#CCCCCC";
+
+
+        private const Gtk.TargetEntry [] targets = {{
+            "text/uri-list", 0, 0
+        }};
 
         public MainWindow (Gtk.Application application) {
             GLib.Object (
@@ -37,7 +49,6 @@ namespace DotMatrix {
                 width_request: 810,
                 title: (_("Dot Matrix"))
             );
-            var settings = AppSettings.get_default ();
 
             key_press_event.connect ((e) => {
                 uint keycode = e.hardware_keycode;
@@ -56,181 +67,79 @@ namespace DotMatrix {
                 return false;
             });
 
+            this.uid = uid_counter++;
             string css_light = """
-                @define-color colorAccent %s;
-                @define-color colorPrimary %s;
-                @define-color colorSecondary %s;
-                @define-color textColorPrimary %s;
-                @define-color textColorSecondary %s;
+                        @define-color colorPrimary %s;
+                        @define-color colorSecondary %s;
+                        @define-color colorAccent %s;
+                        @define-color windowPrimary %s;
+                        @define-color textColorPrimary %s;
+                        @define-color textColorSecondary %s;
 
-                .dm-window {
-                    background: @colorPrimary;
-                    color: @textColorPrimary;
-                }
+                        .dm-window {
+                            background: @colorPrimary;
+                            color: @textColorPrimary;
+                        }
 
-                .dm-toolbar {
-                    background: @colorPrimary;
-                    color: @textColorPrimary;
-                    box-shadow: 0 1px transparent inset;
-                }
+                        .dm-toolbar {
+                            background: @colorPrimary;
+                            color: @windowPrimary;
+                            box-shadow: 0 1px transparent inset;
+                        }
 
-                .dm-actionbar {
-                    background: @colorPrimary;
-                    box-shadow: 0 1px transparent inset;
-                    color: @textColorSecondary;
-                    padding: 8px;
-                    border-top: 1px solid alpha (@textColorPrimary, 0);
-                }
+                        .dm-actionbar {
+                            background: @colorPrimary;
+                            box-shadow: 0 1px transparent inset;
+                            color: @textColorSecondary;
+                            padding: 8px;
+                            border-top: 1px solid alpha (@textColorPrimary, 0);
+                        }
 
-                .dm-actionbar image {
-                    color: @textColorSecondary;
-                }
+                        .dm-actionbar image {
+                            color: @textColorSecondary;
+                        }
 
-                .dm-actionbar button:hover {
-                    background: @colorSecondary;
-                }
+                        .dm-actionbar button:hover {
+                            background: @colorSecondary;
+                        }
 
-                .dm-actionbar button:active {
-                    background: @colorAccent;
-                }
+                        .dm-actionbar button:active {
+                            background: @colorAccent;
+                        }
 
-                .dm-reverse image {
-                    -gtk-icon-transform: rotate(180deg);
-                }
+                        .dm-reverse image {
+                            -gtk-icon-transform: rotate(180deg);
+                        }
 
-                .dm-grid {
-                    background: @colorPrimary;
-                }
+                        .dm-grid {
+                            background: @colorPrimary;
+                        }
 
-                .dm-text {
-                    font-family: 'Cousine', Courier, monospace;
-                    font-size: 1.66em;
-                }
+                        .dm-text {
+                            font-family: 'Cousine', Courier, monospace;
+                            font-size: 1.66em;
+                        }
 
-                .dm-clrbtn {
-                    background: @colorPrimary;
-                    color: @textColorPrimary;
-                    box-shadow: 0 1px transparent inset;
-                    border: none;
-                }
+                        .dm-clrbtn {
+                            background: @colorPrimary;
+                            color: @textColorPrimary;
+                            box-shadow: 0 1px transparent inset;
+                            border: none;
+                        }
 
-                .dm-clrbtn:active {
-                    background: @colorAccent;
-                }
+                        .dm-clrbtn:active {
+                            background: @colorAccent;
+                        }
 
-                .dm-clrbtn colorswatch {
-                    border-radius: 8px;
-                }
-            """.printf(this.b_med, this.bg, this.b_inv, this.f_inv, this.f_low);
-
-            string css_dark = """
-                @define-color colorAccent %s;
-                @define-color colorPrimary %s;
-                @define-color colorSecondary %s;
-                @define-color textColorPrimary %s;
-                @define-color textColorSecondary %s;
-
-                .dm-window {
-                    background: @colorPrimary;
-                    color: @textColorPrimary;
-                }
-
-                .dm-toolbar {
-                    background: @colorPrimary;
-                    color: @textColorPrimary;
-                    box-shadow: 0 1px transparent inset;
-                }
-
-                .dm-actionbar {
-                    background: @colorPrimary;
-                    box-shadow: 0 1px transparent inset;
-                    color: @textColorSecondary;
-                    padding: 8px;
-                    border-top: 1px solid alpha (@textColorPrimary, 0);
-                }
-
-                .dm-actionbar image {
-                    color: @textColorSecondary;
-                }
-
-                .dm-actionbar image:hover {
-                    color: @colorPrimary;
-                }
-
-                .dm-actionbar image:active {
-                    color: @colorPrimary;
-                }
-
-                .dm-actionbar button:hover {
-                    background: @colorAccent;
-                }
-
-                .dm-actionbar button:active {
-                    background: @colorSecondary;
-                }
-
-                .dm-reverse image {
-                    -gtk-icon-transform: rotate(180deg);
-                }
-
-                .dm-grid {
-                    background: @colorPrimary;
-                }
-
-                .dm-text {
-                    font-family: 'Cousine', Courier, monospace;
-                    font-size: 1.66em;
-                }
-
-                .dm-clrbtn {
-                    background: @colorPrimary;
-                    color: @textColorPrimary;
-                    box-shadow: 0 1px transparent inset;
-                    border: none;
-                }
-
-                .dm-clrbtn:active {
-                    background: @colorAccent;
-                }
-
-                .dm-clrbtn colorswatch {
-                    border-radius: 8px;
-                }
-            """.printf(this.b_med, this.f_inv, this.b_inv, this.bg, this.b_low);
-            try {
-                if (settings.prefer_light == true) {
-                    var provider = new Gtk.CssProvider ();
-                    provider.load_from_data (css_light, -1);
-                    Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),
-                                                      provider,
-                                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                } else if (settings.prefer_light == false) {
-                    var provider2 = new Gtk.CssProvider ();
-                    provider2.load_from_data (css_dark, -1);
-                    Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),
-                                                      provider2,
-                                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                }
-            } catch {}
-
-
-            settings.changed.connect (() => {
-                try {
-                    if (settings.prefer_light == true) {
+                        .dm-clrbtn colorswatch {
+                            border-radius: 8px;
+                        }
+                    """.printf(this.background, this.b_inv, this.b_med, this.b_high, this.b_high, this.b_high);
+                    try {
                         var provider = new Gtk.CssProvider ();
                         provider.load_from_data (css_light, -1);
-                        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),
-                                                          provider,
-                                                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                    } else if (settings.prefer_light == false) {
-                        var provider2 = new Gtk.CssProvider ();
-                        provider2.load_from_data (css_dark, -1);
-                        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),
-                                                          provider2,
-                                                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-                    }
-                } catch {}
-            });
+                        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),provider,Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                    } catch {}
         }
 
         construct {
@@ -255,30 +164,12 @@ namespace DotMatrix {
             titlebar_style_context.add_class ("dm-toolbar");
             this.set_titlebar (titlebar);
 
-            mode_switch = new Granite.ModeSwitch.from_icon_name ("display-brightness-symbolic", "weather-clear-night-symbolic");
-            mode_switch.primary_icon_tooltip_text = ("Light background");
-            mode_switch.secondary_icon_tooltip_text = ("Dark background");
-            mode_switch.valign = Gtk.Align.CENTER;
-
-            if (settings.prefer_light == true) {
-                mode_switch.active = false;
-            } else if (settings.prefer_light == false) {
-                mode_switch.active = true;
-            }
-
-            mode_switch.notify["active"].connect (() => {
-                if (mode_switch.active) {
-                    debug ("Get dark!");
-                    settings.prefer_light = false;
-                } else {
-                    debug ("Get light!");
-                    settings.prefer_light = true;
-                }
-            });
-            titlebar.pack_end (mode_switch);
-
             var scrolled = new Gtk.ScrolledWindow (null, null);
             grid = new Widgets.UI (this);
+            grid.line_color.parse (this.f_high);
+			grid.grid_dot_color.parse (this.f_med);
+			grid.background_color.parse (this.background);
+			grid.line_color_button.rgba = grid.line_color;
             scrolled.add (grid);
             scrolled.expand = true;
 
@@ -290,12 +181,150 @@ namespace DotMatrix {
             grid.expand = true;
             grid.attach (scrolled, 1, 0, 1, 1);
             grid.show_all ();
+
+            Gtk.drag_dest_set (this,Gtk.DestDefaults.ALL, targets, Gdk.DragAction.COPY);
+            this.drag_data_received.connect(this.on_drag_data_received);
             this.add (grid);
             this.show_all ();
         }
 
-        public void get_colors_from_svg () {
-            // TODO: This method;
+        private void on_drag_data_received (Gdk.DragContext drag_context, int x, int y, 
+                                        Gtk.SelectionData data, uint info, uint time) {
+            foreach(string uri in data.get_uris ()) {
+                string file = uri.replace ("file://","").replace ("file:/","");
+                file = Uri.unescape_string (file);
+                print ("Got file!\n");
+                get_colors_from_svg (file);
+            }
+            Gtk.drag_finish (drag_context, true, false, time);
+        }
+
+        public void get_colors_from_svg (string file) {
+            string regString = "id='(?<id>.*)' fill='(?<color>#[A-Fa-f0-9]{6})\'";
+            string input = "";
+            try {
+                GLib.FileUtils.get_contents (file, out input, null);
+            } catch {}
+
+            Regex regex;
+            MatchInfo match;
+            try {
+                regex = new Regex (regString);
+                if (regex.match (input, 0, out match)) {
+                    do {
+                        if (match.fetch_named ("id") == "background") {
+                            string fbackground = match.fetch_named ("color");
+                            this.background = fbackground;
+                        } else if (match.fetch_named ("id") == "f_high") {
+                            string ff_high = match.fetch_named ("color");
+                            this.f_high = ff_high;
+                        } else if (match.fetch_named ("id") == "f_med") {
+                            string ff_med = match.fetch_named ("color");
+                            this.f_med = ff_med;
+                        } else if (match.fetch_named ("id") == "f_low") {
+                            string ff_low = match.fetch_named ("color");
+                            this.f_low = ff_low;
+                        } else if (match.fetch_named ("id") == "f_inv") {
+                            string ff_inv = match.fetch_named ("color");
+                            this.f_inv = ff_inv;
+                        } else if (match.fetch_named ("id") == "b_high") {
+                            string fb_high = match.fetch_named ("color");
+                            this.b_high = fb_high;
+                        } else if (match.fetch_named ("id") == "b_med") {
+                            string fb_med = match.fetch_named ("color");
+                            this.b_med = fb_med;
+                        } else if (match.fetch_named ("id") == "b_low") {
+                            string fb_low = match.fetch_named ("color");
+                            this.b_low = fb_low;
+                        } else if (match.fetch_named ("id") == "b_inv") {
+                            string fb_inv = match.fetch_named ("color");
+                            this.b_inv = fb_inv;
+                        }
+                    } while (match.next ());
+                    string css_light = """
+                        @define-color colorPrimary %s;
+                        @define-color colorSecondary %s;
+                        @define-color colorAccent %s;
+                        @define-color windowPrimary %s;
+                        @define-color textColorPrimary %s;
+                        @define-color textColorSecondary %s;
+
+                        .dm-window {
+                            background: @colorPrimary;
+                            color: @textColorPrimary;
+                        }
+
+                        .dm-toolbar {
+                            background: @colorPrimary;
+                            color: @windowPrimary;
+                            box-shadow: 0 1px transparent inset;
+                        }
+
+                        .dm-actionbar {
+                            background: @colorPrimary;
+                            box-shadow: 0 1px transparent inset;
+                            color: @textColorSecondary;
+                            padding: 8px;
+                            border-top: 1px solid alpha (@textColorPrimary, 0);
+                        }
+
+                        .dm-actionbar image {
+                            color: @textColorSecondary;
+                        }
+
+                        .dm-actionbar button:hover {
+                            background: @colorSecondary;
+                        }
+
+                        .dm-actionbar button:active {
+                            background: @colorAccent;
+                        }
+
+                        .dm-reverse image {
+                            -gtk-icon-transform: rotate(180deg);
+                        }
+
+                        .dm-grid {
+                            background: @colorPrimary;
+                        }
+
+                        .dm-text {
+                            font-family: 'Cousine', Courier, monospace;
+                            font-size: 1.66em;
+                        }
+
+                        .dm-clrbtn {
+                            background: @colorPrimary;
+                            color: @textColorPrimary;
+                            box-shadow: 0 1px transparent inset;
+                            border: none;
+                        }
+
+                        .dm-clrbtn:active {
+                            background: @colorAccent;
+                        }
+
+                        .dm-clrbtn colorswatch {
+                            border-radius: 8px;
+                        }
+                    """.printf(this.background, this.b_inv, this.b_med, this.b_high, this.b_high, this.b_med);
+
+                    try {
+                        var provider = new Gtk.CssProvider ();
+                        provider.load_from_data (css_light, -1);
+                        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (),provider,Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                    } catch {}
+
+                    grid.line_color.parse (this.f_high);
+			        grid.grid_dot_color.parse (this.f_med);
+			        grid.background_color.parse (this.background);
+			        grid.line_color_button.rgba = grid.line_color;
+
+                    print ("Setupped colors from file.\n");
+                }
+            } catch (Error error) {
+                print (@"SVG File error: $(error.message)\n");
+            }
         }
 
 #if VALA_0_42

@@ -9,6 +9,10 @@
 
 ![Screenshot](data/shot.png)
 
+## Ecosystem
+
+Change the UI colors by using the special [Ecosystem SVGs here](https://github.com/hundredrabbits/Themes/)
+
 ## Donations
 
 Would you like to support the development of this app to new heights? Then:
