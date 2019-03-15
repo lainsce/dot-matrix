@@ -25,7 +25,7 @@ namespace DotMatrix {
         public string f_inv = "#333333";
         public string f_low = "#444444";
         public string b_med = "#72DEC1";
-        public string bg = "#EEEEEE";
+        public string background = "#EEEEEE";
         public string b_inv = "#FFB545";
         public string b_low = "#CCCCCC";
 
@@ -152,11 +152,11 @@ namespace DotMatrix {
                 .dm-actionbar image {
                     color: @textColorSecondary;
                 }
-                
+
                 .dm-actionbar image:hover {
                     color: @colorPrimary;
                 }
-                
+
                 .dm-actionbar image:active {
                     color: @colorPrimary;
                 }
@@ -298,11 +298,11 @@ namespace DotMatrix {
             // TODO: This method;
         }
 
-        #if VALA_0_42
+#if VALA_0_42
         protected bool match_keycode (uint keyval, uint code) {
-        #else
+#else
         protected bool match_keycode (int keyval, uint code) {
-        #endif
+#endif
             Gdk.KeymapKey [] keys;
             Gdk.Keymap keymap = Gdk.Keymap.get_for_display (Gdk.Display.get_default ());
             if (keymap.get_entries_for_keyval (keyval, out keys)) {
