@@ -29,7 +29,6 @@ namespace DotMatrix {
 		public GLib.List<Point> points = null;
 		public bool is_curve {get; set;}
 		public bool is_reverse_curve {get; set;}
-		public bool is_closed {get;set;}
 	}
 
 	public class Dialog : Granite.MessageDialog {
@@ -67,6 +66,7 @@ namespace DotMatrix {
 		private bool see_grid {get; set; default=true;}
 		private bool change_linecap {get; set; default=false;}
 		private bool inside {get; set; default=false;}
+		private bool is_closed {get; set; default=false;}
         private double cur_x;
 		private double cur_y;
 
@@ -329,7 +329,11 @@ namespace DotMatrix {
 
 			close_path_button.clicked.connect ((e) => {
 				paths.append (current_path);
-				current_path.is_closed = true;
+				if (is_closed == true) {
+					is_closed = false;
+				} else if (is_closed == false) {
+					is_closed = true;
+				}
 				current_path = new Path ();
 				da.queue_draw ();
             });
@@ -418,30 +422,30 @@ namespace DotMatrix {
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);
-						if (path.is_closed == true) {
+						if (is_closed == true) {
 							c.close_path ();
-							c.fill_preserve ();
+							c.fill ();
 							c.stroke ();
-						} else if (path.is_closed == false) {
+						} else if (is_closed == false) {
 							c.stroke ();
 						}
 					} else if (path.is_reverse_curve == false) {
 						draw_curve (c, path);
-						if (path.is_closed == true) {
+						if (is_closed == true) {
 							c.close_path ();
-							c.fill_preserve ();
+							c.fill ();
 							c.stroke ();
-						} else if (path.is_closed == false) {
+						} else if (is_closed == false) {
 							c.stroke ();
 						}
 					}
 				} else if (path.is_curve == false) {
 					draw_path (c, path);
-					if (path.is_closed == true) {
+					if (is_closed == true) {
 						c.close_path ();
 						c.fill_preserve ();
 						c.stroke ();
-					} else if (path.is_closed == false) {
+					} else if (is_closed == false) {
 						c.stroke ();
 					}
 				}
