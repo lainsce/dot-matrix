@@ -12,7 +12,7 @@
             <li>Quit anytime with the shortcut Ctrl + Q</li>
             <li>Undo with the shortcut Ctrl + Z</li>
             <li>Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and Ctrl + (</li>
-            <li>Change the UI colors by using the special Ecosystem SVGs here: https://github.com/hundredrabbits/Themes</li>
+            <li>Change the UI colors by using the special Ecosystem SVGs here: <url>https://github.com/hundredrabbits/Themes</url></li>
         </ul>
     </description>
     <provides>
