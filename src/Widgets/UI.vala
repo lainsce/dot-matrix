@@ -118,7 +118,12 @@ namespace DotMatrix {
             da.leave_notify_event.connect(mouse_left);
 
 			da.button_press_event.connect ((e) => {
-				current_path.points.append (new Point (e.x, e.y));
+				Gtk.Allocation allocation;
+				get_allocation (out allocation);
+
+				var x = (int) Math.round(e.x.clamp ((double)allocation.x, (double)(allocation.x + allocation.width)) / ratio) * ratio;
+				var y = (int) Math.round(e.y.clamp ((double)allocation.y, (double)(allocation.y + allocation.height)) / ratio) * ratio;
+				current_path.points.append (new Point (x, y));
 				dirty = true;
 				da.queue_draw ();
 				return false;
@@ -340,13 +345,13 @@ namespace DotMatrix {
 
 		// Drawing Section
 		public void draw_circle(Cairo.Context c, double x, double y) {
-			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, line_color.alpha);
+			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
 			c.arc(x, y, 9, 0, 2.0*3.14);
 			c.fill();
 			c.set_source_rgba (background_color.red, background_color.green, background_color.blue, background_color.alpha);
 			c.arc(x, y, 6, 0, 2.0*3.14);
 			c.fill();
-			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, line_color.alpha);
+			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
 			c.arc(x, y, 3, 0, 2.0*3.14);
 			c.fill();
 			c.stroke();
@@ -404,34 +409,46 @@ namespace DotMatrix {
 
 			if (current_path != null) {
 				c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 0.5);
-				draw_path (c, current_path);
+				draw_guideline (c, current_path);
 			}
 			c.stroke ();
 
-			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, line_color.alpha);
+			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
 			foreach (var path in paths) {
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);
+						if (path.is_closed == true) {
+							c.close_path ();
+							c.fill_preserve ();
+							c.stroke ();
+						} else if (path.is_closed == false) {
+							c.stroke ();
+						}
 					} else if (path.is_reverse_curve == false) {
 						draw_curve (c, path);
+						if (path.is_closed == true) {
+							c.close_path ();
+							c.fill_preserve ();
+							c.stroke ();
+						} else if (path.is_closed == false) {
+							c.stroke ();
+						}
 					}
 				} else if (path.is_curve == false) {
 					draw_path (c, path);
-
-				}
-
-				if (path.is_closed == true) {
-					c.close_path ();
-					c.fill_preserve ();
-					c.stroke ();
-				} else if (path.is_closed == false) {
-					c.stroke ();
+					if (path.is_closed == true) {
+						c.close_path ();
+						c.fill_preserve ();
+						c.stroke ();
+					} else if (path.is_closed == false) {
+						c.stroke ();
+					}
 				}
 			}
 		}
 
-		private void draw_path (Cairo.Context c, Path path) {
+		private void draw_guideline (Cairo.Context c, Path path) {
 			if (path.points.length () < 2) {
 				return;
 			}
@@ -443,8 +460,21 @@ namespace DotMatrix {
 				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
 				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
 
-				c.move_to(start_x, start_y);
+				c.move_to (start_x, start_y);
 				c.line_to (end_x, end_y);
+			}
+		}
+
+		private void draw_path (Cairo.Context c, Path path) {
+			if (path.points.length () < 2) {
+				return;
+			}
+
+			for (int i = 0; i < path.points.length () - 1; i+=1) {
+				int x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
+				int y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
+
+				c.line_to (x, y);
 			}
 		}
 
@@ -460,7 +490,6 @@ namespace DotMatrix {
 				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
 				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
 
-				c.move_to(start_x, start_y);
 				c.curve_to (start_x, start_y, start_x, end_y, end_x, end_y);
 			}
 		}
@@ -477,7 +506,6 @@ namespace DotMatrix {
 				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
 				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
 
-				c.move_to(start_x, start_y);
 				c.curve_to (start_x, start_y, end_x, start_y, end_x, end_y);
 			}
 		}

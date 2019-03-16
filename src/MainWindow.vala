@@ -32,7 +32,7 @@ namespace DotMatrix {
         public string f_low = "#CCCCCC";
         public string f_inv = "#000000";
         public string b_high = "#000000";
-        public string b_med = "#888888";
+        public string b_med = "#75DAC2";
         public string b_low = "#AAAAAA";
         public string b_inv = "#FFB545";
 
