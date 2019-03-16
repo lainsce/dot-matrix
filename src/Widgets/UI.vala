@@ -410,6 +410,7 @@ namespace DotMatrix {
 		public void draws (Cairo.Context c) {
 			set_linecap (c);
 			c.set_line_width (line_thickness);
+			c.set_fill_rule (Cairo.FillRule.EVEN_ODD);
 
 			if (current_path != null) {
 				c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 0.5);
@@ -474,9 +475,9 @@ namespace DotMatrix {
 				return;
 			}
 
-			for (int i = 0; i < path.points.length () - 1; i+=1) {
-				int x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
-				int y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
+			for (int i = 0; i < path.points.length (); i+=1) {
+				int x = (int) Math.round(path.points.nth_data(i).x / ratio) * ratio;
+				int y = (int) Math.round(path.points.nth_data(i).y / ratio) * ratio;
 
 				c.line_to (x, y);
 			}
