@@ -58,16 +58,20 @@ namespace DotMatrix {
 		private int ratio = 25;
 		public int line_thickness = 5;
 		public EditableLabel line_thickness_label;
-		private Gdk.RGBA line_color;
-		private string color = "#000000";
+		public Gdk.RGBA line_color;
+		public Gdk.RGBA grid_dot_color;
+		public Gdk.RGBA background_color;
+		public Gtk.ColorButton line_color_button;
 		private bool dirty {get; set;}
 		private bool see_grid {get; set; default=true;}
 		private bool change_linecap {get; set; default=false;}
 		private bool inside {get; set; default=false;}
+		private bool is_closed {get; set; default=false;}
         private double cur_x;
 		private double cur_y;
 
-        public UI () {
+        public UI (MainWindow win) {
+			this.window = win;
 			key_press_event.connect ((e) => {
                 uint keycode = e.hardware_keycode;
 
@@ -101,10 +105,8 @@ namespace DotMatrix {
                 return false;
             });
 
-
-			line_color.parse (color);
             da = new Gtk.DrawingArea ();
-            da.expand = true;
+			da.expand = true;
 			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
 
 			da.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
@@ -116,7 +118,12 @@ namespace DotMatrix {
             da.leave_notify_event.connect(mouse_left);
 
 			da.button_press_event.connect ((e) => {
-				current_path.points.append (new Point (e.x, e.y));
+				Gtk.Allocation allocation;
+				get_allocation (out allocation);
+
+				var x = (int) Math.round(e.x.clamp ((double)allocation.x, (double)(allocation.x + allocation.width)) / ratio) * ratio;
+				var y = (int) Math.round(e.y.clamp ((double)allocation.y, (double)(allocation.y + allocation.height)) / ratio) * ratio;
+				current_path.points.append (new Point (x, y));
 				dirty = true;
 				da.queue_draw ();
 				return false;
@@ -133,8 +140,8 @@ namespace DotMatrix {
 
 			da.draw.connect ((c) => {
 				draw_grid (c);
-				draws (c);
 				find_mouse (c);
+				draws (c);
 
 				return false;
 			});
@@ -181,8 +188,10 @@ namespace DotMatrix {
 
 			actionbar.pack_start (undo_button);
 
-			var line_color_button = new Gtk.ColorButton.with_rgba (line_color);
+			line_color_button = new Gtk.ColorButton ();
 			line_color_button.margin_start = 6;
+			line_color_button.height_request = 24;
+			line_color_button.width_request = 24;
 			line_color_button.show_editor = true;
 			line_color_button.get_style_context ().add_class ("dm-clrbtn");
 			line_color_button.get_style_context ().remove_class ("color");
@@ -311,7 +320,25 @@ namespace DotMatrix {
 				da.queue_draw ();
             });
 
-            actionbar.pack_end (see_grid_button);
+			actionbar.pack_end (see_grid_button);
+
+			var close_path_button = new Gtk.Button ();
+            close_path_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
+			close_path_button.has_tooltip = true;
+			close_path_button.tooltip_text = (_("Fill Path"));
+
+			close_path_button.clicked.connect ((e) => {
+				paths.append (current_path);
+				if (is_closed == true) {
+					is_closed = false;
+				} else if (is_closed == false) {
+					is_closed = true;
+				}
+				current_path = new Path ();
+				da.queue_draw ();
+            });
+
+            actionbar.pack_end (close_path_button);
 
             this.pack_end (actionbar, false, false, 0);
             this.pack_start (da, true, true, 0);
@@ -322,14 +349,14 @@ namespace DotMatrix {
 
 		// Drawing Section
 		public void draw_circle(Cairo.Context c, double x, double y) {
-			c.set_source_rgba (0, 0, 0, 1);
-			c.arc(x, y, 12, 0, 2.0*3.14);
+			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
+			c.arc(x, y, 9, 0, 2.0*3.14);
 			c.fill();
-			c.set_source_rgba (1, 1, 1, 1);
-			c.arc(x, y, 8, 0, 2.0*3.14);
+			c.set_source_rgba (background_color.red, background_color.green, background_color.blue, background_color.alpha);
+			c.arc(x, y, 6, 0, 2.0*3.14);
 			c.fill();
-			c.set_source_rgba (0, 0, 0, 1);
-			c.arc(x, y, 4, 0, 2.0*3.14);
+			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
+			c.arc(x, y, 3, 0, 2.0*3.14);
 			c.fill();
 			c.stroke();
 		}
@@ -350,13 +377,11 @@ namespace DotMatrix {
 		private void find_mouse(Cairo.Context c) {
 			int h = da.get_allocated_height ();
 			int w = da.get_allocated_width ();
-			for(int i = 0; i < 12; i++) {
-					if((Math.fabs(cur_x) <= h) && (Math.fabs(cur_y) <= w)) {
-							if(inside) {
-								draw_circle(c,cur_x,cur_y);
-							}
-							return;
-					}
+			if((Math.fabs(cur_x) <= (h * ratio)+ratio) && (Math.fabs(cur_y) <= (w * ratio)+ratio)) {
+				if(inside) {
+					draw_circle(c,cur_x,cur_y);
+				}
+				return;
 			}
 		}
 
@@ -365,16 +390,16 @@ namespace DotMatrix {
 				int i, j;
 				int h = da.get_allocated_height ();
 				int w = da.get_allocated_width ();
-				c.set_line_width (2);
+				c.set_line_width (1);
 				for (i = 0; i <= w / ratio; i++) {
 					for (j = 0; j <= h / ratio; j++) {
-						if ((i - 1) % 4 == 0 && (j - 1) % 4 == 0) {
-							c.set_source_rgba (0, 0, 0, 0.3);
-							c.arc (i*ratio, j*ratio, 4, 0, 2*Math.PI);
+						if (i % 4 == 0 && j % 4 == 0) {
+							c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 1);
+							c.arc ((i+1)*ratio, (j+1)*ratio, 2.5, 0, 2*Math.PI);
 							c.fill ();
 						} else {
-							c.set_source_rgba (0, 0, 0, 0.2);
-							c.arc (i*ratio, j*ratio, 2, 0, 2*Math.PI);
+							c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 0.66);
+							c.arc ((i+1)*ratio, (j+1)*ratio, 1.5, 0, 2*Math.PI);
 							c.fill ();
 						}
 					}
@@ -387,32 +412,47 @@ namespace DotMatrix {
 			c.set_line_width (line_thickness);
 
 			if (current_path != null) {
-				c.set_source_rgba (0, 0, 0, 0.5);
-				draw_path (c, current_path);
+				c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 0.5);
+				draw_guideline (c, current_path);
 			}
 			c.stroke ();
 
-			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, line_color.alpha);
+			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
 			foreach (var path in paths) {
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);
-						c.stroke ();
-						c.close_path ();
+						if (is_closed == true) {
+							c.close_path ();
+							c.fill ();
+							c.stroke ();
+						} else if (is_closed == false) {
+							c.stroke ();
+						}
 					} else if (path.is_reverse_curve == false) {
 						draw_curve (c, path);
-						c.stroke ();
-						c.close_path ();
+						if (is_closed == true) {
+							c.close_path ();
+							c.fill ();
+							c.stroke ();
+						} else if (is_closed == false) {
+							c.stroke ();
+						}
 					}
 				} else if (path.is_curve == false) {
 					draw_path (c, path);
-					c.stroke ();
-					c.close_path ();
+					if (is_closed == true) {
+						c.close_path ();
+						c.fill_preserve ();
+						c.stroke ();
+					} else if (is_closed == false) {
+						c.stroke ();
+					}
 				}
 			}
 		}
 
-		private void draw_path (Cairo.Context c, Path path) {
+		private void draw_guideline (Cairo.Context c, Path path) {
 			if (path.points.length () < 2) {
 				return;
 			}
@@ -424,8 +464,21 @@ namespace DotMatrix {
 				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
 				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
 
-				c.move_to(start_x, start_y);
+				c.move_to (start_x, start_y);
 				c.line_to (end_x, end_y);
+			}
+		}
+
+		private void draw_path (Cairo.Context c, Path path) {
+			if (path.points.length () < 2) {
+				return;
+			}
+
+			for (int i = 0; i < path.points.length () - 1; i+=1) {
+				int x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
+				int y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
+
+				c.line_to (x, y);
 			}
 		}
 
@@ -441,7 +494,6 @@ namespace DotMatrix {
 				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
 				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
 
-				c.move_to(start_x, start_y);
 				c.curve_to (start_x, start_y, start_x, end_y, end_x, end_y);
 			}
 		}
@@ -458,7 +510,6 @@ namespace DotMatrix {
 				int end_x = (int) Math.round(path.points.nth_data(i+1).x / ratio) * ratio;
 				int end_y = (int) Math.round(path.points.nth_data(i+1).y / ratio) * ratio;
 
-				c.move_to(start_x, start_y);
 				c.curve_to (start_x, start_y, end_x, start_y, end_x, end_y);
 			}
 		}

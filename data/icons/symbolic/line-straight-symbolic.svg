@@ -37,12 +37,12 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="962"
+     inkscape:window-height="960"
      id="namedview6"
      showgrid="true"
      inkscape:zoom="18.879671"
-     inkscape:cx="11.500023"
-     inkscape:cy="12.000012"
+     inkscape:cx="2.9988155"
+     inkscape:cy="11.576276"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -52,9 +52,8 @@
        id="grid904" />
   </sodipodi:namedview>
   <path
-     style="fill:none;stroke:#000000;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="M 4.7499706,18.855631 18.808527,4.7499753 19.250034,5.1443768 5.1217672,19.250033 Z"
+     style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     d="M 18.830078,4 A 0.750075,0.750075 0 0 0 18.277344,4.2207031 L 4.21875,18.326172 a 0.750075,0.750075 0 0 0 -0.013672,1.042969 l 0.3710938,0.394531 a 0.750075,0.750075 0 0 0 1.0761719,0.01758 L 19.779297,5.6757812 A 0.750075,0.750075 0 0 0 19.75,4.5859375 L 19.308594,4.1914062 A 0.750075,0.750075 0 0 0 18.830078,4 Z"
      id="path816"
-     inkscape:connector-curvature="0"
-     sodipodi:nodetypes="ccccc" />
+     inkscape:connector-curvature="0" />
 </svg>

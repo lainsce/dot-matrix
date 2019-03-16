@@ -12,6 +12,7 @@
             <li>Quit anytime with the shortcut Ctrl + Q</li>
             <li>Undo with the shortcut Ctrl + Z</li>
             <li>Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and Ctrl + (</li>
+            <li>Change the UI colors by using the special Ecosystem SVGs here: https://github.com/hundredrabbits/Themes</li>
         </ul>
     </description>
     <provides>
@@ -55,6 +56,15 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+         <release version="1.2.0" date="2019-03-22">
+            <description>
+                <p>Release: The Void</p>
+                <ul>
+                    <li>Added: Fill Shape button</li>
+                    <li>Added: Support for Ecosystem Theming (https://bit.ly/2TNKA5O for info)</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.1" date="2019-03-15">
             <description>
                 <p>Release: French Horns</p>
