@@ -83,10 +83,14 @@ msgstr ""
 msgid "Show/Hide Grid"
 msgstr ""
 
-#: src/Widgets/UI.vala:563
+#: src/Widgets/UI.vala:328
+msgid "Fill Path"
+msgstr ""
+
+#: src/Widgets/UI.vala:615
 msgid "SVG files"
 msgstr ""
 
-#: src/Widgets/UI.vala:568
+#: src/Widgets/UI.vala:620
 msgid "All files"
 msgstr ""
