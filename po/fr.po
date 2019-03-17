@@ -85,10 +85,14 @@ msgstr "Modifier la pointe de ligne"
 msgid "Show/Hide Grid"
 msgstr "Afficher/Masquer la grille"
 
-#: src/Widgets/UI.vala:563
+#: src/Widgets/UI.vala:328
+msgid "Fill Path"
+msgstr "Remplir la zone"
+
+#: src/Widgets/UI.vala:615
 msgid "SVG files"
 msgstr "Fichiers SVG"
 
-#: src/Widgets/UI.vala:568
+#: src/Widgets/UI.vala:620
 msgid "All files"
 msgstr "Tous les fichiers"
