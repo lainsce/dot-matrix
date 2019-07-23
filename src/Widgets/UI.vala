@@ -139,6 +139,7 @@ namespace DotMatrix {
 			});
 
 			da.draw.connect ((c) => {
+                c.set_antialias (Cairo.Antialias.SUBPIXEL);
 				draw_grid (c);
 				find_mouse (c);
 				draws (c);
@@ -444,7 +445,7 @@ namespace DotMatrix {
 					draw_path (c, path);
 					if (is_closed == true) {
 						c.close_path ();
-						c.fill_preserve ();
+						c.fill ();
 						c.stroke ();
 					} else if (is_closed == false) {
 						c.stroke ();
@@ -533,7 +534,7 @@ namespace DotMatrix {
 		public void set_linecap (Cairo.Context c) {
 			if (change_linecap == true) {
 				c.set_line_cap (Cairo.LineCap.SQUARE);
-				c.set_line_join (Cairo.LineJoin.MITER);
+				c.set_line_join (Cairo.LineJoin.BEVEL);
 			} else if (change_linecap == false) {
 				c.set_line_cap (Cairo.LineCap.ROUND);
 				c.set_line_join (Cairo.LineJoin.ROUND);

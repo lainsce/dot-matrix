@@ -12,7 +12,7 @@
             <li>Quit anytime with the shortcut Ctrl + Q</li>
             <li>Undo with the shortcut Ctrl + Z</li>
             <li>Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and Ctrl + (</li>
-            <li>Change the UI colors by using the special Ecosystem SVGs</li>
+            <li>Change the UI colors by using the special Ecosystem SVGs (https://bit.ly/2TNKA5O for info)</li>
         </ul>
     </description>
     <provides>
@@ -56,7 +56,18 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
-         <release version="1.2.0" date="2019-03-22">
+        <release version="1.2.1" date="2019-07-25">
+           <description>
+               <p>Release: Graph It Right</p>
+               <ul>
+                   <li>Fixed: Filling shapes correctly,
+                       squared linecap is now actually square,
+                       and antialias is now on by default</li>
+                    <li>Updated translations</li>
+               </ul>
+           </description>
+        </release>
+        <release version="1.2.0" date="2019-03-22">
             <description>
                 <p>Release: The Void</p>
                 <ul>
