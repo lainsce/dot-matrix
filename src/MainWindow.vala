@@ -32,7 +32,7 @@ namespace DotMatrix {
         public string f_low = "#CCCCCC";
         public string f_inv = "#000000";
         public string b_high = "#000000";
-        public string b_med = "#75DAC2";
+        public string b_med = "#888888";
         public string b_low = "#AAAAAA";
         public string b_inv = "#FFB545";
 
@@ -167,7 +167,8 @@ namespace DotMatrix {
             var scrolled = new Gtk.ScrolledWindow (null, null);
             grid = new Widgets.UI (this);
             grid.line_color.parse (this.f_high);
-			grid.grid_dot_color.parse (this.f_med);
+            grid.grid_main_dot_color.parse (this.b_med);
+			grid.grid_dot_color.parse (this.b_low);
 			grid.background_color.parse (this.background);
 			grid.line_color_button.rgba = grid.line_color;
             scrolled.add (grid);
@@ -269,7 +270,8 @@ namespace DotMatrix {
                         }
 
                         .dm-actionbar image {
-                            color: @textColorSecondary;
+                            color: @textColorPrimary;
+                            -gtk-icon-shadow: none;
                         }
 
                         .dm-actionbar button:hover {

@@ -1,6 +1,6 @@
 # Name our project
 project('com.github.lainsce.dot-matrix', ['vala', 'c'],
-    version: '1.2.1'
+    version: '1.2.2'
 )
 
 # Import main lib files
