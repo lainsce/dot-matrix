@@ -23,7 +23,12 @@
     <url type="bugtracker">https://github.com/lainsce/dot-matrix/issues</url>
     <screenshots>
         <screenshot type="default">
+            <caption>Normal Colors</caption>
             <image>https://raw.githubusercontent.com/lainsce/dot-matrix/master/data/shot.png</image>
+        </screenshot>
+        <screenshot>
+            <caption>With Ecosystem Colors</caption>
+            <image>https://raw.githubusercontent.com/lainsce/dot-matrix/master/data/shot-eco.png</image>
         </screenshot>
     </screenshots>
     <content_rating type="oars-1.1">
