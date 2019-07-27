@@ -75,6 +75,7 @@ namespace DotMatrix {
                         @define-color windowPrimary %s;
                         @define-color textColorPrimary %s;
                         @define-color textColorSecondary %s;
+                        @define-color iconColorPrimary %s;
 
                         .dm-window {
                             background: @colorPrimary;
@@ -96,15 +97,16 @@ namespace DotMatrix {
                         }
 
                         .dm-actionbar image {
-                            color: @textColorSecondary;
+                            color: alpha (@iconColorPrimary, 0.4);
+                            -gtk-icon-shadow: none;
                         }
 
-                        .dm-actionbar button:hover {
-                            background: @colorSecondary;
+                        .dm-actionbar button:hover image {
+                            color: @iconColorPrimary;
                         }
 
-                        .dm-actionbar button:active {
-                            background: @colorAccent;
+                        .dm-actionbar button:active image {
+                            color: @iconColorPrimary;
                         }
 
                         .dm-reverse image {
@@ -134,7 +136,7 @@ namespace DotMatrix {
                         .dm-clrbtn colorswatch {
                             border-radius: 8px;
                         }
-                    """.printf(this.background, this.b_inv, this.b_med, this.b_high, this.b_high, this.b_high);
+                    """.printf(this.background, this.b_inv, this.b_med, this.b_high, this.b_high, this.b_high, this.f_high);
                     try {
                         var provider = new Gtk.CssProvider ();
                         provider.load_from_data (css_light, -1);
@@ -249,6 +251,7 @@ namespace DotMatrix {
                         @define-color windowPrimary %s;
                         @define-color textColorPrimary %s;
                         @define-color textColorSecondary %s;
+                        @define-color iconColorPrimary %s;
 
                         .dm-window {
                             background: @colorPrimary;
@@ -270,16 +273,16 @@ namespace DotMatrix {
                         }
 
                         .dm-actionbar image {
-                            color: @textColorPrimary;
+                            color: alpha (@iconColorPrimary, 0.4);
                             -gtk-icon-shadow: none;
                         }
 
-                        .dm-actionbar button:hover {
-                            background: @colorSecondary;
+                        .dm-actionbar button:hover image {
+                            color: @iconColorPrimary;
                         }
 
-                        .dm-actionbar button:active {
-                            background: @colorAccent;
+                        .dm-actionbar button:active image {
+                            color: @iconColorPrimary;
                         }
 
                         .dm-reverse image {
@@ -309,7 +312,7 @@ namespace DotMatrix {
                         .dm-clrbtn colorswatch {
                             border-radius: 8px;
                         }
-                    """.printf(this.background, this.b_inv, this.b_med, this.b_high, this.b_high, this.b_med);
+                    """.printf(this.background, this.b_inv, this.b_med, this.b_high, this.b_high, this.b_high, this.f_high);
 
                     try {
                         var provider = new Gtk.CssProvider ();
@@ -318,7 +321,8 @@ namespace DotMatrix {
                     } catch {}
 
                     grid.line_color.parse (this.f_high);
-			        grid.grid_dot_color.parse (this.f_med);
+                    grid.grid_main_dot_color.parse (this.b_med);
+			        grid.grid_dot_color.parse (this.b_low);
 			        grid.background_color.parse (this.background);
 			        grid.line_color_button.rgba = grid.line_color;
 

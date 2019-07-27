@@ -351,13 +351,13 @@ namespace DotMatrix {
 
 		// Drawing Section
 		public void draw_circle(Cairo.Context c, double x, double y) {
-			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
+			c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 1);
 			c.arc(x, y, 9, 0, 2.0*3.14);
 			c.fill();
 			c.set_source_rgba (background_color.red, background_color.green, background_color.blue, background_color.alpha);
 			c.arc(x, y, 6, 0, 2.0*3.14);
 			c.fill();
-			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
+			c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 1);
 			c.arc(x, y, 3, 0, 2.0*3.14);
 			c.fill();
 			c.stroke();
