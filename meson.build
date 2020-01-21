@@ -1,6 +1,6 @@
 # Name our project
 project('com.github.lainsce.dot-matrix', ['vala', 'c'],
-    version: '1.2.3'
+    version: '1.2.4'
 )
 
 # Import main lib files
@@ -48,7 +48,6 @@ executable(
     meson.project_name(),
     'src/Application.vala',
     'src/MainWindow.vala',
-    'src/Constants/AppSettings.vala',
     'src/Widgets/UI.vala',
     'src/Widgets/EditableLabel.vala',
     asresources,

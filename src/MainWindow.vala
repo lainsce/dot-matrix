@@ -145,9 +145,8 @@ namespace DotMatrix {
         }
 
         construct {
-            var settings = AppSettings.get_default ();
-            int x = settings.window_x;
-            int y = settings.window_y;
+            int x = DotMatrix.Application.gsettings.get_int ("window-x");
+            int y = DotMatrix.Application.gsettings.get_int ("window-y");
             if (x != -1 && y != -1) {
                 this.move (x, y);
             }
@@ -354,9 +353,8 @@ namespace DotMatrix {
             int x, y;
             get_position (out x, out y);
 
-            var settings = AppSettings.get_default ();
-            settings.window_x = x;
-            settings.window_y = y;
+            DotMatrix.Application.gsettings.set_int ("window-x", x);
+            DotMatrix.Application.gsettings.set_int ("window-y", y);
             return false;
         }
     }

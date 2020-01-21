@@ -61,6 +61,14 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.2.4" date="2020-01-24">
+           <description>
+               <p>Release: Small Line</p>
+               <ul>
+                   <li>Small backend fixes.</li>
+               </ul>
+           </description>
+        </release>
         <release version="1.2.3" date="2019-08-01">
            <description>
                <p>Release: Magnific Colors</p>
