@@ -1,10 +1,10 @@
 /*
-* Copyright (c) 2019 Lains
+* Copyright (c) 2021 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
 * License as published by the Free Software Foundation; either
-* version 2 of the License, or (at your option) any later version.
+* version 3 of the License, or (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -31,28 +31,11 @@ namespace DotMatrix {
 		public bool is_reverse_curve {get; set;}
 	}
 
-	public class Dialog : Granite.MessageDialog {
-        public MainWindow win;
-        public Dialog () {
-            Object (
-                image_icon: new ThemedIcon ("dialog-information"),
-                primary_text: _("Save Image?"),
-                secondary_text: _("There are unsaved changes to the image. If you don't save, changes will be lost forever.")
-            );
-        }
-        construct {
-            var save = add_button (_("Save"), Gtk.ResponseType.OK);
-            var cws = add_button (_("Close Without Saving"), Gtk.ResponseType.NO);
-            var cancel = add_button (_("Cancel"), Gtk.ResponseType.CANCEL) as Gtk.Button;
-            cancel.clicked.connect (() => { destroy (); });
-        }
-    }
-
-    public class Widgets.UI : Gtk.VBox {
+    public class Widgets.UI : Gtk.Bin {
         public MainWindow window;
         public Gtk.DrawingArea da;
 
-        GLib.List<Path> paths = new GLib.List<Path> ();
+        public GLib.List<Path> paths = new GLib.List<Path> ();
 		public Path current_path = new Path ();
 
 		private int ratio = 25;
@@ -67,7 +50,6 @@ namespace DotMatrix {
 		private bool see_grid {get; set; default=true;}
 		private bool change_linecap {get; set; default=false;}
 		private bool inside {get; set; default=false;}
-		private bool is_closed {get; set; default=false;}
         private double cur_x;
 		private double cur_y;
 
@@ -81,11 +63,9 @@ namespace DotMatrix {
                         if (match_keycode (Gdk.Key.parenleft, keycode)) {
                             if (line_thickness > 5) {
                                 line_thickness -= 5;
-                                line_thickness_label.text = line_thickness.to_string ();
                                 da.queue_draw ();
                             } else if (line_thickness < 5) {
                                 line_thickness = 5;
-                                line_thickness_label.text = line_thickness.to_string ();
                                 da.queue_draw ();
                             }
                         }
@@ -93,11 +73,9 @@ namespace DotMatrix {
                         if (match_keycode (Gdk.Key.parenright, keycode)) {
                             if (line_thickness != 50) {
                                 line_thickness += 5;
-                                line_thickness_label.text = line_thickness.to_string ();
                                 da.queue_draw ();
                             } else {
                                 line_thickness = 5;
-                                line_thickness_label.text = line_thickness.to_string ();
                                 da.queue_draw ();
                             }
                         }
@@ -148,205 +126,7 @@ namespace DotMatrix {
 				return false;
 			});
 
-			var actionbar = new Gtk.ActionBar ();
-			actionbar.get_style_context ().add_class ("dm-actionbar");
-
-            var new_button = new Gtk.Button ();
-            new_button.has_tooltip = true;
-            new_button.set_image (new Gtk.Image.from_icon_name ("document-new-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-            new_button.tooltip_text = (_("New file"));
-
-            new_button.clicked.connect ((e) => {
-                clear ();
-            });
-
-            actionbar.pack_start (new_button);
-
-            var save_button = new Gtk.Button ();
-            save_button.set_image (new Gtk.Image.from_icon_name ("document-save-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-            save_button.has_tooltip = true;
-			save_button.tooltip_text = (_("Save file"));
-
-			save_button.clicked.connect ((e) => {
-				try {
-					save ();
-				} catch (Error e) {
-					warning ("Unexpected error during save: " + e.message);
-				}
-            });
-
-			actionbar.pack_start (save_button);
-
-			var undo_button = new Gtk.Button ();
-            undo_button.set_image (new Gtk.Image.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			undo_button.has_tooltip = true;
-			undo_button.tooltip_text = (_("Undo Last Line"));
-
-			undo_button.clicked.connect ((e) => {
-				undo ();
-				current_path = new Path ();
-				da.queue_draw ();
-			});
-
-			actionbar.pack_start (undo_button);
-
-			line_color_button = new Gtk.ColorButton ();
-			line_color_button.margin_start = 6;
-			line_color_button.height_request = 24;
-			line_color_button.width_request = 24;
-			line_color_button.show_editor = true;
-			line_color_button.get_style_context ().add_class ("dm-clrbtn");
-			line_color_button.get_style_context ().remove_class ("color");
-			line_color_button.tooltip_text = (_("Line Color"));
-			actionbar.pack_start (line_color_button);
-
-			line_color_button.color_set.connect ((e) => {
-				line_color = line_color_button.rgba;
-				da.queue_draw ();
-			});
-
-			var line_thickness_button = new Gtk.Button ();
-            line_thickness_button.set_image (new Gtk.Image.from_icon_name ("line-thickness-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-            line_thickness_button.has_tooltip = true;
-			line_thickness_button.tooltip_text = (_("Change Line Thickness"));
-			line_thickness_label = new EditableLabel (line_thickness.to_string());
-			line_thickness_label.get_style_context ().add_class ("dm-text");
-			line_thickness_label.valign = Gtk.Align.CENTER;
-			line_thickness_label.hexpand = false;
-			line_thickness_label.margin_top = 3;
-
-			line_thickness_button.clicked.connect ((e) => {
-                if (line_thickness < 50) {
-					line_thickness++;
-					line_thickness_label.text = line_thickness.to_string ();
-					queue_draw ();
-				} else {
-					line_thickness = 5;
-					line_thickness_label.text = line_thickness.to_string ();
-					queue_draw ();
-				}
-			});
-
-			line_thickness_label.changed.connect (() => {
-				if (int.parse(line_thickness_label.title.get_label ()) > 50 || int.parse(line_thickness_label.title.get_label ()) < 5) {
-					line_thickness = 5;
-					line_thickness_label.text = line_thickness.to_string ();
-					queue_draw ();
-				} else {
-					line_thickness = int.parse(line_thickness_label.title.get_label ());
-					line_thickness_label.text = line_thickness.to_string ();
-					queue_draw ();
-				}
-			});
-
-			var line_thickness_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 3);
-			line_thickness_box.pack_start (line_thickness_button);
-			line_thickness_box.pack_start (line_thickness_label);
-
-			actionbar.pack_start (line_thickness_box);
-
-            var line_curve_button = new Gtk.Button ();
-            line_curve_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			line_curve_button.has_tooltip = true;
-			line_curve_button.tooltip_text = (_("Draw Curved Line"));
-
-			line_curve_button.clicked.connect ((e) => {
-				paths.append (current_path);
-				current_path.is_curve = true;
-				current_path.is_reverse_curve = false;
-				current_path = new Path ();
-				da.queue_draw ();
-			});
-
-			actionbar.pack_end (line_curve_button);
-
-			var line_curve_reverse_button = new Gtk.Button ();
-            line_curve_reverse_button.set_image (new Gtk.Image.from_icon_name ("line-curve-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			line_curve_reverse_button.has_tooltip = true;
-			line_curve_reverse_button.tooltip_text = (_("Draw Reverse Curved Line"));
-			line_curve_reverse_button.get_style_context ().add_class ("dm-reverse");
-
-			line_curve_reverse_button.clicked.connect ((e) => {
-				paths.append (current_path);
-				current_path.is_curve = true;
-				current_path.is_reverse_curve = true;
-				current_path = new Path ();
-				da.queue_draw ();
-			});
-
-			actionbar.pack_end (line_curve_reverse_button);
-
-            var line_straight_button = new Gtk.Button ();
-            line_straight_button.set_image (new Gtk.Image.from_icon_name ("line-straight-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			line_straight_button.has_tooltip = true;
-			line_straight_button.tooltip_text = (_("Draw Line"));
-
-			line_straight_button.clicked.connect ((e) => {
-				paths.append (current_path);
-				current_path.is_curve = false;
-				current_path = new Path ();
-				da.queue_draw ();
-            });
-
-			actionbar.pack_end (line_straight_button);
-
-			var line_cap_button = new Gtk.Button ();
-            line_cap_button.set_image (new Gtk.Image.from_icon_name ("line-cap-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			line_cap_button.has_tooltip = true;
-			line_cap_button.tooltip_text = (_("Change Line Cap"));
-
-			line_cap_button.clicked.connect ((e) => {
-				paths.append (current_path);
-				if (change_linecap == true) {
-					change_linecap = false;
-				} else if (change_linecap == false) {
-					change_linecap = true;
-				}
-				current_path = new Path ();
-				da.queue_draw ();
-            });
-
-            actionbar.pack_end (line_cap_button);
-
-			var see_grid_button = new Gtk.Button ();
-            see_grid_button.set_image (new Gtk.Image.from_icon_name ("grid-dots-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			see_grid_button.has_tooltip = true;
-			see_grid_button.tooltip_text = (_("Show/Hide Grid"));
-
-			see_grid_button.clicked.connect ((e) => {
-				if (see_grid == true) {
-					see_grid = false;
-				} else if (see_grid == false) {
-					see_grid = true;
-				}
-				da.queue_draw ();
-            });
-
-			actionbar.pack_end (see_grid_button);
-
-			var close_path_button = new Gtk.Button ();
-            close_path_button.set_image (new Gtk.Image.from_icon_name ("media-playback-stop-symbolic", Gtk.IconSize.LARGE_TOOLBAR));
-			close_path_button.has_tooltip = true;
-			close_path_button.tooltip_text = (_("Fill Path"));
-
-			close_path_button.clicked.connect ((e) => {
-				paths.append (current_path);
-				if (is_closed == true) {
-					is_closed = false;
-				} else if (is_closed == false) {
-					is_closed = true;
-				}
-				current_path = new Path ();
-				da.queue_draw ();
-            });
-
-            actionbar.pack_end (close_path_button);
-
-            this.pack_end (actionbar, false, false, 0);
-            this.pack_start (da, true, true, 0);
-			this.get_style_context ().add_class ("dm-grid");
-			this.margin = 1;
-			show_all ();
+            this.add (da);
 		}
 
 		// Drawing Section
@@ -379,7 +159,7 @@ namespace DotMatrix {
 		private void find_mouse(Cairo.Context c) {
 			int h = da.get_allocated_height ();
 			int w = da.get_allocated_width ();
-			if((Math.fabs(cur_x) <= ((h * ratio)+ratio)+1) && (Math.fabs(cur_y) <= ((w * ratio)+ratio)+1)) {
+			if ((Math.fabs(cur_x) <= h) && (Math.fabs(cur_y) <= w)) {
 				if(inside) {
 					draw_circle(c,cur_x,cur_y);
 				}
@@ -425,32 +205,14 @@ namespace DotMatrix {
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);
-						if (is_closed == true) {
-							c.close_path ();
-							c.fill ();
-							c.stroke ();
-						} else if (is_closed == false) {
-							c.stroke ();
-						}
+						c.stroke ();
 					} else if (path.is_reverse_curve == false) {
 						draw_curve (c, path);
-						if (is_closed == true) {
-							c.close_path ();
-							c.fill ();
-							c.stroke ();
-						} else if (is_closed == false) {
-							c.stroke ();
-						}
+						c.stroke ();
 					}
 				} else if (path.is_curve == false) {
 					draw_path (c, path);
-					if (is_closed == true) {
-						c.close_path ();
-						c.fill ();
-						c.stroke ();
-					} else if (is_closed == false) {
-						c.stroke ();
-					}
+					c.stroke ();
 				}
 			}
 		}
@@ -548,8 +310,8 @@ namespace DotMatrix {
 		}
 
 		// IO Section
-		private void clear () {
-            var dialog = new Dialog ();
+		public void clear () {
+            var dialog = new Widgets.Dialog ();
 			dialog.transient_for = window;
 
             dialog.response.connect ((response_id) => {

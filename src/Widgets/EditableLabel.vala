@@ -1,10 +1,10 @@
 /*
-* Copyright (c) 2017 Lains
+* Copyright (c) 2021 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
 * License as published by the Free Software Foundation; either
-* version 2 of the License, or (at your option) any later version.
+* version 3 of the License, or (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -66,8 +66,9 @@ public class DotMatrix.EditableLabel : Gtk.EventBox {
         title.hexpand = false;
 
         var edit_button = new Gtk.Button ();
-        edit_button.image = new Gtk.Image.from_icon_name ("edit-symbolic", Gtk.IconSize.MENU);
+        edit_button.image = new Gtk.Image.from_icon_name ("document-edit-symbolic", Gtk.IconSize.MENU);
         edit_button.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        edit_button.get_style_context ().add_class ("circular");
         var button_revealer = new Gtk.Revealer ();
         button_revealer.valign = Gtk.Align.CENTER;
         button_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;

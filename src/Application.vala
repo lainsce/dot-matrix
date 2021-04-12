@@ -1,10 +1,10 @@
 /*
-* Copyright (c) 2019 Lains
+* Copyright (c) 2021 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
 * License as published by the Free Software Foundation; either
-* version 2 of the License, or (at your option) any later version.
+* version 3 of the License, or (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -19,30 +19,33 @@
 */
 namespace DotMatrix {
     public class Application : Gtk.Application {
-        public MainWindow window;
+        public static MainWindow win = null;
         public static GLib.Settings gsettings;
 
         public Application () {
-            Object (flags: ApplicationFlags.FLAGS_NONE,
-            application_id: "com.github.lainsce.dot-matrix");
+            Object (
+                flags: ApplicationFlags.FLAGS_NONE,
+                application_id: Config.APP_ID
+            );
+        }
+        static construct {
+            gsettings = new GLib.Settings ("io.github.lainsce.DotMatrix");
         }
 
-        static construct {
-            gsettings = new GLib.Settings ("com.github.lainsce.dot-matrix");
+        construct {
+            Intl.setlocale (LocaleCategory.ALL, "");
+            Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+            Intl.textdomain (Config.GETTEXT_PACKAGE);
         }
 
         protected override void activate () {
-            if (window != null) {
-                window.present ();
+            if (win != null) {
+                win.present ();
                 return;
             }
-            window = new MainWindow (this);
+            win = new MainWindow (this);
         }
-
         public static int main (string[] args) {
-            Intl.setlocale (LocaleCategory.ALL, "");
-            Intl.textdomain (Build.GETTEXT_PACKAGE);
-
             var app = new DotMatrix.Application ();
             return app.run (args);
         }

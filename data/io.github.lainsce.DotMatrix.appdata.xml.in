@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-    <id>com.github.lainsce.dot-matrix</id>
+    <id>io.github.lainsce.DotMatrix</id>
     <metadata_license>CC0</metadata_license>
     <project_license>GPL-3.0+</project_license>
     <name>Dot Matrix</name>
@@ -16,7 +16,7 @@
         </ul>
     </description>
     <provides>
-        <binary>com.github.lainsce.dot-matrix</binary>
+        <binary>io.github.lainsce.DotMatrix</binary>
     </provides>
     <developer_name>Lains</developer_name>
     <url type="homepage">https://github.com/lainsce/dot-matrix/</url>
@@ -61,84 +61,13 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
-        <release version="1.2.4" date="2020-01-24">
+        <release version="2.0.0" date="2021-04-24">
            <description>
-               <p>Release: Small Line</p>
+               <p>Release: Hello, GNOME!</p>
                <ul>
-                   <li>Small backend fixes.</li>
+                   <li>Port to GNOME HIG and minor fixes.</li>
                </ul>
            </description>
-        </release>
-        <release version="1.2.3" date="2019-08-01">
-           <description>
-               <p>Release: Magnific Colors</p>
-               <ul>
-                   <li>Fixed: Ecosystem Colors now are correctly used through the UI</li>
-               </ul>
-           </description>
-        </release>
-        <release version="1.2.2" date="2019-07-30">
-           <description>
-               <p>Release: Curves Clicked</p>
-               <ul>
-                   <li>Fixed: Curves now look more curvy, if that even makes sense</li>
-                   <li>Fixed: Ecosystem Colors now are correctly used</li>
-               </ul>
-           </description>
-        </release>
-        <release version="1.2.1" date="2019-07-25">
-           <description>
-               <p>Release: Graph It Right</p>
-               <ul>
-                   <li>Fixed: Filling shapes correctly,
-                       squared linecap is now actually square,
-                       and antialias is now on by default</li>
-                    <li>Updated translations</li>
-               </ul>
-           </description>
-        </release>
-        <release version="1.2.0" date="2019-03-22">
-            <description>
-                <p>Release: The Void</p>
-                <ul>
-                    <li>Added: Fill Shape button</li>
-                    <li>Added: Support for Ecosystem Theming (https://bit.ly/2TNKA5O for info)</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.1.1" date="2019-03-15">
-            <description>
-                <p>Release: French Horns</p>
-                <ul>
-                    <li>Added: Editable Line Thickness label</li>
-                    <li>Added: French translations (NathanBnm)</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.1.0" date="2019-03-11">
-            <description>
-                <p>Release: Unto The Rocks</p>
-                <ul>
-                    <li>Added: Mouse cursor.</li>
-                    <li>Added: Undo function button.</li>
-                    <li>Added: Show/Hide Grid function button.</li>
-                    <li>Added: Undo and line thickness keybinds.</li>
-                    <li>Misc: Bumped the line thickness limit to 50.</li>
-                </ul>
-            </description>
-        </release>
-        <release version="0.0.1" date="2019-03-08">
-            <description>
-                <p>Release: With Stereo Sound</p>
-                <ul>
-                    <li>First stable release.</li>
-                </ul>
-            </description>
         </release>
     </releases>
-    <custom>
-        <value key="x-appcenter-color-primary">#72DEC1</value>
-        <value key="x-appcenter-color-primary-text">#000</value>
-        <value key="x-appcenter-suggested-price">5</value>
-    </custom>
 </component>

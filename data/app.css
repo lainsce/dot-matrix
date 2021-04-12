@@ -1,0 +1,18 @@
+headerbar.flat {
+  background-image: none;
+  border: none;
+  background-color: @theme_bg_color;
+}
+
+actionbar.flat box {
+  background-image: none;
+  border: none;
+  background-color: @theme_bg_color;
+}
+
+.circular {
+  border-radius: 9999px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+}

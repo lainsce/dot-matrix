@@ -1,0 +1,14 @@
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <menu id="menu">
+    <item>
+      <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+      <attribute name="action">win.action_keys</attribute>
+    </item>
+    <item>
+      <attribute name="label" translatable="yes">About Dot Matrix</attribute>
+      <attribute name="action">win.action_about</attribute>
+    </item>
+  </menu>
+</interface>
+

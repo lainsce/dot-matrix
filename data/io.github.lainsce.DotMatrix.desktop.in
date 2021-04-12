@@ -1,11 +1,10 @@
 [Desktop Entry]
 Name=Dot Matrix
 Comment=The glyph playground of creativity from simple lines
-Exec=com.github.lainsce.dot-matrix
-Icon=com.github.lainsce.dot-matrix
+Exec=io.github.lainsce.DotMatrix
+Icon=@icon@
 Keywords=Matrix;Vector;Drawing;Grid;
 Terminal=false
 Type=Application
 StartupNotify=true
 Categories=GNOME;GTK;Utility;Graphics;Development;
-NoDisplay=false

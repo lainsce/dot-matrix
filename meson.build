@@ -1,73 +1,79 @@
-# Name our project
-project('com.github.lainsce.dot-matrix', ['vala', 'c'],
-    version: '1.2.4'
-)
-
-# Import main lib files
+project('io.github.lainsce.DotMatrix', ['vala', 'c'], version: '2.7.0')
 gnome = import('gnome')
 i18n = import('i18n')
 
-# Compile the GResources for this project
+add_project_arguments([
+		'--target-glib=2.40',
+	],
+	language: 'vala',
+)
+
+if get_option('profile') == 'development'
+  name_prefix = '(Development) '
+  profile = 'Devel'
+else
+  name_prefix = ''
+  profile = ''
+endif
+
+app_id = '@0@@1@'.format(meson.project_name(), profile)
+
+conf = configuration_data()
+conf.set_quoted('APP_ID', app_id)
+conf.set_quoted('G_LOG_DOMAIN', '@0@@1@'.format(meson.project_name(), profile))
+conf.set_quoted('NAME_PREFIX', name_prefix)
+conf.set_quoted('PACKAGE_NAME', meson.project_name())
+conf.set_quoted('PACKAGE_VERSION', meson.project_version())
+conf.set_quoted('PROFILE', profile)
+conf.set_quoted('VERSION', meson.project_version())
+conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
+conf.set_quoted('DATADIR', join_paths(get_option('prefix'), get_option('datadir')))
+conf.set_quoted('GNOMELOCALEDIR', join_paths(get_option('prefix'), get_option('localedir')))
+configure_file(output: 'config.h', configuration: conf)
+config_h_dir = include_directories('.')
+
+
+add_project_arguments(
+    '-include', 'config.h',
+    '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+    language: 'c'
+)
+
 asresources = gnome.compile_resources(
-    'as-resources', 'data/style.gresource.xml',
+    'as-resources', 'data/app.gresource.xml',
     source_dir: 'data',
     c_name: 'as'
 )
 
-# Set this for convenience
-conf = configuration_data()
-
-# Get the package data directory under Meson
-pkgdatadir = join_paths([ get_option('prefix'),
-                          get_option('datadir'),
-                          'com.github.lainsce.dot-matrix' ])
-
-conf.set_quoted('PKGDATADIR', pkgdatadir)
-
-# Other configs
-conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
-conf
-add_global_arguments('-DDATADIR="' + get_option('datadir') + '"', language: 'c')
-configure_file(output: 'config.h', configuration: conf)
-config_h_dir = include_directories('.')
-
-# Arguments for C
-c_args = [
-  '-include', 'config.h',
-  '-w'
-]
-
-cc = meson.get_compiler('c')
-m_dep = cc.find_library('m', required: true)
-
-add_project_arguments(['--vapidir', join_paths(meson.current_source_dir(), 'vapi')],
-                      language: 'vala')
-
-# Let's define our executable
-executable(
-    meson.project_name(),
-    'src/Application.vala',
+sources = files(
+   'src/Application.vala',
     'src/MainWindow.vala',
+    'src/Widgets/Dialog.vala',
     'src/Widgets/UI.vala',
     'src/Widgets/EditableLabel.vala',
+)
+
+dependencies = [\
+    dependency('gio-2.0'),
+    dependency('glib-2.0'),
+    dependency('gobject-2.0'),
+    dependency('gee-0.8'),
+    dependency('gmodule-2.0'),
+    dependency('gtk+-3.0'),
+    dependency('libhandy-1'),
+    meson.get_compiler('c').find_library('m', required: true)
+]
+
+executable(
+    meson.project_name(),
+    sources,
     asresources,
-    c_args: c_args,
-    dependencies: [
-        dependency('granite'),
-        dependency('gobject-2.0'),
-        dependency('gtk+-3.0'),
-        m_dep,
-    ],
-    vala_args: [
-        meson.source_root() + '/vapi/config.vapi',
-        '--vapidir=' + meson.source_root() + '/vapi/',
-    ],
+    dependencies: dependencies,
+    vala_args: [meson.source_root() + '/src/Config.vapi'],
     install : true
 )
 
-# Add in a post install script
-meson.add_install_script('meson/post_install.py')
-
-# Add subfolders for Meson to look
 subdir('data')
 subdir('po')
+
+meson.add_install_script('build-aux/post_install.py', join_paths(get_option('prefix'), get_option('datadir')))
