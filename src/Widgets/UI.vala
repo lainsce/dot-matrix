@@ -42,10 +42,10 @@ namespace DotMatrix {
 		private int ratio = 25;
 		public double line_thickness = 5;
 		public EditableLabel line_thickness_label;
-		public Gdk.RGBA line_color;
 		public Gdk.RGBA grid_main_dot_color;
         public Gdk.RGBA grid_dot_color;
 		public Gdk.RGBA background_color;
+		public Gdk.RGBA line_color;
 		public Gtk.ColorButton line_color_button;
 		private bool dirty {get; set;}
 		private bool see_grid {get; set; default=true;}
@@ -202,7 +202,7 @@ namespace DotMatrix {
 			c.stroke ();
 
 			foreach (var path in paths) {
-			    c.set_source_rgba (path.color.red, path.color.green, path.color.blue, 1);
+			    current_path.color = window.line_color_button.rgba;
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);
@@ -240,6 +240,8 @@ namespace DotMatrix {
 				return;
 			}
 
+		    c.set_source_rgba (path.color.red, path.color.green, path.color.blue, 1);
+
 			for (int i = 0; i < path.points.length (); i+=1) {
 				int x = (int) Math.round(path.points.nth_data(i).x / ratio) * ratio;
 				int y = (int) Math.round(path.points.nth_data(i).y / ratio) * ratio;
@@ -252,6 +254,8 @@ namespace DotMatrix {
 			if (path.points.length () < 2) {
 				return;
 			}
+
+		    c.set_source_rgba (path.color.red, path.color.green, path.color.blue, 1);
 
 			for (int i = 0; i < path.points.length () - 1; i+=1) {
 				double start_x = (path.points.nth_data(i).x / ratio) * ratio;
@@ -270,6 +274,8 @@ namespace DotMatrix {
 			if (path.points.length () < 2) {
 				return;
 			}
+
+		    c.set_source_rgba (path.color.red, path.color.green, path.color.blue, 1);
 
 			for (int i = 0; i < path.points.length () - 1; i+=1) {
                 double start_x = (path.points.nth_data(i).x / ratio) * ratio;
