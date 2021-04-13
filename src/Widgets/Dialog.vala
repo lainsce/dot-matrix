@@ -27,7 +27,7 @@ namespace DotMatrix {
         }
         construct {
             var save = add_button (_("Save"), Gtk.ResponseType.OK);
-            var cws = add_button (_("Close Without Saving"), Gtk.ResponseType.NO);
+            var cws = add_button (_("Don't Save"), Gtk.ResponseType.NO);
             var cancel = add_button (_("Cancel"), Gtk.ResponseType.CANCEL) as Gtk.Button;
             cancel.clicked.connect (() => { destroy (); });
         }
