@@ -40,7 +40,7 @@ namespace DotMatrix {
 		public Path current_path = new Path ();
 
 		private int ratio = 25;
-		public int line_thickness = 5;
+		public double line_thickness = 5;
 		public EditableLabel line_thickness_label;
 		public Gdk.RGBA line_color;
 		public Gdk.RGBA grid_main_dot_color;

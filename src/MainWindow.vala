@@ -158,14 +158,8 @@ namespace DotMatrix {
 				ui.da.queue_draw ();
 			});
 
-			line_thickness_button.change_value.connect ((e) => {
-                if (ui.line_thickness < 50) {
-					ui.line_thickness += 5;
-					ui.queue_draw ();
-				} else {
-					ui.line_thickness = 5;
-					ui.queue_draw ();
-				}
+			line_thickness_button.value_changed.connect ((e) => {
+                ui.line_thickness = line_thickness_button.get_value ();
 			});
 
 			line_curve_button.clicked.connect ((e) => {
