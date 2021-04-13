@@ -1,14 +1,14 @@
 <schemalist>
 	<schema id="io.github.lainsce.DotMatrix" path="/io/github/lainsce/DotMatrix/">
-		<key name="window-x" type="i">
+		<key name="window-w" type="i">
 			<default>-1</default>
-			<summary>Window position</summary>
-			<description>The x axis of window position</description>
+			<summary>Window width</summary>
+			<description>The width of the window</description>
 		</key>
-		<key name="window-y" type="i">
+		<key name="window-h" type="i">
 			<default>-1</default>
-			<summary>Window position</summary>
-			<description>The y axis of window position</description>
+			<summary>Window height</summary>
+			<description>The height of the window</description>
 		</key>
 	</schema>
 </schemalist>

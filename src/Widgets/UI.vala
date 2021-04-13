@@ -29,6 +29,7 @@ namespace DotMatrix {
 		public GLib.List<Point> points = null;
 		public bool is_curve {get; set;}
 		public bool is_reverse_curve {get; set;}
+		public Gdk.RGBA color;
 	}
 
     public class Widgets.UI : Gtk.Bin {
@@ -200,8 +201,8 @@ namespace DotMatrix {
 			}
 			c.stroke ();
 
-			c.set_source_rgba (line_color.red, line_color.green, line_color.blue, 1);
 			foreach (var path in paths) {
+			    c.set_source_rgba (path.color.red, path.color.green, path.color.blue, 1);
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);

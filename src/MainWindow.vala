@@ -95,10 +95,10 @@ namespace DotMatrix {
             // Initial settings
             Hdy.init ();
 
-            int x = DotMatrix.Application.gsettings.get_int ("window-x");
-            int y = DotMatrix.Application.gsettings.get_int ("window-y");
+            int x = DotMatrix.Application.gsettings.get_int ("window-w");
+            int y = DotMatrix.Application.gsettings.get_int ("window-h");
             if (x != -1 && y != -1) {
-                this.move (x, y);
+                this.resize (x, y);
             }
 
             var provider = new Gtk.CssProvider ();
@@ -154,7 +154,7 @@ namespace DotMatrix {
 			ui.background_color.parse (this.background);
 
 			line_color_button.color_set.connect ((e) => {
-				ui.line_color = line_color_button.rgba;
+				ui.current_path.color = line_color_button.rgba;
 				ui.da.queue_draw ();
 			});
 
@@ -196,7 +196,7 @@ namespace DotMatrix {
             dabox.add (ui);
             dabox.show_all ();
 
-            this.set_size_request (375, 280);
+            this.set_size_request (450, 530);
             this.show_all ();
         }
 
@@ -219,10 +219,10 @@ namespace DotMatrix {
 
         public override bool delete_event (Gdk.EventAny event) {
             int x, y;
-            get_position (out x, out y);
+            get_size (out x, out y);
 
-            DotMatrix.Application.gsettings.set_int ("window-x", x);
-            DotMatrix.Application.gsettings.set_int ("window-y", y);
+            DotMatrix.Application.gsettings.set_int ("window-w", x);
+            DotMatrix.Application.gsettings.set_int ("window-h", y);
             return false;
         }
 
