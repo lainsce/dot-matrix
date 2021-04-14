@@ -98,11 +98,11 @@ namespace DotMatrix {
             da.leave_notify_event.connect(mouse_left);
 
 			da.button_press_event.connect ((e) => {
-				Gtk.Allocation allocation;
-				get_allocation (out allocation);
+				int h = da.get_allocated_height ();
+			    int w = da.get_allocated_width ();
 
-				var x = (int) Math.round(e.x.clamp ((double)allocation.x, (double)(allocation.x + allocation.width)) / ratio) * ratio;
-				var y = (int) Math.round(e.y.clamp ((double)allocation.y, (double)(allocation.y + allocation.height)) / ratio) * ratio;
+				var x = (int) Math.round(e.x.clamp (0, (double)(w)) / ratio) * ratio;
+				var y = (int) Math.round(e.y.clamp (0, (double)(h)) / ratio) * ratio;
 				current_path.points.append (new Point (x, y));
 				dirty = true;
 				da.queue_draw ();
@@ -110,11 +110,11 @@ namespace DotMatrix {
 			});
 
 			da.motion_notify_event.connect ((e) => {
-				Gtk.Allocation allocation;
-				get_allocation (out allocation);
+				int h = da.get_allocated_height ();
+			    int w = da.get_allocated_width ();
 
-				cur_x = (int) Math.round(e.x.clamp ((double)allocation.x, (double)(allocation.x + allocation.width)) / ratio) * ratio;
-				cur_y = (int) Math.round(e.y.clamp ((double)allocation.y, (double)(allocation.y + allocation.height)) / ratio) * ratio;
+				cur_x = (int) Math.round(e.x.clamp (0, (double)(w)) / ratio) * ratio;
+				cur_y = (int) Math.round(e.y.clamp (0, (double)(h)) / ratio) * ratio;
 				return false;
 			});
 
@@ -151,8 +151,8 @@ namespace DotMatrix {
 			return true;
 		}
 		public bool mouse_left(Gdk.EventCrossing e) {
-			cur_x = -100;
-			cur_y = -100;
+			cur_x = -300;
+			cur_y = -300;
 			inside = false;
 			queue_draw();
 			return true;
@@ -160,9 +160,9 @@ namespace DotMatrix {
 		private void find_mouse(Cairo.Context c) {
 			int h = da.get_allocated_height ();
 			int w = da.get_allocated_width ();
-			if ((Math.fabs(cur_x) <= h) && (Math.fabs(cur_y) <= w)) {
-				if(inside) {
-					draw_circle(c,cur_x,cur_y);
+			if ((cur_x <= ((h * ratio) + ratio) && (cur_y <= ((w * ratio) + ratio)))) {
+				if (inside) {
+					draw_circle (c,cur_x,cur_y);
 				}
 				return;
 			}
@@ -264,9 +264,12 @@ namespace DotMatrix {
 				double end_x = (path.points.nth_data(i+1).x / ratio) * ratio;
 				double end_y = (path.points.nth_data(i+1).y / ratio) * ratio;
 
-				c.curve_to (2.0 / 3.0 * start_x + 1.0 / 3.0 * start_x, 2.0 / 3.0 * start_y + 1.0 / 3.0 * start_y,
-                            2.0 / 3.0 * end_x + 1.0 / 3.0 * end_x, 2.0 / 3.0 * start_y + 1.0 / 3.0 * start_y,
-                            end_x, end_y);
+				c.curve_to (start_x,
+				            start_y,
+                            2.0 / 3.0 * end_x + 1.0 / 3.0 * end_x,
+                            2.0 / 3.0 * start_y + 1.0 / 3.0 * start_y,
+                            end_x,
+                            end_y);
 			}
 		}
 
@@ -284,9 +287,12 @@ namespace DotMatrix {
 				double end_x = (path.points.nth_data(i+1).x / ratio) * ratio;
 				double end_y = (path.points.nth_data(i+1).y / ratio) * ratio;
 
-                c.curve_to (2.0 / 3.0 * start_x + 1.0 / 3.0 * start_x, 2.0 / 3.0 * start_y + 1.0 / 3.0 * start_y,
-                            2.0 / 3.0 * start_x + 1.0 / 3.0 * start_x, 2.0 / 3.0 * end_y + 1.0 / 3.0 * end_y,
-                            end_x, end_y);
+                c.curve_to (start_x,
+                            start_y,
+                            2.0 / 3.0 * start_x + 1.0 / 3.0 * start_x,
+                            2.0 / 3.0 * end_y + 1.0 / 3.0 * end_y,
+                            end_x,
+                            end_y);
 			}
 		}
 
