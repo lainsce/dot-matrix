@@ -47,44 +47,14 @@ namespace DotMatrix {
 		public Gdk.RGBA background_color;
 		public Gdk.RGBA line_color;
 		public Gtk.ColorButton line_color_button;
-		private bool dirty {get; set;}
+		public bool dirty {get; set;}
 		private bool see_grid {get; set; default=true;}
-		private bool change_linecap {get; set; default=false;}
 		private bool inside {get; set; default=false;}
         private double cur_x;
 		private double cur_y;
 
         public UI (MainWindow win) {
 			this.window = win;
-			key_press_event.connect ((e) => {
-                uint keycode = e.hardware_keycode;
-
-                if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-					if ((e.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
-                        if (match_keycode (Gdk.Key.parenleft, keycode)) {
-                            if (line_thickness > 5) {
-                                line_thickness -= 5;
-                                da.queue_draw ();
-                            } else if (line_thickness < 5) {
-                                line_thickness = 5;
-                                da.queue_draw ();
-                            }
-                        }
-
-                        if (match_keycode (Gdk.Key.parenright, keycode)) {
-                            if (line_thickness != 50) {
-                                line_thickness += 5;
-                                da.queue_draw ();
-                            } else {
-                                line_thickness = 5;
-                                da.queue_draw ();
-                            }
-                        }
-                    }
-                }
-                return false;
-            });
-
             da = new Gtk.DrawingArea ();
 			da.expand = true;
 			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
@@ -191,7 +161,9 @@ namespace DotMatrix {
 		}
 
 		public void draws (Cairo.Context c) {
-			set_linecap (c);
+			c.set_line_cap (Cairo.LineCap.ROUND);
+			c.set_line_join (Cairo.LineJoin.ROUND);
+			queue_draw ();
 			c.set_line_width (line_thickness);
 			c.set_fill_rule (Cairo.FillRule.EVEN_ODD);
 
@@ -207,13 +179,16 @@ namespace DotMatrix {
 					if (path.is_reverse_curve == true) {
 						draw_reverse_curve (c, path);
 						c.stroke ();
+						dirty = true;
 					} else if (path.is_reverse_curve == false) {
 						draw_curve (c, path);
 						c.stroke ();
+						dirty = true;
 					}
 				} else if (path.is_curve == false) {
 					draw_path (c, path);
 					c.stroke ();
+					dirty = true;
 				}
 			}
 		}
@@ -311,17 +286,6 @@ namespace DotMatrix {
 			}
 		}
 
-		public void set_linecap (Cairo.Context c) {
-			if (change_linecap == true) {
-				c.set_line_cap (Cairo.LineCap.SQUARE);
-				c.set_line_join (Cairo.LineJoin.BEVEL);
-			} else if (change_linecap == false) {
-				c.set_line_cap (Cairo.LineCap.ROUND);
-				c.set_line_join (Cairo.LineJoin.ROUND);
-			}
-			queue_draw ();
-		}
-
 		// IO Section
 		public void clear () {
             var dialog = new Widgets.Dialog ();
@@ -359,7 +323,7 @@ namespace DotMatrix {
             });
 
 
-            if (dirty == true) {
+            if (dirty) {
                 dialog.run ();
             }
         }

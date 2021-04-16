@@ -86,6 +86,20 @@ namespace DotMatrix {
                         ui.current_path = new Path ();
 				        ui.da.queue_draw ();
                     }
+
+                    if (match_keycode (Gdk.Key.x, keycode)) {
+                        ui.line_thickness -= 5;
+                        line_thickness_button.set_value (ui.line_thickness);
+                        ui.da.queue_draw ();
+                    }
+
+                    if ((e.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
+                        if (match_keycode (Gdk.Key.x, keycode)) {
+                            ui.line_thickness += 5;
+                            line_thickness_button.set_value (ui.line_thickness);
+                            ui.da.queue_draw ();
+                        }
+                    }
                 }
                 return false;
             });
@@ -190,7 +204,7 @@ namespace DotMatrix {
             dabox.add (ui);
             dabox.show_all ();
 
-            this.set_size_request (450, 530);
+            this.set_size_request (360, 240);
             this.show_all ();
         }
 
@@ -217,6 +231,11 @@ namespace DotMatrix {
 
             DotMatrix.Application.gsettings.set_int ("window-w", x);
             DotMatrix.Application.gsettings.set_int ("window-h", y);
+
+            if (ui.dirty) {
+                ui.clear ();
+            }
+
             return false;
         }
 
@@ -244,15 +263,15 @@ namespace DotMatrix {
         }
 
         public void action_keys () {
-            // try {
-            //     var build = new Gtk.Builder ();
-            //     build.add_from_resource ("/io/github/lainsce/DotMatrix/shortcuts.ui");
-            //     var window = (Gtk.ShortcutsWindow) build.get_object ("shortcuts-dotmatrix");
-            //     window.set_transient_for (this);
-            //     window.show_all ();
-            // } catch (Error e) {
-            //     warning ("Failed to open shortcuts window: %s\n", e.message);
-            // }
+            try {
+                var build = new Gtk.Builder ();
+                build.add_from_resource ("/io/github/lainsce/DotMatrix/shortcuts.ui");
+                var window = (Gtk.ShortcutsWindow) build.get_object ("shortcuts-dotmatrix");
+                window.set_transient_for (this);
+                window.show_all ();
+            } catch (Error e) {
+                warning ("Failed to open shortcuts window: %s\n", e.message);
+            }
         }
     }
 }
