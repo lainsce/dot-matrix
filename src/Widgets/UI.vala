@@ -346,16 +346,9 @@ namespace DotMatrix {
 			}
 		}
 
-		public Gtk.FileChooserDialog create_file_chooser (string title,
-		Gtk.FileChooserAction action) {
-			var chooser = new Gtk.FileChooserDialog (title, null, action);
-			chooser.add_button ("_Cancel", Gtk.ResponseType.CANCEL);
-			if (action == Gtk.FileChooserAction.OPEN) {
-				chooser.add_button ("_Open", Gtk.ResponseType.ACCEPT);
-			} else if (action == Gtk.FileChooserAction.SAVE) {
-				chooser.add_button ("_Save", Gtk.ResponseType.ACCEPT);
-				chooser.set_do_overwrite_confirmation (true);
-			}
+		public Gtk.FileChooserNative create_file_chooser (string title, Gtk.FileChooserAction action) {
+			var chooser = new Gtk.FileChooserNative (title, null, action, null, null);
+
 			var filter1 = new Gtk.FileFilter ();
 			filter1.set_filter_name (_("SVG files"));
 			filter1.add_pattern ("*.svg");
@@ -369,8 +362,7 @@ namespace DotMatrix {
 		}
 
 		public File display_save_dialog () {
-			var chooser = create_file_chooser (_("Save file"),
-					Gtk.FileChooserAction.SAVE);
+			var chooser = create_file_chooser (_("Save file"), Gtk.FileChooserAction.SAVE);
 			File file = null;
 			if (chooser.run () == Gtk.ResponseType.ACCEPT)
 				file = chooser.get_file ();

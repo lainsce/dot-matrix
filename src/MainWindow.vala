@@ -23,25 +23,25 @@ namespace DotMatrix {
         public Widgets.UI ui;
 
         [GtkChild]
-        public Gtk.Button new_button;
+        public unowned Gtk.Button new_button;
         [GtkChild]
-        public Gtk.Button save_button;
+        public unowned Gtk.Button save_button;
         [GtkChild]
-        public Gtk.Button undo_button;
+        public unowned Gtk.Button undo_button;
         [GtkChild]
-        public Gtk.MenuButton menu_button;
+        public unowned Gtk.MenuButton menu_button;
         [GtkChild]
-        public Gtk.Box dabox;
+        public unowned Gtk.Box dabox;
         [GtkChild]
-        public Gtk.ColorButton line_color_button;
+        public unowned Gtk.ColorButton line_color_button;
         [GtkChild]
-        public Gtk.SpinButton line_thickness_button;
+        public unowned Gtk.SpinButton line_thickness_button;
         [GtkChild]
-        public Gtk.Button line_curve_button;
+        public unowned Gtk.Button line_curve_button;
         [GtkChild]
-        public Gtk.Button line_curve_reverse_button;
+        public unowned Gtk.Button line_curve_reverse_button;
         [GtkChild]
-        public Gtk.Button line_straight_button;
+        public unowned Gtk.Button line_straight_button;
 
         // Global Color Palette
         public string background = "#EEEEEE";
