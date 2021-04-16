@@ -1,12 +1,12 @@
 <schemalist>
 	<schema id="io.github.lainsce.DotMatrix" path="/io/github/lainsce/DotMatrix/">
 		<key name="window-w" type="i">
-			<default>-1</default>
+			<default>500</default>
 			<summary>Window width</summary>
 			<description>The width of the window</description>
 		</key>
 		<key name="window-h" type="i">
-			<default>-1</default>
+			<default>500</default>
 			<summary>Window height</summary>
 			<description>The height of the window</description>
 		</key>
