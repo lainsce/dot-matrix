@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.17 -->
+  <object class="GtkShortcutsWindow" id="shortcuts-dotmatrix">
+    <property name="modal">1</property>
+    <property name="visible">False</property>
+    <child>
+      <object class="GtkShortcutsSection" id="shortcuts">
+        <property name="visible">1</property>
+        <property name="section-name">shortcuts</property>
+        <property name="max-height">12</property>
+        <child>
+          <object class="GtkShortcutsGroup" id="general">
+            <property name="visible">1</property>
+            <property name="title" translatable="yes" context="shortcut window">General</property>
+            <child>
+              <object class="GtkShortcutsShortcut" id="quit">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;ctrl&gt;q</property>
+                <property name="title" translatable="yes" context="shortcut window">Quit</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut" id="undo">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;ctrl&gt;z</property>
+                <property name="title" translatable="yes" context="shortcut window">Undo</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup" id="drawing">
+            <property name="visible">1</property>
+            <property name="title" translatable="yes" context="shortcut window">Drawing</property>
+            <child>
+              <object class="GtkShortcutsShortcut" id="dec">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;ctrl&gt;x</property>
+                <property name="title" translatable="yes" context="shortcut window">Decrease Line Thickness</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut" id="inc">
+                <property name="visible">1</property>
+                <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;x</property>
+                <property name="title" translatable="yes" context="shortcut window">Increase Line Thickness</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
