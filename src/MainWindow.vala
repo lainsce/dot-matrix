@@ -129,11 +129,11 @@ namespace DotMatrix {
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
 
             ui = new Widgets.UI (this, da);
+            ui.line_color.parse (this.f_high);
             ui.grid_main_dot_color.parse (this.b_med);
 			ui.grid_dot_color.parse (this.b_low);
 			ui.background_color.parse (this.background);
 
-            line_color_button.rgba = ui.line_color;
 			line_color_button.color_set.connect ((e) => {
 				ui.current_path.color = line_color_button.rgba;
 				ui.da.queue_draw ();
@@ -141,6 +141,7 @@ namespace DotMatrix {
 
 			line_thickness_button.value_changed.connect ((e) => {
                 ui.line_thickness = line_thickness_button.get_value ();
+                ui.da.queue_draw ();
 			});
 
 			line_curve_button.clicked.connect ((e) => {
@@ -177,6 +178,7 @@ namespace DotMatrix {
 				ui.da.queue_draw ();
             });
 
+            line_color_button.rgba = ui.line_color;
             this.set_size_request (360, 240);
             listen_to_changes ();
             this.show ();
