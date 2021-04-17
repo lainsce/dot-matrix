@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>io.github.lainsce.DotMatrix</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Dot Matrix</name>
+  <name xml:lang="pl">Dot Matrix</name>
+  <name xml:lang="fr">Dot Matrix</name>
+  <summary>The glyph playground of creativity from simple lines</summary>
+  <summary xml:lang="pl">Glifowy plac zabaw kreatywności z prostych linii</summary>
+  <summary xml:lang="fr">Le terrain de jeu de la créativité à partir de lignes simples</summary>
+  <description>
+    <p>Make out icons, glyphs, or anything you can create with lines in this grid of dots</p>
+    <p xml:lang="pl">Twórz ikony, glify i cokolwiek innego, co jesteś w stanie zbudować z linii w tej siatce z kropek</p>
+    <p xml:lang="fr">Dessinez des icônes, des glyphes ou tout ce que vous pouvez créer avec des lignes dans cette grille de points.</p>
+    <ul>
+      <li>Select whetether to draw with lines or curves.</li>
+      <li xml:lang="pl">Rysuj linie lub krzywe</li>
+      <li xml:lang="fr">Sélectionnez si vous voulez dessiner avec des lignes ou des courbes.</li>
+      <li>Quit anytime with the shortcut Ctrl + Q</li>
+      <li xml:lang="pl">Zamknij aplikację kiedy chcesz skrótem Ctrl + Q</li>
+      <li xml:lang="fr">Quittez à tout moment avec le raccourci Ctrl + Q</li>
+      <li>Undo with the shortcut Ctrl + Z</li>
+      <li xml:lang="pl">Cofnij skrótem Ctrl + Z</li>
+      <li xml:lang="fr">Annulez le dernier tracé avec Ctrl + Z</li>
+      <li>Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and Ctrl + (</li>
+      <li xml:lang="pl">Zmień grubość linii o +5 i -5 skrótami Ctrl + ) i Ctrl + (</li>
+      <li xml:lang="fr">Modifiez l'épaisseur de ligne par +5 ou -5 avec les raccourcis respectifs Ctrl + ) et Ctrl + (</li>
+    </ul>
+  </description>
+  <provides>
+    <binary>io.github.lainsce.DotMatrix</binary>
+  </provides>
+  <developer_name>Lains</developer_name>
+  <developer_name xml:lang="pl">Lains</developer_name>
+  <developer_name xml:lang="fr">Lains</developer_name>
+  <url type="homepage">https://github.com/lainsce/dot-matrix/</url>
+  <url type="bugtracker">https://github.com/lainsce/dot-matrix/issues</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Normal Colors</caption>
+      <image>https://raw.githubusercontent.com/lainsce/dot-matrix/master/data/shot.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>With Ecosystem Colors</caption>
+      <image>https://raw.githubusercontent.com/lainsce/dot-matrix/master/data/shot-eco.png</image>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.1">
+    <content_attribute id="violence-cartoon">none</content_attribute>
+    <content_attribute id="violence-fantasy">none</content_attribute>
+    <content_attribute id="violence-realistic">none</content_attribute>
+    <content_attribute id="violence-bloodshed">none</content_attribute>
+    <content_attribute id="violence-sexual">none</content_attribute>
+    <content_attribute id="violence-desecration">none</content_attribute>
+    <content_attribute id="violence-slavery">none</content_attribute>
+    <content_attribute id="violence-worship">none</content_attribute>
+    <content_attribute id="drugs-alcohol">none</content_attribute>
+    <content_attribute id="drugs-narcotics">none</content_attribute>
+    <content_attribute id="drugs-tobacco">none</content_attribute>
+    <content_attribute id="sex-nudity">none</content_attribute>
+    <content_attribute id="sex-themes">none</content_attribute>
+    <content_attribute id="sex-homosexuality">none</content_attribute>
+    <content_attribute id="sex-prostitution">none</content_attribute>
+    <content_attribute id="sex-adultery">none</content_attribute>
+    <content_attribute id="sex-appearance">none</content_attribute>
+    <content_attribute id="language-profanity">none</content_attribute>
+    <content_attribute id="language-humor">none</content_attribute>
+    <content_attribute id="language-discrimination">none</content_attribute>
+    <content_attribute id="social-chat">none</content_attribute>
+    <content_attribute id="social-info">none</content_attribute>
+    <content_attribute id="social-audio">none</content_attribute>
+    <content_attribute id="social-location">none</content_attribute>
+    <content_attribute id="social-contacts">none</content_attribute>
+    <content_attribute id="money-purchasing">none</content_attribute>
+    <content_attribute id="money-gambling">none</content_attribute>
+  </content_rating>
+  <releases>
+    <release version="3.0.0" date="2021-04-24">
+      <description>
+        <p>Release: Hello, GNOME!</p>
+        <ul>
+          <li>Port to GNOME HIG and minor fixes.</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+</component>

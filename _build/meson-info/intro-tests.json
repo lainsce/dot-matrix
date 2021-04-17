@@ -1,0 +1,1 @@
+[{"cmd": ["/usr/bin/desktop-file-validate", "/home/lains/Projects/dot-matrix/_build/data/io.github.lainsce.DotMatrixDevel.desktop"], "env": {}, "name": "validate-desktop", "workdir": null, "timeout": 30, "suite": ["io.github.lainsce.DotMatrix"], "is_parallel": true, "priority": 0, "protocol": "exitcode"}]
