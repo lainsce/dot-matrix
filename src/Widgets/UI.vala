@@ -32,76 +32,85 @@ namespace DotMatrix {
 		public Gdk.RGBA color;
 	}
 
-    public class Widgets.UI : Gtk.Bin {
+    public class Widgets.UI {
         public MainWindow window;
-        public Gtk.DrawingArea da;
 
         public GLib.List<Path> paths = new GLib.List<Path> ();
 		public Path current_path = new Path ();
 
 		private int ratio = 25;
 		public double line_thickness = 5;
-		public EditableLabel line_thickness_label;
 		public Gdk.RGBA grid_main_dot_color;
         public Gdk.RGBA grid_dot_color;
 		public Gdk.RGBA background_color;
 		public Gdk.RGBA line_color;
 		public Gtk.ColorButton line_color_button;
+		public Gtk.DrawingArea da;
 		public bool dirty {get; set;}
 		private bool see_grid {get; set; default=true;}
 		private bool inside {get; set; default=false;}
         private double cur_x;
 		private double cur_y;
 
-        public UI (MainWindow win) {
+        public UI (MainWindow win, Gtk.DrawingArea da) {
 			this.window = win;
-            da = new Gtk.DrawingArea ();
-			da.expand = true;
-			da.set_size_request(this.get_allocated_width(),this.get_allocated_height());
+			this.da = da;
+			da.set_size_request(win.get_allocated_width(),win.get_allocated_height());
 
-			da.add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
-			da.add_events (Gdk.EventMask.ENTER_NOTIFY_MASK);
-			da.add_events (Gdk.EventMask.LEAVE_NOTIFY_MASK);
-			da.add_events (Gdk.EventMask.POINTER_MOTION_MASK);
+			var evconmo = new Gtk.EventControllerMotion ();
+			da.add_controller (evconmo);
 
-			da.enter_notify_event.connect(mouse_entered);
-            da.leave_notify_event.connect(mouse_left);
-
-			da.button_press_event.connect ((e) => {
+            evconmo.leave.connect((e) => {
+                cur_x = -999;
+		        cur_y = -999;
+		        inside = false;
+		        da.queue_draw();
+            });
+            evconmo.motion.connect ((e, x, y) => {
 				int h = da.get_allocated_height ();
 			    int w = da.get_allocated_width ();
+			    inside = true;
+			    da.queue_draw();
 
-				var x = (int) Math.round(e.x.clamp (0, (double)(w)) / ratio) * ratio;
-				var y = (int) Math.round(e.y.clamp (0, (double)(h)) / ratio) * ratio;
-				current_path.points.append (new Point (x, y));
+				cur_x = Math.round(x.clamp (ratio, (double)(w)) / ratio) * ratio;
+				cur_y = Math.round(y.clamp (ratio, (double)(h)) / ratio) * ratio;
+			});
+
+			var press = new Gtk.GestureClick ();
+			da.add_controller (press);
+            press.button = Gdk.BUTTON_PRIMARY;
+
+            press.pressed.connect ((gesture, n_press, x, y) => {
+                if (n_press > 1) {
+                    press.set_state (Gtk.EventSequenceState.DENIED);
+                    return;
+                }
+
+                int h = da.get_allocated_height ();
+			    int w = da.get_allocated_width ();
+
+				var px = (int) Math.round(x.clamp (ratio, (double)(w)) / ratio) * ratio;
+				var py = (int) Math.round(y.clamp (ratio, (double)(h)) / ratio) * ratio;
+
+				current_path.points.append (new Point (px, py));
 				dirty = true;
 				da.queue_draw ();
-				return false;
-			});
 
-			da.motion_notify_event.connect ((e) => {
-				int h = da.get_allocated_height ();
-			    int w = da.get_allocated_width ();
+                press.set_state (Gtk.EventSequenceState.CLAIMED);
+            });
 
-				cur_x = (int) Math.round(e.x.clamp (0, (double)(w)) / ratio) * ratio;
-				cur_y = (int) Math.round(e.y.clamp (0, (double)(h)) / ratio) * ratio;
-				return false;
-			});
-
-			da.draw.connect ((c) => {
-                c.set_antialias (Cairo.Antialias.SUBPIXEL);
-				draw_grid (c);
-				find_mouse (c);
-				draws (c);
-
-				return false;
-			});
-
-            this.add (da);
+			da.set_draw_func (draw_func);
 		}
 
 		// Drawing Section
+		public void draw_func (Gtk.DrawingArea da, Cairo.Context c, int width, int height) {
+			draw_grid (c);
+			find_mouse (c);
+			draws (c);
+		}
+
 		public void draw_circle(Cairo.Context c, double x, double y) {
+		    c.set_antialias (Cairo.Antialias.SUBPIXEL);
 			c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 1);
 			c.arc(x, y, 9, 0, 2.0*3.14);
 			c.fill();
@@ -113,29 +122,8 @@ namespace DotMatrix {
 			c.fill();
 			c.stroke();
 		}
-		public bool mouse_entered(Gdk.EventCrossing e) {
-			cur_x = e.x;
-			cur_y = e.y;
-			inside = true;
-			queue_draw();
-			return true;
-		}
-		public bool mouse_left(Gdk.EventCrossing e) {
-			cur_x = -300;
-			cur_y = -300;
-			inside = false;
-			queue_draw();
-			return true;
-		}
 		private void find_mouse(Cairo.Context c) {
-			int h = da.get_allocated_height ();
-			int w = da.get_allocated_width ();
-			if ((cur_x <= ((h * ratio) + ratio) && (cur_y <= ((w * ratio) + ratio)))) {
-				if (inside) {
-					draw_circle (c,cur_x,cur_y);
-				}
-				return;
-			}
+			draw_circle (c, cur_x, cur_y);
 		}
 
 		private void draw_grid (Cairo.Context c) {
@@ -143,6 +131,7 @@ namespace DotMatrix {
 				int i, j;
 				int h = da.get_allocated_height ();
 				int w = da.get_allocated_width ();
+				c.set_antialias (Cairo.Antialias.SUBPIXEL);
 				c.set_line_width (1);
 				for (i = 0; i <= w / ratio; i++) {
 					for (j = 0; j <= h / ratio; j++) {
@@ -161,9 +150,10 @@ namespace DotMatrix {
 		}
 
 		public void draws (Cairo.Context c) {
+		    c.set_antialias (Cairo.Antialias.SUBPIXEL);
 			c.set_line_cap (Cairo.LineCap.ROUND);
 			c.set_line_join (Cairo.LineJoin.ROUND);
-			queue_draw ();
+			da.queue_draw ();
 			c.set_line_width (line_thickness);
 			c.set_fill_rule (Cairo.FillRule.EVEN_ODD);
 
@@ -282,34 +272,41 @@ namespace DotMatrix {
 					else
 						current_path = null;
 				}
-				queue_draw ();
+				da.queue_draw ();
 			}
 		}
 
 		// IO Section
 		public void clear () {
-            var dialog = new Widgets.Dialog ();
-			dialog.transient_for = window;
+            var flags = Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL;
+            var dialog = new Gtk.MessageDialog (window, flags, Gtk.MessageType.WARNING, Gtk.ButtonsType.NONE, null, null);
+            dialog.set_transient_for (window);
+            dialog.resizable = false;
+
+            dialog.text = _("Save Image?");
+            dialog.secondary_text = _("Not saving means that the image will be lost forever.");
+
+            var ok_button = dialog.add_button (_("Save"), Gtk.ResponseType.OK);
+            ok_button.get_style_context ().add_class ("suggested-action");
+            var no_button = dialog.add_button (_("Don't Save"), Gtk.ResponseType.NO);
+            no_button.get_style_context ().add_class ("destructive-action");
+            dialog.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
 
             dialog.response.connect ((response_id) => {
                 switch (response_id) {
                     case Gtk.ResponseType.OK:
 						debug ("User saves the file.");
-						try {
-							save ();
-						} catch (Error e) {
-							warning ("Unexpected error during save: " + e.message);
-						}
+						save.begin ();
 						paths = null;
 						current_path = new Path ();
-						queue_draw ();
+						da.queue_draw ();
 						dirty = false;
                         dialog.close ();
                         break;
                     case Gtk.ResponseType.NO:
 						paths = null;
 						current_path = new Path ();
-						queue_draw ();
+						da.queue_draw ();
                         dialog.close ();
                         break;
                     case Gtk.ResponseType.CANCEL:
@@ -324,20 +321,20 @@ namespace DotMatrix {
 
 
             if (dirty) {
-                dialog.run ();
+                dialog.present ();
             }
         }
 
-		public void save () throws Error {
+		public async void save () throws Error {
 			debug ("Save as button pressed.");
-			var file = display_save_dialog ();
+            var file = yield display_save_dialog ();
 
 			string path = file.get_path ();
 
 			if (file == null) {
 				debug ("User cancelled operation. Aborting.");
 			} else {
-				var svg = new Cairo.SvgSurface (path + ".svg", da.get_allocated_width(),da.get_allocated_height());
+				var svg = new Cairo.SvgSurface (path, da.get_allocated_width(),da.get_allocated_height());
 				svg.restrict_to_version (Cairo.SvgVersion.VERSION_1_2);
 				Cairo.Context c = new Cairo.Context (svg);
 				draws (c);
@@ -346,28 +343,43 @@ namespace DotMatrix {
 			}
 		}
 
-		public Gtk.FileChooserNative create_file_chooser (string title, Gtk.FileChooserAction action) {
-			var chooser = new Gtk.FileChooserNative (title, null, action, null, null);
+		public async File? display_save_dialog () {
+            var chooser = new Gtk.FileChooserNative (null, window, Gtk.FileChooserAction.SAVE, null, null);
+            chooser.set_transient_for(window);
+            chooser.modal = true;
 
-			var filter1 = new Gtk.FileFilter ();
-			filter1.set_filter_name (_("SVG files"));
-			filter1.add_pattern ("*.svg");
-			chooser.add_filter (filter1);
+            var filter1 = new Gtk.FileFilter ();
+            filter1.set_filter_name (_("SVG files"));
+            filter1.add_pattern ("*.svg");
+            chooser.add_filter (filter1);
+            var filter = new Gtk.FileFilter ();
+            filter.set_filter_name (_("All files"));
+            filter.add_pattern ("*");
+            chooser.add_filter (filter);
 
-			var filter = new Gtk.FileFilter ();
-			filter.set_filter_name (_("All files"));
-			filter.add_pattern ("*");
-			chooser.add_filter (filter);
-			return chooser;
-		}
+            var response = yield run_dialog_async (chooser);
 
-		public File display_save_dialog () {
-			var chooser = create_file_chooser (_("Save file"), Gtk.FileChooserAction.SAVE);
-			File file = null;
-			if (chooser.run () == Gtk.ResponseType.ACCEPT)
-				file = chooser.get_file ();
-			chooser.destroy();
-			return file;
-		}
+            if (response == Gtk.ResponseType.ACCEPT) {
+                return chooser.get_file ();
+            }
+
+            return null;
+        }
+
+        private async Gtk.ResponseType run_dialog_async (Gtk.FileChooserNative dialog) {
+		    var response = Gtk.ResponseType.CANCEL;
+
+		    dialog.response.connect (r => {
+			    response = (Gtk.ResponseType) r;
+
+			    run_dialog_async.callback ();
+		    });
+
+		    dialog.show ();
+
+		    yield;
+		    return response;
+	    }
     }
 }
+

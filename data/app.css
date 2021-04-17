@@ -11,14 +11,12 @@ actionbar.flat box {
 }
 
 .titlebutton.close,
-.circular {
+.circular,
+.circular button {
   border-radius: 9999px;
   background-image: none;
   border: none;
   box-shadow: none;
-  padding: 0;
-  min-width: 32px;
-  min-height: 32px;
 }
 
 .titlebutton.close:hover,
@@ -41,12 +39,11 @@ actionbar.flat box {
 }
 
 .color * {
-  min-width: 32px;
+  min-width: 24px;
   min-height: 16px;
   border-radius: 16px;
   border: none;
   box-shadow: none;
-  padding: 2px;
 }
 
 .color:hover {
@@ -66,7 +63,7 @@ actionbar.flat box {
   border: none;
 }
 
-.spinpill entry {
+.spinpill text {
   margin-left: 6px;
 }
 

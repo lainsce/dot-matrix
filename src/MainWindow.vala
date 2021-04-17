@@ -18,7 +18,7 @@
 */
 namespace DotMatrix {
     [GtkTemplate (ui = "/io/github/lainsce/DotMatrix/mainwindow.ui")]
-    public class MainWindow : Hdy.ApplicationWindow {
+    public class MainWindow : Adw.ApplicationWindow {
         delegate void HookFunc ();
         public Widgets.UI ui;
 
@@ -31,7 +31,7 @@ namespace DotMatrix {
         [GtkChild]
         public unowned Gtk.MenuButton menu_button;
         [GtkChild]
-        public unowned Gtk.Box dabox;
+        public unowned Gtk.DrawingArea da;
         [GtkChild]
         public unowned Gtk.ColorButton line_color_button;
         [GtkChild]
@@ -72,55 +72,20 @@ namespace DotMatrix {
                 app: application,
                 icon_name: Config.APP_ID
             );
-
-            key_press_event.connect ((e) => {
-                uint keycode = e.hardware_keycode;
-
-                if ((e.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
-                    if (match_keycode (Gdk.Key.q, keycode)) {
-                        this.destroy ();
-                    }
-
-                    if (match_keycode (Gdk.Key.z, keycode)) {
-                        ui.undo ();
-                        ui.current_path = new Path ();
-				        ui.da.queue_draw ();
-                    }
-
-                    if (match_keycode (Gdk.Key.x, keycode)) {
-                        ui.line_thickness -= 5;
-                        line_thickness_button.set_value (ui.line_thickness);
-                        ui.da.queue_draw ();
-                    }
-
-                    if ((e.state & Gdk.ModifierType.SHIFT_MASK) != 0) {
-                        if (match_keycode (Gdk.Key.x, keycode)) {
-                            ui.line_thickness += 5;
-                            line_thickness_button.set_value (ui.line_thickness);
-                            ui.da.queue_draw ();
-                        }
-                    }
-                }
-                return false;
-            });
         }
 
         construct {
             // Initial settings
-            Hdy.init ();
-
-            int x = DotMatrix.Application.gsettings.get_int ("window-w");
-            int y = DotMatrix.Application.gsettings.get_int ("window-h");
-            if (x != -1 && y != -1) {
-                this.resize (x, y);
-            }
+            Adw.init ();
 
             var provider = new Gtk.CssProvider ();
             provider.load_from_resource ("/io/github/lainsce/DotMatrix/app.css");
-            Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (),
+                                                      provider,
+                                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-            weak Gtk.IconTheme default_theme = Gtk.IconTheme.get_default ();
-            default_theme.add_resource_path ("/io/github/lainsce/DotMatrix");
+            var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
+            theme.add_resource_path ("/io/github/lainsce/DotMatrix");
 
             Gtk.StyleContext style = get_style_context ();
             if (Config.PROFILE == "Devel") {
@@ -146,7 +111,7 @@ namespace DotMatrix {
 
 			save_button.clicked.connect ((e) => {
 				try {
-					ui.save ();
+					ui.save.begin ();
 				} catch (Error e) {
 					warning ("Unexpected error during save: " + e.message);
 				}
@@ -161,7 +126,7 @@ namespace DotMatrix {
 			var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/DotMatrix/menu.ui");
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
 
-            ui = new Widgets.UI (this);
+            ui = new Widgets.UI (this, da);
             ui.line_color.parse (this.f_high);
             ui.grid_main_dot_color.parse (this.b_med);
 			ui.grid_dot_color.parse (this.b_low);
@@ -201,42 +166,24 @@ namespace DotMatrix {
 
 			line_color_button.rgba = ui.line_color;
 
-            dabox.add (ui);
-            dabox.show_all ();
-
             this.set_size_request (360, 240);
-            this.show_all ();
+            listen_to_changes ();
+            this.show ();
+            this.present ();
         }
 
-#if VALA_0_42
-        protected bool match_keycode (uint keyval, uint code) {
-#else
-        protected bool match_keycode (int keyval, uint code) {
-#endif
-            Gdk.KeymapKey [] keys;
-            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (Gdk.Display.get_default ());
-            if (keymap.get_entries_for_keyval (keyval, out keys)) {
-                foreach (var key in keys) {
-                    if (code == key.keycode)
-                        return true;
-                    }
-                }
-
-            return false;
-        }
-
-        public override bool delete_event (Gdk.EventAny event) {
-            int x, y;
-            get_size (out x, out y);
-
-            DotMatrix.Application.gsettings.set_int ("window-w", x);
-            DotMatrix.Application.gsettings.set_int ("window-h", y);
-
+        protected override bool close_request () {
             if (ui.dirty) {
                 ui.clear ();
             }
 
+            this.dispose ();
             return false;
+        }
+
+        public void listen_to_changes () {
+            DotMatrix.Application.gsettings.bind ("window-w", this, "default-width", GLib.SettingsBindFlags.DEFAULT);
+            DotMatrix.Application.gsettings.bind ("window-h", this, "default-height", GLib.SettingsBindFlags.DEFAULT);
         }
 
         public void action_about () {
@@ -268,7 +215,7 @@ namespace DotMatrix {
                 build.add_from_resource ("/io/github/lainsce/DotMatrix/shortcuts.ui");
                 var window = (Gtk.ShortcutsWindow) build.get_object ("shortcuts-dotmatrix");
                 window.set_transient_for (this);
-                window.show_all ();
+                window.show ();
             } catch (Error e) {
                 warning ("Failed to open shortcuts window: %s\n", e.message);
             }

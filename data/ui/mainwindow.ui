@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.24"/>
+  <requires lib="gtk" version="4.0"/>
   <requires lib="libhandy" version="1.0"/>
   <object class="GtkAdjustment" id="adjustment1">
     <property name="lower">5</property>
@@ -9,53 +8,34 @@
     <property name="step-increment">5</property>
     <property name="page-increment">5</property>
   </object>
-  <template class="DotMatrixMainWindow" parent="HdyApplicationWindow">
+  <template class="DotMatrixMainWindow" parent="AdwApplicationWindow">
     <property name="can-focus">False</property>
+    <property name="visible">True</property>
+    <property name="title">Dot Matrix</property>
     <child>
       <object class="GtkBox" id="box">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
+        <property name="can-focus">0</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="HdyHeaderBar" id="headerbar">
+          <object class="AdwHeaderBar" id="headerbar">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="title" translatable="yes">Dot Matrix</property>
-            <property name="has-subtitle">False</property>
-            <property name="show-close-button">True</property>
-            <property name="interpolate-size">True</property>
-            <child>
+            <child type="end">
               <object class="GtkMenuButton" id="menu_button">
-                <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="focus-on-click">False</property>
-                <property name="receives-default">True</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="icon-name">open-menu-symbolic</property>
-                  </object>
-                </child>
+                <property name="icon-name">open-menu-symbolic</property>
                 <style>
                   <class name="image-button"/>
                   <class name="circular"/>
                 </style>
               </object>
-              <packing>
-                <property name="pack-type">end</property>
-              </packing>
             </child>
             <child>
               <object class="GtkButton" id="new_button">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <property name="image-position">bottom</property>
+                <property name="receives-default">1</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="icon-name">document-new-symbolic</property>
                   </object>
                 </child>
@@ -64,19 +44,13 @@
                   <class name="circular"/>
                 </style>
               </object>
-              <packing>
-                <property name="position">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkButton" id="save_button">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
+                <property name="receives-default">1</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="icon-name">document-save-as-symbolic</property>
                   </object>
                 </child>
@@ -85,20 +59,13 @@
                   <class name="circular"/>
                 </style>
               </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
             </child>
             <child>
               <object class="GtkButton" id="undo_button">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-                <property name="image-position">bottom</property>
+                <property name="receives-default">1</property>
                 <child>
                   <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
+                    <property name="can-focus">0</property>
                     <property name="icon-name">edit-undo-symbolic</property>
                   </object>
                 </child>
@@ -107,47 +74,35 @@
                   <class name="circular"/>
                 </style>
               </object>
-              <packing>
-                <property name="position">2</property>
-              </packing>
             </child>
             <style>
               <class name="flat"/>
             </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkBox" id="dabox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="vexpand">1</property>
+            <property name="can-focus">0</property>
             <property name="orientation">vertical</property>
             <child>
-            </child>
+              <object class="GtkDrawingArea" id="da">
+                <property name="vexpand">1</property>
+                <property name="hexpand">1</property>
+                <property name="receives-default">1</property>
+              </object>
+          </child>
           </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkActionBar" id="actionbar">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
+            <property name="can-focus">0</property>
             <child>
               <object class="GtkBox" id="box1">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkSpinButton" id="line_thickness_button">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
                     <property name="adjustment">adjustment1</property>
                     <property name="value">5</property>
                     <property name="tooltip-text" translatable="yes">Line Thickness</property>
@@ -155,44 +110,25 @@
                       <class name="spinpill"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="line_color_button">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
+                    <property name="receives-default">1</property>
                     <property name="title" translatable="yes">Pick a Line Color</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
               </object>
-              <packing>
-                <property name="position">0</property>
-              </packing>
             </child>
-            <child>
+            <child type="end">
               <object class="GtkBox" id="box2">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
+                <property name="can-focus">0</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkButton" id="line_straight_button">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
+                    <property name="receives-default">1</property>
                     <child>
                       <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
+                        <property name="can-focus">0</property>
                         <property name="icon-name">line-straight-symbolic</property>
                       </object>
                     </child>
@@ -201,21 +137,13 @@
                       <class name="circular"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="line_curve_button">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
+                    <property name="receives-default">1</property>
                     <child>
                       <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
+                        <property name="can-focus">0</property>
                         <property name="icon-name">line-curve-symbolic</property>
                       </object>
                     </child>
@@ -224,21 +152,13 @@
                       <class name="circular"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="line_curve_reverse_button">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">True</property>
+                    <property name="receives-default">1</property>
                     <child>
                       <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
+                        <property name="can-focus">0</property>
                         <property name="icon-name">line-curve-reverse-symbolic</property>
                       </object>
                     </child>
@@ -247,27 +167,13 @@
                       <class name="circular"/>
                     </style>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
                 </child>
               </object>
-              <packing>
-                <property name="pack-type">end</property>
-                <property name="position">1</property>
-              </packing>
             </child>
             <style>
               <class name="flat"/>
             </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
         </child>
       </object>
     </child>
