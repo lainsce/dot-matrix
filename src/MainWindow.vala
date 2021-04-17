@@ -42,6 +42,8 @@ namespace DotMatrix {
         public unowned Gtk.Button line_curve_reverse_button;
         [GtkChild]
         public unowned Gtk.Button line_straight_button;
+        [GtkChild]
+        public unowned Gtk.Button close_path_button;
 
         // Global Color Palette
         public string background = "#EEEEEE";
@@ -127,11 +129,11 @@ namespace DotMatrix {
             menu_button.menu_model = (MenuModel)builder.get_object ("menu");
 
             ui = new Widgets.UI (this, da);
-            ui.line_color.parse (this.f_high);
             ui.grid_main_dot_color.parse (this.b_med);
 			ui.grid_dot_color.parse (this.b_low);
 			ui.background_color.parse (this.background);
 
+            line_color_button.rgba = ui.line_color;
 			line_color_button.color_set.connect ((e) => {
 				ui.current_path.color = line_color_button.rgba;
 				ui.da.queue_draw ();
@@ -164,7 +166,16 @@ namespace DotMatrix {
 				ui.da.queue_draw ();
             });
 
-			line_color_button.rgba = ui.line_color;
+			close_path_button.clicked.connect ((e) => {
+				ui.paths.append (ui.current_path);
+				if (ui.current_path.is_closed == true) {
+					ui.current_path.is_closed = false;
+				} else if (ui.current_path.is_closed == false) {
+					ui.current_path.is_closed = true;
+				}
+				ui.current_path = new Path ();
+				ui.da.queue_draw ();
+            });
 
             this.set_size_request (360, 240);
             listen_to_changes ();

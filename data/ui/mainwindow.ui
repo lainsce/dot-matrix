@@ -124,6 +124,21 @@
                 <property name="can-focus">0</property>
                 <property name="spacing">6</property>
                 <child>
+                  <object class="GtkButton" id="close_path_button">
+                    <property name="receives-default">1</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="can-focus">0</property>
+                        <property name="icon-name">close-path-symbolic</property>
+                      </object>
+                    </child>
+                    <style>
+                      <class name="image-button"/>
+                      <class name="circular"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
                   <object class="GtkButton" id="line_straight_button">
                     <property name="receives-default">1</property>
                     <child>
