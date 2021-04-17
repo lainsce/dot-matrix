@@ -1,9 +1,0 @@
-# List of files installed by Meson
-# Does not contain files installed by custom scripts.
-/app/bin/io.github.lainsce.DotMatrix
-/app/share/applications/io.github.lainsce.DotMatrixDevel.desktop
-/app/share/metainfo/io.github.lainsce.DotMatrix.appdata.xml
-/app/share/icons/hicolor/scalable/apps/io.github.lainsce.DotMatrix.svg
-/app/share/icons/hicolor/scalable/apps/io.github.lainsce.DotMatrixDevel.svg
-/app/share/icons/hicolor/symbolic/apps/io.github.lainsce.DotMatrix-symbolic.svg
-/app/share/glib-2.0/schemas/io.github.lainsce.DotMatrix.gschema.xml
