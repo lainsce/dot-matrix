@@ -21,17 +21,21 @@ namespace DotMatrix {
     public class Application : Gtk.Application {
         public static MainWindow win = null;
         public static GLib.Settings gsettings;
+        private const GLib.ActionEntry app_entries[] = {
+          { "quit", on_quit },
+        };
 
         public Application () {
             Object (
                 flags: ApplicationFlags.FLAGS_NONE,
                 application_id: Config.APP_ID
             );
+
+            add_action_entries(app_entries, this);
         }
         static construct {
             gsettings = new GLib.Settings ("io.github.lainsce.DotMatrix");
         }
-
         construct {
             Intl.setlocale (LocaleCategory.ALL, "");
             Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
@@ -44,6 +48,9 @@ namespace DotMatrix {
                 return;
             }
             win = new MainWindow (this);
+        }
+        private void on_quit() {
+            win.destroy();
         }
         public static int main (string[] args) {
             var app = new DotMatrix.Application ();

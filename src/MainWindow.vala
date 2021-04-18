@@ -60,11 +60,17 @@ namespace DotMatrix {
         public const string ACTION_PREFIX = "win.";
         public const string ACTION_ABOUT = "action_about";
         public const string ACTION_KEYS = "action_keys";
+        public const string ACTION_UNDO = "action_undo";
+        public const string ACTION_INC_LINE = "action_inc_line";
+        public const string ACTION_DEC_LINE = "action_dec_line";
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
 
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
-              {ACTION_ABOUT, action_about },
+              {ACTION_ABOUT, action_about},
               {ACTION_KEYS, action_keys},
+              {ACTION_UNDO, action_undo},
+              {ACTION_INC_LINE, action_inc_line},
+              {ACTION_DEC_LINE, action_dec_line},
         };
 
         public Gtk.Application app { get; construct; }
@@ -74,6 +80,11 @@ namespace DotMatrix {
                 app: application,
                 icon_name: Config.APP_ID
             );
+
+            var evconkey = new Gtk.ShortcutController ();
+            this.add_controller (evconkey);
+
+
         }
 
         construct {
@@ -105,6 +116,11 @@ namespace DotMatrix {
 
                 app.set_accels_for_action (ACTION_PREFIX + action, accels_array);
             }
+            app.set_accels_for_action("app.quit", {"<Ctrl>q"});
+            app.set_accels_for_action ("win.action_keys", {"<Ctrl>question"});
+            app.set_accels_for_action ("win.action_undo", {"<Ctrl>z"});
+            app.set_accels_for_action ("win.action_inc_line", {"<Ctrl>x"});
+            app.set_accels_for_action ("win.action_dec_line", {"<Ctrl><Shift>x"});
 
             // UI
             new_button.clicked.connect ((e) => {
@@ -232,6 +248,22 @@ namespace DotMatrix {
             } catch (Error e) {
                 warning ("Failed to open shortcuts window: %s\n", e.message);
             }
+        }
+
+        public void action_undo () {
+            ui.undo ();
+			ui.current_path = new Path ();
+			ui.da.queue_draw ();
+        }
+        public void action_inc_line () {
+            ui.line_thickness += 5;
+            line_thickness_button.set_value (ui.line_thickness);
+            ui.da.queue_draw ();
+        }
+        public void action_dec_line () {
+            ui.line_thickness -= 5;
+            line_thickness_button.set_value (ui.line_thickness);
+            ui.da.queue_draw ();
         }
     }
 }
