@@ -46,13 +46,14 @@ searchbar box {
 }
 
 .circular:hover,
-.circular.toggle:hover,
+.toggle:checked,
+.toggle:checked:hover,
+.toggle:active,
 .image-button:hover {
 	background: alpha(@theme_fg_color, 0.1);
 }
 
 .circular:active,
-.circular.toggle:checked,
 .image-button:active {
 	background: alpha(@theme_fg_color, 0.15);
 }
@@ -69,7 +70,7 @@ searchbar box {
 .color * {
   min-width: 24px;
   min-height: 16px;
-  border-radius: 16px;
+  border-radius: 9999px;
   border: none;
   box-shadow: none;
 }
