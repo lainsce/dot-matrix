@@ -43,7 +43,7 @@ namespace DotMatrix {
         [GtkChild]
         public unowned Gtk.Button line_straight_button;
         [GtkChild]
-        public unowned Gtk.Button close_path_button;
+        public unowned Gtk.ToggleButton close_path_button;
 
         // Global Color Palette
         public string background = "#EEEEEE";
@@ -167,12 +167,12 @@ namespace DotMatrix {
 				ui.da.queue_draw ();
             });
 
-			close_path_button.clicked.connect ((e) => {
+			close_path_button.toggled.connect ((e) => {
 				ui.paths.append (ui.current_path);
-				if (ui.current_path.is_closed == true) {
-					ui.current_path.is_closed = false;
-				} else if (ui.current_path.is_closed == false) {
-					ui.current_path.is_closed = true;
+				if (ui.is_closed == true) {
+					ui.is_closed = false;
+				} else if (ui.is_closed == false) {
+					ui.is_closed = true;
 				}
 				ui.current_path = new Path ();
 				ui.da.queue_draw ();

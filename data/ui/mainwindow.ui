@@ -24,6 +24,7 @@
               <object class="GtkMenuButton" id="menu_button">
                 <property name="can-focus">True</property>
                 <property name="icon-name">open-menu-symbolic</property>
+                <property name="tooltip-text" translatable="yes">Open Menu</property>
                 <style>
                   <class name="image-button"/>
                   <class name="circular"/>
@@ -33,6 +34,7 @@
             <child>
               <object class="GtkButton" id="new_button">
                 <property name="receives-default">1</property>
+                <property name="tooltip-text" translatable="yes">New Glyph</property>
                 <child>
                   <object class="GtkImage">
                     <property name="can-focus">0</property>
@@ -48,6 +50,7 @@
             <child>
               <object class="GtkButton" id="save_button">
                 <property name="receives-default">1</property>
+                <property name="tooltip-text" translatable="yes">Save Glyph As…</property>
                 <child>
                   <object class="GtkImage">
                     <property name="can-focus">0</property>
@@ -63,6 +66,7 @@
             <child>
               <object class="GtkButton" id="undo_button">
                 <property name="receives-default">1</property>
+                <property name="tooltip-text" translatable="yes">Undo Recent Path</property>
                 <child>
                   <object class="GtkImage">
                     <property name="can-focus">0</property>
@@ -115,6 +119,7 @@
                   <object class="GtkColorButton" id="line_color_button">
                     <property name="receives-default">1</property>
                     <property name="title" translatable="yes">Pick a Line Color</property>
+                    <property name="tooltip-text" translatable="yes">Line Color</property>
                   </object>
                 </child>
               </object>
@@ -124,8 +129,9 @@
                 <property name="can-focus">0</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkButton" id="close_path_button">
+                  <object class="GtkToggleButton" id="close_path_button">
                     <property name="receives-default">1</property>
+                    <property name="tooltip-text" translatable="yes">Close All Paths</property>
                     <child>
                       <object class="GtkImage">
                         <property name="can-focus">0</property>
@@ -141,6 +147,7 @@
                 <child>
                   <object class="GtkButton" id="line_straight_button">
                     <property name="receives-default">1</property>
+                    <property name="tooltip-text" translatable="yes">Line</property>
                     <child>
                       <object class="GtkImage">
                         <property name="can-focus">0</property>
@@ -156,6 +163,7 @@
                 <child>
                   <object class="GtkButton" id="line_curve_button">
                     <property name="receives-default">1</property>
+                    <property name="tooltip-text" translatable="yes">Arc</property>
                     <child>
                       <object class="GtkImage">
                         <property name="can-focus">0</property>
@@ -171,6 +179,7 @@
                 <child>
                   <object class="GtkButton" id="line_curve_reverse_button">
                     <property name="receives-default">1</property>
+                    <property name="tooltip-text" translatable="yes">Inverted Arc</property>
                     <child>
                       <object class="GtkImage">
                         <property name="can-focus">0</property>

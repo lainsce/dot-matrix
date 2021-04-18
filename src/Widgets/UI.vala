@@ -29,7 +29,6 @@ namespace DotMatrix {
 		public GLib.List<Point> points = null;
 		public bool is_curve {get; set;}
 		public bool is_reverse_curve {get; set;}
-		public bool is_closed {get; set;}
 		public Gdk.RGBA color;
 	}
 
@@ -50,6 +49,7 @@ namespace DotMatrix {
 		public bool dirty {get; set;}
 		private bool see_grid {get; set; default=true;}
 		private bool inside {get; set; default=false;}
+		public bool is_closed {get; set; default=false;}
         private double cur_x;
 		private double cur_y;
 
@@ -168,33 +168,42 @@ namespace DotMatrix {
 			    current_path.color = window.line_color_button.rgba;
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
-						draw_reverse_curve (c, path);
-						if (path.is_closed == true) {
+						if (is_closed == true) {
+						    draw_reverse_curve (c, path);
 							c.close_path ();
 							c.fill ();
 							c.stroke ();
-						} else if (path.is_closed == false) {
+							draw_reverse_curve (c, path);
+							c.stroke ();
+						} else if (is_closed == false) {
+							draw_reverse_curve (c, path);
 							c.stroke ();
 						}
 						dirty = true;
 					} else if (path.is_reverse_curve == false) {
-						draw_curve (c, path);
-						if (path.is_closed == true) {
+						if (is_closed == true) {
+						    draw_curve (c, path);
 							c.close_path ();
 							c.fill ();
 							c.stroke ();
-						} else if (path.is_closed == false) {
+							draw_curve (c, path);
+							c.stroke ();
+						} else if (is_closed == false) {
+						    draw_curve (c, path);
 							c.stroke ();
 						}
 						dirty = true;
 					}
 				} else if (path.is_curve == false) {
-					draw_path (c, path);
-					if (path.is_closed == true) {
+					if (is_closed == true) {
+					    draw_path (c, path);
 						c.close_path ();
 						c.fill ();
 						c.stroke ();
-					} else if (path.is_closed == false) {
+						draw_path (c, path);
+						c.stroke ();
+					} else if (is_closed == false) {
+					    draw_path (c, path);
 						c.stroke ();
 					}
 					dirty = true;
