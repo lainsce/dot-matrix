@@ -77,6 +77,23 @@ namespace DotMatrix {
 				cur_y = Math.round(y.clamp (ratio, (double)(h)) / ratio) * ratio;
 			});
 
+			var drag = new Gtk.GestureDrag ();
+			da.add_controller (drag);
+
+            // Disable drag because it goes against the app's idea of interaction.
+			drag.drag_begin.connect ((x, y) => {
+			    drag.set_state (Gtk.EventSequenceState.DENIED);
+                return;
+			});
+			drag.drag_end.connect ((x, y) => {
+			    drag.set_state (Gtk.EventSequenceState.DENIED);
+                return;
+			});
+			drag.drag_update.connect ((x, y) => {
+			    drag.set_state (Gtk.EventSequenceState.DENIED);
+                return;
+			});
+
 			var press = new Gtk.GestureClick ();
 			da.add_controller (press);
             press.button = Gdk.BUTTON_PRIMARY;
