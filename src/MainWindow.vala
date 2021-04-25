@@ -166,6 +166,7 @@ namespace DotMatrix {
 				ui.current_path.is_reverse_curve = false;
 				ui.current_path = new Path ();
 				ui.da.queue_draw ();
+				ui.dirty = true;
 			});
 
 			line_curve_reverse_button.clicked.connect ((e) => {
@@ -174,6 +175,7 @@ namespace DotMatrix {
 				ui.current_path.is_reverse_curve = true;
 				ui.current_path = new Path ();
 				ui.da.queue_draw ();
+				ui.dirty = true;
 			});
 
 			line_straight_button.clicked.connect ((e) => {
@@ -181,6 +183,7 @@ namespace DotMatrix {
 				ui.current_path.is_curve = false;
 				ui.current_path = new Path ();
 				ui.da.queue_draw ();
+				ui.dirty = true;
             });
 
 			close_path_button.toggled.connect ((e) => {
@@ -192,6 +195,7 @@ namespace DotMatrix {
 				}
 				ui.current_path = new Path ();
 				ui.da.queue_draw ();
+				ui.dirty = true;
             });
 
             line_color_button.rgba = ui.line_color;
@@ -202,7 +206,7 @@ namespace DotMatrix {
         }
 
         protected override bool close_request () {
-            if (ui.dirty) {
+            if (ui.dirty = true) {
                 ui.clear ();
             }
 

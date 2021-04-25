@@ -106,8 +106,8 @@ namespace DotMatrix {
 		// Drawing Section
 		public void draw_func (Gtk.DrawingArea da, Cairo.Context c, int width, int height) {
 			draw_grid (c);
-			find_mouse (c);
 			draws (c);
+			find_mouse (c);
 		}
 
 		public void draw_circle(Cairo.Context c, double x, double y) {
@@ -175,11 +175,12 @@ namespace DotMatrix {
 							c.stroke ();
 							draw_reverse_curve (c, path);
 							c.stroke ();
+							dirty = true;
 						} else if (is_closed == false) {
 							draw_reverse_curve (c, path);
 							c.stroke ();
+							dirty = true;
 						}
-						dirty = true;
 					} else if (path.is_reverse_curve == false) {
 						if (is_closed == true) {
 						    draw_curve (c, path);
@@ -188,11 +189,12 @@ namespace DotMatrix {
 							c.stroke ();
 							draw_curve (c, path);
 							c.stroke ();
+							dirty = true;
 						} else if (is_closed == false) {
 						    draw_curve (c, path);
 							c.stroke ();
+							dirty = true;
 						}
-						dirty = true;
 					}
 				} else if (path.is_curve == false) {
 					if (is_closed == true) {
@@ -202,11 +204,12 @@ namespace DotMatrix {
 						c.stroke ();
 						draw_path (c, path);
 						c.stroke ();
+						dirty = true;
 					} else if (is_closed == false) {
 					    draw_path (c, path);
 						c.stroke ();
+						dirty = true;
 					}
-					dirty = true;
 				}
 			}
 		}
@@ -314,11 +317,10 @@ namespace DotMatrix {
             dialog.text = _("Save Image?");
             dialog.secondary_text = _("Not saving means that the image will be lost forever.");
 
-            var ok_button = dialog.add_button (_("Save"), Gtk.ResponseType.OK);
-            ok_button.get_style_context ().add_class ("suggested-action");
             var no_button = dialog.add_button (_("Don't Save"), Gtk.ResponseType.NO);
             no_button.get_style_context ().add_class ("destructive-action");
             dialog.add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+            dialog.add_button (_("Save"), Gtk.ResponseType.OK);
 
             dialog.response.connect ((response_id) => {
                 switch (response_id) {

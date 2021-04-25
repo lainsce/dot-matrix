@@ -25,7 +25,7 @@
                 <property name="can-focus">True</property>
                 <property name="icon-name">open-menu-symbolic</property>
                 <style>
-                  <class name="circular"/>
+                  <class name="toggle-button"/>
                 </style>
               </object>
             </child>
@@ -36,7 +36,6 @@
                 <property name="icon-name">document-new-symbolic</property>
                 <style>
                   <class name="image-button"/>
-                  <class name="circular"/>
                 </style>
               </object>
             </child>
@@ -47,7 +46,6 @@
                 <property name="icon-name">document-save-as-symbolic</property>
                 <style>
                   <class name="image-button"/>
-                  <class name="circular"/>
                 </style>
               </object>
             </child>
@@ -58,7 +56,6 @@
                 <property name="icon-name">edit-undo-symbolic</property>
                 <style>
                   <class name="image-button"/>
-                  <class name="circular"/>
                 </style>
               </object>
             </child>
@@ -72,6 +69,9 @@
             <property name="vexpand">1</property>
             <property name="can-focus">0</property>
             <property name="orientation">vertical</property>
+            <style>
+              <class name="flat"/>
+            </style>
             <child>
               <object class="GtkDrawingArea" id="da">
                 <property name="vexpand">1</property>
@@ -118,7 +118,6 @@
                     <property name="icon-name">close-path-symbolic</property>
                     <style>
                       <class name="image-button"/>
-                      <class name="circular"/>
                     </style>
                   </object>
                 </child>
@@ -129,7 +128,6 @@
                     <property name="icon-name">line-straight-symbolic</property>
                     <style>
                       <class name="image-button"/>
-                      <class name="circular"/>
                     </style>
                   </object>
                 </child>
@@ -140,7 +138,6 @@
                     <property name="icon-name">line-curve-symbolic</property>
                     <style>
                       <class name="image-button"/>
-                      <class name="circular"/>
                     </style>
                   </object>
                 </child>
@@ -151,7 +148,6 @@
                     <property name="icon-name">line-curve-symbolic</property>
                     <style>
                       <class name="image-button"/>
-                      <class name="circular"/>
                       <class name="rotated"/>
                     </style>
                   </object>

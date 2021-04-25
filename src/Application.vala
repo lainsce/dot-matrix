@@ -50,6 +50,9 @@ namespace DotMatrix {
             win = new MainWindow (this);
         }
         private void on_quit() {
+            if (win.ui.dirty = true) {
+                win.ui.clear ();
+            }
             win.destroy();
         }
         public static int main (string[] args) {
