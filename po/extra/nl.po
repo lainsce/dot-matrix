@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-09 10:37-0300\n"
+"PO-Revision-Date: 2021-04-25 17:14+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:6
+#: data/com.github.lainsce.dot-matrix.desktop.in:3
+msgid "Dot Matrix"
+msgstr "Dot Matrix"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:7
+#: data/com.github.lainsce.dot-matrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
+msgstr "Laat je creativiteit de vrije loop door te spelen met lijnen"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Maak pictogrammen, symbolen, en al het andere wat je kunt bedenken, binnen "
+"het rooster"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Kies of je wilt tekenen met lijnen of gebogen lijnen."
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Sluit af met Ctrl + Q"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Maak ongedaan met Ctrl + Z"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:14
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and "
+"Ctrl + ("
+msgstr ""
+"Pas de lijndikte met +5 of -5 aan middels de sneltoetsen Ctrl + ) en Ctrl + ("
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:20
+msgid "Lains"
+msgstr "Lains"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:60
+msgid "Release: French Horns"
+msgstr "Uitgave: ‘Franse blazers’"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:62
+msgid "Added: French translations (NathanBnm)"
+msgstr "[NIEUW] Franse vertaling, met dank aan @NathanBnm"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:68
+msgid "Release: Unto The Rocks"
+msgstr "Uitgave: ‘Op de klippen’"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:70
+msgid "Added: Mouse cursor."
+msgstr "[NIEUW] Muisaanwijzer"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:71
+msgid "Added: Undo function button."
+msgstr "[NIEUW] Ongedaan maken-functie"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:72
+msgid "Added: Show/Hide Grid function button."
+msgstr "[NIEUW] Knop om het rooster te tonen of verbergen"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:73
+msgid "Added: Undo and line thickness keybinds."
+msgstr "[NIEUW] Sneltoetsen voor ongedaan maken en lijndikte"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:74
+msgid "Misc: Bumped the line thickness limit to 50."
+msgstr "[NIEUW] Maximale lijndikte verhoogd naar 50"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:80
+msgid "Release: With Stereo Sound"
+msgstr "Uitgave: ‘Met stereogeluid’"
+
+#: data/com.github.lainsce.dot-matrix.appdata.xml.in:82
+msgid "First stable release."
+msgstr "Eerste stabiele uitgave"
+
+#: data/com.github.lainsce.dot-matrix.desktop.in:6
+msgid "com.github.lainsce.dot-matrix"
+msgstr "com.github.lainsce.dot-matrix"
+
+#: data/com.github.lainsce.dot-matrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
+msgstr "Matrix;Vector;Tekenen;Raster;Rooster;"
