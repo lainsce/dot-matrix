@@ -98,7 +98,7 @@ namespace DotMatrix {
 			da.add_controller (press);
             press.button = Gdk.BUTTON_PRIMARY;
 
-            press.pressed.connect ((gesture, n_press, x, y) => {
+            press.released.connect ((gesture, n_press, x, y) => {
                 if (n_press > 1) {
                     press.set_state (Gtk.EventSequenceState.DENIED);
                     return;
