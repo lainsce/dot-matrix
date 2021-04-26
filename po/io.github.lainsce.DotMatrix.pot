@@ -1,96 +1,136 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.lainsce.dot-matrix package.
+# This file is distributed under the same license as the io.github.lainsce.DotMatrix package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: com.github.lainsce.dot-matrix\n"
+"Project-Id-Version: io.github.lainsce.DotMatrix\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-09 09:11-0300\n"
+"POT-Creation-Date: 2021-04-26 14:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/MainWindow.vala:29
-msgid "Dot Matrix"
+#: data/ui/mainwindow.ui:35
+msgid "New Glyph"
 msgstr ""
 
-#: src/Widgets/UI.vala:39
-msgid "Save Image?"
+#: data/ui/mainwindow.ui:45
+msgid "Save Glyph As…"
 msgstr ""
 
-#: src/Widgets/UI.vala:40
-msgid ""
-"There are unsaved changes to the image. If you don't save, changes will be "
-"lost forever."
+#: data/ui/mainwindow.ui:55
+msgid "Undo Recent Path"
 msgstr ""
 
-#: src/Widgets/UI.vala:44
-msgid "Save"
+#: data/ui/mainwindow.ui:95
+msgid "Line Thickness"
 msgstr ""
 
-#: src/Widgets/UI.vala:45
-msgid "Close Without Saving"
+#: data/ui/mainwindow.ui:104
+msgid "Pick a Line Color"
 msgstr ""
 
-#: src/Widgets/UI.vala:46
-msgid "Cancel"
-msgstr ""
-
-#: src/Widgets/UI.vala:148
-msgid "New file"
-msgstr ""
-
-#: src/Widgets/UI.vala:159 src/Widgets/UI.vala:575
-msgid "Save file"
-msgstr ""
-
-#: src/Widgets/UI.vala:174
-msgid "Undo Last Line"
-msgstr ""
-
-#: src/Widgets/UI.vala:189
+#: data/ui/mainwindow.ui:105
 msgid "Line Color"
 msgstr ""
 
-#: src/Widgets/UI.vala:200
-msgid "Change Line Thickness"
+#: data/ui/mainwindow.ui:117
+msgid "Close All Paths"
 msgstr ""
 
-#: src/Widgets/UI.vala:240
-msgid "Draw Curved Line"
+#: data/ui/mainwindow.ui:127
+msgid "Line"
 msgstr ""
 
-#: src/Widgets/UI.vala:255
-msgid "Draw Reverse Curved Line"
+#: data/ui/mainwindow.ui:137
+msgid "Arc"
 msgstr ""
 
-#: src/Widgets/UI.vala:271
-msgid "Draw Line"
+#: data/ui/mainwindow.ui:147
+msgid "Inverted Arc"
 msgstr ""
 
-#: src/Widgets/UI.vala:285
-msgid "Change Line Cap"
+#: data/ui/menu.ui:6
+msgid "Keyboard Shortcuts"
 msgstr ""
 
-#: src/Widgets/UI.vala:303
-msgid "Show/Hide Grid"
+#: data/ui/menu.ui:10
+msgid "About Dot Matrix"
 msgstr ""
 
-#: src/Widgets/UI.vala:328
-msgid "Fill Path"
+#: data/ui/shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
 msgstr ""
 
-#: src/Widgets/UI.vala:615
+#: data/ui/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/ui/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr ""
+
+#: data/ui/shortcuts.ui:29
+msgctxt "shortcut window"
+msgid "Drawing"
+msgstr ""
+
+#: data/ui/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Decrease Line Thickness"
+msgstr ""
+
+#: data/ui/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Increase Line Thickness"
+msgstr ""
+
+#: src/MainWindow.vala:230
+msgid "Dot Matrix"
+msgstr ""
+
+#: src/MainWindow.vala:235
+msgid "The glyph playground of creativity from simple lines."
+msgstr ""
+
+#: src/MainWindow.vala:241
+msgid "translator-credits"
+msgstr ""
+
+#: src/Widgets/UI.vala:334
+msgid "Save Image?"
+msgstr ""
+
+#: src/Widgets/UI.vala:335
+msgid "Not saving means that the image will be lost forever."
+msgstr ""
+
+#: src/Widgets/UI.vala:337
+msgid "Don't Save"
+msgstr ""
+
+#: src/Widgets/UI.vala:339
+msgid "Cancel"
+msgstr ""
+
+#: src/Widgets/UI.vala:340
+msgid "Save"
+msgstr ""
+
+#: src/Widgets/UI.vala:399
 msgid "SVG files"
 msgstr ""
 
-#: src/Widgets/UI.vala:620
+#: src/Widgets/UI.vala:403
 msgid "All files"
 msgstr ""

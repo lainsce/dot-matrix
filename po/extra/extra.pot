@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the extra package.
+# This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: extra\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-09 10:37-0300\n"
+"POT-Creation-Date: 2021-04-26 14:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,88 +17,68 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:6
-#: data/com.github.lainsce.dot-matrix.desktop.in:3
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:6
+#: data/io.github.lainsce.DotMatrix.desktop.in:3
 msgid "Dot Matrix"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:7
-#: data/com.github.lainsce.dot-matrix.desktop.in:4
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:7
+#: data/io.github.lainsce.DotMatrix.desktop.in:4
 msgid "The glyph playground of creativity from simple lines"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:9
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:9
 msgid ""
 "Make out icons, glyphs, or anything you can create with lines in this grid "
 "of dots"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:11
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:11
 msgid "Select whetether to draw with lines or curves."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:12
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:12
 msgid "Quit anytime with the shortcut Ctrl + Q"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:13
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:13
 msgid "Undo with the shortcut Ctrl + Z"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:14
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:14
 msgid ""
 "Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and "
 "Ctrl + ("
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:20
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:20
 msgid "Lains"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:60
-msgid "Release: French Horns"
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:25
+msgid "Default"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:62
-msgid "Added: French translations (NathanBnm)"
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:61
+msgid "Release: A New UI Hope"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:68
-msgid "Release: Unto The Rocks"
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:63
+msgid "New: UI is now following efforts made by me on Notejot."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:70
-msgid "Added: Mouse cursor."
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:64
+msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:71
-msgid "Added: Undo function button."
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:70
+msgid "Release: Hello, GNOME!"
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:72
-msgid "Added: Show/Hide Grid function button."
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:72
+msgid "Port to GNOME HIG and minor fixes."
 msgstr ""
 
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:73
-msgid "Added: Undo and line thickness keybinds."
-msgstr ""
-
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:74
-msgid "Misc: Bumped the line thickness limit to 50."
-msgstr ""
-
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:80
-msgid "Release: With Stereo Sound"
-msgstr ""
-
-#: data/com.github.lainsce.dot-matrix.appdata.xml.in:82
-msgid "First stable release."
-msgstr ""
-
-#: data/com.github.lainsce.dot-matrix.desktop.in:6
-msgid "com.github.lainsce.dot-matrix"
-msgstr ""
-
-#: data/com.github.lainsce.dot-matrix.desktop.in:7
+#: data/io.github.lainsce.DotMatrix.desktop.in:7
 msgid "Matrix;Vector;Drawing;Grid;"
 msgstr ""
