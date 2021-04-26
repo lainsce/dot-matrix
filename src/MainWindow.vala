@@ -199,8 +199,7 @@ namespace DotMatrix {
             });
 
             line_color_button.rgba = ui.line_color;
-            this.set_size_request (360, 240);
-            listen_to_changes ();
+            this.set_size_request (445, 530); // shows an uniformed grid of dots at first launch
             this.show ();
             this.present ();
         }
@@ -212,11 +211,6 @@ namespace DotMatrix {
 
             this.dispose ();
             return false;
-        }
-
-        public void listen_to_changes () {
-            DotMatrix.Application.gsettings.bind ("window-w", this, "default-width", GLib.SettingsBindFlags.DEFAULT);
-            DotMatrix.Application.gsettings.bind ("window-h", this, "default-height", GLib.SettingsBindFlags.DEFAULT);
         }
 
         public void action_about () {
