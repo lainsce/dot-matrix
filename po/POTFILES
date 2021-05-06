@@ -1,4 +1,7 @@
+data/ui/mainwindow.ui
+data/ui/menu.ui
+data/ui/shortcuts.ui
+
 src/Application.vala
 src/MainWindow.vala
 src/Widgets/UI.vala
-src/Constants/AppSettings.vala
