@@ -34,17 +34,6 @@
     ],
     "modules" : [
         {
-            "name" : "pango",
-            "buildsystem" : "meson",
-            "sources" :  [
-                {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/pango/1.48/pango-1.48.0.tar.xz",
-                    "sha256" : "391f26f3341c2d7053e0fb26a956bd42360dadd825efe7088b1e9340a65e74e6"
-                }
-            ]
-        },
-        {
             "name": "libsass",
             "sources": [
                 {
@@ -85,7 +74,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/exalm/libadwaita.git",
+                    "url" : "https://gitlab.gnome.org/gnome/libadwaita.git",
                     "branch" : "main"
                 }
             ]
