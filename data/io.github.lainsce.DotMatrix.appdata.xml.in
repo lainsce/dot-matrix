@@ -24,6 +24,8 @@
     <developer_name>Lains</developer_name>
     <url type="homepage">https://github.com/lainsce/dot-matrix/</url>
     <url type="bugtracker">https://github.com/lainsce/dot-matrix/issues</url>
+    <url type="donation">https://www.patreon.com/lainsce/</url>
+    <url type="translate">https://github.com/lainsce/dot-matrix/blob/master/po/README.md</url>
     <screenshots>
         <screenshot type="default">
             <caption>Default</caption>
@@ -42,6 +44,7 @@
     <custom>
       <value key="GnomeSoftware::key-colors">[(117, 222, 194)]</value>
     </custom>
+    <translation type="gettext">io.github.lainsce.DotMatrix</translation>
     <releases>
         <release version="3.0.2" date="2021-08-20">
            <description>
