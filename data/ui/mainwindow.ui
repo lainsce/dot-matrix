@@ -33,7 +33,7 @@
               <object class="GtkButton" id="new_button">
                 <property name="receives-default">1</property>
                 <property name="tooltip-text" translatable="yes">New Glyph</property>
-                <property name="icon-name">document-new-symbolic</property>
+                <property name="icon-name">tab-new-symbolic</property>
                 <style>
                   <class name="image-button"/>
                 </style>
@@ -59,9 +59,6 @@
                 </style>
               </object>
             </child>
-            <style>
-              <class name="flat"/>
-            </style>
           </object>
         </child>
         <child>

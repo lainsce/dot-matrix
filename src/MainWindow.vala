@@ -91,6 +91,9 @@ namespace DotMatrix {
             // Initial settings
             Adw.init ();
 
+            var adwsm = Adw.StyleManager.get_default ();
+            adwsm.set_color_scheme (Adw.ColorScheme.PREFER_LIGHT);
+
             var provider = new Gtk.CssProvider ();
             provider.load_from_resource ("/io/github/lainsce/DotMatrix/app.css");
             Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (),

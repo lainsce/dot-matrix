@@ -11,7 +11,7 @@
             <li>Select whetether to draw with lines or curves.</li>
             <li>Quit anytime with the shortcut Ctrl + Q</li>
             <li>Undo with the shortcut Ctrl + Z</li>
-            <li>Change line thickness by +5 or -5 with the respective shortcuts Ctrl + ) and Ctrl + (</li>
+            <li>Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and Ctrl + Shift + X</li>
         </ul>
     </description>
     <provides>

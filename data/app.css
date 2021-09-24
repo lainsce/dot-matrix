@@ -1,15 +1,15 @@
 @define-color accent_color #66c7ae;
 @define-color accent_bg_color #72dec2;
+@define-color accent_fg black;
+
+.suggested-action label {
+  color: black;
+}
 
 headerbar {
-  background-image: none;
-  background-color: @theme_bg_color;
+  background: @theme_bg_color;
 }
 
-headerbar.flat {
-  border-bottom: 1px solid @borders;
-}
-
-.suggested-action {
-  color: black;
+.rotated {
+  transform: rotate(90deg);
 }
