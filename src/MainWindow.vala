@@ -73,8 +73,8 @@ namespace DotMatrix {
               {ACTION_DEC_LINE, action_dec_line},
         };
 
-        public Gtk.Application app { get; construct; }
-        public MainWindow (Gtk.Application application) {
+        public Adw.Application app { get; construct; }
+        public MainWindow (Adw.Application application) {
             GLib.Object (
                 application: application,
                 app: application,
@@ -89,8 +89,6 @@ namespace DotMatrix {
 
         construct {
             // Initial settings
-            Adw.init ();
-
             var adwsm = Adw.StyleManager.get_default ();
             adwsm.set_color_scheme (Adw.ColorScheme.PREFER_LIGHT);
 

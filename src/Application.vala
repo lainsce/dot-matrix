@@ -18,7 +18,7 @@
 *
 */
 namespace DotMatrix {
-    public class Application : Gtk.Application {
+    public class Application : Adw.Application {
         public static MainWindow win = null;
         public static GLib.Settings gsettings;
         private const GLib.ActionEntry app_entries[] = {
