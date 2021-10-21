@@ -6,10 +6,6 @@
   color: black;
 }
 
-headerbar {
-  background: @theme_bg_color;
-}
-
 .rotated {
   transform: rotate(90deg);
 }

@@ -1,7 +1,7 @@
 {
     "app-id" : "io.github.lainsce.DotMatrixDevel",
     "runtime" : "org.gnome.Sdk",
-    "runtime-version" : "41",
+    "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.DotMatrix",
     "rename-icon" : "io.github.lainsce.DotMatrixDevel",
@@ -60,22 +60,6 @@
                     "type" : "script",
                     "dest-filename" : "autogen.sh",
                     "commands" : [ "autoreconf -si" ]
-                }
-            ]
-        },
-        {
-            "name" : "libadwaita",
-            "buildsystem": "meson",
-            "config-opts" : [
-                "-Dvapi=true",
-                "-Dexamples=false",
-                "-Dtests=false"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/gnome/libadwaita.git",
-                    "branch" : "main"
                 }
             ]
         },

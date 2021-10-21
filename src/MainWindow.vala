@@ -195,7 +195,7 @@ namespace DotMatrix {
             });
 
             line_color_button.rgba = ui.line_color;
-            this.set_size_request (445, 530); // shows an uniformed grid of dots at first launch
+            this.set_size_request (340, 440); // shows an uniformed grid of dots at first launch
             this.show ();
             this.present ();
         }
