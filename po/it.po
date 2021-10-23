@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: com.github.lainsce.dot-matrix\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-09 09:11-0300\n"
-"PO-Revision-Date: 2021-04-25 22:00+0100\n"
+"PO-Revision-Date: 2021-10-23 19:00+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: ITALIAN <LL@li.org>\n"
 "Language: it\n"
@@ -61,7 +61,7 @@ msgstr "Colore Linea"
 
 #: src/Widgets/UI.vala:200
 msgid "Change Line Thickness"
-msgstr "ModificaSpessore della Linea"
+msgstr "Modifica Spessore della Linea"
 
 #: src/Widgets/UI.vala:240
 msgid "Draw Curved Line"
