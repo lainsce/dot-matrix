@@ -92,12 +92,6 @@ namespace DotMatrix {
             var adwsm = Adw.StyleManager.get_default ();
             adwsm.set_color_scheme (Adw.ColorScheme.PREFER_LIGHT);
 
-            var provider = new Gtk.CssProvider ();
-            provider.load_from_resource ("/io/github/lainsce/DotMatrix/app.css");
-            Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (),
-                                                      provider,
-                                                      Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             theme.add_resource_path ("/io/github/lainsce/DotMatrix");
 
@@ -195,7 +189,7 @@ namespace DotMatrix {
             });
 
             line_color_button.rgba = ui.line_color;
-            this.set_size_request (340, 440); // shows an uniformed grid of dots at first launch
+            this.set_size_request (346, 440); // shows an uniformed grid of dots at first launch
             this.show ();
             this.present ();
         }

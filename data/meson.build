@@ -14,6 +14,21 @@ install_data(
 )
 
 install_data(
+    join_paths('icons', 'symbolic', 'close-path-symbolic.svg'),
+    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'actions')
+)
+
+install_data(
+    join_paths('icons', 'symbolic', 'line-curve-symbolic.svg'),
+    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'actions')
+)
+
+install_data(
+    join_paths('icons', 'symbolic', 'line-straight-symbolic.svg'),
+    install_dir: join_paths(get_option('datadir'), 'icons', 'hicolor', 'scalable', 'actions')
+)
+
+install_data(
     meson.project_name() + '.gschema.xml',
     install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
 )

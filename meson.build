@@ -1,4 +1,4 @@
-project('io.github.lainsce.DotMatrix', ['vala', 'c'], version: '3.0.5')
+project('io.github.lainsce.DotMatrix', ['vala', 'c'], version: '3.1.0')
 gnome = import('gnome')
 i18n = import('i18n')
 
@@ -40,7 +40,7 @@ add_project_arguments(
 )
 
 asresources = gnome.compile_resources(
-    'as-resources', 'data/app.gresource.xml',
+    'as-resources', 'data/io.github.lainsce.DotMatrix.gresource.xml',
     source_dir: 'data',
     c_name: 'as'
 )

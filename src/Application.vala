@@ -32,6 +32,7 @@ namespace DotMatrix {
             );
 
             add_action_entries(app_entries, this);
+            set_resource_base_path ("/io/github/lainsce/DotMatrix/");
         }
         static construct {
             gsettings = new GLib.Settings ("io.github.lainsce.DotMatrix");

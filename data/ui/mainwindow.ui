@@ -59,6 +59,9 @@
                 </style>
               </object>
             </child>
+            <style>
+              <class name="dm-bar"/>
+            </style>
           </object>
         </child>
         <child>
@@ -67,7 +70,7 @@
             <property name="can-focus">0</property>
             <property name="orientation">vertical</property>
             <style>
-              <class name="flat"/>
+              <class name="dm-view"/>
             </style>
             <child>
               <object class="GtkDrawingArea" id="da">
@@ -152,7 +155,7 @@
               </object>
             </child>
             <style>
-              <class name="flat"/>
+              <class name="dm-abar"/>
             </style>
           </object>
         </child>
