@@ -89,9 +89,6 @@ namespace DotMatrix {
 
         construct {
             // Initial settings
-            var adwsm = Adw.StyleManager.get_default ();
-            adwsm.set_color_scheme (Adw.ColorScheme.PREFER_LIGHT);
-
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             theme.add_resource_path ("/io/github/lainsce/DotMatrix");
 
