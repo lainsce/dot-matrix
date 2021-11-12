@@ -1,0 +1,26 @@
+@define-color accent_color #006b57;
+@define-color accent_bg_color #006b57;
+@define-color accent_fg #ffffff;
+@define-color window_bg_color #eef1ee;
+@define-color view_bg_color #fafdfa;
+@define-color headerbar_bg_color #eef1ee;
+@define-color popover_bg_color #fafdfa;
+@define-color popover_fg_color #191c1b;
+@define-color window_fg_color #191c1b;
+@define-color view_fg_color #191c1b;
+@define-color headerbar_fg_color #191c1b;
+
+.rotated {
+  transform: rotate(90deg);
+}
+
+.dm-bar,
+.dm-abar box {
+  background: @window_bg_color;
+  box-shadow: none;
+}
+
+.dm-view {
+  background: @view_bg_color;
+  border-radius: 12px;
+}
