@@ -72,7 +72,6 @@
             <property name="orientation">vertical</property>
             <style>
               <class name="dm-view"/>
-              <class name="card"/>
             </style>
             <child>
               <object class="GtkDrawingArea" id="da">
