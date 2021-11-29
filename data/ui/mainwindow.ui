@@ -123,6 +123,13 @@
                   </object>
                 </child>
                 <child>
+                  <object class="GtkSeparator">
+                    <style>
+                      <class name="spacer"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
                   <object class="GtkButton" id="line_straight_button">
                     <property name="receives-default">1</property>
                     <property name="tooltip-text" translatable="yes">Line</property>
