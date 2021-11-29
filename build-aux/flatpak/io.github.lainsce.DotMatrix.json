@@ -1,6 +1,6 @@
 {
     "app-id" : "io.github.lainsce.DotMatrixDevel",
-    "runtime" : "org.gnome.Sdk",
+    "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.DotMatrix",
