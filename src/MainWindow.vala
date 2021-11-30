@@ -208,7 +208,7 @@ namespace DotMatrix {
                 null
             };
 
-            var program_name = Config.NAME_PREFIX + _("Dot Matrix");
+            var program_name = Config.NAME_PREFIX + "Dot Matrix";
             Gtk.show_about_dialog (this,
                                    "program-name", program_name,
                                    "logo-icon-name", Config.APP_ID,
