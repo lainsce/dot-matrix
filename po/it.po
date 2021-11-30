@@ -6,91 +6,222 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.dot-matrix\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-09 09:11-0300\n"
-"PO-Revision-Date: 2021-10-23 19:00+0100\n"
+"POT-Creation-Date: 2021-11-30 09:19+0100\n"
+"PO-Revision-Date: 2021-11-30 09:16+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: ITALIAN <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
 
-#: src/MainWindow.vala:29
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:7
+msgid "The creativity playground of lines and curves"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Disegna icone, glifi o qualsiasi altra cosa puoi creare con le linee in "
+"quella griglia di punti."
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Scegli se vuoi disegnare con linee o curve."
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Esci in qualsiasi momento con la scorciatoia Ctrl + Q"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Annulla l'ultimo percorso con Ctrl + Z"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:14
+#, fuzzy
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
+"Ctrl + Shift + X"
+msgstr ""
+"Modifica lo spessore della linea di +5 o -5 con le rispettive scorciatoie "
+"Ctrl +) e Ctrl + ("
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:32
+msgid "Default"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:52
+#, fuzzy
+msgid "Release: Orange Sunrise"
+msgstr "Versione: Klaxon francese"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:54
+msgid "Changed: Using more libadwaita recent UI styling."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:60
+#, fuzzy
+msgid "Release: Cyan Sunset"
+msgstr "Versione: Klaxon francese"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:62
+msgid "Changed: Using libadwaita recent UI styling."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:68
+#, fuzzy
+msgid "Release: A New UI Hope"
+msgstr "Versione: Klaxon francese"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:70
+msgid "New: UI is now following efforts made by me on Notejot."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:71
+msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:77
+msgid "Release: Hello, GNOME!"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:79
+msgid "Port to GNOME HIG and minor fixes."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:3
 msgid "Dot Matrix"
 msgstr "Dot Matrix"
 
-#: src/Widgets/UI.vala:39
-msgid "Save Image?"
-msgstr "Salvare l'immagine?"
+#: data/io.github.lainsce.DotMatrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
+msgstr "Il parco giochi della creatività dalle linee semplici"
 
-#: src/Widgets/UI.vala:40
-msgid ""
-"There are unsaved changes to the image. If you don't save, changes will be "
-"lost forever."
+#: data/io.github.lainsce.DotMatrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
+msgstr "Matrice;Vettore;Disegno;Griglia;"
+
+#: data/ui/mainwindow.ui:35
+msgid "New Glyph"
 msgstr ""
-"Sono presenti modifiche non salvate all'immagine. Se non salvi, le modifiche verranno "
-"perse per sempre."
 
-#: src/Widgets/UI.vala:44
-msgid "Save"
-msgstr "Salva"
+#: data/ui/mainwindow.ui:45
+msgid "Save Glyph As…"
+msgstr ""
 
-#: src/Widgets/UI.vala:45
-msgid "Close Without Saving"
-msgstr "Chiudi Senza Salvare"
+#: data/ui/mainwindow.ui:55
+msgid "Undo Recent Path"
+msgstr ""
 
-#: src/Widgets/UI.vala:46
-msgid "Cancel"
-msgstr "Cancella"
+#: data/ui/mainwindow.ui:96
+#, fuzzy
+msgid "Line Thickness"
+msgstr "Modifica Spessore della Linea"
 
-#: src/Widgets/UI.vala:148
-msgid "New file"
-msgstr "Nuovo file"
+#: data/ui/mainwindow.ui:105
+#, fuzzy
+msgid "Pick a Line Color"
+msgstr "Colore Linea"
 
-#: src/Widgets/UI.vala:159 src/Widgets/UI.vala:575
-msgid "Save file"
-msgstr "Salva file"
-
-#: src/Widgets/UI.vala:174
-msgid "Undo Last Line"
-msgstr "Annulla Ultima Riga"
-
-#: src/Widgets/UI.vala:189
+#: data/ui/mainwindow.ui:106
 msgid "Line Color"
 msgstr "Colore Linea"
 
-#: src/Widgets/UI.vala:200
-msgid "Change Line Thickness"
-msgstr "Modifica Spessore della Linea"
+#: data/ui/mainwindow.ui:118
+msgid "Close All Paths"
+msgstr ""
 
-#: src/Widgets/UI.vala:240
-msgid "Draw Curved Line"
-msgstr "Disegna una Linea Curva"
-
-#: src/Widgets/UI.vala:255
-msgid "Draw Reverse Curved Line"
-msgstr "Disegna Linea Curva Inversa"
-
-#: src/Widgets/UI.vala:271
-msgid "Draw Line"
+#: data/ui/mainwindow.ui:135
+#, fuzzy
+msgid "Line"
 msgstr "Disegna Linea"
 
-#: src/Widgets/UI.vala:285
-msgid "Change Line Cap"
-msgstr "Cambia il Punto della Linea"
+#: data/ui/mainwindow.ui:145
+msgid "Arc"
+msgstr ""
 
-#: src/Widgets/UI.vala:303
-msgid "Show/Hide Grid"
-msgstr "Mostra/Nascondi Griglia"
+#: data/ui/mainwindow.ui:155
+msgid "Inverted Arc"
+msgstr ""
 
-#: src/Widgets/UI.vala:328
-msgid "Fill Path"
-msgstr "Riempi Percorso"
+#: data/ui/menu.ui:6
+msgid "Keyboard Shortcuts"
+msgstr ""
 
-#: src/Widgets/UI.vala:615
+#: data/ui/menu.ui:10
+#, fuzzy
+msgid "About Dot Matrix"
+msgstr "Dot Matrix"
+
+#: data/ui/shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/ui/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/ui/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr ""
+
+#: data/ui/shortcuts.ui:29
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Drawing"
+msgstr "Disegna Linea"
+
+#: data/ui/shortcuts.ui:33
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Decrease Line Thickness"
+msgstr "Modifica Spessore della Linea"
+
+#: data/ui/shortcuts.ui:39
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Increase Line Thickness"
+msgstr "Modifica Spessore della Linea"
+
+#: src/MainWindow.vala:216
+#, fuzzy
+msgid "The glyph playground of creativity from simple lines."
+msgstr "Il parco giochi della creatività dalle linee semplici"
+
+#: src/MainWindow.vala:222
+msgid "translator-credits"
+msgstr ""
+
+#: src/Widgets/UI.vala:334
+msgid "Save Image?"
+msgstr "Salvare l'immagine?"
+
+#: src/Widgets/UI.vala:335
+msgid "Not saving means that the image will be lost forever."
+msgstr ""
+
+#: src/Widgets/UI.vala:337
+msgid "Don't Save"
+msgstr ""
+
+#: src/Widgets/UI.vala:339
+msgid "Cancel"
+msgstr "Cancella"
+
+#: src/Widgets/UI.vala:340
+msgid "Save"
+msgstr "Salva"
+
+#: src/Widgets/UI.vala:399
 msgid "SVG files"
 msgstr "File SVG"
 
-#: src/Widgets/UI.vala:620
+#: src/Widgets/UI.vala:403
 msgid "All files"
 msgstr "Tutti i file"

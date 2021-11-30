@@ -7,16 +7,102 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.dot-matrix\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-26 14:14+0200\n"
-"PO-Revision-Date: 2021-05-06 07:20+0200\n"
+"POT-Creation-Date: 2021-11-30 09:19+0100\n"
+"PO-Revision-Date: 2021-11-30 09:16+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: \n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:7
+msgid "The creativity playground of lines and curves"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Tillverka ikoner, tecken eller vad som helst som du kan skapa med linjer i "
+"detta punktfält"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Välj om du vill rita med linjer eller bågar."
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Avsluta när som helst med genvägen Ctrl+Q"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Ångra med genvägen CTRL+Z"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:14
+#, fuzzy
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
+"Ctrl + Shift + X"
+msgstr ""
+"Ändra linjetjocklek med +5 eller -5, med respektive genväg CTRL+) och CTRL+("
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:32
+msgid "Default"
+msgstr "Standard"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:52
+msgid "Release: Orange Sunrise"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:54
+msgid "Changed: Using more libadwaita recent UI styling."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:60
+msgid "Release: Cyan Sunset"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:62
+msgid "Changed: Using libadwaita recent UI styling."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:68
+msgid "Release: A New UI Hope"
+msgstr "Utgåva: Ett nytt användargränssnitt Hope"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:70
+msgid "New: UI is now following efforts made by me on Notejot."
+msgstr ""
+"Nytt: Användargränssnittet följer nu de ansträngningar som jag gjort på "
+"Notejot."
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:71
+msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
+msgstr "Åtgärdat: Hanterar att dra med mus/penna för färre fel."
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:77
+msgid "Release: Hello, GNOME!"
+msgstr "Utgåva: Hej, GNOME!"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:79
+msgid "Port to GNOME HIG and minor fixes."
+msgstr "Porterad till GNOME HIG och mindre korrigeringar."
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:3
+msgid "Dot Matrix"
+msgstr "Dot Matrix"
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
+msgstr "Lekplats för kreativa tecken från enkla linjer"
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
+msgstr "Matrix;Vector;Drawing;Grid;"
 
 #: data/ui/mainwindow.ui:35
 msgid "New Glyph"
@@ -30,31 +116,31 @@ msgstr "Spara tecken som…"
 msgid "Undo Recent Path"
 msgstr "Använd tidigare linje"
 
-#: data/ui/mainwindow.ui:95
+#: data/ui/mainwindow.ui:96
 msgid "Line Thickness"
 msgstr "Linjetjocklek"
 
-#: data/ui/mainwindow.ui:104
+#: data/ui/mainwindow.ui:105
 msgid "Pick a Line Color"
 msgstr "Välj en linjefärg"
 
-#: data/ui/mainwindow.ui:105
+#: data/ui/mainwindow.ui:106
 msgid "Line Color"
 msgstr "Linjefärg"
 
-#: data/ui/mainwindow.ui:117
+#: data/ui/mainwindow.ui:118
 msgid "Close All Paths"
 msgstr "Stäng alla linjer"
 
-#: data/ui/mainwindow.ui:127
+#: data/ui/mainwindow.ui:135
 msgid "Line"
 msgstr "Linje"
 
-#: data/ui/mainwindow.ui:137
+#: data/ui/mainwindow.ui:145
 msgid "Arc"
 msgstr "Båge"
 
-#: data/ui/mainwindow.ui:147
+#: data/ui/mainwindow.ui:155
 msgid "Inverted Arc"
 msgstr "Inverterad båge"
 
@@ -96,15 +182,11 @@ msgctxt "shortcut window"
 msgid "Increase Line Thickness"
 msgstr "Öka linjetjocklek"
 
-#: src/MainWindow.vala:230
-msgid "Dot Matrix"
-msgstr "Dot Matrix"
-
-#: src/MainWindow.vala:235
+#: src/MainWindow.vala:216
 msgid "The glyph playground of creativity from simple lines."
 msgstr "Lekplats för kreativa tecken utifrån enkla linjer."
 
-#: src/MainWindow.vala:241
+#: src/MainWindow.vala:222
 msgid "translator-credits"
 msgstr "Åke Engelbrektson <eson@svenskasprakfiler.se>"
 
@@ -135,31 +217,3 @@ msgstr "SVG-filer"
 #: src/Widgets/UI.vala:403
 msgid "All files"
 msgstr "Alla filer"
-
-#~ msgid ""
-#~ "There are unsaved changes to the image. If you don't save, changes will "
-#~ "be lost forever."
-#~ msgstr ""
-#~ "Det finns osparade ändringar i bilden. Om du inte sparar, kommer "
-#~ "ändringarna att förloras för alltid."
-
-#~ msgid "Close Without Saving"
-#~ msgstr "Stäng utan att spara"
-
-#~ msgid "New file"
-#~ msgstr "Ny fil"
-
-#~ msgid "Save file"
-#~ msgstr "Spara fil"
-
-#~ msgid "Undo Last Line"
-#~ msgstr "Ångra sista linjen"
-
-#~ msgid "Draw Curved Line"
-#~ msgstr "Rita en svängd linje"
-
-#~ msgid "Draw Reverse Curved Line"
-#~ msgstr "Rita en omvänt svängd linje"
-
-#~ msgid "Show/Hide Grid"
-#~ msgstr "Visa/Dölj punktnät"

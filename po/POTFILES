@@ -1,3 +1,7 @@
+data/io.github.lainsce.DotMatrix.appdata.xml.in
+data/io.github.lainsce.DotMatrix.desktop.in
+data/io.github.lainsce.DotMatrix.gschema.xml
+
 data/ui/mainwindow.ui
 data/ui/menu.ui
 data/ui/shortcuts.ui

@@ -7,16 +7,106 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.github.lainsce.DotMatrix\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-26 14:14+0200\n"
-"PO-Revision-Date: 2021-04-26 14:20+0200\n"
+"POT-Creation-Date: 2021-11-30 09:19+0100\n"
+"PO-Revision-Date: 2021-11-30 09:15+0100\n"
 "Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:7
+msgid "The creativity playground of lines and curves"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Haga iconos, glifos o cualquier cosa que puedas crear con líneas en esta "
+"cuadrícula de puntos"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Seleccione si desea dibujar con líneas o curvas."
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Salga en cualquier momento con el atajo Ctrl + Q"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Deshaga con el atajo Ctrl + Z"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:14
+#, fuzzy
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
+"Ctrl + Shift + X"
+msgstr ""
+"Cambie el grosor de la línea en +5 o -5 con los respectivos atajos Ctrl + ) "
+"y Ctrl + ("
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:32
+msgid "Default"
+msgstr "Por defecto"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:52
+msgid "Release: Orange Sunrise"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:54
+msgid "Changed: Using more libadwaita recent UI styling."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:60
+msgid "Release: Cyan Sunset"
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:62
+msgid "Changed: Using libadwaita recent UI styling."
+msgstr ""
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:68
+msgid "Release: A New UI Hope"
+msgstr "Versión: Una nueva esperanza para la interfaz de usuario"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:70
+msgid "New: UI is now following efforts made by me on Notejot."
+msgstr ""
+"Novedad: La interfaz de usuario sigue ahora los esfuerzos realizados por mí "
+"en Notejot."
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:71
+msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
+msgstr ""
+"Corregido: Maneja el arrastre con el ratón/lápiz óptico para que haya menos "
+"errores."
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:77
+msgid "Release: Hello, GNOME!"
+msgstr "Versión: ¡Hola, GNOME!"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:79
+msgid "Port to GNOME HIG and minor fixes."
+msgstr "Portado a GNOME HIG y correcciones menores."
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:3
+msgid "Dot Matrix"
+msgstr "Dot Matrix"
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
+msgstr ""
+"El patio de juegos de los glifos de la creatividad a partir de simples líneas"
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
+msgstr "Matrix;Vector;Drawing;Grid;Matriz;Dibujo;Red;"
 
 #: data/ui/mainwindow.ui:35
 msgid "New Glyph"
@@ -30,31 +120,31 @@ msgstr "Guardar glifo como…"
 msgid "Undo Recent Path"
 msgstr "Deshacer el camino reciente"
 
-#: data/ui/mainwindow.ui:95
+#: data/ui/mainwindow.ui:96
 msgid "Line Thickness"
 msgstr "Grosor de la línea"
 
-#: data/ui/mainwindow.ui:104
+#: data/ui/mainwindow.ui:105
 msgid "Pick a Line Color"
 msgstr "Elija un color de línea"
 
-#: data/ui/mainwindow.ui:105
+#: data/ui/mainwindow.ui:106
 msgid "Line Color"
 msgstr "Color de la línea"
 
-#: data/ui/mainwindow.ui:117
+#: data/ui/mainwindow.ui:118
 msgid "Close All Paths"
 msgstr "Cerrar todos los caminos"
 
-#: data/ui/mainwindow.ui:127
+#: data/ui/mainwindow.ui:135
 msgid "Line"
 msgstr "Línea"
 
-#: data/ui/mainwindow.ui:137
+#: data/ui/mainwindow.ui:145
 msgid "Arc"
 msgstr "Arco"
 
-#: data/ui/mainwindow.ui:147
+#: data/ui/mainwindow.ui:155
 msgid "Inverted Arc"
 msgstr "Arco invertido"
 
@@ -96,17 +186,13 @@ msgctxt "shortcut window"
 msgid "Increase Line Thickness"
 msgstr "Aumentar el grosor de la línea"
 
-#: src/MainWindow.vala:230
-msgid "Dot Matrix"
-msgstr "Dot Matrix"
-
-#: src/MainWindow.vala:235
+#: src/MainWindow.vala:216
 msgid "The glyph playground of creativity from simple lines."
 msgstr ""
 "El patio de juegos de los glifos de la creatividad a partir de simples "
 "líneas."
 
-#: src/MainWindow.vala:241
+#: src/MainWindow.vala:222
 msgid "translator-credits"
 msgstr "Óscar Fernández Díaz"
 
