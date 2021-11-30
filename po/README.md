@@ -4,7 +4,7 @@
 
 * Fork the repository here on github with the Fork button at the top-right.
 * Clone this repository by opening the terminal in a folder of your choice and typing ```git clone https://github.com/lainsce/dot-matrix```
-* (Optional) Check [Regenerate translations files](https://github.com/lainsce/dot-matrix/tree/master/po#-regenerate-translations-files) section if files haven't been recently updated.
+* (Optional) Check [Regenerate translations files](https://github.com/lainsce/dot-matrix/tree/main/po#-regenerate-translations-files) section if files haven't been recently updated.
 
 ## 📃 Basics
 
