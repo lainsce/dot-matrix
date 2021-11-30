@@ -3,7 +3,7 @@
     <id>io.github.lainsce.DotMatrix</id>
     <metadata_license>CC0</metadata_license>
     <project_license>GPL-3.0+</project_license>
-    <name>Dot Matrix</name>
+    <name translatable="no">Dot Matrix</name>
     <summary>The creativity playground of lines and curves</summary>
     <description>
         <p>Make out icons, glyphs, or anything you can create with lines in this grid of dots</p>
@@ -21,7 +21,7 @@
       <kudo>ModernToolkit</kudo>
       <kudo>HiDpiIcon</kudo>
     </kudos>
-    <developer_name>Lains</developer_name>
+    <developer_name translatable="no">Lains</developer_name>
     <url type="homepage">https://github.com/lainsce/dot-matrix/</url>
     <url type="donation">https://ko-fi.com/lainsce/</url>
     <url type="bugtracker">https://github.com/lainsce/dot-matrix/issues</url>
