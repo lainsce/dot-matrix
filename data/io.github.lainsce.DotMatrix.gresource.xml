@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/io/github/lainsce/DotMatrix">
-    <file alias="line-curve-symbolic.svg">icons/symbolic/line-curve-symbolic.svg</file>
-    <file alias="line-straight-symbolic.svg">icons/symbolic/line-straight-symbolic.svg</file>
-    <file alias="close-path-symbolic.svg">icons/symbolic/close-path-symbolic.svg</file>
-
     <file alias="mainwindow.ui">ui/mainwindow.ui</file>
     <file alias="shortcuts.ui">ui/shortcuts.ui</file>
     <file alias="menu.ui">ui/menu.ui</file>
