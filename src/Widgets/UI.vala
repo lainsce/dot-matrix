@@ -37,6 +37,7 @@ namespace DotMatrix {
 
         public GLib.List<Path> paths = new GLib.List<Path> ();
 		public Path current_path = new Path ();
+		public Path history_path = new Path ();
 
 		private int ratio = 25;
 		public double line_thickness = 5;
@@ -111,6 +112,7 @@ namespace DotMatrix {
 				var py = (int) Math.round(y.clamp (ratio, (double)(h)) / ratio) * ratio;
 
 				current_path.points.append (new Point (px, py));
+				history_path = current_path;
 				dirty = true;
 				da.queue_draw ();
 
@@ -313,12 +315,25 @@ namespace DotMatrix {
 			if (paths != null) {
 				unowned List<Path> last = paths.last ();
 				unowned List<Path> prev = last.prev;
-				paths.delete_link (last);
 				if (current_path != null) {
-					if (prev != null)
+					if (prev != null) {
 						current_path = prev.data;
-					else
-						current_path = null;
+					}
+				}
+				paths.delete_link (last);
+				da.queue_draw ();
+			}
+		}
+
+		public void redo () {
+			if (paths != null) {
+				unowned List<Path> last = paths.last ();
+				unowned Path prev = history_path;
+				if (current_path != null) {
+					if (prev != null) {
+						current_path = prev;
+						paths.append (current_path);
+					}
 				}
 				da.queue_draw ();
 			}

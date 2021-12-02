@@ -29,6 +29,8 @@ namespace DotMatrix {
         [GtkChild]
         public unowned Gtk.Button undo_button;
         [GtkChild]
+        public unowned Gtk.Button redo_button;
+        [GtkChild]
         public unowned Gtk.MenuButton menu_button;
         [GtkChild]
         public unowned Gtk.DrawingArea da;
@@ -61,6 +63,7 @@ namespace DotMatrix {
         public const string ACTION_ABOUT = "action_about";
         public const string ACTION_KEYS = "action_keys";
         public const string ACTION_UNDO = "action_undo";
+        public const string ACTION_REDO = "action_redo";
         public const string ACTION_INC_LINE = "action_inc_line";
         public const string ACTION_DEC_LINE = "action_dec_line";
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
@@ -69,6 +72,7 @@ namespace DotMatrix {
               {ACTION_ABOUT, action_about},
               {ACTION_KEYS, action_keys},
               {ACTION_UNDO, action_undo},
+              {ACTION_REDO, action_redo},
               {ACTION_INC_LINE, action_inc_line},
               {ACTION_DEC_LINE, action_dec_line},
         };
@@ -106,14 +110,23 @@ namespace DotMatrix {
             app.set_accels_for_action("app.quit", {"<Ctrl>q"});
             app.set_accels_for_action ("win.action_keys", {"<Ctrl>question"});
             app.set_accels_for_action ("win.action_undo", {"<Ctrl>z"});
+            app.set_accels_for_action ("win.action_redo", {"<Ctrl><Shift>z"});
             app.set_accels_for_action ("win.action_inc_line", {"<Ctrl>x"});
             app.set_accels_for_action ("win.action_dec_line", {"<Ctrl><Shift>x"});
 
             // UI
-            new_button.clicked.connect ((e) => {
+			var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/DotMatrix/menu.ui");
+            menu_button.menu_model = (MenuModel)builder.get_object ("menu");
+
+            ui = new Widgets.UI (this, da);
+            ui.line_color.parse (this.f_high);
+            ui.grid_main_dot_color.parse (this.b_med);
+			ui.grid_dot_color.parse (this.b_low);
+			ui.background_color.parse (this.background);
+
+			new_button.clicked.connect ((e) => {
                 ui.clear ();
             });
-
 			save_button.clicked.connect ((e) => {
 				try {
 					ui.save.begin ();
@@ -127,15 +140,11 @@ namespace DotMatrix {
 				ui.current_path = new Path ();
 				ui.da.queue_draw ();
 			});
-
-			var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/DotMatrix/menu.ui");
-            menu_button.menu_model = (MenuModel)builder.get_object ("menu");
-
-            ui = new Widgets.UI (this, da);
-            ui.line_color.parse (this.f_high);
-            ui.grid_main_dot_color.parse (this.b_med);
-			ui.grid_dot_color.parse (this.b_low);
-			ui.background_color.parse (this.background);
+			redo_button.clicked.connect ((e) => {
+				ui.redo ();
+				ui.current_path = new Path ();
+				ui.da.queue_draw ();
+			});
 
 			line_color_button.color_set.connect ((e) => {
 				ui.current_path.color = line_color_button.rgba;
@@ -237,6 +246,11 @@ namespace DotMatrix {
 
         public void action_undo () {
             ui.undo ();
+			ui.current_path = new Path ();
+			ui.da.queue_draw ();
+        }
+        public void action_redo () {
+            ui.redo ();
 			ui.current_path = new Path ();
 			ui.da.queue_draw ();
         }

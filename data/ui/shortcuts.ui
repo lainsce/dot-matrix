@@ -22,6 +22,12 @@
                 <property name="title" translatable="yes" context="shortcut window">Undo</property>
               </object>
             </child>
+            <child>
+              <object class="GtkShortcutsShortcut" id="redo">
+                <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;z</property>
+                <property name="title" translatable="yes" context="shortcut window">Redo</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>

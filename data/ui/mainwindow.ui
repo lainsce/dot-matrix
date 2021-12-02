@@ -59,6 +59,16 @@
                 </style>
               </object>
             </child>
+            <child>
+              <object class="GtkButton" id="redo_button">
+                <property name="receives-default">1</property>
+                <property name="tooltip-text" translatable="yes">Redo Recent Path</property>
+                <property name="icon-name">edit-redo-symbolic</property>
+                <style>
+                  <class name="image-button"/>
+                </style>
+              </object>
+            </child>
             <style>
               <class name="dm-bar"/>
             </style>
