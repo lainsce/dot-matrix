@@ -52,6 +52,7 @@
             <child>
               <object class="GtkButton" id="undo_button">
                 <property name="receives-default">1</property>
+                <property name="sensitive">0</property>
                 <property name="tooltip-text" translatable="yes">Undo Recent Path</property>
                 <property name="icon-name">edit-undo-symbolic</property>
                 <style>
@@ -62,6 +63,7 @@
             <child>
               <object class="GtkButton" id="redo_button">
                 <property name="receives-default">1</property>
+                <property name="sensitive">0</property>
                 <property name="tooltip-text" translatable="yes">Redo Recent Path</property>
                 <property name="icon-name">edit-redo-symbolic</property>
                 <style>

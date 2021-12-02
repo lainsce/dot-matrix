@@ -160,7 +160,9 @@ namespace DotMatrix {
 			});
 
 			line_curve_button.clicked.connect ((e) => {
-				ui.paths.append (ui.current_path);
+				ui.current_paths.append (ui.current_path);
+				ui.history_paths.append (ui.current_path);
+				undo_button.sensitive = true;
 				ui.current_path.is_curve = true;
 				ui.current_path.is_reverse_curve = false;
 				ui.current_path = new Path ();
@@ -169,7 +171,9 @@ namespace DotMatrix {
 			});
 
 			line_curve_reverse_button.clicked.connect ((e) => {
-				ui.paths.append (ui.current_path);
+				ui.current_paths.append (ui.current_path);
+				ui.history_paths.append (ui.current_path);
+				undo_button.sensitive = true;
 				ui.current_path.is_curve = true;
 				ui.current_path.is_reverse_curve = true;
 				ui.current_path = new Path ();
@@ -178,7 +182,9 @@ namespace DotMatrix {
 			});
 
 			line_straight_button.clicked.connect ((e) => {
-				ui.paths.append (ui.current_path);
+				ui.current_paths.append (ui.current_path);
+				ui.history_paths.append (ui.current_path);
+				undo_button.sensitive = true;
 				ui.current_path.is_curve = false;
 				ui.current_path = new Path ();
 				ui.da.queue_draw ();
@@ -186,7 +192,9 @@ namespace DotMatrix {
             });
 
 			close_path_button.toggled.connect ((e) => {
-				ui.paths.append (ui.current_path);
+				ui.current_paths.append (ui.current_path);
+				ui.history_paths.append (ui.current_path);
+				undo_button.sensitive = true;
 				if (ui.is_closed == true) {
 					ui.is_closed = false;
 				} else if (ui.is_closed == false) {

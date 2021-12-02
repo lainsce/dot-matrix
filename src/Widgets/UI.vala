@@ -35,9 +35,9 @@ namespace DotMatrix {
     public class Widgets.UI : Object {
         public MainWindow window;
 
-        public GLib.List<Path> paths = new GLib.List<Path> ();
+        public GLib.List<Path> current_paths = new GLib.List<Path> ();
+        public GLib.List<Path> history_paths = new GLib.List<Path> ();
 		public Path current_path = new Path ();
-		public Path history_path = new Path ();
 
 		private int ratio = 20;
 		public double line_thickness = 5;
@@ -115,7 +115,6 @@ namespace DotMatrix {
 				var py = (int) Math.round(y.clamp (ratio, (double)(h)) / ratio) * ratio;
 
 				current_path.points.append (new Point (px, py));
-				history_path = current_path;
 				dirty = true;
 				da.queue_draw ();
 
@@ -185,7 +184,7 @@ namespace DotMatrix {
 			}
 			c.stroke ();
 
-			foreach (var path in paths) {
+			foreach (var path in current_paths) {
 			    current_path.color = window.line_color_button.rgba;
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
@@ -316,28 +315,41 @@ namespace DotMatrix {
 		}
 
 		public void undo () {
-			if (paths != null) {
-				unowned List<Path> last = paths.last ();
+			if (current_paths != null) {
+				unowned List<Path> last = current_paths.last ();
 				unowned List<Path> prev = last.prev;
 				if (current_path != null) {
 					if (prev != null) {
 						current_path = prev.data;
+						window.undo_button.sensitive = true;
+						window.redo_button.sensitive = true;
+					} else {
+					    window.undo_button.sensitive = false;
 					}
 				}
-				paths.delete_link (last);
+				history_paths.append (last.data);
+				current_paths.delete_link (last);
 				da.queue_draw ();
 			}
 		}
 
 		public void redo () {
-			if (paths != null) {
-				unowned Path prev = history_path;
+			if (history_paths != null) {
+				unowned List<Path> h_last = history_paths.last ();
+				unowned List<Path> h_next = h_last.next;
+				unowned List<Path> last = current_paths.last ();
+				unowned List<Path> prev = last.prev;
 				if (current_path != null) {
-					if (prev != null) {
-						current_path = prev;
-						paths.append (current_path);
+					if (last != null) {
+						current_path = last.data;
+						window.redo_button.sensitive = true;
+						window.undo_button.sensitive = true;
+					} else {
+					    window.redo_button.sensitive = false;
 					}
 				}
+				current_paths.append (h_last.data);
+				history_paths.delete_link (h_last);
 				da.queue_draw ();
 			}
 		}
@@ -362,14 +374,16 @@ namespace DotMatrix {
                     case Gtk.ResponseType.OK:
 						debug ("User saves the file.");
 						save.begin ();
-						paths = null;
+						current_paths = null;
+						history_paths = null;
 						current_path = new Path ();
 						da.queue_draw ();
 						dirty = false;
                         dialog.close ();
                         break;
                     case Gtk.ResponseType.NO:
-						paths = null;
+						current_paths = null;
+						history_paths = null;
 						current_path = new Path ();
 						da.queue_draw ();
                         dialog.close ();
