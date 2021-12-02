@@ -194,6 +194,9 @@ namespace DotMatrix {
 				ui.dirty = true;
             });
 
+            if (Config.PROFILE == "Devel")
+                add_css_class ("devel");
+
             line_color_button.rgba = ui.line_color;
             this.set_size_request (360, 448); // shows an uniformed grid of dots at first launch
             this.show ();
