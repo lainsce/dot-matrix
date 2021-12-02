@@ -77,6 +77,7 @@
         <child>
           <object class="GtkBox" id="dabox">
             <property name="vexpand">1</property>
+            <property name="homogeneous">1</property>
             <property name="can-focus">0</property>
             <property name="margin-bottom">6</property>
             <property name="orientation">vertical</property>
@@ -85,8 +86,6 @@
             </style>
             <child>
               <object class="GtkDrawingArea" id="da">
-                <property name="vexpand">1</property>
-                <property name="hexpand">1</property>
                 <property name="receives-default">1</property>
               </object>
           </child>

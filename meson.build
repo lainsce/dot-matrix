@@ -46,9 +46,11 @@ asresources = gnome.compile_resources(
 )
 
 sources = files(
-   'src/Application.vala',
+    'src/Application.vala',
     'src/MainWindow.vala',
     'src/Widgets/UI.vala',
+    'src/Widgets/Prefs.vala',
+    'src/Services/SettingsManager.vala',
 )
 
 dependencies = [\

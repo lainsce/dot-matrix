@@ -17,7 +17,7 @@
 * Boston, MA 02110-1301 USA
 */
 namespace DotMatrix {
-    public class Point {
+    public class Point : Object {
 		public double x;
 		public double y;
 		public Point (double x, double y) {
@@ -25,21 +25,21 @@ namespace DotMatrix {
 			this.y = y;
 		}
 	}
-	public class Path {
+	public class Path : Object {
 		public GLib.List<Point> points = null;
 		public bool is_curve {get; set;}
 		public bool is_reverse_curve {get; set;}
 		public Gdk.RGBA color;
 	}
 
-    public class Widgets.UI {
+    public class Widgets.UI : Object {
         public MainWindow window;
 
         public GLib.List<Path> paths = new GLib.List<Path> ();
 		public Path current_path = new Path ();
 		public Path history_path = new Path ();
 
-		private int ratio = 25;
+		private int ratio = 20;
 		public double line_thickness = 5;
 		public Gdk.RGBA grid_main_dot_color;
         public Gdk.RGBA grid_dot_color;
@@ -51,13 +51,16 @@ namespace DotMatrix {
 		private bool see_grid {get; set; default=true;}
 		private bool inside {get; set; default=false;}
 		public bool is_closed {get; set; default=false;}
-        private double cur_x;
-		private double cur_y;
+        private double cur_x = 20;
+		private double cur_y = 20;
 
         public UI (MainWindow win, Gtk.DrawingArea da) {
 			this.window = win;
 			this.da = da;
 			da.set_size_request(win.get_allocated_width(),win.get_allocated_height());
+			var settings = new Settings ();
+			da.set_content_height (settings.canvas_height+40);
+			da.set_content_width (settings.canvas_width+40);
 
 			var evconmo = new Gtk.EventControllerMotion ();
 			da.add_controller (evconmo);
@@ -69,8 +72,8 @@ namespace DotMatrix {
 		        da.queue_draw();
             });
             evconmo.motion.connect ((e, x, y) => {
-				int h = da.get_allocated_height ();
-			    int w = da.get_allocated_width ();
+				int h = settings.canvas_height + 10;
+				int w = settings.canvas_width + 10;
 			    inside = true;
 			    da.queue_draw();
 
@@ -105,8 +108,8 @@ namespace DotMatrix {
                     return;
                 }
 
-                int h = da.get_allocated_height ();
-			    int w = da.get_allocated_width ();
+				int h = settings.canvas_height + 10;
+				int w = settings.canvas_width + 10;
 
 				var px = (int) Math.round(x.clamp (ratio, (double)(w)) / ratio) * ratio;
 				var py = (int) Math.round(y.clamp (ratio, (double)(h)) / ratio) * ratio;
@@ -140,7 +143,6 @@ namespace DotMatrix {
 			c.set_source_rgba (grid_dot_color.red, grid_dot_color.green, grid_dot_color.blue, 1);
 			c.arc(x, y, 3, 0, 2.0*3.14);
 			c.fill();
-			c.stroke();
 		}
 		private void find_mouse(Cairo.Context c) {
 			draw_circle (c, cur_x, cur_y);
@@ -149,8 +151,9 @@ namespace DotMatrix {
 		private void draw_grid (Cairo.Context c) {
 			if (see_grid == true) {
 				int i, j;
-				int h = da.get_allocated_height ();
-				int w = da.get_allocated_width ();
+				var settings = new Settings ();
+				int h = settings.canvas_height;
+				int w = settings.canvas_width;
 				c.set_antialias (Cairo.Antialias.SUBPIXEL);
 				c.set_line_width (1);
 				for (i = 0; i <= w / ratio; i++) {
@@ -173,7 +176,6 @@ namespace DotMatrix {
 		    c.set_antialias (Cairo.Antialias.SUBPIXEL);
 			c.set_line_cap (Cairo.LineCap.ROUND);
 			c.set_line_join (Cairo.LineJoin.ROUND);
-			da.queue_draw ();
 			c.set_line_width (line_thickness);
 			c.set_fill_rule (Cairo.FillRule.EVEN_ODD);
 
@@ -231,6 +233,8 @@ namespace DotMatrix {
 					}
 				}
 			}
+
+			da.queue_draw ();
 		}
 
 		private void draw_guideline (Cairo.Context c, Path path) {
@@ -327,7 +331,6 @@ namespace DotMatrix {
 
 		public void redo () {
 			if (paths != null) {
-				unowned List<Path> last = paths.last ();
 				unowned Path prev = history_path;
 				if (current_path != null) {
 					if (prev != null) {
@@ -396,8 +399,9 @@ namespace DotMatrix {
 			if (file == null) {
 				debug ("User cancelled operation. Aborting.");
 			} else {
-				var svg = new Cairo.SvgSurface (path, da.get_allocated_width(),da.get_allocated_height());
+				var svg = new Cairo.SvgSurface (path, da.content_width, da.content_height);
 				svg.restrict_to_version (Cairo.SvgVersion.VERSION_1_2);
+				svg.set_document_unit (Cairo.SvgUnit.PX);
 				Cairo.Context c = new Cairo.Context (svg);
 				draws (c);
 				svg.finish ();

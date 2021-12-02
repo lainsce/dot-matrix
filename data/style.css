@@ -25,3 +25,15 @@
   border-radius: 12px;
   margin: 0 6px;
 }
+
+.dm-list .boxed-list {
+  background: @view_bg_color;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.dm-list .boxed-list entry {
+  background: none;
+  border: 1px solid @borders;
+  box-shadow: none;
+}

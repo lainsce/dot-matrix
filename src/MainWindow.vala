@@ -64,6 +64,7 @@ namespace DotMatrix {
         public const string ACTION_KEYS = "action_keys";
         public const string ACTION_UNDO = "action_undo";
         public const string ACTION_REDO = "action_redo";
+        public const string ACTION_PREFS = "action_prefs";
         public const string ACTION_INC_LINE = "action_inc_line";
         public const string ACTION_DEC_LINE = "action_dec_line";
         public static Gee.MultiMap<string, string> action_accelerators = new Gee.HashMultiMap<string, string> ();
@@ -73,6 +74,7 @@ namespace DotMatrix {
               {ACTION_KEYS, action_keys},
               {ACTION_UNDO, action_undo},
               {ACTION_REDO, action_redo},
+              {ACTION_PREFS, action_prefs},
               {ACTION_INC_LINE, action_inc_line},
               {ACTION_DEC_LINE, action_dec_line},
         };
@@ -109,6 +111,7 @@ namespace DotMatrix {
             }
             app.set_accels_for_action("app.quit", {"<Ctrl>q"});
             app.set_accels_for_action ("win.action_keys", {"<Ctrl>question"});
+            app.set_accels_for_action ("win.action_prefs", {"<Ctrl>comma"});
             app.set_accels_for_action ("win.action_undo", {"<Ctrl>z"});
             app.set_accels_for_action ("win.action_redo", {"<Ctrl><Shift>z"});
             app.set_accels_for_action ("win.action_inc_line", {"<Ctrl>x"});
@@ -245,6 +248,14 @@ namespace DotMatrix {
             } catch (Error e) {
                 warning ("Failed to open shortcuts window: %s\n", e.message);
             }
+        }
+        public void action_prefs () {
+            var prefs = new Prefs ();
+            prefs.set_transient_for (this);
+            prefs.show ();
+            var settings = new Settings ();
+            prefs.width = settings.canvas_width;
+            prefs.height = settings.canvas_height;
         }
 
         public void action_undo () {

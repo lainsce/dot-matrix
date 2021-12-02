@@ -4,6 +4,7 @@
     <file alias="mainwindow.ui">ui/mainwindow.ui</file>
     <file alias="shortcuts.ui">ui/shortcuts.ui</file>
     <file alias="menu.ui">ui/menu.ui</file>
+    <file alias="prefs.ui">ui/prefs.ui</file>
 
     <file alias="style.css">style.css</file>
     <file alias="style-dark.css">style-dark.css</file>
