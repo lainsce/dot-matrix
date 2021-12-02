@@ -317,15 +317,14 @@ namespace DotMatrix {
 		public void undo () {
 			if (current_paths != null) {
 				unowned List<Path> last = current_paths.last ();
-				unowned List<Path> prev = last.prev;
 				if (current_path != null) {
-					if (prev != null) {
-						current_path = prev.data;
-						window.undo_button.sensitive = true;
+					if (last.prev != null) {
+						current_path = last.prev.data;
 						window.redo_button.sensitive = true;
 					} else {
+					    current_path = last.data;
 					    window.undo_button.sensitive = false;
-					}
+				    }
 				}
 				history_paths.append (last.data);
 				current_paths.delete_link (last);
@@ -336,17 +335,14 @@ namespace DotMatrix {
 		public void redo () {
 			if (history_paths != null) {
 				unowned List<Path> h_last = history_paths.last ();
-				unowned List<Path> h_next = h_last.next;
-				unowned List<Path> last = current_paths.last ();
-				unowned List<Path> prev = last.prev;
 				if (current_path != null) {
-					if (last != null) {
-						current_path = last.data;
-						window.redo_button.sensitive = true;
-						window.undo_button.sensitive = true;
+					if (h_last.next != null) {
+						current_path = h_last.next.data;
+						window.redo_button.sensitive = false;
 					} else {
-					    window.redo_button.sensitive = false;
-					}
+					    current_path = h_last.data;
+					    window.undo_button.sensitive = true;
+				    }
 				}
 				current_paths.append (h_last.data);
 				history_paths.delete_link (h_last);
