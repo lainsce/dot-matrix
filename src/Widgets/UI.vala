@@ -26,33 +26,32 @@ namespace DotMatrix {
 		}
 	}
 	public class Path : Object {
-		public GLib.List<Point> points = null;
 		public bool is_curve {get; set;}
 		public bool is_reverse_curve {get; set;}
 		public Gdk.RGBA color;
+		public GLib.List<Point> points = null;
 	}
 
     public class Widgets.UI : Object {
-        public MainWindow window;
+        private bool inside {get; set; default=false;}
+		private bool see_grid {get; set; default=true;}
+        private double cur_x = 20;
+		private double cur_y = 20;
+		private int ratio = 20;
 
+        public MainWindow window;
         public GLib.List<Path> current_paths = new GLib.List<Path> ();
         public GLib.List<Path> history_paths = new GLib.List<Path> ();
 		public Path current_path = new Path ();
-
-		private int ratio = 20;
+		public bool dirty {get; set;}
+		public bool is_closed {get; set; default=false;}
 		public double line_thickness = 5;
-		public Gdk.RGBA grid_main_dot_color;
-        public Gdk.RGBA grid_dot_color;
 		public Gdk.RGBA background_color;
+        public Gdk.RGBA grid_dot_color;
+		public Gdk.RGBA grid_main_dot_color;
 		public Gdk.RGBA line_color;
 		public Gtk.ColorButton line_color_button;
 		public Gtk.DrawingArea da;
-		public bool dirty {get; set;}
-		private bool see_grid {get; set; default=true;}
-		private bool inside {get; set; default=false;}
-		public bool is_closed {get; set; default=false;}
-        private double cur_x = 20;
-		private double cur_y = 20;
 
         public UI (MainWindow win, Gtk.DrawingArea da) {
 			this.window = win;
@@ -335,10 +334,10 @@ namespace DotMatrix {
 		public void redo () {
 			if (history_paths != null) {
 				unowned List<Path> h_last = history_paths.last ();
+				unowned List<Path> last = current_paths.last ();
 				if (current_path != null) {
 					if (h_last.next != null) {
 						current_path = h_last.next.data;
-						window.redo_button.sensitive = false;
 					} else {
 					    current_path = h_last.data;
 					    window.undo_button.sensitive = true;
@@ -373,6 +372,7 @@ namespace DotMatrix {
 						current_paths = null;
 						history_paths = null;
 						current_path = new Path ();
+						current_path.color = window.line_color_button.rgba;
 						da.queue_draw ();
 						dirty = false;
                         dialog.close ();
@@ -381,6 +381,7 @@ namespace DotMatrix {
 						current_paths = null;
 						history_paths = null;
 						current_path = new Path ();
+						current_path.color = window.line_color_button.rgba;
 						da.queue_draw ();
                         dialog.close ();
                         break;

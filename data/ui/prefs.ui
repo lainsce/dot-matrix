@@ -7,12 +7,15 @@
     <property name="modal">1</property>
     <property name="default-width">300</property>
     <property name="default-height">280</property>
+    <style>
+      <class name="dm-dbar"/>
+    </style>
     <child>
       <object class="AdwPreferencesPage">
         <property name="title" translatable="yes">General</property>
         <child>
           <object class="AdwPreferencesGroup">
-            <property name="title" translatable="yes">General</property>
+            <property name="title" translatable="yes">Glyph Canvas</property>
             <style>
               <class name="boxed-list"/>
               <class name="dm-list"/>

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk" version="4.0"/>
-  <requires lib="libhandy" version="1.0"/>
+  <menu id="menu">
+    <item>
+      <attribute name="label" translatable="yes">Preferences</attribute>
+      <attribute name="action">win.action_prefs</attribute>
+    </item>
+    <item>
+      <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+      <attribute name="action">win.action_keys</attribute>
+    </item>
+    <item>
+      <attribute name="label" translatable="yes">About Dot Matrix</attribute>
+      <attribute name="action">win.action_about</attribute>
+    </item>
+  </menu>
   <object class="GtkAdjustment" id="adjustment1">
     <property name="lower">5</property>
     <property name="upper">50</property>
@@ -9,66 +21,43 @@
     <property name="page-increment">5</property>
   </object>
   <template class="DotMatrixMainWindow" parent="AdwApplicationWindow">
-    <property name="can-focus">False</property>
-    <property name="visible">True</property>
     <property name="title">Dot Matrix</property>
     <child>
       <object class="GtkBox" id="box">
-        <property name="can-focus">0</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="AdwHeaderBar" id="headerbar">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
-                <property name="can-focus">True</property>
+                <property name="can-focus">1</property>
+                <property name="menu-model">menu</property>
                 <property name="icon-name">open-menu-symbolic</property>
-                <style>
-                  <class name="toggle-button"/>
-                </style>
               </object>
             </child>
             <child>
               <object class="GtkButton" id="new_button">
-                <property name="receives-default">1</property>
                 <property name="tooltip-text" translatable="yes">New Glyph</property>
                 <property name="icon-name">tab-new-symbolic</property>
-                <style>
-                  <class name="image-button"/>
-                </style>
               </object>
             </child>
             <child>
               <object class="GtkButton" id="save_button">
-                <property name="receives-default">1</property>
                 <property name="tooltip-text" translatable="yes">Save Glyph As…</property>
                 <property name="icon-name">document-save-as-symbolic</property>
-                <style>
-                  <class name="image-button"/>
-                </style>
               </object>
             </child>
             <child>
               <object class="GtkButton" id="undo_button">
-                <property name="receives-default">1</property>
                 <property name="sensitive">0</property>
                 <property name="tooltip-text" translatable="yes">Undo Recent Path</property>
                 <property name="icon-name">edit-undo-symbolic</property>
-                <style>
-                  <class name="image-button"/>
-                </style>
               </object>
             </child>
             <child>
               <object class="GtkButton" id="redo_button">
-                <property name="receives-default">1</property>
                 <property name="sensitive">0</property>
                 <property name="tooltip-text" translatable="yes">Redo Recent Path</property>
                 <property name="icon-name">edit-redo-symbolic</property>
-                <style>
-                  <class name="image-button"/>
-                </style>
               </object>
             </child>
             <style>
@@ -80,39 +69,30 @@
           <object class="GtkBox" id="dabox">
             <property name="vexpand">1</property>
             <property name="homogeneous">1</property>
-            <property name="can-focus">0</property>
-            <property name="margin-bottom">6</property>
             <property name="orientation">vertical</property>
             <style>
               <class name="dm-view"/>
             </style>
             <child>
               <object class="GtkDrawingArea" id="da">
-                <property name="receives-default">1</property>
               </object>
           </child>
           </object>
         </child>
         <child>
           <object class="GtkActionBar" id="actionbar">
-            <property name="can-focus">0</property>
             <child>
               <object class="GtkBox" id="box1">
-                <property name="can-focus">0</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkSpinButton" id="line_thickness_button">
                     <property name="adjustment">adjustment1</property>
                     <property name="value">5</property>
                     <property name="tooltip-text" translatable="yes">Line Thickness</property>
-                    <style>
-                      <class name="spinpill"/>
-                    </style>
                   </object>
                 </child>
                 <child>
                   <object class="GtkColorButton" id="line_color_button">
-                    <property name="receives-default">1</property>
                     <property name="title" translatable="yes">Pick a Line Color</property>
                     <property name="tooltip-text" translatable="yes">Line Color</property>
                   </object>
@@ -121,16 +101,11 @@
             </child>
             <child type="end">
               <object class="GtkBox" id="box2">
-                <property name="can-focus">0</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkToggleButton" id="close_path_button">
-                    <property name="receives-default">1</property>
                     <property name="tooltip-text" translatable="yes">Close All Paths</property>
                     <property name="icon-name">close-path-symbolic</property>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
                   </object>
                 </child>
                 <child>
@@ -142,31 +117,21 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="line_straight_button">
-                    <property name="receives-default">1</property>
                     <property name="tooltip-text" translatable="yes">Line</property>
                     <property name="icon-name">line-straight-symbolic</property>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
                   </object>
                 </child>
                 <child>
                   <object class="GtkButton" id="line_curve_button">
-                    <property name="receives-default">1</property>
                     <property name="tooltip-text" translatable="yes">Arc</property>
                     <property name="icon-name">line-curve-symbolic</property>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
                   </object>
                 </child>
                 <child>
                   <object class="GtkButton" id="line_curve_reverse_button">
-                    <property name="receives-default">1</property>
                     <property name="tooltip-text" translatable="yes">Inverted Arc</property>
                     <property name="icon-name">line-curve-symbolic</property>
                     <style>
-                      <class name="image-button"/>
                       <class name="rotated"/>
                     </style>
                   </object>

@@ -1,14 +1,14 @@
 <schemalist>
 	<schema id="io.github.lainsce.DotMatrix" path="/io/github/lainsce/DotMatrix/">
 	  <key type="i" name="canvas-width">
-			<default>300</default>
+			<default>320</default>
 			<summary>Canvas Width</summary>
-			<description>The version of migration to use; Do not change.</description>
+			<description>The canvas width.</description>
 		</key>
 	  <key type="i" name="canvas-height">
-			<default>300</default>
+			<default>320</default>
 			<summary>Canvas Height</summary>
-			<description>The version of migration to use; Do not change.</description>
+			<description>The canvas height.</description>
 		</key>
 	</schema>
 </schemalist>

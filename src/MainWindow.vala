@@ -48,15 +48,10 @@ namespace DotMatrix {
         public unowned Gtk.ToggleButton close_path_button;
 
         // Global Color Palette
-        public string background = "#EEEEEE";
-        public string f_high = "#000000";
-        public string f_med = "#999999";
-        public string f_low = "#CCCCCC";
-        public string f_inv = "#000000";
-        public string b_high = "#000000";
-        public string b_med = "#888888";
-        public string b_low = "#AAAAAA";
-        public string b_inv = "#FFB545";
+        public string background = "#E8F1EE";
+        public string f_high = "#191C1B";
+        public string b_med = "#898C8B";
+        public string b_low = "#A9ACAB";
 
         public SimpleActionGroup actions { get; construct; }
         public const string ACTION_PREFIX = "win.";
@@ -98,6 +93,9 @@ namespace DotMatrix {
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             theme.add_resource_path ("/io/github/lainsce/DotMatrix");
 
+            if (Config.PROFILE == "Devel")
+                add_css_class ("devel");
+
             // Actions
             actions = new SimpleActionGroup ();
             actions.add_action_entries (ACTION_ENTRIES, this);
@@ -118,14 +116,12 @@ namespace DotMatrix {
             app.set_accels_for_action ("win.action_dec_line", {"<Ctrl><Shift>x"});
 
             // UI
-			var builder = new Gtk.Builder.from_resource ("/io/github/lainsce/DotMatrix/menu.ui");
-            menu_button.menu_model = (MenuModel)builder.get_object ("menu");
-
             ui = new Widgets.UI (this, da);
             ui.line_color.parse (this.f_high);
             ui.grid_main_dot_color.parse (this.b_med);
 			ui.grid_dot_color.parse (this.b_low);
 			ui.background_color.parse (this.background);
+			ui.current_path.color = ui.line_color;
 
 			new_button.clicked.connect ((e) => {
                 ui.clear ();
@@ -141,14 +137,17 @@ namespace DotMatrix {
 			undo_button.clicked.connect ((e) => {
 				ui.undo ();
 				ui.current_path = new Path ();
+				ui.current_path.color = ui.line_color;
 				ui.da.queue_draw ();
 			});
 			redo_button.clicked.connect ((e) => {
 				ui.redo ();
 				ui.current_path = new Path ();
+				ui.current_path.color = ui.line_color;
 				ui.da.queue_draw ();
 			});
 
+            line_color_button.rgba = ui.line_color;
 			line_color_button.color_set.connect ((e) => {
 				ui.current_path.color = line_color_button.rgba;
 				ui.da.queue_draw ();
@@ -166,6 +165,7 @@ namespace DotMatrix {
 				ui.current_path.is_curve = true;
 				ui.current_path.is_reverse_curve = false;
 				ui.current_path = new Path ();
+				ui.current_path.color = ui.line_color;
 				ui.da.queue_draw ();
 				ui.dirty = true;
 			});
@@ -177,6 +177,7 @@ namespace DotMatrix {
 				ui.current_path.is_curve = true;
 				ui.current_path.is_reverse_curve = true;
 				ui.current_path = new Path ();
+				ui.current_path.color = ui.line_color;
 				ui.da.queue_draw ();
 				ui.dirty = true;
 			});
@@ -187,6 +188,7 @@ namespace DotMatrix {
 				undo_button.sensitive = true;
 				ui.current_path.is_curve = false;
 				ui.current_path = new Path ();
+				ui.current_path.color = ui.line_color;
 				ui.da.queue_draw ();
 				ui.dirty = true;
             });
@@ -201,17 +203,13 @@ namespace DotMatrix {
 					ui.is_closed = true;
 				}
 				ui.current_path = new Path ();
+				ui.current_path.color = ui.line_color;
 				ui.da.queue_draw ();
 				ui.dirty = true;
             });
 
-            if (Config.PROFILE == "Devel")
-                add_css_class ("devel");
-
-            line_color_button.rgba = ui.line_color;
-            this.set_size_request (360, 448); // shows an uniformed grid of dots at first launch
+            this.set_size_request (360, 360); // shows an uniformed grid of dots at first launch
             this.show ();
-            this.present ();
         }
 
         protected override bool close_request () {
@@ -269,11 +267,13 @@ namespace DotMatrix {
         public void action_undo () {
             ui.undo ();
 			ui.current_path = new Path ();
+			ui.current_path.color = ui.line_color;
 			ui.da.queue_draw ();
         }
         public void action_redo () {
             ui.redo ();
 			ui.current_path = new Path ();
+			ui.current_path.color = ui.line_color;
 			ui.da.queue_draw ();
         }
         public void action_inc_line () {

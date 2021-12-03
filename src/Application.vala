@@ -17,48 +17,31 @@
 * Boston, MA 02110-1301 USA
 *
 */
-namespace DotMatrix {
-    public class Application : Adw.Application {
-        public static MainWindow win = null;
-        public static GLib.Settings gsettings;
-        private const GLib.ActionEntry app_entries[] = {
-          { "quit", on_quit },
-        };
+public class DotMatrix.Application : Adw.Application {
+    private const GLib.ActionEntry app_entries[] = {
+        { "quit", quit },
+    };
 
-        public Application () {
-            Object (
-                flags: ApplicationFlags.FLAGS_NONE,
-                application_id: Config.APP_ID
-            );
+    public Application () {
+        Object (application_id: Config.APP_ID);
+    }
+    public static int main (string[] args) {
+        Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
+        Intl.textdomain (Config.GETTEXT_PACKAGE);
 
-            add_action_entries(app_entries, this);
-            set_resource_base_path ("/io/github/lainsce/DotMatrix/");
-        }
-        static construct {
-            gsettings = new GLib.Settings ("io.github.lainsce.DotMatrix");
-        }
-        construct {
-            Intl.setlocale (LocaleCategory.ALL, "");
-            Intl.bindtextdomain (Config.GETTEXT_PACKAGE, Config.GNOMELOCALEDIR);
-            Intl.textdomain (Config.GETTEXT_PACKAGE);
-        }
+        var app = new DotMatrix.Application ();
+        return app.run (args);
+    }
+    protected override void startup () {
+        resource_base_path = "/io/github/lainsce/DotMatrix";
 
-        protected override void activate () {
-            if (win != null) {
-                win.present ();
-                return;
-            }
-            win = new MainWindow (this);
-        }
-        private void on_quit() {
-            if (win.ui.dirty = true) {
-                win.ui.clear ();
-            }
-            win.destroy();
-        }
-        public static int main (string[] args) {
-            var app = new DotMatrix.Application ();
-            return app.run (args);
-        }
+        base.startup ();
+
+        add_action_entries (app_entries, this);
+
+        new MainWindow (this);
+    }
+    protected override void activate () {
+        active_window?.present ();
     }
 }
