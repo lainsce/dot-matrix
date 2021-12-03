@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: com.github.lainsce.dot-matrix\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-30 09:19+0100\n"
-"PO-Revision-Date: 2021-11-30 09:16+0100\n"
+"PO-Revision-Date: 2021-12-03 19:16+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: ITALIAN <LL@li.org>\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:7
 msgid "The creativity playground of lines and curves"
-msgstr ""
+msgstr "Il parco giochi della creatività di linee e curve"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:9
 msgid ""
@@ -41,56 +41,52 @@ msgid "Undo with the shortcut Ctrl + Z"
 msgstr "Annulla l'ultimo percorso con Ctrl + Z"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:14
-#, fuzzy
 msgid ""
 "Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
 "Ctrl + Shift + X"
 msgstr ""
-"Modifica lo spessore della linea di +5 o -5 con le rispettive scorciatoie "
-"Ctrl +) e Ctrl + ("
+"Cambia lo spessore della linea di +5 o -5 con le rispettive scorciatoie Ctrl + X e "
+"Ctrl + Maiusc + X"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:32
 msgid "Default"
-msgstr ""
+msgstr "Predefinito"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:52
-#, fuzzy
 msgid "Release: Orange Sunrise"
-msgstr "Versione: Klaxon francese"
+msgstr "Rilascio: Orange Sunrise"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:54
 msgid "Changed: Using more libadwaita recent UI styling."
-msgstr ""
+msgstr "Modificato: utilizzo di più stili di interfaccia utente recenti di libadwaita."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:60
-#, fuzzy
 msgid "Release: Cyan Sunset"
-msgstr "Versione: Klaxon francese"
+msgstr "Versione: Cyan Sunset"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:62
 msgid "Changed: Using libadwaita recent UI styling."
-msgstr ""
+msgstr "Modificato: utilizzo dello stile dell'interfaccia utente recente di libadwaita."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:68
-#, fuzzy
 msgid "Release: A New UI Hope"
-msgstr "Versione: Klaxon francese"
+msgstr "Versione: Una nuova interfaccia utente Hope"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:70
 msgid "New: UI is now following efforts made by me on Notejot."
-msgstr ""
+msgstr "Novità: l'interfaccia utente ora sta seguendo gli sforzi fatti da me su Notejot."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:71
 msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
-msgstr ""
+msgstr "Risolto: gestisce il trascinamento con un mouse/penna con meno bug."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:77
 msgid "Release: Hello, GNOME!"
-msgstr ""
+msgstr "Rilascio: Ciao, GNOME!"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:79
 msgid "Port to GNOME HIG and minor fixes."
-msgstr ""
+msgstr "Port su GNOME HIG e correzioni minori."
 
 #: data/io.github.lainsce.DotMatrix.desktop.in:3
 msgid "Dot Matrix"
@@ -106,25 +102,23 @@ msgstr "Matrice;Vettore;Disegno;Griglia;"
 
 #: data/ui/mainwindow.ui:35
 msgid "New Glyph"
-msgstr ""
+msgstr "Nuovo Glifo"
 
 #: data/ui/mainwindow.ui:45
 msgid "Save Glyph As…"
-msgstr ""
+msgstr "Salva glifo come…"
 
 #: data/ui/mainwindow.ui:55
 msgid "Undo Recent Path"
-msgstr ""
+msgstr "Annulla percorso recente"
 
 #: data/ui/mainwindow.ui:96
-#, fuzzy
 msgid "Line Thickness"
-msgstr "Modifica Spessore della Linea"
+msgstr "Spessore della linea"
 
 #: data/ui/mainwindow.ui:105
-#, fuzzy
 msgid "Pick a Line Color"
-msgstr "Colore Linea"
+msgstr "Scegli un colore per la linea"
 
 #: data/ui/mainwindow.ui:106
 msgid "Line Color"
@@ -132,71 +126,65 @@ msgstr "Colore Linea"
 
 #: data/ui/mainwindow.ui:118
 msgid "Close All Paths"
-msgstr ""
+msgstr "Chiudi tutti i percorsi"
 
 #: data/ui/mainwindow.ui:135
-#, fuzzy
 msgid "Line"
-msgstr "Disegna Linea"
+msgstr "Linea"
 
 #: data/ui/mainwindow.ui:145
 msgid "Arc"
-msgstr ""
+msgstr "Arco"
 
 #: data/ui/mainwindow.ui:155
 msgid "Inverted Arc"
-msgstr ""
+msgstr "Arco Invertito"
 
 #: data/ui/menu.ui:6
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Scorciatoie da tastiera"
 
 #: data/ui/menu.ui:10
-#, fuzzy
 msgid "About Dot Matrix"
-msgstr "Dot Matrix"
+msgstr "Informazioni sulla matrice di punti"
 
 #: data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Generale"
 
 #: data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Esci"
 
 #: data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "Undo"
-msgstr ""
+msgstr "Annulla"
 
 #: data/ui/shortcuts.ui:29
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Drawing"
-msgstr "Disegna Linea"
+msgstr "Disegna"
 
 #: data/ui/shortcuts.ui:33
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Decrease Line Thickness"
-msgstr "Modifica Spessore della Linea"
+msgstr "Diminuisci lo spessore della linea"
 
 #: data/ui/shortcuts.ui:39
-#, fuzzy
 msgctxt "shortcut window"
 msgid "Increase Line Thickness"
-msgstr "Modifica Spessore della Linea"
+msgstr "Aumenta lo spessore della linea"
 
 #: src/MainWindow.vala:216
-#, fuzzy
 msgid "The glyph playground of creativity from simple lines."
-msgstr "Il parco giochi della creatività dalle linee semplici"
+msgstr "Il parco giochi glifo della creatività dalle linee semplici."
 
 #: src/MainWindow.vala:222
 msgid "translator-credits"
-msgstr ""
+msgstr "Albano Battistella"
 
 #: src/Widgets/UI.vala:334
 msgid "Save Image?"
@@ -204,11 +192,11 @@ msgstr "Salvare l'immagine?"
 
 #: src/Widgets/UI.vala:335
 msgid "Not saving means that the image will be lost forever."
-msgstr ""
+msgstr "Non salvare significa che l'immagine andrà persa per sempre."
 
 #: src/Widgets/UI.vala:337
 msgid "Don't Save"
-msgstr ""
+msgstr "Non salvare"
 
 #: src/Widgets/UI.vala:339
 msgid "Cancel"
