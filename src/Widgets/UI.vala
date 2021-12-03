@@ -333,15 +333,12 @@ namespace DotMatrix {
 		public void redo () {
 		    if (history_paths != null) {
 	            unowned List<Path> h_last = history_paths.last ();
+	            unowned List<Path> last = current_paths.last ();
 	            if (current_path != null) {
-		            if (h_last.next != null) {
-			            current_path = h_last.next.data;
-		            }
-		            if (h_last != null) {
-		                if (h_last.next == null) {
-			                window.redo_button.sensitive = false;
-		                } else {
-		                    window.redo_button.sensitive = true;
+		            if (last != null) {
+			            current_path = last.data;
+			            if (last.next == null) {
+		                    window.redo_button.sensitive = false;
 		                }
 		            }
 	            }
