@@ -75,6 +75,8 @@
             </style>
             <child>
               <object class="GtkDrawingArea" id="da">
+                <property name="valign">center</property>
+                <property name="halign">center</property>
               </object>
           </child>
           </object>

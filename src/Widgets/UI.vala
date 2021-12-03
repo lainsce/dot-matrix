@@ -56,8 +56,8 @@ namespace DotMatrix {
         public UI (MainWindow win, Gtk.DrawingArea da) {
 			this.window = win;
 			this.da = da;
-			da.set_size_request(win.get_allocated_width(),win.get_allocated_height());
 			var settings = new Settings ();
+			da.set_size_request(settings.canvas_width,settings.canvas_height);
 			da.set_content_height (settings.canvas_height+40);
 			da.set_content_width (settings.canvas_width+40);
 
@@ -319,12 +319,11 @@ namespace DotMatrix {
 				if (current_path != null) {
 					if (last.prev != null) {
 						current_path = last.prev.data;
-						window.redo_button.sensitive = true;
 					} else {
-					    current_path = last.data;
-					    window.undo_button.sensitive = false;
-				    }
+						window.undo_button.sensitive = false;
+					}
 				}
+				window.redo_button.sensitive = true;
 				history_paths.append (last.data);
 				current_paths.delete_link (last);
 				da.queue_draw ();
@@ -332,20 +331,24 @@ namespace DotMatrix {
 		}
 
 		public void redo () {
-			if (history_paths != null) {
-				unowned List<Path> h_last = history_paths.last ();
-				unowned List<Path> last = current_paths.last ();
-				if (current_path != null) {
-					if (h_last.next != null) {
-						current_path = h_last.next.data;
-					} else {
-					    current_path = h_last.data;
-					    window.undo_button.sensitive = true;
-				    }
-				}
-				current_paths.append (h_last.data);
-				history_paths.delete_link (h_last);
-				da.queue_draw ();
+		    if (history_paths != null) {
+	            unowned List<Path> h_last = history_paths.last ();
+	            if (current_path != null) {
+		            if (h_last.next != null) {
+			            current_path = h_last.next.data;
+		            }
+		            if (h_last != null) {
+		                if (h_last.next == null) {
+			                window.redo_button.sensitive = false;
+		                } else {
+		                    window.redo_button.sensitive = true;
+		                }
+		            }
+	            }
+	            window.undo_button.sensitive = true;
+	            current_paths.append (h_last.data);
+	            history_paths.delete_link (h_last);
+	            da.queue_draw ();
 			}
 		}
 
