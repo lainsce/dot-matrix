@@ -373,6 +373,8 @@ namespace DotMatrix {
 						history_paths = null;
 						current_path = new Path ();
 						current_path.color = window.line_color_button.rgba;
+						window.undo_button.sensitive = false;
+						window.redo_button.sensitive = false;
 						da.queue_draw ();
 						dirty = false;
                         dialog.close ();
@@ -382,6 +384,8 @@ namespace DotMatrix {
 						history_paths = null;
 						current_path = new Path ();
 						current_path.color = window.line_color_button.rgba;
+						window.undo_button.sensitive = false;
+						window.redo_button.sensitive = false;
 						da.queue_draw ();
                         dialog.close ();
                         break;
