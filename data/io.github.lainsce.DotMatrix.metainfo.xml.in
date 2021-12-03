@@ -47,6 +47,15 @@
     </custom>
     <translation type="gettext">io.github.lainsce.DotMatrix</translation>
     <releases>
+        <release version="3.1.2" date="2021-12-03">
+           <description>
+               <p>Release: Blue Noon</p>
+               <ul>
+                   <li>Added: Redo button.</li>
+                   <li>Added: Settings dialog with canvas size customizing.</li>
+               </ul>
+           </description>
+        </release>
         <release version="3.1.1" date="2021-12-03">
            <description>
                <p>Release: Blue Noon</p>
