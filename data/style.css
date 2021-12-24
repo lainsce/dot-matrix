@@ -16,6 +16,7 @@
 
 .solid-csd {
   box-shadow: none;
+  outline: 1px solid @borders;
 }
 
 .dm-bar,
