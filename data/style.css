@@ -14,6 +14,10 @@
   transform: rotate(90deg);
 }
 
+.solid-csd {
+  box-shadow: none;
+}
+
 .dm-bar,
 .dm-abar box {
   background: @window_bg_color;
