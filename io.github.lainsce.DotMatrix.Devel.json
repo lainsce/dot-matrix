@@ -1,0 +1,45 @@
+{
+    "app-id" : "io.github.lainsce.DotMatrix.Devel",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "master",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "io.github.lainsce.DotMatrix",
+    "finish-args" : [
+        "--socket=wayland",
+        "--socket=fallback-x11",
+        "--share=ipc",
+        "--device=dri"
+    ],
+    "desktop-file-name-suffix" : " (Development)",
+    "cleanup" : [
+        "/cache",
+        "/man",
+        "/share/aclocal",
+        "/share/devhelp",
+        "/lib/systemd",
+        "/include",
+        "/lib/pkgconfig",
+        "/lib/libvala*",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/vala",
+        "*.a",
+        "*.la"
+    ],
+    "modules" : [
+        {
+            "name" : "DotMatrix",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Ddevelopment=true"
+            ],
+            "sources" : [
+                {
+                	"type": "dir",
+                	"path": "."
+                }
+            ]
+        }
+    ]
+}
+
