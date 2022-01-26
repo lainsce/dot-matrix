@@ -240,6 +240,7 @@ namespace DotMatrix {
                                    "artists", null,
                                    "license-type", Gtk.License.GPL_3_0,
                                    "wrap-license", false,
+                                   // TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
                                    "translator-credits", _("translator-credits"),
                                    null);
         }
