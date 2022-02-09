@@ -1,0 +1,7 @@
+.dm-view {
+  border: 1px solid @borders;
+}
+
+.dm-list .boxed-list {
+  border: 1px solid @borders;
+}

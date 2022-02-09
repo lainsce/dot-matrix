@@ -1,4 +1,4 @@
-project('io.github.lainsce.DotMatrix', ['vala', 'c'], version: '3.1.2')
+project('io.github.lainsce.DotMatrix', ['vala', 'c'], version: '3.1.3')
 gnome = import('gnome')
 i18n = import('i18n')
 

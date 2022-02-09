@@ -7,5 +7,6 @@
 
     <file alias="style.css">style.css</file>
     <file alias="style-dark.css">style-dark.css</file>
+    <file alias="style-hc.css">style-hc.css</file>
   </gresource>
 </gresources>
