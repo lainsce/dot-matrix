@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2021 Lains
+* Copyright (c) 2021-2022 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -48,10 +48,10 @@ namespace DotMatrix {
         public unowned Gtk.ToggleButton close_path_button;
 
         // Global Color Palette
-        public string background = "#E8F1EE";
-        public string f_high = "#191C1B";
-        public string b_med = "#898C8B";
-        public string b_low = "#A9ACAB";
+        public string background = "#f8fefc";
+        public string f_high = "#283330";
+        public string b_med = "#6d7975";
+        public string b_low = "#879490";
 
         public SimpleActionGroup actions { get; construct; }
         public const string ACTION_PREFIX = "win.";
