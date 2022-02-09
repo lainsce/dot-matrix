@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2021 Lains
+* Copyright (c) 2021-2022 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -44,8 +44,6 @@ namespace DotMatrix {
         public GLib.List<Path> history_paths = new GLib.List<Path> ();
 		public Path current_path = new Path ();
 		public bool dirty {get; set;}
-		public bool is_closed {get; set; default=false;}
-		public double line_thickness = 5;
 		public Gdk.RGBA background_color;
         public Gdk.RGBA grid_dot_color;
 		public Gdk.RGBA grid_main_dot_color;
@@ -174,7 +172,8 @@ namespace DotMatrix {
 		    c.set_antialias (Cairo.Antialias.SUBPIXEL);
 			c.set_line_cap (Cairo.LineCap.ROUND);
 			c.set_line_join (Cairo.LineJoin.ROUND);
-			c.set_line_width (line_thickness);
+			var settings = new Settings ();
+			c.set_line_width (settings.thickness);
 			c.set_fill_rule (Cairo.FillRule.EVEN_ODD);
 
 			if (current_path != null) {
@@ -187,7 +186,7 @@ namespace DotMatrix {
 			    current_path.color = window.line_color_button.rgba;
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
-						if (is_closed == true) {
+						if (settings.close_paths == true) {
 						    draw_reverse_curve (c, path);
 							c.close_path ();
 							c.fill ();
@@ -195,13 +194,13 @@ namespace DotMatrix {
 							draw_reverse_curve (c, path);
 							c.stroke ();
 							dirty = true;
-						} else if (is_closed == false) {
+						} else if (settings.close_paths == false) {
 							draw_reverse_curve (c, path);
 							c.stroke ();
 							dirty = true;
 						}
 					} else if (path.is_reverse_curve == false) {
-						if (is_closed == true) {
+						if (settings.close_paths == true) {
 						    draw_curve (c, path);
 							c.close_path ();
 							c.fill ();
@@ -209,14 +208,14 @@ namespace DotMatrix {
 							draw_curve (c, path);
 							c.stroke ();
 							dirty = true;
-						} else if (is_closed == false) {
+						} else if (settings.close_paths == false) {
 						    draw_curve (c, path);
 							c.stroke ();
 							dirty = true;
 						}
 					}
 				} else if (path.is_curve == false) {
-					if (is_closed == true) {
+					if (settings.close_paths == true) {
 					    draw_path (c, path);
 						c.close_path ();
 						c.fill ();
@@ -224,7 +223,7 @@ namespace DotMatrix {
 						draw_path (c, path);
 						c.stroke ();
 						dirty = true;
-					} else if (is_closed == false) {
+					} else if (settings.close_paths == false) {
 					    draw_path (c, path);
 						c.stroke ();
 						dirty = true;

@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2017-2021 Lains
+* Copyright (C) 2017-2022 Lains
 *
 * This program is free software; you can redistribute it &&/or
 * modify it under the terms of the GNU General Public
@@ -21,10 +21,14 @@ public class DotMatrix.Settings : Object {
     private GLib.Settings settings = new GLib.Settings ("io.github.lainsce.DotMatrix");
     public int canvas_width { get; set; }
     public int canvas_height { get; set; }
+    public int thickness { get; set; }
+    public bool close_paths { get; set; }
 
     construct {
         settings.bind ("canvas-width", this, "canvas-width", DEFAULT);
         settings.bind ("canvas-height", this, "canvas-height", DEFAULT);
+        settings.bind ("thickness", this, "thickness", DEFAULT);
+        settings.bind ("close-paths", this, "close-paths", DEFAULT);
     }
 
     public Action create_action (string key) {

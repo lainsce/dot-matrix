@@ -25,8 +25,6 @@ namespace DotMatrix {
         [GtkChild]
         public unowned Gtk.Button new_button;
         [GtkChild]
-        public unowned Gtk.Button save_button;
-        [GtkChild]
         public unowned Gtk.Button undo_button;
         [GtkChild]
         public unowned Gtk.Button redo_button;
@@ -37,15 +35,11 @@ namespace DotMatrix {
         [GtkChild]
         public unowned Gtk.ColorButton line_color_button;
         [GtkChild]
-        public unowned Gtk.SpinButton line_thickness_button;
-        [GtkChild]
         public unowned Gtk.Button line_curve_button;
         [GtkChild]
         public unowned Gtk.Button line_curve_reverse_button;
         [GtkChild]
         public unowned Gtk.Button line_straight_button;
-        [GtkChild]
-        public unowned Gtk.ToggleButton close_path_button;
 
         // Global Color Palette
         public string background = "#f8fefc";
@@ -56,6 +50,7 @@ namespace DotMatrix {
         public SimpleActionGroup actions { get; construct; }
         public const string ACTION_PREFIX = "win.";
         public const string ACTION_ABOUT = "action_about";
+        public const string ACTION_SAVE_AS = "action_save_as";
         public const string ACTION_KEYS = "action_keys";
         public const string ACTION_UNDO = "action_undo";
         public const string ACTION_REDO = "action_redo";
@@ -66,6 +61,7 @@ namespace DotMatrix {
 
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
               {ACTION_ABOUT, action_about},
+              {ACTION_SAVE_AS, action_save_as},
               {ACTION_KEYS, action_keys},
               {ACTION_UNDO, action_undo},
               {ACTION_REDO, action_redo},
@@ -108,6 +104,7 @@ namespace DotMatrix {
                 app.set_accels_for_action (ACTION_PREFIX + action, accels_array);
             }
             app.set_accels_for_action("app.quit", {"<Ctrl>q"});
+            app.set_accels_for_action ("win.action_save_as", {"<Ctrl><Shift>s"});
             app.set_accels_for_action ("win.action_keys", {"<Ctrl>question"});
             app.set_accels_for_action ("win.action_prefs", {"<Ctrl>comma"});
             app.set_accels_for_action ("win.action_undo", {"<Ctrl>z"});
@@ -125,13 +122,6 @@ namespace DotMatrix {
 
 			new_button.clicked.connect ((e) => {
                 ui.clear ();
-            });
-			save_button.clicked.connect ((e) => {
-				try {
-					ui.save.begin ();
-				} catch (Error e) {
-					warning ("Unexpected error during save: " + e.message);
-				}
             });
 
 			undo_button.clicked.connect ((e) => {
@@ -151,11 +141,6 @@ namespace DotMatrix {
 			line_color_button.color_set.connect ((e) => {
 				ui.current_path.color = line_color_button.rgba;
 				ui.da.queue_draw ();
-			});
-
-			line_thickness_button.value_changed.connect ((e) => {
-                ui.line_thickness = line_thickness_button.get_value ();
-                ui.da.queue_draw ();
 			});
 
 			line_curve_button.clicked.connect ((e) => {
@@ -187,21 +172,6 @@ namespace DotMatrix {
 				ui.history_paths.append (ui.current_path);
 				undo_button.sensitive = true;
 				ui.current_path.is_curve = false;
-				ui.current_path = new Path ();
-				ui.current_path.color = ui.line_color;
-				ui.da.queue_draw ();
-				ui.dirty = true;
-            });
-
-			close_path_button.toggled.connect ((e) => {
-				ui.current_paths.append (ui.current_path);
-				ui.history_paths.append (ui.current_path);
-				undo_button.sensitive = true;
-				if (ui.is_closed == true) {
-					ui.is_closed = false;
-				} else if (ui.is_closed == false) {
-					ui.is_closed = true;
-				}
 				ui.current_path = new Path ();
 				ui.current_path.color = ui.line_color;
 				ui.da.queue_draw ();
@@ -263,28 +233,33 @@ namespace DotMatrix {
             var settings = new Settings ();
             prefs.width = settings.canvas_width;
             prefs.height = settings.canvas_height;
+            prefs.thickness = settings.thickness;
+            prefs.close_paths = settings.close_paths;
+        }
+        public void action_save_as () {
+            ui.save.begin ();
         }
 
         public void action_undo () {
             ui.undo ();
-			ui.current_path = new Path ();
-			ui.current_path.color = ui.line_color;
-			ui.da.queue_draw ();
+            ui.current_path = new Path ();
+            ui.current_path.color = ui.line_color;
+            ui.da.queue_draw ();
         }
         public void action_redo () {
             ui.redo ();
-			ui.current_path = new Path ();
-			ui.current_path.color = ui.line_color;
-			ui.da.queue_draw ();
+            ui.current_path = new Path ();
+            ui.current_path.color = ui.line_color;
+            ui.da.queue_draw ();
         }
         public void action_inc_line () {
-            ui.line_thickness += 5;
-            line_thickness_button.set_value (ui.line_thickness);
+            var settings = new Settings ();
+            settings.thickness += 5;
             ui.da.queue_draw ();
         }
         public void action_dec_line () {
-            ui.line_thickness -= 5;
-            line_thickness_button.set_value (ui.line_thickness);
+            var settings = new Settings ();
+            settings.thickness -= 5;
             ui.da.queue_draw ();
         }
     }

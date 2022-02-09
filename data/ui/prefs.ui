@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk" version="4.0"/>
-  <requires lib="libadwaita" version="1.0"/>
   <template class="DotMatrixPrefs" parent="AdwPreferencesWindow">
     <property name="search-enabled">0</property>
     <property name="modal">1</property>
-    <property name="default-width">300</property>
-    <property name="default-height">280</property>
+    <property name="default-width">380</property>
+    <property name="default-height">420</property>
     <style>
       <class name="dm-dbar"/>
     </style>
@@ -42,6 +40,50 @@
                     <property name="valign">center</property>
                     <property name="halign">end</property>
                     <property name="text" bind-source="DotMatrixPrefs" bind-property="height" bind-flags="sync-create"/>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Glyph Drawing</property>
+            <style>
+              <class name="boxed-list"/>
+              <class name="dm-list"/>
+            </style>
+            <child>
+              <object class="AdwActionRow">
+                <property name="activatable">0</property>
+                <property name="title" translatable="yes">Line Thickness</property>
+                <child>
+                  <object class="GtkSpinButton" id="line_thickness_button">
+                    <property name="adjustment">
+                      <object class="GtkAdjustment" id="adjustment1">
+                        <property name="lower">5</property>
+                        <property name="upper">50</property>
+                        <property name="step-increment">5</property>
+                        <property name="page-increment">5</property>
+                      </object>
+                    </property>
+                    <property name="value" bind-source="DotMatrixPrefs" bind-property="thickness" bind-flags="sync-create"/>
+                    <property name="valign">center</property>
+                    <property name="halign">end</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow">
+                <property name="activatable">0</property>
+                <property name="title" translatable="yes">Filled Shapes</property>
+                <property name="subtitle" translatable="yes">If there are lines that close shapes, fill them.</property>
+                <child>
+                  <object class="GtkSwitch" id="close_paths_switch">
+                    <property name="active" bind-source="DotMatrixPrefs" bind-property="close-paths" bind-flags="sync-create"/>
+                    <property name="valign">center</property>
+                    <property name="halign">end</property>
                   </object>
                 </child>
               </object>

@@ -10,5 +10,15 @@
 			<summary>Canvas Height</summary>
 			<description>The canvas height.</description>
 		</key>
+	  <key type="i" name="thickness">
+			<default>5</default>
+			<summary>Line Thickness</summary>
+			<description>The line thickness.</description>
+		</key>
+	  <key type="b" name="close-paths">
+			<default>false</default>
+			<summary>Closed Paths</summary>
+			<description>If the drawing will always close lines into shapes.</description>
+		</key>
 	</schema>
 </schemalist>
