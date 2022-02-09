@@ -6,7 +6,7 @@ install_data(
 )
 
 install_data(
-  'io.github.lainsce.DotMatrix-symbolic.svg',
+  meson.project_name() + '-symbolic.svg',
   install_dir: join_paths(icondir, 'symbolic/apps'),
   rename: '@0@-symbolic.svg'.format(app_id),
 )

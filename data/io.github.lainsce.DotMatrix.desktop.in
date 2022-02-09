@@ -2,7 +2,7 @@
 Name=Dot Matrix
 Comment=The glyph playground of creativity from simple lines
 Exec=io.github.lainsce.DotMatrix
-Icon=@icon@
+Icon=@app_id@
 Keywords=Matrix;Vector;Drawing;Grid;
 Terminal=false
 Type=Application

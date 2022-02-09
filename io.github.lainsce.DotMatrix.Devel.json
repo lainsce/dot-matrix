@@ -1,20 +1,16 @@
 {
-    "app-id" : "io.github.lainsce.DotMatrixDevel",
+    "app-id" : "io.github.lainsce.DotMatrix.Devel",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
     "command" : "io.github.lainsce.DotMatrix",
-    "rename-icon" : "io.github.lainsce.DotMatrixDevel",
     "finish-args" : [
         "--socket=wayland",
         "--socket=fallback-x11",
         "--share=ipc",
         "--device=dri"
     ],
-    "tags" : [
-        "nightly"
-    ],
-    "desktop-file-name-suffix" : " (Devel)",
+    "desktop-file-name-suffix" : " (Development)",
     "cleanup" : [
         "/cache",
         "/man",
@@ -35,13 +31,12 @@
             "name" : "DotMatrix",
             "buildsystem" : "meson",
             "config-opts" : [
-                "-Dprofile=development"
+                "-Ddevelopment=true"
             ],
             "sources" : [
                 {
-                	"type": "git",
-                	"url": "https://github.com/lainsce/dot-matrix.git",
-                	"branch" : "main"
+                	"type": "dir",
+                	"path": "."
                 }
             ]
         }
