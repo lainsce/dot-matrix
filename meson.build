@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-project('io.github.lainsce.DotMatrix', ['vala', 'c'], version: '3.1.3')
-=======
 project('io.github.lainsce.DotMatrix', 'vala',
-        version: '3.1.2',
+        version: '3.1.3',
         meson_version: '>= 0.59.0'
 )
-
->>>>>>> 3a9d0b26f48ccbb9801990acfa340d6a38394fa2
 gnome = import('gnome')
 i18n = import('i18n')
 
