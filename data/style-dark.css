@@ -9,3 +9,4 @@
 @define-color window_fg_color #f8fefc;
 @define-color view_fg_color #f8fefc;
 @define-color headerbar_fg_color #f8fefc;
+@define-color borders alpha(#89938e, 0.5);

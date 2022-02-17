@@ -9,6 +9,7 @@
 @define-color window_fg_color #181d1b;
 @define-color view_fg_color #181d1b;
 @define-color headerbar_fg_color #181d1b;
+@define-color borders alpha(#707975, 0.5);
 
 .rotated image {
   transform: rotate(90deg);

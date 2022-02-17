@@ -44,8 +44,8 @@ namespace DotMatrix {
         // Global Color Palette
         public string background = "#f8fefc";
         public string f_high = "#181d1b";
-        public string b_med = "#6d7975";
-        public string b_low = "#879490";
+        public string b_med = "#707975";
+        public string b_low = "#89938e";
 
         public SimpleActionGroup actions { get; construct; }
         public const string ACTION_PREFIX = "win.";
