@@ -111,40 +111,42 @@
                         <child>
                           <object class="GtkButton" id="line_straight_button">
                             <property name="child">
-                              <object class="AdwButtonContent">
-                                <property name="icon-name">line-straight-symbolic</property>
+                              <object class="GtkLabel">
                                 <property name="label" translatable="yes">Line</property>
+                                <property name="xalign">0</property>
                               </object>
                             </property>
                             <style>
                               <class name="flat" />
+                              <class name="dm-no-bold" />
                             </style>
                           </object>
                         </child>
                         <child>
                           <object class="GtkButton" id="line_curve_button">
                             <property name="child">
-                              <object class="AdwButtonContent">
-                                <property name="icon-name">line-curve-symbolic</property>
+                              <object class="GtkLabel">
                                 <property name="label" translatable="yes">Arc</property>
+                                <property name="xalign">0</property>
                               </object>
                             </property>
                             <style>
                               <class name="flat" />
+                              <class name="dm-no-bold" />
                             </style>
                           </object>
                         </child>
                         <child>
                           <object class="GtkButton" id="line_curve_reverse_button">
                             <property name="child">
-                              <object class="AdwButtonContent">
-                                <property name="icon-name">line-curve-symbolic</property>
+                              <object class="GtkLabel">
                                 <property name="label" translatable="yes">Inverted Arc</property>
+                                <property name="xalign">0</property>
                               </object>
                             </property>
                             <style>
-                              <class name="rotated"/>
                               <class name="flat" />
+                              <class name="dm-no-bold" />
                             </style>
                           </object>
                         </child>

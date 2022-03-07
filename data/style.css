@@ -68,3 +68,11 @@
 .list-action-button.accent-button .toggle:active {
   background: shade(@accent_bg_color, 0.95);
 }
+
+.dm-dbar headerbar {
+  box-shadow: none;
+}
+
+.dm-no-bold {
+  font-weight: 500;
+}
