@@ -11,10 +11,6 @@
 @define-color headerbar_fg_color #181d1b;
 @define-color borders alpha(#707975, 0.5);
 
-.rotated image {
-  transform: rotate(90deg);
-}
-
 .solid-csd {
   box-shadow: none;
   outline: 1px solid @borders;
