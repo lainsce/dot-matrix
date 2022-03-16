@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.DotMatrix package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.DotMatrix\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-30 09:19+0100\n"
+"PO-Revision-Date: 2022-03-16 16:35-0300\n"
+"Last-Translator: Clovis Fabricio <github.nosklo@0sg.net>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:7
+msgid "The creativity playground of lines and curves"
+msgstr "O espaço criativo de linhas e curvas"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Faça ícones, símbolos, ou qualquer coisa que você quiser criar com linhas "
+"nessa grade de pontos"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Selecione se deseja desenhar com retas ou curvas"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Saia a qualquer momento com o atalho Ctrl + Q"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Desfaça com o atalho Ctrl + Z"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:14
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
+"Ctrl + Shift + X"
+msgstr ""
+"mude a largura da linha em +5 ou -5 com os atalhos Ctrl + X e Ctrl + Shift + "
+"X respectivamente"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:32
+msgid "Default"
+msgstr "Padrão"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:52
+msgid "Release: Orange Sunrise"
+msgstr "Lançamento: Aurora Laranja"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:54
+msgid "Changed: Using more libadwaita recent UI styling."
+msgstr "Alterações: Usando o mais recente estilo de interface do libadwaita"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:60
+msgid "Release: Cyan Sunset"
+msgstr "Lançamento: Crepúsculo Ciano"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:62
+msgid "Changed: Using libadwaita recent UI styling."
+msgstr "Alterações: Usando o mais recente estilo de interface do libadwaita"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:68
+msgid "Release: A New UI Hope"
+msgstr "Lançamento: Uma nova esperança de UI"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:70
+msgid "New: UI is now following efforts made by me on Notejot."
+msgstr "Novo: UI agora segue os esforços feitos por mim no Notejot"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:71
+msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
+msgstr "Consertado: Gerencia arrastar com um mouse/caneta por menos bugs"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:77
+msgid "Release: Hello, GNOME!"
+msgstr "Lançamento: Olá, GNOME!"
+
+#: data/io.github.lainsce.DotMatrix.appdata.xml.in:79
+msgid "Port to GNOME HIG and minor fixes."
+msgstr "Portado para o HIG do GNOME e outros acertos."
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:3
+msgid "Dot Matrix"
+msgstr "Matriz de Pontos"
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
+msgstr "O espaço criativo de símbolos a partir de linhas simples"
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
+msgstr "Matriz;Vetor;Desenho;Grade;"
+
+#: data/ui/mainwindow.ui:35
+msgid "New Glyph"
+msgstr "Novo Símbolo"
+
+#: data/ui/mainwindow.ui:45
+msgid "Save Glyph As…"
+msgstr "Salvar Símbolo Como..."
+
+#: data/ui/mainwindow.ui:55
+msgid "Undo Recent Path"
+msgstr "Desfazer Caminho Recente"
+
+#: data/ui/mainwindow.ui:96
+msgid "Line Thickness"
+msgstr "Largura da Linha"
+
+#: data/ui/mainwindow.ui:105
+msgid "Pick a Line Color"
+msgstr "Selecione uma Cor de Linha"
+
+#: data/ui/mainwindow.ui:106
+msgid "Line Color"
+msgstr "Cor da Linha"
+
+#: data/ui/mainwindow.ui:118
+msgid "Close All Paths"
+msgstr "Fechar Todos os Caminhos"
+
+#: data/ui/mainwindow.ui:135
+msgid "Line"
+msgstr "Linha"
+
+#: data/ui/mainwindow.ui:145
+msgid "Arc"
+msgstr "Arco"
+
+#: data/ui/mainwindow.ui:155
+msgid "Inverted Arc"
+msgstr "Arco Invertido"
+
+#: data/ui/menu.ui:6
+msgid "Keyboard Shortcuts"
+msgstr "Atalhos de Teclado"
+
+#: data/ui/menu.ui:10
+msgid "About Dot Matrix"
+msgstr "Sobre o Matriz de Pontos"
+
+#: data/ui/shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "[janela de atalhos] Geral"
+
+#: data/ui/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "[janela de atalhos] Sair"
+
+#: data/ui/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr "[janela de atalhos] Desfazer"
+
+#: data/ui/shortcuts.ui:29
+msgctxt "shortcut window"
+msgid "Drawing"
+msgstr "[janela de atalhos] Desenhar"
+
+#: data/ui/shortcuts.ui:33
+msgctxt "shortcut window"
+msgid "Decrease Line Thickness"
+msgstr "[janela de atalhos] Diminuir Largura da Linha"
+
+#: data/ui/shortcuts.ui:39
+msgctxt "shortcut window"
+msgid "Increase Line Thickness"
+msgstr "[janela de atalhos] Aumentar Largura da Linha"
+
+#: src/MainWindow.vala:216
+msgid "The glyph playground of creativity from simple lines."
+msgstr "O espaço criativo de símbolos a partir de linhas simples."
+
+#: src/MainWindow.vala:222
+msgid "translator-credits"
+msgstr "Clovis Fabricio <github.nosklo@0sg.net>"
+
+#: src/Widgets/UI.vala:334
+msgid "Save Image?"
+msgstr "Salvar Imagem?"
+
+#: src/Widgets/UI.vala:335
+msgid "Not saving means that the image will be lost forever."
+msgstr "Não salvar significa que a imagem será perdida para sempre."
+
+#: src/Widgets/UI.vala:337
+msgid "Don't Save"
+msgstr "Não Salvar"
+
+#: src/Widgets/UI.vala:339
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/Widgets/UI.vala:340
+msgid "Save"
+msgstr "Salvar"
+
+#: src/Widgets/UI.vala:399
+msgid "SVG files"
+msgstr "Arquivos SVG"
+
+#: src/Widgets/UI.vala:403
+msgid "All files"
+msgstr "Todos os arquivos"
