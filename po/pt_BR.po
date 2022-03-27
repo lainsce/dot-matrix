@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: io.github.lainsce.DotMatrix\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-11-30 09:19+0100\n"
-"PO-Revision-Date: 2022-03-16 16:35-0300\n"
+"PO-Revision-Date: 2022-03-27 11:16-0300\n"
 "Last-Translator: Clovis Fabricio <github.nosklo@0sg.net>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:11
 msgid "Select whetether to draw with lines or curves."
-msgstr "Selecione se deseja desenhar com retas ou curvas"
+msgstr "Selecione se deseja desenhar com retas ou curvas."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:12
 msgid "Quit anytime with the shortcut Ctrl + Q"
@@ -47,7 +47,7 @@ msgid ""
 "Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
 "Ctrl + Shift + X"
 msgstr ""
-"mude a largura da linha em +5 ou -5 com os atalhos Ctrl + X e Ctrl + Shift + "
+"Mude a largura da linha em +5 ou -5 com os atalhos Ctrl + X e Ctrl + Shift + "
 "X respectivamente"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:32
@@ -60,7 +60,7 @@ msgstr "Lançamento: Aurora Laranja"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:54
 msgid "Changed: Using more libadwaita recent UI styling."
-msgstr "Alterações: Usando o mais recente estilo de interface do libadwaita"
+msgstr "Alterações: Usando o mais recente estilo de interface do libadwaita."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:60
 msgid "Release: Cyan Sunset"
@@ -68,7 +68,7 @@ msgstr "Lançamento: Crepúsculo Ciano"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:62
 msgid "Changed: Using libadwaita recent UI styling."
-msgstr "Alterações: Usando o mais recente estilo de interface do libadwaita"
+msgstr "Alterações: Usando o mais recente estilo de interface do libadwaita."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:68
 msgid "Release: A New UI Hope"
@@ -76,11 +76,11 @@ msgstr "Lançamento: Uma nova esperança de UI"
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:70
 msgid "New: UI is now following efforts made by me on Notejot."
-msgstr "Novo: UI agora segue os esforços feitos por mim no Notejot"
+msgstr "Novo: UI agora segue os esforços feitos por mim no Notejot."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:71
 msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
-msgstr "Consertado: Gerencia arrastar com um mouse/caneta por menos bugs"
+msgstr "Consertado: Gerencia o arraste com um mouse/caneta para menos falhas."
 
 #: data/io.github.lainsce.DotMatrix.appdata.xml.in:77
 msgid "Release: Hello, GNOME!"
@@ -92,7 +92,7 @@ msgstr "Portado para o HIG do GNOME e outros acertos."
 
 #: data/io.github.lainsce.DotMatrix.desktop.in:3
 msgid "Dot Matrix"
-msgstr "Matriz de Pontos"
+msgstr "Dot Matrix"
 
 #: data/io.github.lainsce.DotMatrix.desktop.in:4
 msgid "The glyph playground of creativity from simple lines"
@@ -108,7 +108,7 @@ msgstr "Novo Símbolo"
 
 #: data/ui/mainwindow.ui:45
 msgid "Save Glyph As…"
-msgstr "Salvar Símbolo Como..."
+msgstr "Salvar símbolo Como…"
 
 #: data/ui/mainwindow.ui:55
 msgid "Undo Recent Path"
@@ -148,7 +148,7 @@ msgstr "Atalhos de Teclado"
 
 #: data/ui/menu.ui:10
 msgid "About Dot Matrix"
-msgstr "Sobre o Matriz de Pontos"
+msgstr "Sobre Dot Matrix"
 
 #: data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
