@@ -1,5 +1,5 @@
 project('io.github.lainsce.DotMatrix', 'vala',
-        version: '3.1.3',
+        version: '3.1.4',
         meson_version: '>= 0.59.0'
 )
 gnome = import('gnome')

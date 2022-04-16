@@ -47,6 +47,14 @@
     </custom>
     <translation type="gettext">io.github.lainsce.DotMatrix</translation>
     <releases>
+        <release version="3.1.4" date="2022-04-20">
+           <description>
+               <p>Release: Yellow Sunset</p>
+               <ul>
+                  <li>Changed: UI now follows my own style that complements that of Adwaita, called Solo.</li>
+               </ul>
+           </description>
+        </release>
         <release version="3.1.3" date="2022-02-11">
            <description>
                <p>Release: Blue Noon</p>
