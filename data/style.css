@@ -1,17 +1,20 @@
 @define-color accent_color #00c09e;
 @define-color accent_bg_color #00a588;
 @define-color accent_fg #f0fffa;
-@define-color window_bg_color #ecf2f0;
-@define-color view_bg_color #f8fefc;
-@define-color headerbar_bg_color #ecf2f0;
-@define-color popover_bg_color #f8fefc;
-@define-color popover_fg_color #283330;
-@define-color window_fg_color #283330;
-@define-color view_fg_color #283330;
-@define-color headerbar_fg_color #283330;
+@define-color window_bg_color #fff;
+@define-color headerbar_bg_color #fff;
 
 .rotated {
   transform: rotate(90deg);
+}
+
+.main-box {
+  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.12));
+}
+
+.main-box headerbar {
+  background: none;
+  box-shadow: none;
 }
 
 .solid-csd {
@@ -20,25 +23,12 @@
 }
 
 .dm-bar,
-.dm-abar box {
-  background: @window_bg_color;
+.dm-bar box {
+  background: none;
   box-shadow: none;
-}
-
-.dm-view {
-  background: @view_bg_color;
-  border-radius: 12px;
-  margin: 0 6px;
 }
 
 .dm-list .boxed-list {
-  background: @view_bg_color;
   border-radius: 12px;
-  box-shadow: none;
-}
-
-.dm-list .boxed-list entry {
-  background: none;
-  border: 1px solid @borders;
   box-shadow: none;
 }

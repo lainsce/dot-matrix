@@ -25,8 +25,14 @@
     <child>
       <object class="GtkBox" id="box">
         <property name="orientation">vertical</property>
+        <style>
+          <class name="main-box"/>
+        </style>
         <child>
           <object class="AdwHeaderBar" id="headerbar">
+            <style>
+              <class name="dm-bar"/>
+            </style>
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
                 <property name="can-focus">1</property>
@@ -60,9 +66,6 @@
                 <property name="icon-name">edit-redo-symbolic</property>
               </object>
             </child>
-            <style>
-              <class name="dm-bar"/>
-            </style>
           </object>
         </child>
         <child>
@@ -70,9 +73,6 @@
             <property name="vexpand">1</property>
             <property name="homogeneous">1</property>
             <property name="orientation">vertical</property>
-            <style>
-              <class name="dm-view"/>
-            </style>
             <child>
               <object class="GtkDrawingArea" id="da">
                 <property name="valign">center</property>
@@ -141,7 +141,7 @@
               </object>
             </child>
             <style>
-              <class name="dm-abar"/>
+              <class name="dm-bar"/>
             </style>
           </object>
         </child>
