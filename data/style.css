@@ -9,7 +9,7 @@
 }
 
 .main-box {
-  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.12));
+  background: linear-gradient(135deg, @window_bg_color, mix(@window_bg_color, @accent_bg_color, 0.2));
 }
 
 .main-box headerbar {

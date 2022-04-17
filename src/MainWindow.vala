@@ -93,9 +93,6 @@ namespace DotMatrix {
             var theme = Gtk.IconTheme.get_for_display (Gdk.Display.get_default ());
             theme.add_resource_path ("/io/github/lainsce/DotMatrix");
 
-            if (Config.DEVELOPMENT)
-                add_css_class ("devel");
-
             // Actions
             actions = new SimpleActionGroup ();
             actions.add_action_entries (ACTION_ENTRIES, this);
