@@ -47,7 +47,7 @@
     </custom>
     <translation type="gettext">io.github.lainsce.DotMatrix</translation>
     <releases>
-        <release version="3.1.4" date="2022-04-20">
+        <release version="3.2.0" date="2022-04-20">
            <description>
                <p>Release: Yellow Sunset</p>
                <ul>
