@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkAdjustment" id="adjustment1">
+    <property name="lower">5</property>
+    <property name="upper">50</property>
+    <property name="step-increment">5</property>
+    <property name="page-increment">5</property>
+  </object>
+  <template class="DotMatrixWidgetsMenu" parent="GtkBox">
+    <property name="orientation">horizontal</property>
+    <property name="halign">center</property>
+    <property name="spacing">6</property>
+    <child>
+      <object class="GtkColorButton" id="line_color_button">
+        <property name="title" translatable="yes">Pick a Line Color</property>
+        <property name="tooltip-text" translatable="yes">Line Color</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleButton" id="close_path_button">
+        <property name="tooltip-text" translatable="yes">Close All Paths</property>
+        <property name="icon-name">close-path-symbolic</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSpinButton" id="line_thickness_button">
+        <property name="adjustment">adjustment1</property>
+        <property name="value">5</property>
+        <property name="tooltip-text" translatable="yes">Line Thickness</property>
+      </object>
+    </child>
+  </template>
+</interface>

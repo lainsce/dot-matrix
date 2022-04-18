@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <menu id="menu">
-    <item>
-      <attribute name="label" translatable="yes">Preferences</attribute>
-      <attribute name="action">win.action_prefs</attribute>
-    </item>
-    <item>
-      <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
-      <attribute name="action">win.action_keys</attribute>
-    </item>
-    <item>
-      <attribute name="label" translatable="yes">About Dot Matrix</attribute>
-      <attribute name="action">win.action_about</attribute>
-    </item>
+    <section>
+      <item>
+        <attribute name="custom">theme</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">New Glyph</attribute>
+        <attribute name="action">win.action_new</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Save Glyph As…</attribute>
+        <attribute name="action">win.action_save</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">win.action_prefs</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+        <attribute name="action">win.action_keys</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">About Dot Matrix</attribute>
+        <attribute name="action">win.action_about</attribute>
+      </item>
+    </section>
   </menu>
-  <object class="GtkAdjustment" id="adjustment1">
-    <property name="lower">5</property>
-    <property name="upper">50</property>
-    <property name="step-increment">5</property>
-    <property name="page-increment">5</property>
-  </object>
   <template class="DotMatrixMainWindow" parent="AdwApplicationWindow">
     <property name="title">Dot Matrix</property>
     <child>
@@ -33,6 +44,9 @@
             <style>
               <class name="dm-bar"/>
             </style>
+            <child type="title">
+              <object class="GtkBox"/>
+            </child>
             <child type="end">
               <object class="GtkMenuButton" id="menu_button">
                 <property name="can-focus">1</property>
@@ -40,32 +54,31 @@
                 <property name="icon-name">open-menu-symbolic</property>
               </object>
             </child>
-            <child>
-              <object class="GtkButton" id="new_button">
-                <property name="tooltip-text" translatable="yes">New Glyph</property>
-                <property name="icon-name">tab-new-symbolic</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="save_button">
-                <property name="tooltip-text" translatable="yes">Save Glyph As…</property>
-                <property name="icon-name">document-save-as-symbolic</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="undo_button">
-                <property name="sensitive">0</property>
-                <property name="tooltip-text" translatable="yes">Undo Recent Path</property>
-                <property name="icon-name">edit-undo-symbolic</property>
-              </object>
-            </child>
-            <child>
+            <child type="end">
               <object class="GtkButton" id="redo_button">
                 <property name="sensitive">0</property>
                 <property name="tooltip-text" translatable="yes">Redo Recent Path</property>
                 <property name="icon-name">edit-redo-symbolic</property>
               </object>
             </child>
+            <child type="end">
+              <object class="GtkButton" id="undo_button">
+                <property name="sensitive">0</property>
+                <property name="tooltip-text" translatable="yes">Undo Recent Path</property>
+                <property name="icon-name">edit-undo-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkEntry" id="name_entry">
+            <property name="text" translatable="yes">Glyph Name</property>
+            <property name="halign">start</property>
+            <property name="margin-start">18</property>
+            <property name="tooltip-text" translatable="yes">Title the glyph for saving</property>
+            <style>
+              <class name="view-title"/>
+            </style>
           </object>
         </child>
         <child>
@@ -73,6 +86,8 @@
             <property name="vexpand">1</property>
             <property name="homogeneous">1</property>
             <property name="orientation">vertical</property>
+            <property name="margin-start">18</property>
+            <property name="margin-end">18</property>
             <child>
               <object class="GtkDrawingArea" id="da">
                 <property name="valign">center</property>
@@ -83,40 +98,9 @@
         </child>
         <child>
           <object class="GtkActionBar" id="actionbar">
-            <child>
-              <object class="GtkBox" id="box1">
-                <property name="spacing">6</property>
-                <child>
-                  <object class="GtkSpinButton" id="line_thickness_button">
-                    <property name="adjustment">adjustment1</property>
-                    <property name="value">5</property>
-                    <property name="tooltip-text" translatable="yes">Line Thickness</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkColorButton" id="line_color_button">
-                    <property name="title" translatable="yes">Pick a Line Color</property>
-                    <property name="tooltip-text" translatable="yes">Line Color</property>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child type="end">
+            <child type="center">
               <object class="GtkBox" id="box2">
                 <property name="spacing">6</property>
-                <child>
-                  <object class="GtkToggleButton" id="close_path_button">
-                    <property name="tooltip-text" translatable="yes">Close All Paths</property>
-                    <property name="icon-name">close-path-symbolic</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkSeparator">
-                    <style>
-                      <class name="spacer"/>
-                    </style>
-                  </object>
-                </child>
                 <child>
                   <object class="GtkButton" id="line_straight_button">
                     <property name="tooltip-text" translatable="yes">Line</property>

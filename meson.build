@@ -47,6 +47,7 @@ sources = [
   'src/Services/SettingsManager.vala',
   'src/Widgets/Prefs.vala',
   'src/Widgets/UI.vala',
+  'src/Widgets/Menu.vala',
 ]
 
 dependencies = [

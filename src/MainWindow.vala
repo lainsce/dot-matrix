@@ -21,11 +21,8 @@ namespace DotMatrix {
     public class MainWindow : Adw.ApplicationWindow {
         delegate void HookFunc ();
         public Widgets.UI ui;
+        public Widgets.Menu menu;
 
-        [GtkChild]
-        public unowned Gtk.Button new_button;
-        [GtkChild]
-        public unowned Gtk.Button save_button;
         [GtkChild]
         public unowned Gtk.Button undo_button;
         [GtkChild]
@@ -35,17 +32,13 @@ namespace DotMatrix {
         [GtkChild]
         public unowned Gtk.DrawingArea da;
         [GtkChild]
-        public unowned Gtk.ColorButton line_color_button;
-        [GtkChild]
-        public unowned Gtk.SpinButton line_thickness_button;
-        [GtkChild]
         public unowned Gtk.Button line_curve_button;
         [GtkChild]
         public unowned Gtk.Button line_curve_reverse_button;
         [GtkChild]
         public unowned Gtk.Button line_straight_button;
         [GtkChild]
-        public unowned Gtk.ToggleButton close_path_button;
+        public unowned Gtk.Entry name_entry;
 
         // Global Color Palette
         public string background = "#f8fefc";
@@ -57,6 +50,8 @@ namespace DotMatrix {
         public const string ACTION_PREFIX = "win.";
         public const string ACTION_ABOUT = "action_about";
         public const string ACTION_KEYS = "action_keys";
+        public const string ACTION_NEW = "action_new";
+        public const string ACTION_SAVE = "action_save";
         public const string ACTION_UNDO = "action_undo";
         public const string ACTION_REDO = "action_redo";
         public const string ACTION_PREFS = "action_prefs";
@@ -67,6 +62,8 @@ namespace DotMatrix {
         private const GLib.ActionEntry[] ACTION_ENTRIES = {
               {ACTION_ABOUT, action_about},
               {ACTION_KEYS, action_keys},
+              {ACTION_NEW, action_new},
+              {ACTION_SAVE, action_save},
               {ACTION_UNDO, action_undo},
               {ACTION_REDO, action_redo},
               {ACTION_PREFS, action_prefs},
@@ -107,6 +104,8 @@ namespace DotMatrix {
             app.set_accels_for_action("app.quit", {"<Ctrl>q"});
             app.set_accels_for_action ("win.action_keys", {"<Ctrl>question"});
             app.set_accels_for_action ("win.action_prefs", {"<Ctrl>comma"});
+            app.set_accels_for_action ("win.action_new", {"<Ctrl>n"});
+            app.set_accels_for_action ("win.action_save", {"<Ctrl>s"});
             app.set_accels_for_action ("win.action_undo", {"<Ctrl>z"});
             app.set_accels_for_action ("win.action_redo", {"<Ctrl><Shift>z"});
             app.set_accels_for_action ("win.action_inc_line", {"<Ctrl>x"});
@@ -119,17 +118,6 @@ namespace DotMatrix {
 			ui.grid_dot_color.parse (this.b_low);
 			ui.background_color.parse (this.background);
 			ui.current_path.color = ui.line_color;
-
-			new_button.clicked.connect ((e) => {
-                ui.clear ();
-            });
-			save_button.clicked.connect ((e) => {
-				try {
-					ui.save.begin ();
-				} catch (Error e) {
-					warning ("Unexpected error during save: " + e.message);
-				}
-            });
 
 			undo_button.clicked.connect ((e) => {
 				ui.undo ();
@@ -144,14 +132,19 @@ namespace DotMatrix {
 				ui.da.queue_draw ();
 			});
 
-            line_color_button.rgba = ui.line_color;
-			line_color_button.color_set.connect ((e) => {
-				ui.current_path.color = line_color_button.rgba;
+			menu = new Widgets.Menu (this);
+
+			var pop = (Gtk.PopoverMenu)menu_button.get_popover ();
+            pop.add_child (menu, "theme");
+
+            menu.line_color_button.rgba = ui.line_color;
+			menu.line_color_button.color_set.connect ((e) => {
+				ui.current_path.color = menu.line_color_button.rgba;
 				ui.da.queue_draw ();
 			});
 
-			line_thickness_button.value_changed.connect ((e) => {
-                ui.line_thickness = line_thickness_button.get_value ();
+			menu.line_thickness_button.value_changed.connect ((e) => {
+                ui.line_thickness = menu.line_thickness_button.get_value ();
                 ui.da.queue_draw ();
 			});
 
@@ -190,7 +183,7 @@ namespace DotMatrix {
 				ui.dirty = true;
             });
 
-			close_path_button.toggled.connect ((e) => {
+			menu.close_path_button.toggled.connect ((e) => {
 				ui.current_paths.append (ui.current_path);
 				ui.history_paths.append (ui.current_path);
 				undo_button.sensitive = true;
@@ -253,6 +246,17 @@ namespace DotMatrix {
                 warning ("Failed to open shortcuts window: %s\n", e.message);
             }
         }
+        public void action_new () {
+            ui.clear ();
+        }
+
+        public void action_save () {
+            try {
+				ui.save.begin (name_entry.text);
+			} catch (Error e) {
+				warning ("Unexpected error during save: " + e.message);
+			}
+        }
         public void action_prefs () {
             var prefs = new Prefs ();
             prefs.set_transient_for (this);
@@ -276,12 +280,12 @@ namespace DotMatrix {
         }
         public void action_inc_line () {
             ui.line_thickness += 5;
-            line_thickness_button.set_value (ui.line_thickness);
+            menu.line_thickness_button.set_value (ui.line_thickness);
             ui.da.queue_draw ();
         }
         public void action_dec_line () {
             ui.line_thickness -= 5;
-            line_thickness_button.set_value (ui.line_thickness);
+            menu.line_thickness_button.set_value (ui.line_thickness);
             ui.da.queue_draw ();
         }
     }

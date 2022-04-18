@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2021 Lains
+* Copyright (c) 2021-2022 Lains
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -184,7 +184,7 @@ namespace DotMatrix {
 			c.stroke ();
 
 			foreach (var path in current_paths) {
-			    current_path.color = window.line_color_button.rgba;
+			    current_path.color = window.menu.line_color_button.rgba;
 				if (path.is_curve == true) {
 					if (path.is_reverse_curve == true) {
 						if (is_closed == true) {
@@ -368,11 +368,11 @@ namespace DotMatrix {
                 switch (response_id) {
                     case Gtk.ResponseType.OK:
 						debug ("User saves the file.");
-						save.begin ();
+						save.begin (window.name_entry.text);
 						current_paths = null;
 						history_paths = null;
 						current_path = new Path ();
-						current_path.color = window.line_color_button.rgba;
+						current_path.color = window.menu.line_color_button.rgba;
 						window.undo_button.sensitive = false;
 						window.redo_button.sensitive = false;
 						da.queue_draw ();
@@ -383,7 +383,7 @@ namespace DotMatrix {
 						current_paths = null;
 						history_paths = null;
 						current_path = new Path ();
-						current_path.color = window.line_color_button.rgba;
+						current_path.color = window.menu.line_color_button.rgba;
 						window.undo_button.sensitive = false;
 						window.redo_button.sensitive = false;
 						da.queue_draw ();
@@ -405,9 +405,9 @@ namespace DotMatrix {
             }
         }
 
-		public async void save () throws Error {
+		public async void save (string name) throws Error {
 			debug ("Save as button pressed.");
-            var file = yield display_save_dialog ();
+            var file = yield display_save_dialog (name);
 
 			string path = file.get_path ();
 
@@ -424,7 +424,7 @@ namespace DotMatrix {
 			}
 		}
 
-		public async File? display_save_dialog () {
+		public async File? display_save_dialog (string name) {
             var chooser = new Gtk.FileChooserNative (null, window, Gtk.FileChooserAction.SAVE, null, null);
             chooser.set_transient_for(window);
             chooser.modal = true;
@@ -438,10 +438,13 @@ namespace DotMatrix {
             filter.add_pattern ("*");
             chooser.add_filter (filter);
 
+            chooser.set_current_name (name.replace(" ","") + ".svg");
+
             var response = yield run_dialog_async (chooser);
 
             if (response == Gtk.ResponseType.ACCEPT) {
-                return chooser.get_file ();
+                File file = chooser.get_file ();
+                return file;
             }
 
             return null;
