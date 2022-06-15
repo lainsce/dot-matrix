@@ -7,149 +7,219 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.dot-matrix\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-30 09:19+0100\n"
-"PO-Revision-Date: 2021-12-04 17:59+0100\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"POT-Creation-Date: 2022-06-15 23:19+0200\n"
+"PO-Revision-Date: 2022-06-15 23:36+0200\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.1\n"
 
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:7
-msgid "The creativity playground of lines and curves"
-msgstr "Laat je creativiteit de vrije loop door te spelen met lijnen"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:9
-msgid ""
-"Make out icons, glyphs, or anything you can create with lines in this grid "
-"of dots"
-msgstr ""
-"Maak pictogrammen, symbolen, en al het andere wat je kunt bedenken, binnen "
-"het rooster"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:11
-msgid "Select whetether to draw with lines or curves."
-msgstr "Kies of je wilt tekenen met lijnen of gebogen lijnen."
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:12
-msgid "Quit anytime with the shortcut Ctrl + Q"
-msgstr "Sluit af met Ctrl + Q"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:13
-msgid "Undo with the shortcut Ctrl + Z"
-msgstr "Maak ongedaan met Ctrl + Z"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:14
-msgid ""
-"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
-"Ctrl + Shift + X"
-msgstr ""
-"Pas de lijndikte met +5 of -5 aan middels de sneltoetsen Ctrl + X en Ctrl + "
-"Shift + X"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:32
-msgid "Default"
-msgstr "Standaard"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:52
-msgid "Release: Orange Sunrise"
-msgstr "Uitgave: ‘Oranje zonsopkomst’"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:54
-msgid "Changed: Using more libadwaita recent UI styling."
-msgstr "Nieuwere versie van libadwaita voor een modernere uitstraling."
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:60
-msgid "Release: Cyan Sunset"
-msgstr "Uitgave: ‘Groenblauwe zonsopkomst’"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:62
-msgid "Changed: Using libadwaita recent UI styling."
-msgstr "libadwaita voor een modernere uitstraling."
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:68
-msgid "Release: A New UI Hope"
-msgstr "Uitgave: ‘Een nieuwe vormgeving’"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:70
-msgid "New: UI is now following efforts made by me on Notejot."
-msgstr ""
-"De vormgeving is opnieuw ontworpen op basis van mijn ontwerp van Notejot."
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:71
-msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
-msgstr "Verslepen met muis of pen werkt voortaan beter."
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:77
-msgid "Release: Hello, GNOME!"
-msgstr "Uitgave: ‘Hallo, GNOME!’"
-
-#: data/io.github.lainsce.DotMatrix.appdata.xml.in:79
-msgid "Port to GNOME HIG and minor fixes."
-msgstr "Vormgeving aangepast aan de GNOME HIG en kleine foutoplossingen."
-
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:6
 #: data/io.github.lainsce.DotMatrix.desktop.in:3
 msgid "Dot Matrix"
 msgstr "Dot Matrix"
 
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:7
+msgid "The creativity playground of lines and curves"
+msgstr "De creativiteitsspeeltuin van lijnen en bogen"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Maak pictogrammen, symbolen, en alles wat u kunt bedenken met dit "
+"puntenrooster"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Kies om te tekenen met lijnen of bogen."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Sluit op elk moment af met de sneltoets Ctrl + Q"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Maak ongedaan met de sneltoets Ctrl + Z"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:14
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
+"Ctrl + Shift + X"
+msgstr ""
+"Pas de lijndikte aan met +5 of -5 met de respectievelijke sneltoetsen Ctrl + "
+"X en Ctrl + Shift + X"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:24
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:32
+msgid "Default view"
+msgstr "Standaardweergave"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:52
+msgid "Release: Yellow Sunset"
+msgstr "Uitgave: Gele zonsopkomst"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:54
+msgid ""
+"Changed: UI now follows my own style that complements that of Adwaita, "
+"called Solo."
+msgstr ""
+"Veranderd: Interface volgt nu mijn eigen stijl die aanvult op Adwaita, "
+"genaamd Solo."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:60
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:68
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:77
+msgid "Release: Blue Noon"
+msgstr "Uitgave: Blauwe maan"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:62
+msgid "Changed: UI colors."
+msgstr "Veranderd: Interfacekleuren."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:70
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:79
+msgid "Added: Redo button."
+msgstr "Toegevoegd: Opnieuwknop."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:71
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:80
+msgid "Added: Settings dialog with canvas size customizing."
+msgstr "Toegevoegd: Instellingsdialoog met aanpassingen voor canvasgrootte."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:86
+msgid "Release: Orange Sunrise"
+msgstr "Uitgave: Oranje zonsopkomst"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:88
+msgid "Changed: Using more libadwaita recent UI styling."
+msgstr ""
+"Veranderd: Nieuwere versie van libadwaita voor een modernere uitstraling."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:94
+msgid "Release: Cyan Sunset"
+msgstr "Uitgave: Groenblauwe zonsopkomst"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:96
+msgid "Changed: Using libadwaita recent UI styling."
+msgstr "Veranderd: Gebruik gemaakt van recente interfacestijl van libadwaita."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:102
+msgid "Release: A New UI Hope"
+msgstr "Uitgave: Een nieuwe vormgeving"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:104
+msgid "New: UI is now following efforts made by me on Notejot."
+msgstr ""
+"De vormgeving is opnieuw ontworpen op basis van mijn ontwerp van Notejot."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:105
+msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
+msgstr "Opgelost: Verslepen met muis of pen werkt voortaan beter."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:111
+msgid "Release: Hello, GNOME!"
+msgstr "Uitgave: Hallo, GNOME!"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:113
+msgid "Port to GNOME HIG and minor fixes."
+msgstr "Vormgeving aangepast aan de Gnome-HIG en kleine foutoplossingen."
+
 #: data/io.github.lainsce.DotMatrix.desktop.in:4
 msgid "The glyph playground of creativity from simple lines"
-msgstr "Laat je creativiteit de vrije loop door te spelen met lijnen"
+msgstr "De creatieve symboolspeeltuin van simpele lijnen"
 
 #: data/io.github.lainsce.DotMatrix.desktop.in:7
 msgid "Matrix;Vector;Drawing;Grid;"
-msgstr "Matrix;Vector;Tekenen;Raster;Rooster;"
+msgstr "Matrix;Vector;Drawing;Tekening;Grid;Rooster;"
 
-#: data/ui/mainwindow.ui:35
+#: data/io.github.lainsce.DotMatrix.gschema.xml:5
+msgid "Canvas Width"
+msgstr "Canvasgrootte"
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:6
+msgid "The canvas width."
+msgstr "De canvasgrootte."
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:10
+msgid "Canvas Height"
+msgstr "Canvashoogte"
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:11
+msgid "The canvas height."
+msgstr "De canvashoogte."
+
+#: data/ui/mainwindow.ui:11
 msgid "New Glyph"
-msgstr "Nieuwe glief"
+msgstr "Nieuw symbool"
 
-#: data/ui/mainwindow.ui:45
+#: data/ui/mainwindow.ui:15
 msgid "Save Glyph As…"
-msgstr "Glief opslaan als…"
+msgstr "Symbool opslaan als…"
 
-#: data/ui/mainwindow.ui:55
-msgid "Undo Recent Path"
-msgstr "Recent pad ongedaan maken"
+#: data/ui/mainwindow.ui:21
+msgid "Preferences"
+msgstr "Voorkeuren"
 
-#: data/ui/mainwindow.ui:96
-msgid "Line Thickness"
-msgstr "Lijndikte"
-
-#: data/ui/mainwindow.ui:105
-msgid "Pick a Line Color"
-msgstr "Kies een lijnkleur"
-
-#: data/ui/mainwindow.ui:106
-msgid "Line Color"
-msgstr "Lijnkleur"
-
-#: data/ui/mainwindow.ui:118
-msgid "Close All Paths"
-msgstr "Alle paden sluiten"
-
-#: data/ui/mainwindow.ui:135
-msgid "Line"
-msgstr "Lijn"
-
-#: data/ui/mainwindow.ui:145
-msgid "Arc"
-msgstr "Kromming"
-
-#: data/ui/mainwindow.ui:155
-msgid "Inverted Arc"
-msgstr "Omgekeerde kromming"
-
-#: data/ui/menu.ui:6
+#: data/ui/mainwindow.ui:25
 msgid "Keyboard Shortcuts"
 msgstr "Sneltoetsen"
 
-#: data/ui/menu.ui:10
+#: data/ui/mainwindow.ui:29
 msgid "About Dot Matrix"
 msgstr "Over Dot Matrix"
+
+#: data/ui/mainwindow.ui:60
+msgid "Redo Recent Path"
+msgstr "Recent pad opnieuw tekenen"
+
+#: data/ui/mainwindow.ui:67
+msgid "Undo Recent Path"
+msgstr "Recent pad ongedaan maken"
+
+#: data/ui/mainwindow.ui:75
+msgid "Glyph Name"
+msgstr "Symboolnaam"
+
+#: data/ui/mainwindow.ui:78
+msgid "Title the glyph for saving"
+msgstr "Benoem het symbool om op te slaan"
+
+#: data/ui/mainwindow.ui:106
+msgid "Line"
+msgstr "Lijn"
+
+#: data/ui/mainwindow.ui:112
+msgid "Arc"
+msgstr "Boog"
+
+#: data/ui/mainwindow.ui:118
+msgid "Inverted Arc"
+msgstr "Omgekeerde boog"
+
+#: data/ui/menu.ui:15
+msgid "Pick a Line Color"
+msgstr "Kies een lijnkleur"
+
+#: data/ui/menu.ui:16
+msgid "Line Color"
+msgstr "Lijnkleur"
+
+#: data/ui/menu.ui:21
+msgid "Close All Paths"
+msgstr "Alle paden sluiten"
+
+#: data/ui/menu.ui:29
+msgid "Line Thickness"
+msgstr "Lijndikte"
 
 #: data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
@@ -163,56 +233,74 @@ msgstr "Afsluiten"
 
 #: data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
+msgid "New Glyph"
+msgstr "Nieuw symbool"
+
+#: data/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Save Glyph As…"
+msgstr "Symbool opslaan als…"
+
+#: data/ui/shortcuts.ui:34
+msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: data/ui/shortcuts.ui:29
+#: data/ui/shortcuts.ui:40
+msgctxt "shortcut window"
+msgid "Redo"
+msgstr "Opnieuw"
+
+#: data/ui/shortcuts.ui:47
 msgctxt "shortcut window"
 msgid "Drawing"
-msgstr "Tekenen"
+msgstr "Tekening"
 
-#: data/ui/shortcuts.ui:33
+#: data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Decrease Line Thickness"
 msgstr "Lijndikte verminderen"
 
-#: data/ui/shortcuts.ui:39
+#: data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
 msgid "Increase Line Thickness"
 msgstr "Lijndikte verhogen"
 
-#: src/MainWindow.vala:216
+#: src/MainWindow.vala:227
 msgid "The glyph playground of creativity from simple lines."
-msgstr "Laat je creativiteit de vrije loop door te spelen met lijnen."
+msgstr "De creatieve symboolspeeltuin van simpele lijnen."
 
-#: src/MainWindow.vala:222
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/MainWindow.vala:234
 msgid "translator-credits"
-msgstr "Heimen Stoffels <vistausss@fastmail.com>"
+msgstr ""
+"Heimen Stoffels <vistausss@fastmail.com>\n"
+"Philip Goto"
 
-#: src/Widgets/UI.vala:334
+#: src/Widgets/UI.vala:359
 msgid "Save Image?"
 msgstr "Afbeelding opslaan?"
 
-#: src/Widgets/UI.vala:335
+#: src/Widgets/UI.vala:360
 msgid "Not saving means that the image will be lost forever."
-msgstr "Als je je werk niet opslaat, dan wordt het permanent gewist."
+msgstr "Niet opslaan betekent dat het symbool voor altijd verloren zal gaan."
 
-#: src/Widgets/UI.vala:337
+#: src/Widgets/UI.vala:362
 msgid "Don't Save"
 msgstr "Niet opslaan"
 
-#: src/Widgets/UI.vala:339
+#: src/Widgets/UI.vala:364
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: src/Widgets/UI.vala:340
+#: src/Widgets/UI.vala:365
 msgid "Save"
 msgstr "Opslaan"
 
-#: src/Widgets/UI.vala:399
+#: src/Widgets/UI.vala:433
 msgid "SVG files"
 msgstr "SVG-bestanden"
 
-#: src/Widgets/UI.vala:403
+#: src/Widgets/UI.vala:437
 msgid "All files"
 msgstr "Alle bestanden"
