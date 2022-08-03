@@ -1,0 +1,307 @@
+# Croatian translation for Dot Matrix.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.DotMatrix package.
+# Milo Ivir <mail@milotype.de>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.DotMatrix\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-15 23:19+0200\n"
+"PO-Revision-Date: 2022-08-03 14:05+0200\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:6
+#: data/io.github.lainsce.DotMatrix.desktop.in:3
+msgid "Dot Matrix"
+msgstr "Dot Matrix"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:7
+msgid "The creativity playground of lines and curves"
+msgstr "Der Kreativitätsspielplatz aus Linien und Kurven"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Gestalle Symbole, Glyphen oder was auch immer mit Linien in diesem Raster "
+"erstellt werden kann"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Wähle, ob mit Linien oder Kurven gezeichnet wird."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Das Program jederzeit mit der Tastenkombination Strg + Q beenden"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Rückgangig mit der Tastenkombination Strg + Z"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:14
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
+"Ctrl + Shift + X"
+msgstr ""
+"Liniendicke um +5 oder −5 ändern, mit den entsprechenden Tastenkombinationen "
+"Strg + X und Strg + Umschalt + X"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:24
+msgid "Lains"
+msgstr "Lains"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:32
+msgid "Default view"
+msgstr "Standard-Ansicht"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:52
+msgid "Release: Yellow Sunset"
+msgstr "Veröffentlichung: Gelber Sonnenuntergang"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:54
+msgid ""
+"Changed: UI now follows my own style that complements that of Adwaita, "
+"called Solo."
+msgstr ""
+"Geändert: Die Benutzeroberfläche folgt jetzt meinem eigenen Stil, der den "
+"von Adwaita ergänzt, genannt Solo."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:60
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:68
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:77
+msgid "Release: Blue Noon"
+msgstr "Veröffentlichung: Blauer Mittag"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:62
+msgid "Changed: UI colors."
+msgstr "Geändert: Farben der Benutzeroberflächen."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:70
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:79
+msgid "Added: Redo button."
+msgstr "Hinzugefügt: Wiederholen-Schaltfläche."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:71
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:80
+msgid "Added: Settings dialog with canvas size customizing."
+msgstr ""
+"Hinzugefügt: Einstellungsfenster zur Anpassung der Größe der Zeichenfläche."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:86
+msgid "Release: Orange Sunrise"
+msgstr "Veröffentlichung: Orangefarbener Sonnenaufgang"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:88
+msgid "Changed: Using more libadwaita recent UI styling."
+msgstr ""
+"Geändert: Vermehrte Verwendung neuerer libadwaita Stile der "
+"Benutzeroberfläche."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:94
+msgid "Release: Cyan Sunset"
+msgstr "Veröffentlichung: Türkiser Sonnenuntergang"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:96
+msgid "Changed: Using libadwaita recent UI styling."
+msgstr "Geändert: Verwendung neuerer libadwaita Stile der Benutzeroberfläche."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:102
+msgid "Release: A New UI Hope"
+msgstr "Veröffentlichung: Neue Benutzeroberfläche namens Hope"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:104
+msgid "New: UI is now following efforts made by me on Notejot."
+msgstr "Neu: Benutzeroberfläche folgt nun meinen Bemühungen auf Notejot."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:105
+msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
+msgstr ""
+"Behoben: Ermöglicht das Ziehen mit einer Maus/einem Stift um Fehler zu "
+"verringern."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:111
+msgid "Release: Hello, GNOME!"
+msgstr "Veröffentlichung: Hallo, GNOME!"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:113
+msgid "Port to GNOME HIG and minor fixes."
+msgstr "Portierung auf GNOME HIG und kleinere Korrekturen."
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
+msgstr "Der Kreativitätsspielplatz mit einfachen Linien"
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
+msgstr "Matrix;Vektor;Zeichnung;Raster;"
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:5
+msgid "Canvas Width"
+msgstr "Zeichenfläche-Breite"
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:6
+msgid "The canvas width."
+msgstr "Breite der Zeichenfläche."
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:10
+msgid "Canvas Height"
+msgstr "Zeichenfläche-Höhe"
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:11
+msgid "The canvas height."
+msgstr "Höhe der Zeichenfläche."
+
+#: data/ui/mainwindow.ui:11
+msgid "New Glyph"
+msgstr "Neue Glyphe"
+
+#: data/ui/mainwindow.ui:15
+msgid "Save Glyph As…"
+msgstr "Glyphe speichern als …"
+
+#: data/ui/mainwindow.ui:21
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: data/ui/mainwindow.ui:25
+msgid "Keyboard Shortcuts"
+msgstr "Tastaturkürzel"
+
+#: data/ui/mainwindow.ui:29
+msgid "About Dot Matrix"
+msgstr "Über Dot Matrix"
+
+#: data/ui/mainwindow.ui:60
+msgid "Redo Recent Path"
+msgstr "Letzten Pfad wiederholen"
+
+#: data/ui/mainwindow.ui:67
+msgid "Undo Recent Path"
+msgstr "Letzten Pfad rückgängig machen"
+
+#: data/ui/mainwindow.ui:75
+msgid "Glyph Name"
+msgstr "Name der Glyphe"
+
+#: data/ui/mainwindow.ui:78
+msgid "Title the glyph for saving"
+msgstr "Gib der Glyphe einen Namen um zum Speichern"
+
+#: data/ui/mainwindow.ui:106
+msgid "Line"
+msgstr "Linie"
+
+#: data/ui/mainwindow.ui:112
+msgid "Arc"
+msgstr "Bogen"
+
+#: data/ui/mainwindow.ui:118
+msgid "Inverted Arc"
+msgstr "Umgekehrter Bogen"
+
+#: data/ui/menu.ui:15
+msgid "Pick a Line Color"
+msgstr "Linienfarbe wählen"
+
+#: data/ui/menu.ui:16
+msgid "Line Color"
+msgstr "Linienfarbe"
+
+#: data/ui/menu.ui:21
+msgid "Close All Paths"
+msgstr "Alle Pfade schließen"
+
+#: data/ui/menu.ui:29
+msgid "Line Thickness"
+msgstr "Liniendicke"
+
+#: data/ui/shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allgemein"
+
+#: data/ui/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Beenden"
+
+#: data/ui/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "New Glyph"
+msgstr "Neue Glyphe"
+
+#: data/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Save Glyph As…"
+msgstr "Glyphe speichern als …"
+
+#: data/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr "Rückgängig"
+
+#: data/ui/shortcuts.ui:40
+msgctxt "shortcut window"
+msgid "Redo"
+msgstr "Wiederholen"
+
+#: data/ui/shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Drawing"
+msgstr "Zeichnen"
+
+#: data/ui/shortcuts.ui:51
+msgctxt "shortcut window"
+msgid "Decrease Line Thickness"
+msgstr "Liniendicke verringern"
+
+#: data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
+msgid "Increase Line Thickness"
+msgstr "Liniendicke vergrößern"
+
+#: src/MainWindow.vala:227
+msgid "The glyph playground of creativity from simple lines."
+msgstr "Der Kreativitätsspielplatz mit einfachen Linien."
+
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/MainWindow.vala:234
+msgid "translator-credits"
+msgstr "Milo Ivir <mail@milotype.de>"
+
+#: src/Widgets/UI.vala:359
+msgid "Save Image?"
+msgstr "Bild speichern?"
+
+#: src/Widgets/UI.vala:360
+msgid "Not saving means that the image will be lost forever."
+msgstr "Nicht speichern bedeutet, dass das Bild für immer verloren geht."
+
+#: src/Widgets/UI.vala:362
+msgid "Don't Save"
+msgstr "Nicht speichern"
+
+#: src/Widgets/UI.vala:364
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/Widgets/UI.vala:365
+msgid "Save"
+msgstr "Speichern"
+
+#: src/Widgets/UI.vala:433
+msgid "SVG files"
+msgstr "SVG-Dateien"
+
+#: src/Widgets/UI.vala:437
+msgid "All files"
+msgstr "Alle Dateien"
