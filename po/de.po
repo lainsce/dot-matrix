@@ -11,13 +11,12 @@ msgstr ""
 "PO-Revision-Date: 2022-08-03 14:05+0200\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
-"Language: hr\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:6
 #: data/io.github.lainsce.DotMatrix.desktop.in:3
@@ -26,35 +25,35 @@ msgstr "Dot Matrix"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:7
 msgid "The creativity playground of lines and curves"
-msgstr "Igralište za kreativno crtanje pomoću crta i krivulja"
+msgstr "Der Kreativitätsspielplatz aus Linien und Kurven"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:9
 msgid ""
 "Make out icons, glyphs, or anything you can create with lines in this grid "
 "of dots"
 msgstr ""
-"Izradi ikone, znakove ili bilo što što se može stvoriti sa crtama u ovom "
-"točkastom rasteru"
+"Gestalle Symbole, Glyphen oder was auch immer mit Linien in diesem Raster "
+"erstellt werden kann"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:11
 msgid "Select whetether to draw with lines or curves."
-msgstr "Odaberi crtanje pomoću crta ili krivulja."
+msgstr "Wähle, ob mit Linien oder Kurven gezeichnet wird."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:12
 msgid "Quit anytime with the shortcut Ctrl + Q"
-msgstr "Zatvori program u bilo kojem trenutku pomoću Ctrl + Q"
+msgstr "Das Program jederzeit mit der Tastenkombination Strg + Q beenden"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:13
 msgid "Undo with the shortcut Ctrl + Z"
-msgstr "Poništi s prečacem Ctrl + Z"
+msgstr "Rückgangig mit der Tastenkombination Strg + Z"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:14
 msgid ""
 "Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
 "Ctrl + Shift + X"
 msgstr ""
-"Promijeni debljinu crte za +5 ili −5 s odgovarajućim prečacima Ctrl + X i "
-"Ctrl + Shift + X"
+"Liniendicke um +5 oder −5 ändern, mit den entsprechenden Tastenkombinationen "
+"Strg + X und Strg + Umschalt + X"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:24
 msgid "Lains"
@@ -62,216 +61,217 @@ msgstr "Lains"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:32
 msgid "Default view"
-msgstr "Standardni prikaz"
+msgstr "Standard-Ansicht"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:52
 msgid "Release: Yellow Sunset"
-msgstr "Izdanje: Žuti zalazak sunca"
+msgstr "Veröffentlichung: Gelber Sonnenuntergang"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:54
 msgid ""
 "Changed: UI now follows my own style that complements that of Adwaita, "
 "called Solo."
 msgstr ""
-"Promijenjeno: Korisničko sučelje sada slijedi moj vlastiti stil koji "
-"nadopunjuje stil Adwaite, pod nazivom Solo."
+"Geändert: Die Benutzeroberfläche folgt jetzt meinem eigenen Stil, der den "
+"von Adwaita ergänzt, genannt Solo."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:60
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:68
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:77
 msgid "Release: Blue Noon"
-msgstr "Izdanje: Plavo podne"
+msgstr "Veröffentlichung: Blauer Mittag"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:62
 msgid "Changed: UI colors."
-msgstr "Promijenjeno: Boje korisničkog sučelja."
+msgstr "Geändert: Farben der Benutzeroberflächen."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:70
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:79
 msgid "Added: Redo button."
-msgstr "Dodano: Gumb „Ponovi”."
+msgstr "Hinzugefügt: Wiederholen-Schaltfläche."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:71
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:80
 msgid "Added: Settings dialog with canvas size customizing."
-msgstr "Dodano: Prozor s postavkama za prilagođavanje veličine platna."
+msgstr ""
+"Hinzugefügt: Einstellungsfenster zur Anpassung der Größe der Zeichenfläche."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:86
 msgid "Release: Orange Sunrise"
-msgstr "Izdanje: Narančasti izlazak sunca"
+msgstr "Veröffentlichung: Orangefarbener Sonnenaufgang"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:88
 msgid "Changed: Using more libadwaita recent UI styling."
 msgstr ""
-"Promijenjeno: Korištenje još novijeg stiliziranja korisničkog sučelja "
-"biblioteke libedwaita."
+"Geändert: Vermehrte Verwendung neuerer libadwaita Stile der "
+"Benutzeroberfläche."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:94
 msgid "Release: Cyan Sunset"
-msgstr "Izdanje: Tirkizni zalazak sunca"
+msgstr "Veröffentlichung: Türkiser Sonnenuntergang"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:96
 msgid "Changed: Using libadwaita recent UI styling."
-msgstr ""
-"Promijenjeno: Korištenje novijeg stiliziranja korisničkog sučelja biblioteke "
-"libedwaita."
+msgstr "Geändert: Verwendung neuerer libadwaita Stile der Benutzeroberfläche."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:102
 msgid "Release: A New UI Hope"
-msgstr "Izdanje: Novo korisničko sučelje Hope"
+msgstr "Veröffentlichung: Neue Benutzeroberfläche namens Hope"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:104
 msgid "New: UI is now following efforts made by me on Notejot."
-msgstr "Novo: Korisničko sučelje sada slijedi moje napore na Notejotu."
+msgstr "Neu: Benutzeroberfläche folgt nun meinen Bemühungen auf Notejot."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:105
 msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
-msgstr "Ispravljeno: Omogućuje povlačenje mišem/olovkom za manje grešaka."
+msgstr ""
+"Behoben: Ermöglicht das Ziehen mit einer Maus/einem Stift um Fehler zu "
+"verringern."
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:111
 msgid "Release: Hello, GNOME!"
-msgstr "Izdanje: Zdravo, GNOME!"
+msgstr "Veröffentlichung: Hallo, GNOME!"
 
 #: data/io.github.lainsce.DotMatrix.metainfo.xml.in:113
 msgid "Port to GNOME HIG and minor fixes."
-msgstr "Portiranje na GNOME HIG i manji ispravci."
+msgstr "Portierung auf GNOME HIG und kleinere Korrekturen."
 
 #: data/io.github.lainsce.DotMatrix.desktop.in:4
 msgid "The glyph playground of creativity from simple lines"
-msgstr "Igralište za kreativno crtanje znakova pomoću jednostavnih crta"
+msgstr "Der Kreativitätsspielplatz mit einfachen Linien"
 
 #: data/io.github.lainsce.DotMatrix.desktop.in:7
 msgid "Matrix;Vector;Drawing;Grid;"
-msgstr "matrica;vektor;crtanje;crtež;raster;"
+msgstr "Matrix;Vektor;Zeichnung;Raster;"
 
 #: data/io.github.lainsce.DotMatrix.gschema.xml:5
 msgid "Canvas Width"
-msgstr "Širina platna"
+msgstr "Zeichenfläche-Breite"
 
 #: data/io.github.lainsce.DotMatrix.gschema.xml:6
 msgid "The canvas width."
-msgstr "Širina platna."
+msgstr "Breite der Zeichenfläche."
 
 #: data/io.github.lainsce.DotMatrix.gschema.xml:10
 msgid "Canvas Height"
-msgstr "Visina platna"
+msgstr "Zeichenfläche-Höhe"
 
 #: data/io.github.lainsce.DotMatrix.gschema.xml:11
 msgid "The canvas height."
-msgstr "Visina platna."
+msgstr "Höhe der Zeichenfläche."
 
 #: data/ui/mainwindow.ui:11
 msgid "New Glyph"
-msgstr "Novi znak"
+msgstr "Neue Glyphe"
 
 #: data/ui/mainwindow.ui:15
 msgid "Save Glyph As…"
-msgstr "Spremi znak kao …"
+msgstr "Glyphe speichern als …"
 
 #: data/ui/mainwindow.ui:21
 msgid "Preferences"
-msgstr "Postavke"
+msgstr "Einstellungen"
 
 #: data/ui/mainwindow.ui:25
 msgid "Keyboard Shortcuts"
-msgstr "Tipkovni prečaci"
+msgstr "Tastaturkürzel"
 
 #: data/ui/mainwindow.ui:29
 msgid "About Dot Matrix"
-msgstr "Dot Matrix informacije"
+msgstr "Über Dot Matrix"
 
 #: data/ui/mainwindow.ui:60
 msgid "Redo Recent Path"
-msgstr "Ponovi nedavnu stazu"
+msgstr "Letzten Pfad wiederholen"
 
 #: data/ui/mainwindow.ui:67
 msgid "Undo Recent Path"
-msgstr "Poništi nedavnu stazu"
+msgstr "Letzten Pfad rückgängig machen"
 
 #: data/ui/mainwindow.ui:75
 msgid "Glyph Name"
-msgstr "Ime znaka"
+msgstr "Name der Glyphe"
 
 #: data/ui/mainwindow.ui:78
 msgid "Title the glyph for saving"
-msgstr "Zadaj znaku ime pod kojim će se spremiti"
+msgstr "Gib der Glyphe einen Namen um zum Speichern"
 
 #: data/ui/mainwindow.ui:106
 msgid "Line"
-msgstr "Crta"
+msgstr "Linie"
 
 #: data/ui/mainwindow.ui:112
 msgid "Arc"
-msgstr "Luk"
+msgstr "Bogen"
 
 #: data/ui/mainwindow.ui:118
 msgid "Inverted Arc"
-msgstr "Preokrenuti luk"
+msgstr "Umgekehrter Bogen"
 
 #: data/ui/menu.ui:15
 msgid "Pick a Line Color"
-msgstr "Odaberi boju crte"
+msgstr "Linienfarbe wählen"
 
 #: data/ui/menu.ui:16
 msgid "Line Color"
-msgstr "Boja crte"
+msgstr "Linienfarbe"
 
 #: data/ui/menu.ui:21
 msgid "Close All Paths"
-msgstr "Zatvori sve staze"
+msgstr "Alle Pfade schließen"
 
 #: data/ui/menu.ui:29
 msgid "Line Thickness"
-msgstr "Debljina crte"
+msgstr "Liniendicke"
 
 #: data/ui/shortcuts.ui:12
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Opće"
+msgstr "Allgemein"
 
 #: data/ui/shortcuts.ui:16
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr "Zatvori program"
+msgstr "Beenden"
 
 #: data/ui/shortcuts.ui:22
 msgctxt "shortcut window"
 msgid "New Glyph"
-msgstr "Novi znak"
+msgstr "Neue Glyphe"
 
 #: data/ui/shortcuts.ui:28
 msgctxt "shortcut window"
 msgid "Save Glyph As…"
-msgstr "Spremi znak kao …"
+msgstr "Glyphe speichern als …"
 
 #: data/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Undo"
-msgstr "Poništi"
+msgstr "Rückgängig"
 
 #: data/ui/shortcuts.ui:40
 msgctxt "shortcut window"
 msgid "Redo"
-msgstr "Ponovi"
+msgstr "Wiederholen"
 
 #: data/ui/shortcuts.ui:47
 msgctxt "shortcut window"
 msgid "Drawing"
-msgstr "Crtanje"
+msgstr "Zeichnen"
 
 #: data/ui/shortcuts.ui:51
 msgctxt "shortcut window"
 msgid "Decrease Line Thickness"
-msgstr "Stanji crtu"
+msgstr "Liniendicke verringern"
 
 #: data/ui/shortcuts.ui:57
 msgctxt "shortcut window"
 msgid "Increase Line Thickness"
-msgstr "Podebljaj crtu"
+msgstr "Liniendicke vergrößern"
 
 #: src/MainWindow.vala:227
 msgid "The glyph playground of creativity from simple lines."
-msgstr "Igralište za kreativno crtanje znakova pomoću jednostavnih crta."
+msgstr "Der Kreativitätsspielplatz mit einfachen Linien."
 
 #. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
 #: src/MainWindow.vala:234
@@ -280,28 +280,28 @@ msgstr "Milo Ivir <mail@milotype.de>"
 
 #: src/Widgets/UI.vala:359
 msgid "Save Image?"
-msgstr "Spremiti sliku?"
+msgstr "Bild speichern?"
 
 #: src/Widgets/UI.vala:360
 msgid "Not saving means that the image will be lost forever."
-msgstr "Ako se ne spremi, slika se zauvijek gubi."
+msgstr "Nicht speichern bedeutet, dass das Bild für immer verloren geht."
 
 #: src/Widgets/UI.vala:362
 msgid "Don't Save"
-msgstr "Nemoj spremiti"
+msgstr "Nicht speichern"
 
 #: src/Widgets/UI.vala:364
 msgid "Cancel"
-msgstr "Odustani"
+msgstr "Abbrechen"
 
 #: src/Widgets/UI.vala:365
 msgid "Save"
-msgstr "Spremi"
+msgstr "Speichern"
 
 #: src/Widgets/UI.vala:433
 msgid "SVG files"
-msgstr "SVG datoteke"
+msgstr "SVG-Dateien"
 
 #: src/Widgets/UI.vala:437
 msgid "All files"
-msgstr "Sve datoteke"
+msgstr "Alle Dateien"
