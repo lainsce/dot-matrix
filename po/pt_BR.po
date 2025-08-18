@@ -1,0 +1,309 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the io.github.lainsce.DotMatrix package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: io.github.lainsce.DotMatrix\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-15 23:19+0200\n"
+"PO-Revision-Date: 2025-08-18 16:26-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:6
+#: data/io.github.lainsce.DotMatrix.desktop.in:3
+msgid "Dot Matrix"
+msgstr "Matriz de pontos"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:7
+msgid "The creativity playground of lines and curves"
+msgstr "O playground da criatividade de linhas e curvas"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:9
+msgid ""
+"Make out icons, glyphs, or anything you can create with lines in this grid "
+"of dots"
+msgstr ""
+"Crie ícones, glifos ou qualquer coisa que você possa criar com linhas nesta "
+"grade de pontos"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:11
+msgid "Select whetether to draw with lines or curves."
+msgstr "Selecione se deseja desenhar com linhas ou curvas."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:12
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr "Saia a qualquer momento com o atalho Ctrl + Q"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:13
+msgid "Undo with the shortcut Ctrl + Z"
+msgstr "Desfazer com o atalho Ctrl + Z"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:14
+msgid ""
+"Change line thickness by +5 or -5 with the respective shortcuts Ctrl + X and "
+"Ctrl + Shift + X"
+msgstr ""
+"Altere a espessura da linha em +5 ou -5 com os respectivos atalhos Ctrl + X "
+"e Ctrl + Shift + X"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:24
+msgid "Lains"
+msgstr "Linhas"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:32
+msgid "Default view"
+msgstr "Visualização padrão"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:52
+msgid "Release: Yellow Sunset"
+msgstr "Lançamento: Pôr do Sol Amarelo"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:54
+msgid ""
+"Changed: UI now follows my own style that complements that of Adwaita, "
+"called Solo."
+msgstr ""
+"Alterado: a interface do usuário agora segue meu próprio estilo que "
+"complementa o do Adwaita, chamado Solo."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:60
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:68
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:77
+msgid "Release: Blue Noon"
+msgstr "Lançamento: Blue Noon"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:62
+msgid "Changed: UI colors."
+msgstr "Alterado: cores da interface do usuário."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:70
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:79
+msgid "Added: Redo button."
+msgstr "Adicionado: botão Refazer."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:71
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:80
+msgid "Added: Settings dialog with canvas size customizing."
+msgstr ""
+"Adicionado: caixa de diálogo Configurações com personalização do tamanho da "
+"tela."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:86
+msgid "Release: Orange Sunrise"
+msgstr "Lançamento: Orange Sunrise"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:88
+msgid "Changed: Using more libadwaita recent UI styling."
+msgstr ""
+"Alterado: Usando estilo de interface de usuário mais recente da libadwaita."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:94
+msgid "Release: Cyan Sunset"
+msgstr "Lançamento: Pôr do Sol Ciano"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:96
+msgid "Changed: Using libadwaita recent UI styling."
+msgstr ""
+"Alterado: Usando o estilo de interface de usuário recente do libadwaita."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:102
+msgid "Release: A New UI Hope"
+msgstr "Lançamento: Uma Nova Esperança de UI"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:104
+msgid "New: UI is now following efforts made by me on Notejot."
+msgstr ""
+"Novo: a interface do usuário agora está acompanhando os esforços feitos por "
+"mim no Notejot."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:105
+msgid "Fixed: Handles dragging with a mouse/pen for less bugs."
+msgstr ""
+"Corrigido: Corrige a função de arrastar com mouse/caneta para reduzir bugs."
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:111
+msgid "Release: Hello, GNOME!"
+msgstr "Lançamento: Olá, GNOME!"
+
+#: data/io.github.lainsce.DotMatrix.metainfo.xml.in:113
+msgid "Port to GNOME HIG and minor fixes."
+msgstr "Porta para GNOME HIG e pequenas correções."
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:4
+msgid "The glyph playground of creativity from simple lines"
+msgstr "O playground de glifos da criatividade a partir de linhas simples"
+
+#: data/io.github.lainsce.DotMatrix.desktop.in:7
+msgid "Matrix;Vector;Drawing;Grid;"
+msgstr "Matriz;Vetor;Desenho;Grade;"
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:5
+msgid "Canvas Width"
+msgstr "Largura da tela"
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:6
+msgid "The canvas width."
+msgstr "A largura da tela."
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:10
+msgid "Canvas Height"
+msgstr "Altura da tela"
+
+#: data/io.github.lainsce.DotMatrix.gschema.xml:11
+msgid "The canvas height."
+msgstr "A altura da tela."
+
+#: data/ui/mainwindow.ui:11
+msgid "New Glyph"
+msgstr "Novo Glifo"
+
+#: data/ui/mainwindow.ui:15
+msgid "Save Glyph As…"
+msgstr "Salvar Glifo Como…"
+
+#: data/ui/mainwindow.ui:21
+msgid "Preferences"
+msgstr "Preferências"
+
+#: data/ui/mainwindow.ui:25
+msgid "Keyboard Shortcuts"
+msgstr "Atalhos de teclado"
+
+#: data/ui/mainwindow.ui:29
+msgid "About Dot Matrix"
+msgstr "Sobre Matriz de pontos"
+
+#: data/ui/mainwindow.ui:60
+msgid "Redo Recent Path"
+msgstr "Refazer caminho recente"
+
+#: data/ui/mainwindow.ui:67
+msgid "Undo Recent Path"
+msgstr "Desfazer caminho recente"
+
+#: data/ui/mainwindow.ui:75
+msgid "Glyph Name"
+msgstr "Nome do Glifo"
+
+#: data/ui/mainwindow.ui:78
+msgid "Title the glyph for saving"
+msgstr "Dê um título ao glifo para salvar"
+
+#: data/ui/mainwindow.ui:106
+msgid "Line"
+msgstr "Linha"
+
+#: data/ui/mainwindow.ui:112
+msgid "Arc"
+msgstr "Arco"
+
+#: data/ui/mainwindow.ui:118
+msgid "Inverted Arc"
+msgstr "Arco Invertido"
+
+#: data/ui/menu.ui:15
+msgid "Pick a Line Color"
+msgstr "Escolha uma cor de linha"
+
+#: data/ui/menu.ui:16
+msgid "Line Color"
+msgstr "Cor da linha"
+
+#: data/ui/menu.ui:21
+msgid "Close All Paths"
+msgstr "Feche todos os caminhos"
+
+#: data/ui/menu.ui:29
+msgid "Line Thickness"
+msgstr "Espessura da linha"
+
+#: data/ui/shortcuts.ui:12
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Em geral"
+
+#: data/ui/shortcuts.ui:16
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Desistir"
+
+#: data/ui/shortcuts.ui:22
+msgctxt "shortcut window"
+msgid "New Glyph"
+msgstr "Novo Glifo"
+
+#: data/ui/shortcuts.ui:28
+msgctxt "shortcut window"
+msgid "Save Glyph As…"
+msgstr "Salvar Glifo Como…"
+
+#: data/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr "Desfazer"
+
+#: data/ui/shortcuts.ui:40
+msgctxt "shortcut window"
+msgid "Redo"
+msgstr "Refazer"
+
+#: data/ui/shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Drawing"
+msgstr "Desenho"
+
+#: data/ui/shortcuts.ui:51
+msgctxt "shortcut window"
+msgid "Decrease Line Thickness"
+msgstr "Diminuir a espessura da linha"
+
+#: data/ui/shortcuts.ui:57
+msgctxt "shortcut window"
+msgid "Increase Line Thickness"
+msgstr "Aumentar a espessura da linha"
+
+#: src/MainWindow.vala:227
+msgid "The glyph playground of creativity from simple lines."
+msgstr "O playground de glifos da criatividade a partir de linhas simples."
+
+#. TRANSLATORS: 'Name <email@domain.com>' or 'Name https://website.example'
+#: src/MainWindow.vala:234
+msgid "translator-credits"
+msgstr "'Nome <johnppetersa@gmail.com>' "
+
+#: src/Widgets/UI.vala:359
+msgid "Save Image?"
+msgstr "Salvar imagem?"
+
+#: src/Widgets/UI.vala:360
+msgid "Not saving means that the image will be lost forever."
+msgstr "Não salvar significa que a imagem será perdida para sempre."
+
+#: src/Widgets/UI.vala:362
+msgid "Don't Save"
+msgstr "Não salvar"
+
+#: src/Widgets/UI.vala:364
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/Widgets/UI.vala:365
+msgid "Save"
+msgstr "Salvar"
+
+#: src/Widgets/UI.vala:433
+msgid "SVG files"
+msgstr "Arquivos SVG"
+
+#: src/Widgets/UI.vala:437
+msgid "All files"
+msgstr "Todos os arquivos"
